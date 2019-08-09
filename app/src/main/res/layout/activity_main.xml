@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
@@ -9,16 +10,51 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
         <TextView
+            android:id="@+id/ccc_target_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Just the beginning..."
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="8dp"
+            android:text="@string/target_ccc"
+            app:layout_constraintBaseline_toBaselineOf="@+id/time_target_ccc"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/set_target_ccc_textView"
+            android:layout_marginStart="16dp"
+            android:src="@android:drawable/ic_lock_idle_alarm"
+            app:layout_constraintBottom_toBottomOf="@+id/time_target_ccc"
+            app:layout_constraintStart_toEndOf="@+id/time_target_ccc"
+            app:layout_constraintTop_toTopOf="@+id/time_target_ccc"
+            style="@style/style_setTime_buttoon"
+            app:layout_constraintVertical_bias="0.6" />
+
+        <TextView
+            android:id="@+id/time_target_ccc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="06:30"
+            app:layout_constraintStart_toEndOf="@+id/ccc_target_textView"
+            style="@style/TimeStyle"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <android.view.View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/set_target_ccc_textView" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
