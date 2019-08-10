@@ -62,11 +62,11 @@
         <ImageButton
             android:id="@+id/set_cccTarget_button"
             style="@style/style_setTime_button"
-            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/set_time_description"
             android:src="@android:drawable/ic_lock_idle_alarm"
             app:layout_constraintBottom_toBottomOf="@+id/time_cccTarget"
-            app:layout_constraintStart_toEndOf="@+id/time_cccTarget"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/time_cccTarget"
             app:layout_constraintVertical_bias="0.6" />
 
@@ -75,9 +75,11 @@
             style="@style/TimeStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/no_time"
+            app:layout_constraintEnd_toStartOf="@+id/set_cccTarget_button"
             app:layout_constraintStart_toEndOf="@+id/cccTarget_textView"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="06:30" />
