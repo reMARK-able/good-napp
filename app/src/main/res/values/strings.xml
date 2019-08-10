@@ -3,7 +3,8 @@
 
     <!-- For full planned sleep time; Planowany ccc (całkowity czas czuwania) -->
     <string name="target_ccc">Target ccc</string>
-    <string name="set_time">Set time</string>
+
+
     <string name="set_time_description">Set time</string>
     <string name="wake_up">Wake up</string>
     <string name="no_time">--:--</string>
