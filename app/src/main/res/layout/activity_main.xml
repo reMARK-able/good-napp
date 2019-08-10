@@ -26,12 +26,13 @@
         <TextView
             android:id="@+id/time_cccTarget"
             style="@style/TimeStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="223dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/no_time"
+            android:textAlignment="center"
             app:layout_constraintEnd_toStartOf="@+id/set_cccTarget_button"
             app:layout_constraintStart_toEndOf="@+id/cccTarget_textView"
             app:layout_constraintTop_toTopOf="parent"
@@ -68,10 +69,11 @@
         <TextView
             android:id="@+id/time_dayStart"
             style="@style/TimeStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/no_time"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/time_cccTarget"
             app:layout_constraintStart_toStartOf="@+id/time_cccTarget"
             app:layout_constraintTop_toBottomOf="@+id/horizontal_line1" />
@@ -116,10 +118,11 @@
         <TextView
             android:id="@+id/time_wakeUp"
             style="@style/TimeStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/no_time"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/time_cccTarget"
             app:layout_constraintStart_toStartOf="@+id/time_cccTarget"
             app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
@@ -145,18 +148,18 @@
             android:id="@+id/firstNap_start_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:text="@string/start"
-            app:layout_constraintBaseline_toBaselineOf="@+id/time_nap1_start"
-            app:layout_constraintEnd_toStartOf="@+id/time_nap1_start" />
+            app:layout_constraintBottom_toTopOf="@+id/horizontal_line3"
+            app:layout_constraintStart_toStartOf="@+id/horizontal_line3" />
 
         <TextView
             android:id="@+id/time_nap1_start"
             style="@style/TimeStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="159dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/no_time"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/time_cccTarget"
             app:layout_constraintStart_toStartOf="@+id/time_cccTarget"
             app:layout_constraintTop_toBottomOf="@+id/horizontal_line2"
@@ -175,6 +178,7 @@
         <android.view.View
             android:id="@+id/horizontal_line3"
             style="@style/style_horizontal_line"
+            android:background="#bebebe"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -185,22 +189,21 @@
             android:id="@+id/firstNap_end_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:text="@string/end"
-            app:layout_constraintBaseline_toBaselineOf="@+id/time_nap1_end"
-            app:layout_constraintEnd_toStartOf="@+id/time_nap1_end" />
+            app:layout_constraintBottom_toTopOf="@+id/horizontal_line4"
+            app:layout_constraintStart_toStartOf="@+id/firstNap_start_textView" />
 
         <TextView
             android:id="@+id/time_nap1_end"
             style="@style/TimeStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/no_time"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/time_nap1_start"
             app:layout_constraintStart_toStartOf="@+id/time_nap1_start"
-            app:layout_constraintTop_toBottomOf="@+id/horizontal_line3"
-            tools:text="11:45" />
+            app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
 
         <ImageButton
             android:id="@+id/set_nap1_end_button"
