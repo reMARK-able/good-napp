@@ -4,8 +4,11 @@
     <!-- For full planned sleep time; Planowany ccc (całkowity czas czuwania) -->
     <string name="target_ccc">Target ccc</string>
 
-
+    <!-- Description for set time buttons -->
     <string name="set_time_description">Set time</string>
+    <!--Wake up label -->
     <string name="wake_up">Wake up</string>
+
+    <!-- Template string for field when time has'n been already set -->
     <string name="no_time">--:--</string>
 </resources>
