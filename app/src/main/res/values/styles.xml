@@ -13,10 +13,18 @@
         <item name="android:textSize">32sp</item>
     </style>
 
-    <style name="style_setTime_buttoon">
+    <style name="style_setTime_button">
         <item name="android:layout_width">56dp</item>
         <item name="android:layout_height">56dp</item>
-        <item name="android:contentDescription">@string/set_time_description</item>
+    </style>
+
+    <style name="style_horizontal_line">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:background">@android:color/darker_gray</item>
     </style>
 
 </resources>
