@@ -40,7 +40,7 @@
 
         <ImageButton
             android:id="@+id/set_cccTarget_button"
-            style="@style/style_setTime_button"
+            style="@style/SetTimeButtonStyle"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/set_time_description"
             android:src="@android:drawable/ic_lock_idle_alarm"
@@ -51,14 +51,14 @@
 
         <android.view.View
             android:id="@+id/horizontal_line"
-            style="@style/style_horizontal_line"
+            style="@style/HorizontalLineStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/time_cccTarget" />
 
         <ImageButton
             android:id="@+id/set_dayStart_button"
-            style="@style/style_setTime_button"
+            style="@style/SetTimeButtonStyle"
             android:contentDescription="@string/set_time_description"
             android:src="@android:drawable/ic_lock_idle_alarm"
             app:layout_constraintBottom_toBottomOf="@+id/time_dayStart"
@@ -90,7 +90,7 @@
 
         <android.view.View
             android:id="@+id/horizontal_line1"
-            style="@style/style_horizontal_line"
+            style="@style/HorizontalLineStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/time_wakeUp" />
@@ -107,7 +107,7 @@
 
         <ImageButton
             android:id="@+id/set_wakeUp_button"
-            style="@style/style_setTime_button"
+            style="@style/SetTimeButtonStyle"
             android:contentDescription="@string/set_time_description"
             android:src="@android:drawable/ic_lock_idle_alarm"
             app:layout_constraintBottom_toBottomOf="@+id/time_wakeUp"
@@ -129,7 +129,7 @@
 
         <android.view.View
             android:id="@+id/horizontal_line2"
-            style="@style/style_horizontal_line"
+            style="@style/HorizontalLineStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/time_dayStart" />
@@ -167,7 +167,7 @@
 
         <ImageButton
             android:id="@+id/set_nap1_start_button"
-            style="@style/style_setTime_button"
+            style="@style/SetTimeButtonStyle"
             android:contentDescription="@string/set_time_description"
             android:src="@android:drawable/ic_lock_idle_alarm"
             app:layout_constraintBottom_toBottomOf="@+id/time_nap1_start"
@@ -177,7 +177,7 @@
 
         <android.view.View
             android:id="@+id/horizontal_line3"
-            style="@style/style_horizontal_line"
+            style="@style/HorizontalLineStyle"
             android:background="#bebebe"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
@@ -207,7 +207,7 @@
 
         <ImageButton
             android:id="@+id/set_nap1_end_button"
-            style="@style/style_setTime_button"
+            style="@style/SetTimeButtonStyle"
             android:contentDescription="@string/set_time_description"
             android:src="@android:drawable/ic_lock_idle_alarm"
             app:layout_constraintBottom_toBottomOf="@+id/time_nap1_end"
@@ -217,7 +217,7 @@
 
         <android.view.View
             android:id="@+id/horizontal_line4"
-            style="@style/style_horizontal_line"
+            style="@style/HorizontalLineStyle"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"

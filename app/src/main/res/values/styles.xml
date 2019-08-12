@@ -13,12 +13,12 @@
         <item name="android:textSize">32sp</item>
     </style>
 
-    <style name="style_setTime_button">
+    <style name="SetTimeButtonStyle">
         <item name="android:layout_width">@dimen/setButton_height</item>
         <item name="android:layout_height">@dimen/setButton_width</item>
     </style>
 
-    <style name="style_horizontal_line">
+    <style name="HorizontalLineStyle">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:layout_marginStart">8dp</item>
