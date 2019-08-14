@@ -12,7 +12,7 @@
     <!-- Template string for field when time has'n been already set -->
     <string name="no_time">--:--</string>
     <string name="day_start">Day start</string>
-    <string name="first_nap">First nap</string>
+    <string name="nap_label">Nap ##</string>
     <string name="start">Start</string>
     <string name="end">End</string>
 </resources>

@@ -136,5 +136,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/time_dayStart" />
 
+        <include
+            android:id="@+id/nap_2"
+            layout="@layout/nap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nap_1" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
