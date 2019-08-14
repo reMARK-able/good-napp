@@ -127,103 +127,14 @@
             app:layout_constraintStart_toStartOf="@+id/set_wakeUp_button"
             app:layout_constraintTop_toTopOf="@+id/time_dayStart" />
 
-        <android.view.View
-            android:id="@+id/horizontal_line2"
-            style="@style/HorizontalLineStyle"
+        <include
+            android:id="@+id/nap_1"
+            layout="@layout/nap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/time_dayStart" />
-
-        <TextView
-            android:id="@+id/firstNap_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/first_nap"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/horizontal_line2" />
-
-        <TextView
-            android:id="@+id/firstNap_start_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start"
-            app:layout_constraintBottom_toTopOf="@+id/horizontal_line3"
-            app:layout_constraintStart_toStartOf="@+id/horizontal_line3" />
-
-        <TextView
-            android:id="@+id/time_nap1_start"
-            style="@style/TimeStyle"
-            android:layout_width="159dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/no_time"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="@+id/time_cccTarget"
-            app:layout_constraintStart_toStartOf="@+id/time_cccTarget"
-            app:layout_constraintTop_toBottomOf="@+id/horizontal_line2"
-            tools:text="11:45" />
-
-        <ImageButton
-            android:id="@+id/set_nap1_start_button"
-            style="@style/SetTimeButtonStyle"
-            android:contentDescription="@string/set_time_description"
-            android:src="@android:drawable/ic_lock_idle_alarm"
-            app:layout_constraintBottom_toBottomOf="@+id/time_nap1_start"
-            app:layout_constraintEnd_toEndOf="@+id/set_dayStart_button"
-            app:layout_constraintStart_toStartOf="@+id/set_dayStart_button"
-            app:layout_constraintTop_toTopOf="@+id/time_nap1_start" />
-
-        <android.view.View
-            android:id="@+id/horizontal_line3"
-            style="@style/HorizontalLineStyle"
-            android:background="#bebebe"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/firstNap_textView"
-            app:layout_constraintTop_toBottomOf="@+id/time_nap1_start" />
-
-        <TextView
-            android:id="@+id/firstNap_end_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/end"
-            app:layout_constraintBottom_toTopOf="@+id/horizontal_line4"
-            app:layout_constraintStart_toStartOf="@+id/firstNap_start_textView" />
-
-        <TextView
-            android:id="@+id/time_nap1_end"
-            style="@style/TimeStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/no_time"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="@+id/time_nap1_start"
-            app:layout_constraintStart_toStartOf="@+id/time_nap1_start"
-            app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
-
-        <ImageButton
-            android:id="@+id/set_nap1_end_button"
-            style="@style/SetTimeButtonStyle"
-            android:contentDescription="@string/set_time_description"
-            android:src="@android:drawable/ic_lock_idle_alarm"
-            app:layout_constraintBottom_toBottomOf="@+id/time_nap1_end"
-            app:layout_constraintEnd_toEndOf="@+id/set_nap1_start_button"
-            app:layout_constraintStart_toStartOf="@+id/set_nap1_start_button"
-            app:layout_constraintTop_toTopOf="@+id/time_nap1_end" />
-
-        <android.view.View
-            android:id="@+id/horizontal_line4"
-            style="@style/HorizontalLineStyle"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/time_nap1_end" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
