@@ -2,7 +2,7 @@
     <string name="app_name">Good nApp</string>
 
     <!-- For full planned sleep time; Planowany ccc (całkowity czas czuwania) -->
-    <string name="target_ccc">Target ccc</string>
+    <string name="target_TWT">Target TWT</string>
 
     <!-- Description for set time buttons -->
     <string name="set_time_description">Set time</string>

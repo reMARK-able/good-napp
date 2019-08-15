@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Init views
-        setTarget = findViewById(R.id.set_cccTarget_button)
-        timeTarget = findViewById(R.id.time_cccTarget)
+        setTarget = findViewById(R.id.set_targetTWT_button)
+        timeTarget = findViewById(R.id.time_targetTWT)
 
         setTarget.setOnClickListener { setTime() }
     }
