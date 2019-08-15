@@ -15,4 +15,7 @@
     <string name="nap_label">Nap ##</string>
     <string name="start">Start</string>
     <string name="end">End</string>
+    <string name="bed_time">Bedtime</string>
+    <string name="real">Real</string>
+    <string name="target_label">Target</string>
 </resources>
