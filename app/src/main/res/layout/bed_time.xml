@@ -18,7 +18,10 @@
         android:id="@+id/bedTime_label_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:text="@string/bed_time"
+        app:layout_constraintEnd_toStartOf="@+id/target_bedTime_label"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/horizontal_upper_line"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_upper_line" />
 
@@ -26,22 +29,21 @@
         android:id="@+id/target_bedTime_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:text="@string/target_label"
         app:layout_constraintBaseline_toBaselineOf="@+id/time_target_bedTime"
-        app:layout_constraintStart_toStartOf="@+id/horizontal_line_middle" />
+        app:layout_constraintEnd_toStartOf="@+id/time_target_bedTime" />
 
     <TextView
         android:id="@+id/time_target_bedTime"
         style="@style/TimeStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="@string/no_time"
         android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/set_real_bedTime_button"
-        app:layout_constraintStart_toEndOf="@+id/target_bedTime_label"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_upper_line"
         tools:text="11:45" />
 
@@ -57,8 +59,11 @@
         android:id="@+id/real_bedTime_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:text="@string/real"
         app:layout_constraintBaseline_toBaselineOf="@+id/time_real_bedTime_textView"
+        app:layout_constraintEnd_toStartOf="@+id/time_real_bedTime_textView"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/target_bedTime_label" />
 
     <TextView
@@ -83,6 +88,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/time_real_bedTime_textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/time_real_bedTime_textView" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
