@@ -37,8 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/no_time"
         android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/set_real_bedTime_button"
         app:layout_constraintStart_toEndOf="@+id/target_bedTime_label"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_upper_line"
         tools:text="11:45" />
@@ -74,14 +76,12 @@
     <ImageButton
         android:id="@+id/set_real_bedTime_button"
         style="@style/SetTimeButtonStyle"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/set_time_description"
         android:src="@android:drawable/ic_lock_idle_alarm"
         app:layout_constraintBottom_toBottomOf="@+id/time_real_bedTime_textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/time_target_bedTime"
         app:layout_constraintTop_toTopOf="@+id/time_real_bedTime_textView" />
 
 
