@@ -18,4 +18,5 @@
     <string name="bed_time">Bedtime</string>
     <string name="real">Real</string>
     <string name="target_label">Target</string>
+    <string name="sample_time">14:30</string>
 </resources>
