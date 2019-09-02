@@ -13,7 +13,7 @@
         android:layout_marginEnd="@dimen/card_margin"
         android:minHeight="200dp"
         app:cardUseCompatPadding="true"
-        app:contentPadding="8dp"
+        app:contentPadding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -40,6 +40,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/target_TWT_conteiner"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,9 +53,32 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/target_TWT_editText"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="time"
+                    android:text="@string/no_time"
+                    android:textAlignment="center"
+                    android:textColor="?colorButtonNormal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/wakeUp_editText_container"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/wake_up"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/target_TWT_conteiner">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/wakeUp_editText"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
                     android:text="@string/no_time"
                     android:textColor="?colorButtonNormal" />
 
