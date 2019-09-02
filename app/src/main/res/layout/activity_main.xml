@@ -8,6 +8,9 @@
     tools:context=".MainActivity">
 
     <fragment
+        android:id="@+id/day_fragment"
+        android:name="com.gmail.remarkable.development.goodnapp.DayFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_day" />
 </ScrollView>
