@@ -2,4 +2,5 @@
 <resources>
     <dimen name="setButton_height">56dp</dimen>
     <dimen name="setButton_width">56dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
 </resources>
