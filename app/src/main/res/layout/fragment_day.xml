@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:cardUseCompatPadding="true"
-        app:contentPadding="16dp"
+        app:contentPadding="@dimen/padding_card_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -18,8 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/day_start_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/date_textView"
