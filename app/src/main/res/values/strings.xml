@@ -24,6 +24,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="summary">Summary</string>
     <string name="target_bedtime">Target Bedtime</string>
-    <string name="real_bedTime">real_bedtime</string>
+    <string name="real_bedTime">Real Bedtime</string>
     <string name="real_twt">Real TWT</string>
 </resources>
