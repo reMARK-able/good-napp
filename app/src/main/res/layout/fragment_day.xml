@@ -9,9 +9,6 @@
         android:id="@+id/card_day_start"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/card_margin"
-        android:layout_marginEnd="@dimen/card_margin"
-        android:minHeight="200dp"
         app:cardUseCompatPadding="true"
         app:contentPadding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,15 +18,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/day_start_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/date_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:text="25 September 2019"
@@ -46,7 +41,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="@string/target_TWT"
-                app:hintEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/date_textView">
@@ -56,11 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="time"
-                    android:padding="8dp"
-                    android:text="@string/no_time"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textColor="?colorButtonNormal" />
+                    android:textAlignment="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,7 +61,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="@string/wake_up"
-                app:hintEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/target_TWT_container">
@@ -81,11 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="time"
-                    android:padding="8dp"
-                    android:text="@string/no_time"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textColor="?colorButtonNormal" />
+                    android:textAlignment="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
