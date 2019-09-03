@@ -44,7 +44,11 @@
                 android:id="@+id/target_bedtime_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
                 android:inputType="time"
+                android:text="@string/no_time"
                 android:textAlignment="center" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -85,7 +89,11 @@
                 android:id="@+id/real_twt_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
                 android:inputType="time"
+                android:text="@string/no_time"
                 android:textAlignment="center" />
 
         </com.google.android.material.textfield.TextInputLayout>
