@@ -56,16 +56,37 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/wakeUp_editText_container"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="@string/wake_up"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/out_of_bed_editText_container"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/target_TWT_container">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/wakeUp_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:textAlignment="center" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/out_of_bed_editText_container"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/middleBox_margin"
+                android:hint="@string/out_of_bed"
+                app:layout_constraintBottom_toBottomOf="@id/wakeUp_editText_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/wakeUp_editText_container"
+                app:layout_constraintTop_toTopOf="@id/wakeUp_editText_container">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/out_of_bed_editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="time"

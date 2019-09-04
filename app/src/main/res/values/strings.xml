@@ -7,7 +7,7 @@
     <!-- Description for set time buttons -->
     <string name="set_time_description">Set time</string>
     <!--Wake up label -->
-    <string name="wake_up">Wake up</string>
+    <string name="out_of_bed">Out of bed</string>
 
     <!-- Template string for field when time has'n been already set -->
     <string name="no_time">--:--</string>
@@ -26,4 +26,5 @@
     <string name="target_bedtime">Target Bedtime</string>
     <string name="real_bedTime">Real Bedtime</string>
     <string name="real_twt">Real TWT</string>
+    <string name="wake_up">Wake Up</string>
 </resources>
