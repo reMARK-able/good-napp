@@ -13,18 +13,29 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/summary_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false">
 
         <TextView
             android:id="@+id/summary_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:fontFamily="sans-serif-smallcaps"
             android:text="@string/summary"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_nap_button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_nap_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/add_nap"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
