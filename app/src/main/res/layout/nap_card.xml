@@ -28,25 +28,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/napStart_container"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/start"
-            app:layout_constraintEnd_toStartOf="@+id/napEnd_container"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nap_textView">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nap_start_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="time"
-                android:textAlignment="center" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/delete_description"
+            android:cropToPadding="false"
+            android:padding="8dp"
+            android:tint="@android:color/secondary_text_dark_nodisable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_delete_black_24dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/napEnd_container"
@@ -62,6 +55,25 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nap_end_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="time"
+                android:textAlignment="center" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/napStart_container"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/start"
+            app:layout_constraintEnd_toStartOf="@+id/napEnd_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nap_start_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="time"

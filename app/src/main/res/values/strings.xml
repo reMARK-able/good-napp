@@ -28,4 +28,5 @@
     <string name="real_twt">Real TWT</string>
     <string name="wake_up">Wake Up</string>
     <string name="add_nap">Add Nap</string>
+    <string name="delete_description">Delete</string>
 </resources>
