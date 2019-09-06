@@ -100,26 +100,40 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/wakeTime1_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableStart="@drawable/ic_timer_black_24dp"
+        android:drawablePadding="4dp"
+        android:fontFamily="@font/orbitron"
+        android:gravity="center_vertical"
+        android:text="1h 45m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_day_start" />
+
     <include
         android:id="@+id/nap1"
         layout="@layout/nap_card"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_card"
         android:layout_marginTop="@dimen/margin_card"
-        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_day_start" />
+        app:layout_constraintTop_toBottomOf="@id/wakeTime1_textView" />
 
     <include
         android:id="@+id/nap2"
         layout="@layout/nap_card"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_card"
         android:layout_marginTop="@dimen/margin_card"
         android:layout_marginEnd="@dimen/margin_card"
-        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nap1" />
