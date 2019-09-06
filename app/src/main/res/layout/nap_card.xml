@@ -15,18 +15,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/nap_textView"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nap_duration_container"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:text="Nap"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_marginTop="8dp"
+            android:hint="@string/nap_label"
+            app:layout_constraintEnd_toEndOf="@id/napStart_container"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/target_bedtime_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:fontFamily="@font/orbitron"
+                android:inputType="time"
+                android:text="@string/sample_awake_time"
+                android:textAlignment="center" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
             android:id="@+id/imageButton2"
@@ -70,7 +82,7 @@
             android:hint="@string/start"
             app:layout_constraintEnd_toStartOf="@+id/napEnd_container"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton2">
+            app:layout_constraintTop_toBottomOf="@+id/nap_duration_container">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nap_start_editText"
