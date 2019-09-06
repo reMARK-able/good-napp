@@ -120,6 +120,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/wakeTime1_textView" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/wakeTime2_textView"
+        style="@style/AwakeTimeTextViewStyle"
+        android:text="@string/sample_awake_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nap1" />
+
     <include
         android:id="@+id/nap2"
         layout="@layout/nap_card"
@@ -130,7 +138,7 @@
         android:layout_marginEnd="@dimen/margin_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nap1" />
+        app:layout_constraintTop_toBottomOf="@id/wakeTime2_textView" />
 
     <include
         android:id="@+id/card_summary"
