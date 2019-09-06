@@ -29,5 +29,5 @@
     <string name="wake_up">Wake Up</string>
     <string name="add_nap">Add Nap</string>
     <string name="delete_description">Delete</string>
-    <string name="sample_awake_time">1h 45m</string>
+    <string name="sample_awake_time">1 hr 45 min</string>
 </resources>
