@@ -36,4 +36,14 @@
         <item name="android:background">@android:color/darker_gray</item>
     </style>
 
+    <style name="AwakeTimeTextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:drawableStart">@drawable/ic_timer_black_24dp</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:fontFamily">@font/orbitron</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
 </resources>

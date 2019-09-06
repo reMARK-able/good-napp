@@ -102,13 +102,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/wakeTime1_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawableStart="@drawable/ic_timer_black_24dp"
-        android:drawablePadding="4dp"
-        android:fontFamily="@font/orbitron"
-        android:gravity="center_vertical"
+        style="@style/AwakeTimeTextViewStyle"
         android:text="1h 45m"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
