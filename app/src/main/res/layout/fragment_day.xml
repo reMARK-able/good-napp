@@ -105,7 +105,7 @@
         style="@style/AwakeTimeTextViewStyle"
         android:text="@string/sample_awake_time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_day_start" />
 
     <include
@@ -125,7 +125,7 @@
         style="@style/AwakeTimeTextViewStyle"
         android:text="@string/sample_awake_time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nap1" />
 
     <include
@@ -152,6 +152,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nap2" />
+        app:layout_constraintTop_toBottomOf="@id/wakeTime3_textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
