@@ -28,7 +28,9 @@
                 android:focusableInTouchMode="true"
                 android:text="25 September 2019"
                 android:textAlignment="center"
+                android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,9 +40,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="32dp"
                 android:hint="@string/target_TWT"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,13 +62,12 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
                 android:hint="@string/wake_up"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/out_of_bed_editText_container"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/target_TWT_container"
                 app:layout_constraintTop_toBottomOf="@id/target_TWT_container">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -106,6 +107,7 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/wakeTime1_textView"
         style="@style/AwakeTimeTextViewStyle"
+        android:layout_marginStart="4dp"
         android:text="@string/sample_awake_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,7 +118,7 @@
         layout="@layout/nap_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/wakeTime1_textView" />
@@ -124,6 +126,7 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/wakeTime2_textView"
         style="@style/AwakeTimeTextViewStyle"
+        android:layout_marginStart="4dp"
         android:text="@string/sample_awake_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +137,7 @@
         layout="@layout/nap_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/wakeTime2_textView" />
@@ -142,6 +145,7 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/wakeTime3_textView"
         style="@style/AwakeTimeTextViewStyle"
+        android:layout_marginStart="4dp"
         android:text="@string/sample_awake_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
