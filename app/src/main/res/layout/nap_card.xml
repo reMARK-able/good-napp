@@ -5,22 +5,22 @@
     android:id="@+id/card_nap"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:contentPaddingBottom="@dimen/padding_card_content"
+    app:contentPaddingBottom="@dimen/padding_card_content_small"
     app:contentPaddingLeft="@dimen/padding_card_content"
-    app:contentPaddingRight="@dimen/padding_card_content"
-    app:contentPaddingTop="@dimen/padding_card_content_small">
+    app:contentPaddingRight="@dimen/padding_card_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/nap_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nap_duration_container"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
             android:hint="@string/nap_label"
             app:layout_constraintEnd_toEndOf="@id/napStart_container"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,10 +44,11 @@
             android:id="@+id/imageButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/delete_description"
             android:cropToPadding="false"
-            android:padding="8dp"
             android:tint="@android:color/secondary_text_dark_nodisable"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -59,6 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/middleBox_margin"
+            android:layout_marginEnd="24dp"
             android:hint="@string/end"
             app:layout_constraintBottom_toBottomOf="@+id/napStart_container"
             app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +83,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/start"
             app:layout_constraintEnd_toStartOf="@+id/napEnd_container"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/nap_duration_container"
             app:layout_constraintTop_toBottomOf="@+id/nap_duration_container">
 
             <com.google.android.material.textfield.TextInputEditText

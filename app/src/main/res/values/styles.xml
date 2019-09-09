@@ -12,6 +12,7 @@
 
     <style name="MyCardStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardElevation">2dp</item>
+        <item name="cardCornerRadius">0dp</item>
     </style>
 
     <style name="TimeStyle">

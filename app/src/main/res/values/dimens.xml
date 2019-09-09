@@ -2,7 +2,7 @@
 <resources>
     <dimen name="setButton_height">56dp</dimen>
     <dimen name="setButton_width">56dp</dimen>
-    <dimen name="padding_card_content">16dp</dimen>
+    <dimen name="padding_card_content">0dp</dimen>
     <dimen name="padding_card_content_small">8dp</dimen>
     <dimen name="padding_large">16dp</dimen>
     <dimen name="middleBox_margin">8dp</dimen>

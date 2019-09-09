@@ -20,10 +20,10 @@
             android:id="@+id/summary_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:fontFamily="sans-serif-smallcaps"
             android:text="@string/summary"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -34,6 +34,8 @@
             android:id="@+id/add_nap_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:text="@string/add_nap"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +49,7 @@
             android:layout_marginTop="8dp"
             android:hint="@string/target_bedtime"
             app:layout_constraintEnd_toStartOf="@+id/real_bedtime_container"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/summary_textView"
             app:layout_constraintTop_toBottomOf="@id/summary_textView">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -69,6 +71,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/middleBox_margin"
+            android:layout_marginEnd="24dp"
             android:hint="@string/real_bedTime"
             app:layout_constraintBottom_toBottomOf="@+id/target_bedtime_container"
             app:layout_constraintEnd_toEndOf="parent"
@@ -90,9 +93,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:hint="@string/real_twt"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/target_bedtime_container"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/target_bedtime_container"
             app:layout_constraintTop_toBottomOf="@+id/target_bedtime_container">
 
             <com.google.android.material.textfield.TextInputEditText
