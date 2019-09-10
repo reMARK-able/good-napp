@@ -2,7 +2,6 @@
 
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_summary"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:contentPaddingBottom="@dimen/padding_card_content"
@@ -11,7 +10,6 @@
     app:contentPaddingTop="@dimen/padding_card_content_small">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/summary_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false">
@@ -54,7 +52,6 @@
             app:layout_constraintTop_toBottomOf="@id/summary_textView">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/target_bedtime_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
@@ -80,7 +77,6 @@
             app:layout_constraintTop_toTopOf="@+id/target_bedtime_container">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/real_bedtime_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="time"
@@ -89,7 +85,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/real_TWT_container"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -102,7 +97,6 @@
             app:layout_constraintTop_toBottomOf="@+id/target_bedtime_container">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/real_twt_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"

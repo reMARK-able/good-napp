@@ -5,23 +5,16 @@
     <string name="target_TWT">Target TWT</string>
 
     <!-- Description for set time buttons -->
-    <string name="set_time_description">Set time</string>
     <!--Wake up label -->
     <string name="out_of_bed">Out of bed</string>
 
     <!-- Template string for field when time has'n been already set -->
     <string name="no_time">--:--</string>
-    <string name="day_start">Day start</string>
     <string name="nap_label">Nap ##</string>
     <string name="start">Start</string>
     <string name="end">End</string>
-    <string name="bed_time">Bedtime</string>
-    <string name="real">Real</string>
-    <string name="target_label">Target</string>
-    <string name="sample_time">14:30</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="summary">Summary</string>
     <string name="target_bedtime">Target Bedtime</string>
     <string name="real_bedTime">Real Bedtime</string>
