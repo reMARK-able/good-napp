@@ -15,7 +15,7 @@
         android:clipToPadding="false">
 
         <TextView
-            android:id="@+id/summary_textView"
+            android:id="@+id/summary_label_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -49,9 +49,10 @@
             android:hint="@string/target_bedtime"
             app:layout_constraintEnd_toStartOf="@+id/real_bedtime_container"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/summary_textView">
+            app:layout_constraintTop_toBottomOf="@id/summary_label_textView">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/target_bedtime_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
@@ -77,6 +78,7 @@
             app:layout_constraintTop_toTopOf="@+id/target_bedtime_container">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/real_bedtime_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="time"
@@ -85,6 +87,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/real_TWT_container"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -97,6 +100,7 @@
             app:layout_constraintTop_toBottomOf="@+id/target_bedtime_container">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/real_TWT_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
