@@ -1,163 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#dedede">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_day_start"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:contentPadding="@dimen/padding_card_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="#dedede">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_day_start"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            app:contentPadding="@dimen/padding_card_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/date_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:text="25 September 2019"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/target_TWT_container"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:hint="@string/target_TWT"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/date_textView">
+                android:layout_height="match_parent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/target_TWT_editText"
+                <TextView
+                    android:id="@+id/date_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:text="25 September 2019"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/target_TWT_container"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="time"
-                    android:textAlignment="center" />
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="@string/target_TWT"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/date_textView">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/target_TWT_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="time"
+                        android:textAlignment="center" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/wakeUp_container"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:hint="@string/wake_up"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/out_of_bed_container"
-                app:layout_constraintStart_toStartOf="@+id/target_TWT_container"
-                app:layout_constraintTop_toBottomOf="@id/target_TWT_container">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/wakeUp_editText"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/wakeUp_container"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:inputType="time"
-                    android:textAlignment="center" />
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/wake_up"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/out_of_bed_container"
+                    app:layout_constraintStart_toStartOf="@+id/target_TWT_container"
+                    app:layout_constraintTop_toBottomOf="@id/target_TWT_container">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/wakeUp_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="time"
+                        android:textAlignment="center" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/out_of_bed_container"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/middleBox_margin"
-                android:hint="@string/out_of_bed"
-                app:layout_constraintBottom_toBottomOf="@id/wakeUp_container"
-                app:layout_constraintEnd_toEndOf="@+id/target_TWT_container"
-                app:layout_constraintStart_toEndOf="@id/wakeUp_container"
-                app:layout_constraintTop_toTopOf="@id/wakeUp_container">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/out_of_bed_editText"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/out_of_bed_container"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:inputType="time"
-                    android:textAlignment="center" />
+                    android:layout_marginStart="@dimen/middleBox_margin"
+                    android:hint="@string/out_of_bed"
+                    app:layout_constraintBottom_toBottomOf="@id/wakeUp_container"
+                    app:layout_constraintEnd_toEndOf="@+id/target_TWT_container"
+                    app:layout_constraintStart_toEndOf="@id/wakeUp_container"
+                    app:layout_constraintTop_toTopOf="@id/wakeUp_container">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/out_of_bed_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="time"
+                        android:textAlignment="center" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/wakeTime1_textView"
-        style="@style/AwakeTimeTextViewStyle"
-        android:layout_marginStart="4dp"
-        android:text="@string/sample_awake_time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_day_start" />
+        </com.google.android.material.card.MaterialCardView>
 
-    <include
-        android:id="@+id/nap1"
-        layout="@layout/nap_card"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wakeTime1_textView" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/wakeTime1_textView"
+            style="@style/AwakeTimeTextViewStyle"
+            android:layout_marginStart="4dp"
+            android:text="@string/sample_awake_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_day_start" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/wakeTime2_textView"
-        style="@style/AwakeTimeTextViewStyle"
-        android:layout_marginStart="4dp"
-        android:text="@string/sample_awake_time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nap1" />
+        <include
+            android:id="@+id/nap1"
+            layout="@layout/nap_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wakeTime1_textView" />
 
-    <include
-        android:id="@+id/nap2"
-        layout="@layout/nap_card"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wakeTime2_textView" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/wakeTime2_textView"
+            style="@style/AwakeTimeTextViewStyle"
+            android:layout_marginStart="4dp"
+            android:text="@string/sample_awake_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nap1" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/wakeTime3_textView"
-        style="@style/AwakeTimeTextViewStyle"
-        android:layout_marginStart="4dp"
-        android:text="@string/sample_awake_time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nap2" />
+        <include
+            android:id="@+id/nap2"
+            layout="@layout/nap_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wakeTime2_textView" />
 
-    <include
-        android:id="@+id/card_summary"
-        layout="@layout/summary_card"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wakeTime3_textView" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/wakeTime3_textView"
+            style="@style/AwakeTimeTextViewStyle"
+            android:layout_marginStart="4dp"
+            android:text="@string/sample_awake_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nap2" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <include
+            android:id="@+id/card_summary"
+            layout="@layout/summary_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wakeTime3_textView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
