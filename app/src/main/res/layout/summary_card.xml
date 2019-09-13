@@ -1,117 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:contentPaddingBottom="@dimen/padding_card_content"
-    app:contentPaddingLeft="@dimen/padding_card_content"
-    app:contentPaddingRight="@dimen/padding_card_content"
-    app:contentPaddingTop="@dimen/padding_card_content_small">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false">
+        android:layout_height="wrap_content"
+        app:contentPaddingBottom="@dimen/padding_card_content"
+        app:contentPaddingLeft="@dimen/padding_card_content"
+        app:contentPaddingRight="@dimen/padding_card_content"
+        app:contentPaddingTop="@dimen/padding_card_content_small">
 
-        <TextView
-            android:id="@+id/summary_label_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:text="@string/summary"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_nap_button" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/add_nap_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/add_nap"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/target_bedtime_container"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:hint="@string/target_bedtime"
-            app:layout_constraintEnd_toStartOf="@+id/real_bedtime_container"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/summary_label_textView">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/target_bedtime_editText"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/summary_label_textView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:inputType="time"
-                android:text="@string/no_time"
-                android:textAlignment="center" />
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:text="@string/summary"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_nap_button" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/real_bedtime_container"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/middleBox_margin"
-            android:layout_marginEnd="32dp"
-            android:hint="@string/real_bedTime"
-            app:layout_constraintBottom_toBottomOf="@+id/target_bedtime_container"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/target_bedtime_container"
-            app:layout_constraintTop_toTopOf="@+id/target_bedtime_container">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/real_bedtime_editText"
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_nap_button"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="time"
-                android:textAlignment="center" />
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="@string/add_nap"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/real_TWT_container"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:hint="@string/real_twt"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/target_bedtime_container"
-            app:layout_constraintStart_toStartOf="@+id/target_bedtime_container"
-            app:layout_constraintTop_toBottomOf="@+id/target_bedtime_container">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/real_TWT_editText"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/target_bedtime_container"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:inputType="time"
-                android:text="@string/no_time"
-                android:textAlignment="center" />
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/target_bedtime"
+                app:layout_constraintEnd_toStartOf="@+id/real_bedtime_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/summary_label_textView">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/target_bedtime_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:inputType="time"
+                    android:text="@string/no_time"
+                    android:textAlignment="center" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-</com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/real_bedtime_container"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/middleBox_margin"
+                android:layout_marginEnd="32dp"
+                android:hint="@string/real_bedTime"
+                app:layout_constraintBottom_toBottomOf="@+id/target_bedtime_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/target_bedtime_container"
+                app:layout_constraintTop_toTopOf="@+id/target_bedtime_container">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/real_bedtime_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:textAlignment="center" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/real_TWT_container"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:hint="@string/real_twt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/target_bedtime_container"
+                app:layout_constraintStart_toStartOf="@+id/target_bedtime_container"
+                app:layout_constraintTop_toBottomOf="@+id/target_bedtime_container">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/real_TWT_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:inputType="time"
+                    android:text="@string/no_time"
+                    android:textAlignment="center" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
