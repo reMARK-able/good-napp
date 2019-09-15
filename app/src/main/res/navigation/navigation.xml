@@ -10,4 +10,8 @@
         android:name="com.gmail.remarkable.development.goodnapp.DayFragment"
         android:label="DayFragment"
         tools:layout="@layout/fragment_day" />
+    <dialog
+        android:id="@+id/timePickerDialogFragment"
+        android:name="com.gmail.remarkable.development.goodnapp.TimePickerDialogFragment"
+        android:label="TimePickerDialogFragment" />
 </navigation>
