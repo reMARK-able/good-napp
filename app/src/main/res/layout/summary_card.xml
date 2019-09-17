@@ -79,7 +79,7 @@
                 app:layout_constraintStart_toEndOf="@+id/target_bedtime_container"
                 app:layout_constraintTop_toTopOf="@+id/target_bedtime_container">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
                     android:id="@+id/real_bedtime_editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

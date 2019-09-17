@@ -49,7 +49,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/date_textView">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
                         android:id="@+id/target_TWT_editText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                     app:layout_constraintStart_toStartOf="@+id/target_TWT_container"
                     app:layout_constraintTop_toBottomOf="@id/target_TWT_container">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
                         android:id="@+id/wakeUp_editText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                     app:layout_constraintStart_toEndOf="@id/wakeUp_container"
                     app:layout_constraintTop_toTopOf="@id/wakeUp_container">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
                         android:id="@+id/out_of_bed_editText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
