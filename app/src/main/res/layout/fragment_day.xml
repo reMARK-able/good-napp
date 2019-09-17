@@ -53,6 +53,7 @@
                         android:id="@+id/target_TWT_editText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:focusableInTouchMode="false"
                         android:inputType="time"
                         android:textAlignment="center" />
 
@@ -75,6 +76,7 @@
                         android:id="@+id/wakeUp_editText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:focusableInTouchMode="false"
                         android:inputType="time"
                         android:textAlignment="center" />
 
@@ -96,6 +98,7 @@
                         android:id="@+id/out_of_bed_editText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:focusableInTouchMode="false"
                         android:inputType="time"
                         android:textAlignment="center" />
 

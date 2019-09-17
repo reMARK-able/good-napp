@@ -83,6 +83,7 @@
                     android:id="@+id/real_bedtime_editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusableInTouchMode="false"
                     android:inputType="time"
                     android:textAlignment="center" />
 
