@@ -8,6 +8,7 @@ import android.text.format.DateFormat
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 
 /**
@@ -26,6 +27,9 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
     }
 
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
-        // Do something with the time chosen by the user
+        // Temporary - only to see the result
+        val navHostFrag = activity!!.supportFragmentManager.findFragmentById(R.id.navHostFragment)
+        navHostFrag?.view?.findViewById<TextInputEditText>(R.id.target_TWT_editText)
+            ?.setText("$hourOfDay:$minute")
     }
 }
