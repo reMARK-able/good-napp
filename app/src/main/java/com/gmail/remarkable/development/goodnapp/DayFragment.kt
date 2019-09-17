@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
 
 /**
- * A simple [Fragment] subclass.
+ * A Fragment class to get the user input.
  */
 class DayFragment : Fragment() {
 

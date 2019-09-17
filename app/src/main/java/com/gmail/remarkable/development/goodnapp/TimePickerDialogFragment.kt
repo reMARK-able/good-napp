@@ -7,12 +7,11 @@ import android.os.Bundle
 import android.text.format.DateFormat
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 
 /**
- * A simple [Fragment] subclass.
+ * A TimePicker DialogFragment for data input.
  */
 class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
 
