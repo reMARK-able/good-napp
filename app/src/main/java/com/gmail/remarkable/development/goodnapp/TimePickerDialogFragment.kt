@@ -22,7 +22,13 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
         val minute = c.get(Calendar.MINUTE)
 
         // Create a new instance of TimePickerDialog and return it
-        return TimePickerDialog(activity, this, hour, minute, DateFormat.is24HourFormat(activity))
+        val mDialog =
+            TimePickerDialog(activity, this, hour, minute, DateFormat.is24HourFormat(activity))
+
+        // This adds an optional slide up animation (remove this line for default fade_in animation).
+        mDialog.window?.attributes?.windowAnimations = R.style.DialogAnimationSlideUp
+
+        return mDialog
     }
 
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
