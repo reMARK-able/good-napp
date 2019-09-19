@@ -31,6 +31,7 @@ android {
 dependencies {
     def material_version = '1.1.0-alpha10'
     def nav_version = "2.1.0"
+    def lifecycle_version = "2.1.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -48,4 +49,7 @@ dependencies {
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Lifecycle - ViewModel & LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 }
