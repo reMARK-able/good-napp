@@ -13,11 +13,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <include
             android:id="@+id/wakeTime1_textView"
-            style="@style/AwakeTimeTextViewStyle"
-            android:layout_marginStart="4dp"
-            android:text="@string/sample_awake_time"
+            layout="@layout/wake_time_text_view"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_start" />
@@ -32,11 +32,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/wakeTime1_textView" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <include
             android:id="@+id/wakeTime2_textView"
-            style="@style/AwakeTimeTextViewStyle"
-            android:layout_marginStart="4dp"
-            android:text="@string/sample_awake_time"
+            layout="@layout/wake_time_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nap1" />
@@ -51,11 +51,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/wakeTime2_textView" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <include
             android:id="@+id/wakeTime3_textView"
-            style="@style/AwakeTimeTextViewStyle"
-            android:layout_marginStart="4dp"
-            android:text="@string/sample_awake_time"
+            layout="@layout/wake_time_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nap2" />
