@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#dedede">
+        android:background="#dedede"
+        android:orientation="vertical">
 
         <include
             android:id="@+id/card_start"
@@ -16,60 +16,44 @@
         <include
             android:id="@+id/wakeTime1_textView"
             layout="@layout/wake_time_text_view"
-            android:layout_height="0dp"
             android:layout_width="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_start" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp" />
 
         <include
             android:id="@+id/nap1"
             layout="@layout/nap_card"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/wakeTime1_textView" />
+            android:layout_marginStart="16dp" />
 
         <include
             android:id="@+id/wakeTime2_textView"
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nap1" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp" />
 
         <include
             android:id="@+id/nap2"
             layout="@layout/nap_card"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/wakeTime2_textView" />
+            android:layout_marginStart="16dp" />
 
         <include
             android:id="@+id/wakeTime3_textView"
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nap2" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp" />
 
         <include
             android:id="@+id/card_summary"
             layout="@layout/summary_card"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/wakeTime3_textView" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </layout>
