@@ -49,6 +49,20 @@
             android:layout_marginStart="4dp" />
 
         <include
+            android:id="@+id/nap3"
+            layout="@layout/nap_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp" />
+
+        <include
+            android:id="@+id/wakeTime4_textView"
+            layout="@layout/wake_time_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp" />
+
+        <include
             android:id="@+id/card_summary"
             layout="@layout/summary_card"
             android:layout_width="match_parent"
