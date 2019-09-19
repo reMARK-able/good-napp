@@ -14,7 +14,7 @@
             android:layout_height="wrap_content" />
 
         <include
-            android:id="@+id/wakeTime1_textView"
+            android:id="@+id/wakeTime1"
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:layout_marginStart="16dp" />
 
         <include
-            android:id="@+id/wakeTime2_textView"
+            android:id="@+id/wakeTime2"
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             android:layout_marginStart="16dp" />
 
         <include
-            android:id="@+id/wakeTime3_textView"
+            android:id="@+id/wakeTime3"
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,7 +56,35 @@
             android:layout_marginStart="16dp" />
 
         <include
-            android:id="@+id/wakeTime4_textView"
+            android:id="@+id/wakeTime4"
+            layout="@layout/wake_time_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp" />
+
+        <include
+            android:id="@+id/nap4"
+            layout="@layout/nap_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp" />
+
+        <include
+            android:id="@+id/wakeTime5"
+            layout="@layout/wake_time_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp" />
+
+        <include
+            android:id="@+id/nap5"
+            layout="@layout/nap_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp" />
+
+        <include
+            android:id="@+id/wakeTime6"
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
