@@ -39,7 +39,8 @@ class DayFragment : Fragment() {
     }
 
     private fun pickTime(view: View) {
-        view.findNavController().navigate(R.id.action_dayFragment_to_timePickerDialogFragment)
+        view.findNavController()
+            .navigate(DayFragmentDirections.actionDayFragmentToTimePickerDialogFragment(view.id))
     }
 }
 
