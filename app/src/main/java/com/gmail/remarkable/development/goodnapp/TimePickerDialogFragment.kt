@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.format.DateFormat
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.navGraphViewModels
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 
@@ -14,6 +15,8 @@ import java.util.*
  * A TimePicker DialogFragment for data input.
  */
 class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
+
+    private val viewModel: DayViewModel by navGraphViewModels(R.id.navigation)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Use the current time as the default values for the picker
