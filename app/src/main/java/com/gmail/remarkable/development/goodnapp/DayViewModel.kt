@@ -16,6 +16,9 @@ class DayViewModel : ViewModel() {
 
     fun onTimeSet(viewId: Int, time: String) {
 
+        when (viewId) {
+            R.id.target_TWT_editText -> targetTwt.value = time
+        }
     }
 
 
