@@ -14,6 +14,10 @@ class DayViewModel : ViewModel() {
         targetTwt.value = ""
     }
 
+    fun onTimeSet(viewId: Int, time: String) {
+
+    }
+
 
     override fun onCleared() {
         super.onCleared()
