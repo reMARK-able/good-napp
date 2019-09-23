@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.navGraphViewModels
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
@@ -25,6 +26,14 @@ class DayFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_day, container, false)
+
+        binding.cardStart.targetTWTEditText.setOnClickListener {
+            pickTime(it)
+        }
+
+        viewModel.targetTwt.observe(this, Observer { newTime ->
+            binding.cardStart.targetTWTEditText.setText(newTime)
+        })
 
         return binding.root
     }
