@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.navGraphViewModels
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
 
 /**
  * A Fragment class to get the user input.
  */
 class DayFragment : Fragment() {
+
+    private val viewModel: DayViewModel by navGraphViewModels(R.id.navigation)
 
     lateinit var binding: FragmentDayBinding
 
