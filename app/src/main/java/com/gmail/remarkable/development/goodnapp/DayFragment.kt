@@ -7,10 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.navGraphViewModels
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
+
+const val NAP_1_START = "nap1start"
+const val NAP_1_END = "nap1end"
+const val NAP_2_START = "nap2start"
+const val NAP_2_END = "nap2end"
+const val NAP_3_START = "nap3start"
+const val NAP_3_END = "nap3end"
+const val NAP_4_START = "nap4start"
+const val NAP_4_END = "nap4end"
+const val NAP_5_START = "nap5start"
+const val NAP_5_END = "nap5end"
+
 
 /**
  * A Fragment class to get the user input.
@@ -27,20 +38,43 @@ class DayFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_day, container, false)
 
-        binding.cardStart.targetTWTEditText.setOnClickListener {
+        binding.nap1.napStartEditText.setOnClickListener {
             pickTime(it)
         }
-
-        viewModel.targetTwt.observe(this, Observer { newTime ->
-            binding.cardStart.targetTWTEditText.setText(newTime)
-        })
+        binding.nap1.napEndEditText.setOnClickListener {
+            pickTime(it)
+        }
+        binding.viewModel = viewModel
+        binding.day = this
+        binding.setLifecycleOwner(this)
 
         return binding.root
     }
 
-    private fun pickTime(view: View) {
+    fun pickTime(view: View) {
+
+        val nameTag = getViewName(view)
         view.findNavController()
-            .navigate(DayFragmentDirections.actionDayFragmentToTimePickerDialogFragment(view.id))
+            .navigate(DayFragmentDirections.actionDayFragmentToTimePickerDialogFragment(nameTag))
+    }
+
+    // Checks which view was clicked.
+    // It works but don't know if i shouldn't be:
+    // when {
+    // v === binding.nap1.napStartEditText ->
+    // for reference equality check???
+    private fun getViewName(v: View): String = when (v) {
+        binding.nap1.napStartEditText -> NAP_1_START
+        binding.nap1.napEndEditText -> NAP_1_END
+        binding.nap2.napStartEditText -> NAP_2_START
+        binding.nap2.napEndEditText -> NAP_2_END
+        binding.nap3.napStartEditText -> NAP_3_START
+        binding.nap3.napEndEditText -> NAP_3_END
+        binding.nap4.napStartEditText -> NAP_4_START
+        binding.nap4.napEndEditText -> NAP_4_END
+        binding.nap5.napStartEditText -> NAP_5_START
+        binding.nap5.napEndEditText -> NAP_5_END
+        else -> "unknownView"
     }
 }
 

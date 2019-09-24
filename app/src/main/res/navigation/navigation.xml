@@ -19,7 +19,7 @@
         android:name="com.gmail.remarkable.development.goodnapp.TimePickerDialogFragment"
         android:label="TimePickerDialogFragment">
         <argument
-            android:name="viewId"
-            app:argType="integer" />
+            android:name="viewNameTag"
+            app:argType="string" />
     </dialog>
 </navigation>

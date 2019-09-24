@@ -37,7 +37,7 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
 
         val args: TimePickerDialogFragmentArgs by navArgs()
-        val viewId = args.viewId
+        val viewId = args.viewNameTag
 
         viewModel.onTimeSet(viewId, "$hourOfDay:$minute")
     }

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gmail.remarkable.development.goodnapp.DayViewModel" />
+
+        <variable
+            name="day"
+            type="com.gmail.remarkable.development.goodnapp.DayFragment" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +37,10 @@
             layout="@layout/nap_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp" />
+            android:layout_marginStart="16dp"
+            app:day="@{day}"
+            app:napEnd="@{viewModel.nap1End}"
+            app:napStart="@{viewModel.nap1Start}" />
 
         <include
             android:id="@+id/wakeTime2"
@@ -39,7 +54,10 @@
             layout="@layout/nap_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp" />
+            android:layout_marginStart="16dp"
+            app:day="@{day}"
+            app:napEnd="@{viewModel.nap2End}"
+            app:napStart="@{viewModel.nap2Start}" />
 
         <include
             android:id="@+id/wakeTime3"
@@ -53,7 +71,10 @@
             layout="@layout/nap_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp" />
+            android:layout_marginStart="16dp"
+            app:day="@{day}"
+            app:napEnd="@{viewModel.nap3End}"
+            app:napStart="@{viewModel.nap3Start}" />
 
         <include
             android:id="@+id/wakeTime4"
@@ -67,7 +88,10 @@
             layout="@layout/nap_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp" />
+            android:layout_marginStart="16dp"
+            app:day="@{day}"
+            app:napEnd="@{viewModel.nap4End}"
+            app:napStart="@{viewModel.nap4Start}" />
 
         <include
             android:id="@+id/wakeTime5"
@@ -81,7 +105,10 @@
             layout="@layout/nap_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp" />
+            android:layout_marginStart="16dp"
+            app:day="@{day}"
+            app:napEnd="@{viewModel.nap5End}"
+            app:napStart="@{viewModel.nap5Start}" />
 
         <include
             android:id="@+id/wakeTime6"
