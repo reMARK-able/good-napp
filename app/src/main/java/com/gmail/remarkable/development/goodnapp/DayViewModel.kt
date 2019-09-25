@@ -25,19 +25,19 @@ class DayViewModel : ViewModel() {
         nap1End.value = ""
     }
 
-    fun onTimeSet(viewId: String, time: String) {
+    fun onTimeSet(viewId: String, time: Long) {
 
         when (viewId) {
-            NAP_1_START -> nap1Start.value = time
-            NAP_1_END -> nap1End.value = time
-            NAP_2_START -> nap2Start.value = time
-            NAP_2_END -> nap2End.value = time
-            NAP_3_START -> nap3Start.value = time
-            NAP_3_END -> nap3End.value = time
-            NAP_4_START -> nap4Start.value = time
-            NAP_4_END -> nap4End.value = time
-            NAP_5_START -> nap5Start.value = time
-            NAP_5_END -> nap5End.value = time
+//            NAP_1_START -> nap1Start.value = time
+//            NAP_1_END -> nap1End.value = time
+//            NAP_2_START -> nap2Start.value = time
+//            NAP_2_END -> nap2End.value = time
+//            NAP_3_START -> nap3Start.value = time
+//            NAP_3_END -> nap3End.value = time
+//            NAP_4_START -> nap4Start.value = time
+//            NAP_4_END -> nap4End.value = time
+//            NAP_5_START -> nap5Start.value = time
+//            NAP_5_END -> nap5End.value = time
         }
     }
 

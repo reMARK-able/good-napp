@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.util.Log
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
@@ -38,7 +39,16 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
 
         val args: TimePickerDialogFragmentArgs by navArgs()
         val viewId = args.viewNameTag
+        val timeInMillis = getTimeStamp(hourOfDay, minute)
+        Log.i("TimePickerDialog", "Picked time in millis: $timeInMillis")
+        viewModel.onTimeSet(viewId, timeInMillis)
+    }
 
-        viewModel.onTimeSet(viewId, "$hourOfDay:$minute")
+    private fun getTimeStamp(hour: Int, min: Int): Long {
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.HOUR_OF_DAY, hour)
+        calendar.set(Calendar.MINUTE, min)
+
+        return calendar.timeInMillis
     }
 }
