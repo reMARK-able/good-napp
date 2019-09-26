@@ -9,7 +9,7 @@ import java.util.*
 class DayViewModel : ViewModel() {
 
     val mLiveSleepDay = MutableLiveData<SleepDay>()
-    val mDay = SleepDay()
+    val mDay = SleepDay(date = getCurrentDate())
 
     val nap1Start = MutableLiveData<String>()
     val nap1End = MutableLiveData<String>()
