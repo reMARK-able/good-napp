@@ -23,7 +23,9 @@
             android:id="@+id/card_start"
             layout="@layout/day_start_card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:day="@{day}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/wakeTime1"

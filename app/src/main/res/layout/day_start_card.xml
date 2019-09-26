@@ -3,6 +3,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gmail.remarkable.development.goodnapp.DayViewModel" />
+
+        <variable
+            name="day"
+            type="com.gmail.remarkable.development.goodnapp.DayFragment" />
+    </data>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_day_start"
         android:layout_width="match_parent"
