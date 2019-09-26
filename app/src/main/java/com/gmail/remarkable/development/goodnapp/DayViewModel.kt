@@ -62,9 +62,11 @@ class DayViewModel : ViewModel() {
     // Convert duration in millis to string format.
     fun getDurationString(millis: Long): String {
         if (millis == 0L) return ""
-        val date = Date(millis)
-        val sdf = SimpleDateFormat("H'hr' m'min'")
-        return sdf.format(date)
+        val hours = millis / (60 * 60 * 1000) % 24
+        val min = millis / (60 * 1000) % 60
+
+        return "$hours hr $min min"
+
     }
 
     // Calculates duration in millis from picker time.
@@ -73,7 +75,7 @@ class DayViewModel : ViewModel() {
     }
 
     // Convert timestamp to time in String format.
-    fun getTimeFromTimeStamp(timestamp: Long): String {
+    fun getTimeStringFromTimestamp(timestamp: Long): String {
         if (timestamp == 0L) return ""
         val date = Date(timestamp)
         val sdf = SimpleDateFormat("HH:mm")
