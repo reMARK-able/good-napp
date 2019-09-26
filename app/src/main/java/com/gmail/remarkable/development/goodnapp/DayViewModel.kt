@@ -33,7 +33,9 @@ class DayViewModel : ViewModel() {
 
         when (viewId) {
 
-            TARGET_TWT -> mDay.targetTWT = timestamp
+            TARGET_TWT -> mDay.targetTWT = getDurationoFromPicker(hour, minutes)
+            WAKE_UP -> mDay.wakeUp = timestamp
+            OUT_OF_BED -> mDay.outOfBed = timestamp
 //            NAP_1_START -> nap1Start.value = timestamp
 //            NAP_1_END -> nap1End.value = timestamp
 //            NAP_2_START -> nap2Start.value = timestamp
@@ -47,7 +49,11 @@ class DayViewModel : ViewModel() {
         }
         // Refresh data in LiveData
         mLiveSleepDay.value = mDay
-        Log.i("DayViewModel", "Twt i String == ${getDurationString(timestamp)}")
+        val currentDuration = getDurationoFromPicker(hour, minutes)
+        Log.i("DayViewModel", "timestamp== $timestamp")
+        Log.i("DayViewModel", "getDurationFromPicker== $currentDuration")
+        Log.i("DayViewModel", "getDurationString== ${getDurationString(currentDuration)}")
+
     }
 
     // Method to set current date to the SleepDay
