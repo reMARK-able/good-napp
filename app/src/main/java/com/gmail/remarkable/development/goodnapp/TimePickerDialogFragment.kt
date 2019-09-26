@@ -39,9 +39,9 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
 
         val args: TimePickerDialogFragmentArgs by navArgs()
         val viewId = args.viewNameTag
-        val timeInMillis = getTimeStamp(hourOfDay, minute)
-        Log.i("TimePickerDialog", "Picked time in millis: $timeInMillis")
-        viewModel.onTimeSet(viewId, timeInMillis)
+        val timestamp = getTimeStamp(hourOfDay, minute)
+        Log.i("TimePickerDialog", "Picked time in millis: $timestamp")
+        viewModel.onTimeSet(viewId, hourOfDay, minute, timestamp)
     }
 
     private fun getTimeStamp(hour: Int, min: Int): Long {
