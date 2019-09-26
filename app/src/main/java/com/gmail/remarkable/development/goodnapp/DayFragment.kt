@@ -11,10 +11,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.navGraphViewModels
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
 
+// DayStart card const identifiers.
 const val TARGET_TWT = "targetTwt"
 const val WAKE_UP = "wakeUp"
 const val OUT_OF_BED = "outOfBed"
-
+// Naps const identifiers.
 const val NAP_1_START = "nap1start"
 const val NAP_1_END = "nap1end"
 const val NAP_2_START = "nap2start"
@@ -25,7 +26,8 @@ const val NAP_4_START = "nap4start"
 const val NAP_4_END = "nap4end"
 const val NAP_5_START = "nap5start"
 const val NAP_5_END = "nap5end"
-
+// Summary card const identifiers.
+const val REAL_BEDTIME = "realBedtime"
 
 /**
  * A Fragment class to get the user input.
@@ -71,6 +73,7 @@ class DayFragment : Fragment() {
         binding.cardStart.targetTWTEditText -> TARGET_TWT
         binding.cardStart.wakeUpEditText -> WAKE_UP
         binding.cardStart.outOfBedEditText -> OUT_OF_BED
+        binding.cardSummary.realBedtimeEditText -> REAL_BEDTIME
 
         binding.nap1.napStartEditText -> NAP_1_START
         binding.nap1.napEndEditText -> NAP_1_END

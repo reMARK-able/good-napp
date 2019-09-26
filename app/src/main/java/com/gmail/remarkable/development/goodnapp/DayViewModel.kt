@@ -36,6 +36,7 @@ class DayViewModel : ViewModel() {
             TARGET_TWT -> mDay.targetTWT = getDurationoFromPicker(hour, minutes)
             WAKE_UP -> mDay.wakeUp = timestamp
             OUT_OF_BED -> mDay.outOfBed = timestamp
+            REAL_BEDTIME -> mDay.realBedtime = timestamp
 //            NAP_1_START -> nap1Start.value = timestamp
 //            NAP_1_END -> nap1End.value = timestamp
 //            NAP_2_START -> nap2Start.value = timestamp
