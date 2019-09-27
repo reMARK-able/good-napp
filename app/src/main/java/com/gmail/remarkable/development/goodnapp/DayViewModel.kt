@@ -89,6 +89,14 @@ class DayViewModel : ViewModel() {
         return sdf.format(date)
     }
 
+    // Set the duration string for nap layout.
+    fun setDurationNapString(millis: Long): String =
+        when {
+            millis <= 0L -> "--:--" //this should get resource string!!!! (only for testing purpose)
+            // here can be another scenario for validation eg. hint for the user
+            else -> getDurationString(millis)
+        }
+
 
     override fun onCleared() {
         super.onCleared()

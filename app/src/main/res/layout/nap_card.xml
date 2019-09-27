@@ -52,7 +52,8 @@
                     android:focusable="false"
                     android:fontFamily="@font/orbitron"
                     android:inputType="time"
-                    android:text="@string/sample_awake_time"
+                    android:text="@{viewModel.setDurationNapString(viewModel.mLiveSleepDay.naps[index].duration)}"
+                    tools:text="@string/no_time"
                     android:textAlignment="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
