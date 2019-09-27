@@ -6,12 +6,12 @@
     <data>
 
         <variable
-            name="napStart"
-            type="String" />
+            name="viewModel"
+            type="com.gmail.remarkable.development.goodnapp.DayViewModel" />
 
         <variable
-            name="napEnd"
-            type="String" />
+            name="nap"
+            type="com.gmail.remarkable.development.goodnapp.SleepDay.Nap" />
 
         <variable
             name="day"
@@ -91,7 +91,7 @@
                     android:focusableInTouchMode="false"
                     android:inputType="time"
                     android:onClick="@{(v) -> day.pickTime(v)}"
-                    android:text="@{napEnd}"
+                    android:text="@{viewModel.getTimeStringFromTimestamp(nap.end)}"
                     android:textAlignment="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -116,7 +116,7 @@
                     android:focusableInTouchMode="false"
                     android:inputType="time"
                     android:onClick="@{(v) -> day.pickTime(v)}"
-                    android:text="@{napStart}"
+                    android:text="@{viewModel.getTimeStringFromTimestamp(nap.start)}"
                     android:textAlignment="center" />
 
             </com.google.android.material.textfield.TextInputLayout>

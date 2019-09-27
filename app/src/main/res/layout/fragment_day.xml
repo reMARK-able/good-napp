@@ -41,8 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:day="@{day}"
-            app:napEnd="@{viewModel.nap1End}"
-            app:napStart="@{viewModel.nap1Start}" />
+            app:nap="@{viewModel.mLiveSleepDay.naps[0]}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/wakeTime2"
@@ -58,8 +58,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:day="@{day}"
-            app:napEnd="@{viewModel.nap2End}"
-            app:napStart="@{viewModel.nap2Start}" />
+            app:nap="@{viewModel.mLiveSleepDay.naps[1]}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/wakeTime3"
@@ -75,8 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:day="@{day}"
-            app:napEnd="@{viewModel.nap3End}"
-            app:napStart="@{viewModel.nap3Start}" />
+            app:nap="@{viewModel.mLiveSleepDay.naps[2]}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/wakeTime4"
@@ -92,8 +92,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:day="@{day}"
-            app:napEnd="@{viewModel.nap4End}"
-            app:napStart="@{viewModel.nap4Start}" />
+            app:nap="@{viewModel.mLiveSleepDay.naps[3]}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/wakeTime5"
@@ -109,8 +109,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:day="@{day}"
-            app:napEnd="@{viewModel.nap5End}"
-            app:napStart="@{viewModel.nap5Start}" />
+            app:nap="@{viewModel.mLiveSleepDay.naps[4]}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/wakeTime6"
