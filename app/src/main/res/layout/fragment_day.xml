@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:day="@{day}"
-            app:nap="@{viewModel.mLiveSleepDay.naps[0]}"
+            app:index="@{0}"
             app:viewModel="@{viewModel}" />
 
         <include
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:day="@{day}"
-            app:nap="@{viewModel.mLiveSleepDay.naps[1]}"
+            app:index="@{1}"
             app:viewModel="@{viewModel}" />
 
         <include
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:day="@{day}"
-            app:nap="@{viewModel.mLiveSleepDay.naps[2]}"
+            app:index="@{2}"
             app:viewModel="@{viewModel}" />
 
         <include
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:day="@{day}"
-            app:nap="@{viewModel.mLiveSleepDay.naps[3]}"
+            app:index="@{3}"
             app:viewModel="@{viewModel}" />
 
         <include
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:day="@{day}"
-            app:nap="@{viewModel.mLiveSleepDay.naps[4]}"
+            app:index="@{4}"
             app:viewModel="@{viewModel}" />
 
         <include
