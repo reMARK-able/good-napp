@@ -10,7 +10,7 @@
 
     <!-- Template string for field when time has'n been already set -->
     <string name="no_time">--:--</string>
-    <string name="nap_label">Nap ##</string>
+    <string name="nap_label_format">Nap %d</string>
     <string name="start">Start</string>
     <string name="end">End</string>
 
