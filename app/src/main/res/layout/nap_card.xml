@@ -50,7 +50,6 @@
                     android:clickable="false"
                     android:cursorVisible="false"
                     android:focusable="false"
-                    android:fontFamily="@font/orbitron"
                     android:inputType="time"
                     android:text="@{viewModel.setDurationNapString(viewModel.mLiveSleepDay.naps[index].duration)}"
                     tools:text="@string/no_time"
