@@ -37,16 +37,16 @@ class DayViewModel : ViewModel() {
             WAKE_UP -> mDay.wakeUp = timestamp
             OUT_OF_BED -> mDay.outOfBed = timestamp
             REAL_BEDTIME -> mDay.realBedtime = timestamp
-//            NAP_1_START -> nap1Start.value = timestamp
-//            NAP_1_END -> nap1End.value = timestamp
-//            NAP_2_START -> nap2Start.value = timestamp
-//            NAP_2_END -> nap2End.value = timestamp
-//            NAP_3_START -> nap3Start.value = timestamp
-//            NAP_3_END -> nap3End.value = timestamp
-//            NAP_4_START -> nap4Start.value = timestamp
-//            NAP_4_END -> nap4End.value = timestamp
-//            NAP_5_START -> nap5Start.value = timestamp
-//            NAP_5_END -> nap5End.value = timestamp
+            NAP_1_START -> mDay.naps[0].start = timestamp
+            NAP_1_END -> mDay.naps[0].end = timestamp
+            NAP_2_START -> mDay.naps[1].start = timestamp
+            NAP_2_END -> mDay.naps[1].end = timestamp
+            NAP_3_START -> mDay.naps[2].start = timestamp
+            NAP_3_END -> mDay.naps[2].end = timestamp
+            NAP_4_START -> mDay.naps[3].start = timestamp
+            NAP_4_END -> mDay.naps[3].end = timestamp
+            NAP_5_START -> mDay.naps[4].start = timestamp
+            NAP_5_END -> mDay.naps[4].end = timestamp
         }
         // Refresh data in LiveData
         mLiveSleepDay.value = mDay
