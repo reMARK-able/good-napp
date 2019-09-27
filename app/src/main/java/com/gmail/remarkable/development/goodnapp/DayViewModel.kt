@@ -85,7 +85,7 @@ class DayViewModel : ViewModel() {
     fun getTimeStringFromTimestamp(timestamp: Long): String {
         if (timestamp == 0L) return ""
         val date = Date(timestamp)
-        val sdf = SimpleDateFormat("HH:mm")
+        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
         return sdf.format(date)
     }
 
