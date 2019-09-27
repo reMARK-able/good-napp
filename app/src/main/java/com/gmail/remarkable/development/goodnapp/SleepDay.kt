@@ -1,20 +1,19 @@
 package com.gmail.remarkable.development.goodnapp
 
-class SleepDay(
+data class SleepDay(
     var date: String = "unknown_date",
 
     var targetTWT: Long = 0,
     var wakeUp: Long = 0,
     var outOfBed: Long = 0,
 
-    val naps: List<NAP>? = null
+    val naps: List<Nap> = MutableList(5) { Nap() },
+
+    val targetBedtime: Long = 0,
+    var realBedtime: Long = 0,
+    val realTWT: Long = 0
 ) {
-    var targetBedtime: Long = 0
-    var realBedtime: Long = 0
-    var realTWT: Long = 0
-
-
-    class NAP(var start: Long, var end: Long) {
+    class Nap(var start: Long = 0, var end: Long = 0) {
         val duration: Long
             get() = (end - start) / 1000 / 60 //duration in minutes
     }
