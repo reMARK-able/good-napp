@@ -48,6 +48,8 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY, hour)
         calendar.set(Calendar.MINUTE, min)
+        calendar.set(Calendar.SECOND, 0) // Must be set for the same timestamp on every click.
+        calendar.set(Calendar.MILLISECOND, 0) // Must be set for the same timestamp on every click.
 
         return calendar.timeInMillis
     }
