@@ -15,6 +15,6 @@ data class SleepDay(
 ) {
     class Nap(var start: Long = 0, var end: Long = 0) {
         val duration: Long
-            get() = (end - start) / 1000 / 60 //duration in minutes
+            get() = (end - start) //in millis.
     }
 }
