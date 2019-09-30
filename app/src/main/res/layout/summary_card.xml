@@ -72,7 +72,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@string/no_time"
+                    android:text="@{viewModel.getTimeStringFromTimestamp(viewModel.mLiveSleepDay.targetBedtime)}"
                     android:textAlignment="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
