@@ -32,7 +32,9 @@
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[0]}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/nap1"
