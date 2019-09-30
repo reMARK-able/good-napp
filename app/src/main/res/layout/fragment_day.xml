@@ -51,7 +51,9 @@
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[1]}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/nap2"
@@ -68,7 +70,9 @@
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[2]}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/nap3"
@@ -85,7 +89,9 @@
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[3]}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/nap4"
@@ -102,7 +108,9 @@
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[4]}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/nap5"
@@ -119,7 +127,9 @@
             layout="@layout/wake_time_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[5]}"
+            app:viewModel="@{viewModel}" />
 
         <include
             android:id="@+id/card_summary"
