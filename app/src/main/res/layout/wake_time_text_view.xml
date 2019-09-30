@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-<com.google.android.material.textview.MaterialTextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/wakeTime_textView"
-    style="@style/AwakeTimeTextViewStyle"
-    android:text="@string/sample_awake_time"
-    tools:showIn="@layout/fragment_day" />
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gmail.remarkable.development.goodnapp.DayViewModel" />
+
+        <variable
+            name="awakeTime"
+            type="Long" />
+    </data>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/wakeTime_textView"
+        style="@style/AwakeTimeTextViewStyle"
+        android:text="@{viewModel.getDurationString(awakeTime)}"
+        tools:showIn="@layout/fragment_day"
+        tools:text="@string/sample_awake_time" />
+
+</layout>
