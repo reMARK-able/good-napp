@@ -4,6 +4,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.gmail.remarkable.development.goodnapp.DayViewModel" />
@@ -33,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[0] == null ? View.GONE : View.VISIBLE}"
             app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[0]}"
             app:viewModel="@{viewModel}" />
 
@@ -42,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:visibility="@{viewModel.mLiveSleepDay.naps[0] == null ? View.GONE : View.VISIBLE}"
             app:day="@{day}"
             app:index="@{0}"
             app:viewModel="@{viewModel}" />
@@ -52,6 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[1] == null ? View.GONE : View.VISIBLE}"
             app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[1]}"
             app:viewModel="@{viewModel}" />
 
@@ -61,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:visibility="@{viewModel.mLiveSleepDay.naps[1] == null ? View.GONE : View.VISIBLE}"
             app:day="@{day}"
             app:index="@{1}"
             app:viewModel="@{viewModel}" />
@@ -71,6 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[2] == null ? View.GONE : View.VISIBLE}"
             app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[2]}"
             app:viewModel="@{viewModel}" />
 
@@ -80,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:visibility="@{viewModel.mLiveSleepDay.naps[2] == null ? View.GONE : View.VISIBLE}"
             app:day="@{day}"
             app:index="@{2}"
             app:viewModel="@{viewModel}" />
@@ -90,6 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[3] == null ? View.GONE : View.VISIBLE}"
             app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[3]}"
             app:viewModel="@{viewModel}" />
 
@@ -99,6 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:visibility="@{viewModel.mLiveSleepDay.naps[3] == null ? View.GONE : View.VISIBLE}"
             app:day="@{day}"
             app:index="@{3}"
             app:viewModel="@{viewModel}" />
@@ -109,6 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[4] == null ? View.GONE : View.VISIBLE}"
             app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[4]}"
             app:viewModel="@{viewModel}" />
 
@@ -118,6 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:visibility="@{viewModel.mLiveSleepDay.naps[4] == null ? View.GONE : View.VISIBLE}"
             app:day="@{day}"
             app:index="@{4}"
             app:viewModel="@{viewModel}" />
@@ -128,6 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[5] == null ? View.GONE : View.VISIBLE}"
             app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[5]}"
             app:viewModel="@{viewModel}" />
 
