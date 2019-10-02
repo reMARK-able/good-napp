@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
+private const val MAX_NAPS_NUMBER = 5
+
 class DayViewModel : ViewModel() {
 
     val mLiveSleepDay = MutableLiveData<SleepDay>()
@@ -31,8 +33,10 @@ class DayViewModel : ViewModel() {
 
     // Adds another nap to the SleepDay object.
     fun addNap() {
-        mDay.naps.add(SleepDay.Nap())
-        mLiveSleepDay.value = mDay
+        if (mDay.naps.size < MAX_NAPS_NUMBER) {
+            mDay.naps.add(SleepDay.Nap())
+            mLiveSleepDay.value = mDay
+        }
     }
 
     fun onTimeSet(viewId: String, hour: Int, minutes: Int, timestamp: Long) {
