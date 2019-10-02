@@ -7,7 +7,7 @@ data class SleepDay(
     var wakeUp: Long = 0,
     var outOfBed: Long = 0,
 
-    val naps: List<Nap> = MutableList(5) { Nap() },
+    val naps: MutableList<Nap> = mutableListOf(), //MutableList(5) { Nap() }
 
     var realBedtime: Long = 0,
     val realTWT: Long = 0
