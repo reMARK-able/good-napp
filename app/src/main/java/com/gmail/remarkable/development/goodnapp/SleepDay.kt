@@ -20,22 +20,46 @@ data class SleepDay(
 
     val awakeTimes: List<Long>
         get() {
-            if (naps.isEmpty()) return listOf(realBedtime - outOfBed)
-            if (naps.size == 1) return listOf(naps[0].start - outOfBed, realBedtime - naps[0].end)
+            return when {
+                naps.isEmpty() -> {
+                    if (realBedtime > outOfBed && outOfBed != 0L) listOf(realBedtime - outOfBed)
+                    else listOf(0L)
+                }
+                naps.size == 1 -> {
+                    val result = mutableListOf<Long>()
+                    if (naps[0].start - outOfBed > 0 && outOfBed != 0L) {
+                        result.add(naps[0].start - outOfBed)
+                    } else result.add(0L)
+                    if (realBedtime - naps[0].end > 0 && naps[0].end != 0L) {
+                        result.add(realBedtime - naps[0].end)
+                    } else result.add(0L)
+//                    if (naps[0].start - outOfBed > 0 && realBedtime - naps[0].end > 0 && naps[0].end != 0L) {
+//                        listOf(naps[0].start - outOfBed, realBedtime - naps[0].end)
+//                    } else listOf(0L, 0L)
+                    result
+                }
+                else -> {
+                    val result = mutableListOf<Long>()
+                    if (naps[0].start - outOfBed > 0 && outOfBed != 0L) {
+                        result.add(naps[0].start - outOfBed)
+                    } else result.add(0L)
+                    for (i in 1 until naps.size) {
+                        if (naps[i].start - naps[i - 1].end > 0 && naps[i - 1].end != 0L) {
+                            val awakeTime = naps[i].start - naps[i - 1].end
+                            result.add(awakeTime)
+                        } else result.add(0L)
+                    }
+                    if (realBedtime - naps.last().end > 0 && naps.last().end != 0L) {
+                        result.add(realBedtime - naps.last().end)
+                    } else result.add(0L)
 
-            val result = mutableListOf<Long>()
-            result.add(naps[0].start - outOfBed)
-            for (i in 1 until naps.size) {
-                val awakeTime = naps[i].start - naps[i - 1].end
-                result.add(awakeTime)
+                    result
+                }
             }
-            result.add(realBedtime - naps.last().end)
-
-            return result
         }
 
     class Nap(var start: Long = 0, var end: Long = 0) {
         val duration: Long
-            get() = (end - start) //in millis.
+            get() = if (end - start > 0 && start != 0L) (end - start) else 0L //in millis.
     }
 }
