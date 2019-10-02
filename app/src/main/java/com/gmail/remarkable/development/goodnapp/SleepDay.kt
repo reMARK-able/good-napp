@@ -13,7 +13,10 @@ data class SleepDay(
     val realTWT: Long = 0
 ) {
     val targetBedtime: Long
-        get() = outOfBed + targetTWT + (naps.sumBy { (it.duration).toInt() })
+        get() {
+            if (outOfBed != 0L && targetTWT != 0L) return outOfBed + targetTWT + (naps.sumBy { (it.duration).toInt() })
+            else return 0
+        }
 
     val awakeTimes: List<Long>
         get() {
