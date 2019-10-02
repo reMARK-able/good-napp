@@ -67,6 +67,7 @@
                 android:contentDescription="@string/delete_description"
                 android:cropToPadding="false"
                 android:padding="4dp"
+                android:onClick="@{() -> viewModel.deleteNap(index)}"
                 android:tint="@android:color/secondary_text_dark_nodisable"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

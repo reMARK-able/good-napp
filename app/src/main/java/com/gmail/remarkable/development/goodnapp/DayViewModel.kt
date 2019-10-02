@@ -39,6 +39,13 @@ class DayViewModel : ViewModel() {
         }
     }
 
+    // Deletes the nap with index from a view.
+    fun deleteNap(index: Int) {
+        mDay.naps.removeAt(index)
+        mLiveSleepDay.value = mDay
+
+    }
+
     fun onTimeSet(viewId: String, hour: Int, minutes: Int, timestamp: Long) {
 
         when (viewId) {
