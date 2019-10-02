@@ -29,6 +29,12 @@ class DayViewModel : ViewModel() {
         mLiveSleepDay.value = mDay
     }
 
+    // Adds another nap to the SleepDay object.
+    fun addNap() {
+        mDay.naps.add(SleepDay.Nap())
+        mLiveSleepDay.value = mDay
+    }
+
     fun onTimeSet(viewId: String, hour: Int, minutes: Int, timestamp: Long) {
 
         when (viewId) {
