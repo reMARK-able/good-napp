@@ -114,6 +114,14 @@ class DayViewModel : ViewModel() {
         return sdf.format(date)
     }
 
+    // Convert timestamp to time in String format for non-editable field.
+    fun getStringForTargetBedtime(timestamp: Long): String {
+        if (timestamp == 0L) return "--:--"
+        val date = Date(timestamp)
+        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+        return sdf.format(date)
+    }
+
     // Set the duration string for nap layout.
     fun getDurationNapString(millis: Long): String =
         when {
