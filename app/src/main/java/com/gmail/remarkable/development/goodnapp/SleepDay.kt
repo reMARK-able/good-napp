@@ -9,8 +9,7 @@ data class SleepDay(
 
     val naps: MutableList<Nap> = mutableListOf(), //MutableList(5) { Nap() }
 
-    var realBedtime: Long = 0,
-    val realTWT: Long = 0
+    var realBedtime: Long = 0
 ) {
     val targetBedtime: Long
         get() {
@@ -56,6 +55,16 @@ data class SleepDay(
                     result
                 }
             }
+        }
+
+    val realTWT: Long
+        get() {
+            var sumOfAwakeTimes = 0L
+            for (awakeTime in awakeTimes) {
+                if (awakeTime != 0L) sumOfAwakeTimes += awakeTime else return 0L
+                //if (awakeTimes.all { it > 0L }) return awakeTimes.sum()
+            }
+            return sumOfAwakeTimes
         }
 
     class Nap(var start: Long = 0, var end: Long = 0) {
