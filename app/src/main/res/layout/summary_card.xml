@@ -125,7 +125,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@string/no_time"
+                    android:text="@{viewModel.getStringForRealTWT(viewModel.mLiveSleepDay.realTWT)}"
                     android:textAlignment="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
