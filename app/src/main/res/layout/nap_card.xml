@@ -75,7 +75,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nap_end_container"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                style="@style/TextInputLayoutStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/middleBox_margin"
@@ -101,7 +101,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nap_start_container"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                style="@style/TextInputLayoutStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
