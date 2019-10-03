@@ -3,4 +3,7 @@
     <color name="colorPrimary">#64a7c1</color>
     <color name="colorPrimaryDark">#307891</color>
     <color name="colorAccent">#9adffc</color>
+
+    <!-- Color for stroke of editable TextInputLayouts. -->
+    <color name="textInputLayoutStroke">@color/colorPrimaryDark</color>
 </resources>
