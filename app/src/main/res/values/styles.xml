@@ -15,6 +15,12 @@
         <item name="cardCornerRadius">0dp</item>
     </style>
 
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="android:textColorHint">@color/colorPrimaryDark</item>
+        <item name="boxStrokeColor">@color/text_input_layout_stroke</item>
+    </style>
+
     <style name="DialogAnimationSlideUp">
         <item name="android:windowEnterAnimation">@anim/slide_in_up</item>
         <item name="android:windowExitAnimation">@anim/slide_out_down</item>
