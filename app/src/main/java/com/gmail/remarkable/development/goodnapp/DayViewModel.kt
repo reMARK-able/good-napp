@@ -115,7 +115,7 @@ class DayViewModel : ViewModel() {
     }
 
     // Set the duration string for nap layout.
-    fun setDurationNapString(millis: Long): String =
+    fun getDurationNapString(millis: Long): String =
         when {
             millis <= 0L -> "--:--" //this should get resource string!!!! (only for testing purpose)
             // here can be another scenario for validation eg. hint for the user

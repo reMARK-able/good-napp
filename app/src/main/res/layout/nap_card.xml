@@ -51,7 +51,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@{viewModel.setDurationNapString(viewModel.mLiveSleepDay.naps[index].duration)}"
+                    android:text="@{viewModel.getDurationNapString(viewModel.mLiveSleepDay.naps[index].duration)}"
                     tools:text="@string/no_time"
                     android:textAlignment="center" />
 
