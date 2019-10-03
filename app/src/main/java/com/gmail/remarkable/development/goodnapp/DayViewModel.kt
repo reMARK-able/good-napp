@@ -13,16 +13,17 @@ class DayViewModel : ViewModel() {
     val mLiveSleepDay = MutableLiveData<SleepDay>()
     val mDay = SleepDay(date = getCurrentDate())
 
-    val nap1Start = MutableLiveData<String>()
-    val nap1End = MutableLiveData<String>()
-    val nap2Start = MutableLiveData<String>()
-    val nap2End = MutableLiveData<String>()
-    val nap3Start = MutableLiveData<String>()
-    val nap3End = MutableLiveData<String>()
-    val nap4Start = MutableLiveData<String>()
-    val nap4End = MutableLiveData<String>()
-    val nap5Start = MutableLiveData<String>()
-    val nap5End = MutableLiveData<String>()
+//    Previous version
+//    val nap1Start = MutableLiveData<String>()
+//    val nap1End = MutableLiveData<String>()
+//    val nap2Start = MutableLiveData<String>()
+//    val nap2End = MutableLiveData<String>()
+//    val nap3Start = MutableLiveData<String>()
+//    val nap3End = MutableLiveData<String>()
+//    val nap4Start = MutableLiveData<String>()
+//    val nap4End = MutableLiveData<String>()
+//    val nap5Start = MutableLiveData<String>()
+//    val nap5End = MutableLiveData<String>()
 
 
     init {
