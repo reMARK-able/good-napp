@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -49,6 +50,47 @@ class DayViewModel : ViewModel() {
         mDay.naps.removeAt(index)
         _mLiveSleepDay.value = mDay
 
+    }
+
+    // For validation the start of the nap.
+    fun validNapStart(naps: List<Nap>, index: Int): String? {
+        if (index >= naps.size || naps[index].start == 0L) return null
+        else {
+            val start = naps[index].start
+            var i = index
+            do {
+                val prevNap: Nap? = naps.getOrNull(i - 1)
+                when {
+                    start - mDay.outOfBed <= 0L -> return "earlier than outOfBed"
+                    prevNap != null && start <= prevNap.start -> return "earlier than prevNap start"
+                    prevNap != null && start <= prevNap.end -> return "earlier than prevNap end"
+                }
+                i -= 1
+            } while (prevNap != null)
+            return null
+        }
+    }
+
+    // For validation the end of the nap.
+    fun validNapEnd(naps: List<Nap>, index: Int): String? {
+        if (index >= naps.size || naps[index].end == 0L) return null
+        else {
+            val end = naps[index].end
+            val start = naps[index].start
+            var i = index
+            do {
+                val prevNap: Nap? = naps.getOrNull(i - 1)
+                when {
+                    end - mDay.outOfBed <= 0L -> return "earlier than outOfBed"
+                    start != 0L && end <= start -> return "must be later than start"
+                    prevNap != null && end <= prevNap.start -> return "earlier than prevNap start"
+                    prevNap != null && end <= prevNap.end -> return "earlier than prevNap end"
+                    mDay.realBedtime != 0L && end >= mDay.realBedtime -> return "later than realBedtime"
+                }
+                i -= 1
+            } while (prevNap != null)
+            return null
+        }
     }
 
     fun onTimeSet(viewId: String, hour: Int, minutes: Int, timestamp: Long) {

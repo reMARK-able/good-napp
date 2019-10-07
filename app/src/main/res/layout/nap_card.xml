@@ -85,7 +85,7 @@
                 android:layout_marginEnd="8dp"
                 android:hint="@string/end"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/nap_start_container"
+                app:error="@{viewModel.validNapEnd(viewModel.mLiveSleepDay.naps, index)}"
                 app:layout_constraintEnd_toStartOf="@+id/button_delete"
                 app:layout_constraintStart_toEndOf="@+id/nap_start_container"
                 app:layout_constraintTop_toTopOf="@+id/nap_start_container">
@@ -111,6 +111,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="@string/start"
                 android:visibility="visible"
+                app:error="@{viewModel.validNapStart(viewModel.mLiveSleepDay.naps, index)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/nap_end_container"
                 app:layout_constraintStart_toStartOf="@id/nap_duration_container"
