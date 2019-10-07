@@ -1,6 +1,7 @@
 package com.gmail.remarkable.development.goodnapp
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import java.text.SimpleDateFormat
@@ -10,7 +11,10 @@ private const val MAX_NAPS_NUMBER = 5
 
 class DayViewModel : ViewModel() {
 
-    val mLiveSleepDay = MutableLiveData<SleepDay>()
+    private val _mLiveSleepDay = MutableLiveData<SleepDay>()
+    val mLiveSleepDay: LiveData<SleepDay>
+        get() = _mLiveSleepDay
+
     val mDay = SleepDay(date = getCurrentDate())
 
 //    Previous version
@@ -29,7 +33,7 @@ class DayViewModel : ViewModel() {
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
 
-        mLiveSleepDay.value = mDay
+        _mLiveSleepDay.value = mDay
     }
 
     // Adds another nap to the SleepDay object.
@@ -43,7 +47,7 @@ class DayViewModel : ViewModel() {
     // Deletes the nap with index from a view.
     fun deleteNap(index: Int) {
         mDay.naps.removeAt(index)
-        mLiveSleepDay.value = mDay
+        _mLiveSleepDay.value = mDay
 
     }
 
@@ -67,7 +71,7 @@ class DayViewModel : ViewModel() {
             NAP_5_END -> mDay.naps[4].end = timestamp
         }
         // Refresh data in LiveData
-        mLiveSleepDay.value = mDay
+        _mLiveSleepDay.value = mDay
         val currentDuration = getDurationoFromPicker(hour, minutes)
         Log.i("DayViewModel", "timestamp== $timestamp")
         Log.i("DayViewModel", "getDurationFromPicker== $currentDuration")
