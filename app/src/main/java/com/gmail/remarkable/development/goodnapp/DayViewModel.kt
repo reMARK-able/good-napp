@@ -40,9 +40,24 @@ class DayViewModel : ViewModel() {
     // Adds another nap to the SleepDay object.
     fun addNap() {
         if (mDay.naps.size < MAX_NAPS_NUMBER) {
-            mDay.naps.add(SleepDay.Nap())
-            mLiveSleepDay.value = mDay
+            val currentNapsNumb = mDay.naps.size
+
+            if (currentNapsNumb == 0 || areNapsValid()) {
+                mDay.naps.add(Nap())
+                _mLiveSleepDay.value = mDay
+            }
         }
+    }
+
+    // Returns true if all fields in naps are correct.
+    fun areNapsValid(): Boolean {
+        for ((index, nap) in mDay.naps.withIndex()) {
+            if (!(nap.start != 0L && nap.end != 0L
+                        && validNapStart(mDay.naps, index) == null
+                        && validNapEnd(mDay.naps, index) == null)
+            ) return false
+        }
+        return true
     }
 
     // Deletes the nap with index from a view.
