@@ -3,6 +3,7 @@ package com.gmail.remarkable.development.goodnapp
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
 import java.text.SimpleDateFormat
@@ -17,6 +18,9 @@ class DayViewModel : ViewModel() {
         get() = _mLiveSleepDay
 
     val mDay = SleepDay(date = getCurrentDate())
+
+    // LiveData to set Add nap button enabled or disabled.
+    val isAllDataValid = Transformations.map(mLiveSleepDay) { areNapsValid() }
 
 //    Previous version
 //    val nap1Start = MutableLiveData<String>()
