@@ -97,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/middleBox_margin"
                 android:hint="@string/out_of_bed"
+                app:error="@{viewModel.isOutOfBedValid}"
                 app:layout_constraintBottom_toBottomOf="@id/wakeUp_container"
                 app:layout_constraintEnd_toEndOf="@+id/target_TWT_container"
                 app:layout_constraintStart_toEndOf="@id/wakeUp_container"

@@ -22,6 +22,9 @@ class DayViewModel : ViewModel() {
     // LiveData to set Add nap button enabled or disabled.
     val isAllDataValid = Transformations.map(mLiveSleepDay) { validateData() }
 
+    // LiveData for outOfBed validation.
+    val isOutOfBedValid = Transformations.map(mLiveSleepDay) { validOutOfBed() }
+
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
 
