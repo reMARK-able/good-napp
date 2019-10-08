@@ -23,4 +23,6 @@
     <string name="add_nap">Add Nap</string>
     <string name="delete_description">Delete</string>
     <string name="sample_awake_time">1 hr 45 min</string>
+    `
+    <string name="sample_date">16 september 2019</string>
 </resources>
