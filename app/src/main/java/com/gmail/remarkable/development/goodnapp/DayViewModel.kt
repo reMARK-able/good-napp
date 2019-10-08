@@ -25,6 +25,9 @@ class DayViewModel : ViewModel() {
     // LiveData for outOfBed validation.
     val isOutOfBedValid = Transformations.map(mLiveSleepDay) { validOutOfBed() }
 
+    // LiveData for realBedtime validation.
+    val isRealBedtimeValid = Transformations.map(mLiveSleepDay) { validRealBedtime() }
+
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
 
@@ -34,8 +37,8 @@ class DayViewModel : ViewModel() {
     // Adds another nap to the SleepDay object.
     fun addNap() {
         if (mDay.naps.size < MAX_NAPS_NUMBER) {
-                mDay.naps.add(Nap())
-                _mLiveSleepDay.value = mDay
+            mDay.naps.add(Nap())
+            _mLiveSleepDay.value = mDay
         }
     }
 
@@ -111,7 +114,23 @@ class DayViewModel : ViewModel() {
                 firstNap.end != 0L && firstNap.end <= oob -> "Conflict with first nap end."
                 else -> null
             }
+        }
+        return null
+    }
 
+    // Validation of targetBedtime field.
+    fun validRealBedtime(): String? {
+        val rbt = mDay.realBedtime
+        val lastNap = mDay.naps.lastOrNull()
+        if (rbt != 0L && mDay.outOfBed != 0L && mDay.outOfBed >= rbt) {
+            return "Must be later than out of bed."
+        }
+        if (lastNap != null && rbt != 0L) {
+            return when {
+                lastNap.start != 0L && lastNap.start >= rbt -> "Must be later than last nap start."
+                lastNap.end != 0L && lastNap.end >= rbt -> "Must be later than last nap end."
+                else -> null
+            }
         }
         return null
     }

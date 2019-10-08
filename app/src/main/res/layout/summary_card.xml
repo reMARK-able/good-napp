@@ -89,6 +89,7 @@
                 android:layout_marginStart="@dimen/middleBox_margin"
                 android:layout_marginEnd="32dp"
                 android:hint="@string/real_bedTime"
+                app:error="@{viewModel.isRealBedtimeValid()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/target_bedtime_container"
                 app:layout_constraintTop_toTopOf="@+id/target_bedtime_container">
