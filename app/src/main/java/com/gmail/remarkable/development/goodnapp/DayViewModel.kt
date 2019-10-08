@@ -63,9 +63,9 @@ class DayViewModel : ViewModel() {
             do {
                 val prevNap: Nap? = naps.getOrNull(i - 1)
                 when {
-                    start - mDay.outOfBed <= 0L -> return "earlier than outOfBed"
-                    prevNap != null && start <= prevNap.start -> return "earlier than prevNap start"
-                    prevNap != null && start <= prevNap.end -> return "earlier than prevNap end"
+                    start - mDay.outOfBed <= 0L -> return "Must be later than outOfBed."
+                    prevNap != null && start <= prevNap.start -> return "Must be later than previous nap."
+                    prevNap != null && start <= prevNap.end -> return "Must be later than previous nap."
                 }
                 i -= 1
             } while (prevNap != null)
@@ -83,11 +83,11 @@ class DayViewModel : ViewModel() {
             do {
                 val prevNap: Nap? = naps.getOrNull(i - 1)
                 when {
-                    end - mDay.outOfBed <= 0L -> return "earlier than outOfBed"
-                    start != 0L && end <= start -> return "must be later than start"
-                    prevNap != null && end <= prevNap.start -> return "earlier than prevNap start"
-                    prevNap != null && end <= prevNap.end -> return "earlier than prevNap end"
-                    mDay.realBedtime != 0L && end >= mDay.realBedtime -> return "later than realBedtime"
+                    end - mDay.outOfBed <= 0L -> return "Must be later than out of bed."
+                    start != 0L && end <= start -> return "Must be later than start."
+                    prevNap != null && end <= prevNap.start -> return "Must be later than previous nap."
+                    prevNap != null && end <= prevNap.end -> return "Must be later than previous nap."
+                    mDay.realBedtime != 0L && end >= mDay.realBedtime -> return "Can't be later than realBedtime."
                 }
                 i -= 1
             } while (prevNap != null)
