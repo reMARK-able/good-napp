@@ -44,13 +44,16 @@ class DayViewModel : ViewModel() {
 
     // Returns true if all fields in naps are correct.
     fun validateData(): Boolean {
-        for ((index, nap) in mDay.naps.withIndex()) {
-            if (!(nap.start != 0L && nap.end != 0L
-                        && validNapStart(mDay.naps, index) == null
-                        && validNapEnd(mDay.naps, index) == null)
-            ) return false
+        fun validateNaps(): Boolean {
+            for ((index, nap) in mDay.naps.withIndex()) {
+                if (!(nap.start != 0L && nap.end != 0L
+                            && validNapStart(mDay.naps, index) == null
+                            && validNapEnd(mDay.naps, index) == null)
+                ) return false
+            }
+            return true
         }
-        return true
+        return validOutOfBed() == null && validRealBedtime() == null && validateNaps()
     }
 
     // Deletes the nap with index from a view.
