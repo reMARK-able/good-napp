@@ -95,6 +95,24 @@ class DayViewModel : ViewModel() {
         }
     }
 
+    // Validation of outOfBed field.
+    fun validOutOfBed(): String? {
+        val oob = mDay.outOfBed
+        val firstNap = mDay.naps.getOrNull(0)
+        if (oob != 0L && mDay.realBedtime != 0L && mDay.realBedtime <= oob) {
+            return "Can't be later than real bedtime."
+        }
+        if (firstNap != null && oob != 0L) {
+            return when {
+                firstNap.start != 0L && firstNap.start <= oob -> "Can't be later than first nap."
+                firstNap.end != 0L && firstNap.end <= oob -> "Conflict with first nap end."
+                else -> null
+            }
+
+        }
+        return null
+    }
+
     fun onTimeSet(viewId: String, hour: Int, minutes: Int, timestamp: Long) {
 
         when (viewId) {
