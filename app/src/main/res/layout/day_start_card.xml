@@ -45,15 +45,15 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/target_TWT_container"
                 style="@style/TextInputLayoutStyle"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
                 android:hint="@string/target_TWT"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/date_textView">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/wakeUp_container"
+                app:layout_constraintStart_toStartOf="@+id/out_of_bed_container"
+                app:layout_constraintTop_toBottomOf="@+id/out_of_bed_container">
 
                 <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
                     android:id="@+id/target_TWT_editText"
@@ -68,41 +68,19 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/wakeUp_container"
-                style="@style/TextInputLayoutStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="@string/wake_up"
-                app:layout_constraintEnd_toStartOf="@id/out_of_bed_container"
-                app:layout_constraintStart_toStartOf="@+id/target_TWT_container"
-                app:layout_constraintTop_toBottomOf="@id/target_TWT_container">
-
-                <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
-                    android:id="@+id/wakeUp_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusableInTouchMode="false"
-                    android:inputType="time"
-                    android:onClick="@{(v) -> day.pickTime(v)}"
-                    android:text="@{viewModel.getTimeStringFromTimestamp(viewModel.mLiveSleepDay.wakeUp)}"
-                    android:textAlignment="center" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/out_of_bed_container"
                 style="@style/TextInputLayoutStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/middleBox_margin"
-                android:layout_marginBottom="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:hint="@string/out_of_bed"
                 app:error="@{viewModel.isOutOfBedValid}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/target_TWT_container"
-                app:layout_constraintStart_toEndOf="@id/wakeUp_container"
-                app:layout_constraintTop_toTopOf="@id/wakeUp_container">
+                app:layout_constraintEnd_toStartOf="@+id/wakeUp_container"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date_textView">
 
                 <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
                     android:id="@+id/out_of_bed_editText"
@@ -112,6 +90,30 @@
                     android:inputType="time"
                     android:onClick="@{(v) -> day.pickTime(v)}"
                     android:text="@{viewModel.getTimeStringFromTimestamp(viewModel.mLiveSleepDay.outOfBed)}"
+                    android:textAlignment="center" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/wakeUp_container"
+                style="@style/TextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:hint="@string/wake_up"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/out_of_bed_container"
+                app:layout_constraintTop_toTopOf="@+id/out_of_bed_container">
+
+                <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
+                    android:id="@+id/wakeUp_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="false"
+                    android:inputType="time"
+                    android:onClick="@{(v) -> day.pickTime(v)}"
+                    android:text="@{viewModel.getTimeStringFromTimestamp(viewModel.mLiveSleepDay.wakeUp)}"
                     android:textAlignment="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
