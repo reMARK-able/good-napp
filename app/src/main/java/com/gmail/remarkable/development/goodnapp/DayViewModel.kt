@@ -63,6 +63,12 @@ class DayViewModel : ViewModel() {
 
     }
 
+    // Clear realBedtime after end icon click.
+    fun clearBedtime() {
+        mDay.realBedtime = 0
+        _mLiveSleepDay.value = mDay
+    }
+
     // For validation the start of the nap.
     fun validNapStart(naps: List<Nap>, index: Int): String? {
         if (index >= naps.size || naps[index].start == 0L) return null
