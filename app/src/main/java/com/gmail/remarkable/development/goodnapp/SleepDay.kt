@@ -1,6 +1,10 @@
 package com.gmail.remarkable.development.goodnapp
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
+import com.gmail.remarkable.development.goodnapp.database.SleepTable
 
 data class SleepDay(
     var date: String = "unknown_date",
@@ -69,8 +73,21 @@ data class SleepDay(
             return sumOfAwakeTimes
         }
 
-    @Entity(tableName = "nap_table")
-    class Nap(var start: Long = 0, var end: Long = 0) {
+    @Entity(
+        tableName = "nap_table",
+        foreignKeys = [ForeignKey(
+            entity = SleepTable::class,
+            parentColumns = ["date"],
+            childColumns = ["nap_date"]
+        )]
+    )
+    class Nap(
+        @PrimaryKey(autoGenerate = true)
+        val napId: Int = 0,
+        @ColumnInfo(name = "nap_date")
+        val napDate: String,
+        var start: Long = 0, var end: Long = 0
+    ) {
         val duration: Long
             get() = if (end - start > 0 && start != 0L) (end - start) else 0L //in millis.
     }
