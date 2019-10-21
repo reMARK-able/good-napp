@@ -1,5 +1,7 @@
 package com.gmail.remarkable.development.goodnapp
 
+import androidx.room.Entity
+
 data class SleepDay(
     var date: String = "unknown_date",
 
@@ -67,6 +69,7 @@ data class SleepDay(
             return sumOfAwakeTimes
         }
 
+    @Entity(tableName = "nap_table")
     class Nap(var start: Long = 0, var end: Long = 0) {
         val duration: Long
             get() = if (end - start > 0 && start != 0L) (end - start) else 0L //in millis.
