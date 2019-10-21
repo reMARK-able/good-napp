@@ -17,7 +17,7 @@ class DayViewModel : ViewModel() {
     val mLiveSleepDay: LiveData<SleepDay>
         get() = _mLiveSleepDay
 
-    val mDay = SleepDay(date = getCurrentDate())
+    val mDay = SleepDay()
 
     // LiveData to set Add nap button enabled or disabled.
     val isAllDataValid = Transformations.map(mLiveSleepDay) { validateData() }
@@ -37,7 +37,7 @@ class DayViewModel : ViewModel() {
     // Adds another nap to the SleepDay object.
     fun addNap() {
         if (mDay.naps.size < MAX_NAPS_NUMBER) {
-            mDay.naps.add(Nap())
+            mDay.naps.add(Nap(napDate = getCurrentDate()))
             _mLiveSleepDay.value = mDay
         }
     }
