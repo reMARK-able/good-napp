@@ -19,12 +19,23 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
 
     private val viewModel: DayViewModel by navGraphViewModels(R.id.navigation)
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        // Use the current time as the default values for the picker
-        val c = Calendar.getInstance()
-        val hour = c.get(Calendar.HOUR_OF_DAY)
-        val minute = c.get(Calendar.MINUTE)
+    val args: TimePickerDialogFragmentArgs by navArgs()
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+        val currentValue = args.currentValue
+        var hour = 0
+        var minute = 0
+        // Get time that was set previously.
+        if (currentValue.isNotEmpty()) {
+            hour = currentValue.substringBefore(':').toInt()
+            minute = currentValue.substringAfter(':').toInt()
+        } else {
+            // Use the current time as the default values for the picker
+            val c = Calendar.getInstance()
+            hour = c.get(Calendar.HOUR_OF_DAY)
+            minute = c.get(Calendar.MINUTE)
+        }
         // Create a new instance of TimePickerDialog and return it
         val mDialog =
             TimePickerDialog(activity, this, hour, minute, DateFormat.is24HourFormat(activity))
@@ -37,7 +48,7 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
 
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
 
-        val args: TimePickerDialogFragmentArgs by navArgs()
+
         val viewId = args.viewNameTag
         val timestamp = getTimeStamp(hourOfDay, minute)
         Log.i("TimePickerDialog", "Picked time in millis: $timestamp")
