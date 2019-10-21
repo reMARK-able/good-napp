@@ -44,12 +44,6 @@ class DayFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_day, container, false)
 
-        binding.nap1.napStartEditText.setOnClickListener {
-            pickTime(it)
-        }
-        binding.nap1.napEndEditText.setOnClickListener {
-            pickTime(it)
-        }
         binding.viewModel = viewModel
         binding.day = this
         binding.setLifecycleOwner(this)
