@@ -8,10 +8,13 @@ import com.gmail.remarkable.development.goodnapp.SleepDay
 interface SleepDatabaseDao {
 
     @Insert
-    fun insert(sleepDay: SleepDay)
+    fun insert(sleepDay: SleepTable)
+
+    @Insert
+    fun insertNaps(naps: List<SleepDay.Nap>)
 
     @Update
-    fun update(sleepDay: SleepDay)
+    fun update(sleepDay: SleepTable)
 
     // Deletes all from the table
     @Query("DELETE FROM sleep_table")
@@ -26,4 +29,18 @@ interface SleepDatabaseDao {
     @Transaction
     @Query("SELECT * FROM sleep_table WHERE date = :date")
     fun get(date: String): SleepDay?
+
+    @Transaction
+    fun insertSleepDay(sleepDay: SleepDay) {
+        val dayToInsert = SleepTable(
+            sleepDay.date,
+            sleepDay.targetTWT,
+            sleepDay.wakeUp,
+            sleepDay.outOfBed,
+            sleepDay.realBedtime
+        )
+        insert(dayToInsert)
+        val napsToInsert = sleepDay.naps
+        insertNaps(napsToInsert)
+    }
 }
