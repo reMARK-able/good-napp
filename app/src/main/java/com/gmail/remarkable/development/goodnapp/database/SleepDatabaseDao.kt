@@ -24,7 +24,7 @@ interface SleepDatabaseDao {
     fun getAllDays(): LiveData<List<SleepDay>>
 
     @Query("SELECT * FROM sleep_table ORDER BY date DESC LIMIT 1")
-    fun getLastDay(): SleepDay
+    fun getLastDay(): SleepDay?
 
     @Transaction
     @Query("SELECT * FROM sleep_table WHERE date = :date")
