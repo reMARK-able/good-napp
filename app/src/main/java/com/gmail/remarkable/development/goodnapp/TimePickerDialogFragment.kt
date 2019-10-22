@@ -23,13 +23,21 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        val currentValue = args.currentValue
+        var currentValue = args.currentValue
         var hour = 0
         var minute = 0
         // Get time that was set previously.
         if (currentValue.isNotEmpty()) {
-            hour = currentValue.substringBefore(':').toInt()
-            minute = currentValue.substringAfter(':').toInt()
+            if (currentValue.contains(':')) {
+                hour = currentValue.substringBefore(':').toIntOrNull() ?: 12
+                minute = currentValue.substringAfter(':').toIntOrNull() ?: 0
+            } else {
+                currentValue = currentValue.toUpperCase()
+                hour = currentValue.substringBefore(" HR ").toIntOrNull() ?: 12
+                minute = currentValue
+                    .substringAfter(" HR ")
+                    .substringBefore(" MIN").toIntOrNull() ?: 0
+            }
         } else {
             // Use the current time as the default values for the picker
             val c = Calendar.getInstance()
