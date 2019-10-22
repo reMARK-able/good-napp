@@ -44,6 +44,9 @@ class DayFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_day, container, false)
 
+        // Reference to the application that this fragment is attached to.
+        val application = requireNotNull(this.activity).application
+
         binding.viewModel = viewModel
         binding.day = this
         binding.setLifecycleOwner(this)
