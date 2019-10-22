@@ -1,17 +1,22 @@
 package com.gmail.remarkable.development.goodnapp
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
 import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
+import com.gmail.remarkable.development.goodnapp.database.SleepDatabaseDao
 import java.text.SimpleDateFormat
 import java.util.*
 
 private const val MAX_NAPS_NUMBER = 5
 
-class DayViewModel : ViewModel() {
+class DayViewModel(
+    val database: SleepDatabaseDao,
+    application: Application
+) : AndroidViewModel(application) {
 
     private val _mLiveSleepDay = MutableLiveData<SleepDay>()
     val mLiveSleepDay: LiveData<SleepDay>

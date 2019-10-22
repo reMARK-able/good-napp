@@ -35,8 +35,6 @@ const val REAL_BEDTIME = "realBedtime"
  */
 class DayFragment : Fragment() {
 
-    private val viewModel: DayViewModel by navGraphViewModels(R.id.navigation)
-
     lateinit var binding: FragmentDayBinding
 
     override fun onCreateView(
@@ -49,6 +47,10 @@ class DayFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         //DatabaseDao for viewModel factory.
         val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
+
+        val vmFactory = DayViewModelFactory(dataSource, application)
+
+        val viewModel: DayViewModel by navGraphViewModels(R.id.navigation) { vmFactory }
 
         binding.viewModel = viewModel
         binding.day = this
