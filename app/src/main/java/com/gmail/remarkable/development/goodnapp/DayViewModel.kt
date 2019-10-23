@@ -22,7 +22,7 @@ class DayViewModel(
     val mLiveSleepDay: LiveData<SleepDay>
         get() = _mLiveSleepDay
 
-    val mDay = SleepDay()
+    var mDay = SleepDay()
 
     // LiveData to set Add nap button enabled or disabled.
     val isAllDataValid = Transformations.map(mLiveSleepDay) { validateData() }
@@ -37,6 +37,23 @@ class DayViewModel(
         Log.i("DayViewModel", "DayViewModel is created.")
 
         _mLiveSleepDay.value = mDay
+        initializeDay()
+    }
+
+    private fun initializeDay() {
+        viewModelScope.launch {
+            val result = getDayFromDatabase()
+            if (result != null) {
+                mDay = result
+                _mLiveSleepDay.value = mDay
+            }
+        }
+    }
+
+    private suspend fun getDayFromDatabase(): SleepDay? {
+        return withContext(Dispatchers.IO) {
+            database.getLastDay()
+        }
     }
 
     // Adds another nap to the SleepDay object.
