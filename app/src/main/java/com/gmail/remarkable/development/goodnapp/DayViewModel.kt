@@ -59,7 +59,7 @@ class DayViewModel(
     // Adds another nap to the SleepDay object.
     fun addNap() {
         if (mDay.naps.size < MAX_NAPS_NUMBER) {
-            mDay.naps.add(Nap(napDate = getCurrentDate()))
+            mDay.naps.add(Nap(napDate = mDay.date))
             _mLiveSleepDay.value = mDay
         }
     }
