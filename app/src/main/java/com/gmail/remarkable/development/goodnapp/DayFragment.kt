@@ -61,20 +61,22 @@ class DayFragment : Fragment() {
 
     fun pickTime(view: View) {
 
-        val nameTag = getViewName(view)
-        val v = view as CustomTextInputEditText
-        val currentValue = when (val hasValue = v.text) {
-            null -> ""
-            else -> hasValue.toString()
-        }
+        val navController = view.findNavController()
+        if (navController.currentDestination?.id == R.id.dayFragment) {
+            val nameTag = getViewName(view)
+            val v = view as CustomTextInputEditText
+            val currentValue = when (val hasValue = v.text) {
+                null -> ""
+                else -> hasValue.toString()
+            }
 
-        view.findNavController()
-            .navigate(
+            navController.navigate(
                 DayFragmentDirections.actionDayFragmentToTimePickerDialogFragment(
                     nameTag,
                     currentValue
                 )
             )
+        }
     }
 
     // Checks which view was clicked.
