@@ -7,7 +7,7 @@ import com.gmail.remarkable.development.goodnapp.SleepDay
 @Dao
 interface SleepDatabaseDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(sleepDay: SleepTable)
 
     @Insert
