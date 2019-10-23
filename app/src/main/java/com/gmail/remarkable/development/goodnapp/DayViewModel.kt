@@ -2,12 +2,12 @@ package com.gmail.remarkable.development.goodnapp
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.*
 import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
 import com.gmail.remarkable.development.goodnapp.database.SleepDatabaseDao
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -61,6 +61,7 @@ class DayViewModel(
         if (mDay.naps.size < MAX_NAPS_NUMBER) {
             mDay.naps.add(Nap(napDate = mDay.date))
             _mLiveSleepDay.value = mDay
+            saveData()
         }
     }
 
@@ -82,6 +83,7 @@ class DayViewModel(
     fun deleteNap(index: Int) {
         mDay.naps.removeAt(index)
         _mLiveSleepDay.value = mDay
+        saveData()
 
     }
 
@@ -89,6 +91,7 @@ class DayViewModel(
     fun clearBedtime() {
         mDay.realBedtime = 0
         _mLiveSleepDay.value = mDay
+        saveData()
     }
 
     // For validation the start of the nap.
@@ -187,6 +190,7 @@ class DayViewModel(
         }
         // Refresh data in LiveData
         _mLiveSleepDay.value = mDay
+        saveData()
         val currentDuration = getDurationoFromPicker(hour, minutes)
         Log.i("DayViewModel", "timestamp== $timestamp")
         Log.i("DayViewModel", "getDurationFromPicker== $currentDuration")
@@ -254,5 +258,17 @@ class DayViewModel(
     override fun onCleared() {
         super.onCleared()
         Log.i("DayViewModel", "DayViewModel is destroyed.")
+    }
+
+    fun saveData() {
+        viewModelScope.launch {
+            saveDay()
+        }
+    }
+
+    private suspend fun saveDay() {
+        withContext(Dispatchers.IO) {
+            database.insertSleepDay(mDay)
+        }
     }
 }
