@@ -25,4 +25,14 @@
     <string name="sample_awake_time">1 hr 45 min</string>
     `
     <string name="sample_date">16 september 2019</string>
+    <string name="error_must_be_later_than_out_of_bed">Must be later than out of bed.</string>
+    <string name="error_must_be_later_than_prev_nap_start">Must be later than previous nap start.</string>
+    <string name="error_must_be_later_than_prev_nap_end">Must be later than previous nap end.</string>
+    <string name="error_must_be_later_than_start">Must be later than start.</string>
+    <string name="error_cant_be_later_than_realBedTime">Can\'t be later than real bedtime.</string>
+    <string name="error_cant_be_later_than_real_bedtime">Can\'t be later than real bedtime.</string>
+    <string name="error_cant_be_later_than_first_nap">Can\'t be later than first nap.</string>
+    <string name="error_conflict_with_first_nap_end">Conflict with first nap end.</string>
+    <string name="error_must_be_later_than_last_nap_start">Must be later than last nap start.</string>
+    <string name="error_must_be_later_than_last_nap_end">Must be later than last nap end.</string>
 </resources>
