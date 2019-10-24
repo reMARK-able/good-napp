@@ -100,6 +100,11 @@ class DayViewModel(
         initializeDay()
     }
 
+    /**
+     * Initialize data for DayFragment.
+     * Gets data from database or if there is no data yet,
+     * sets new empty SleepDay object for LiveData holder.
+     */
     private fun initializeDay() {
         viewModelScope.launch {
             val result = getDayFromDatabase()
@@ -110,6 +115,10 @@ class DayViewModel(
         }
     }
 
+    /**
+     * The suspend method to get data in background thread from database,
+     * for coroutine started in initializeDay().
+     */
     private suspend fun getDayFromDatabase(): SleepDay? {
         return withContext(Dispatchers.IO) {
             database.getLastDay()
@@ -133,13 +142,17 @@ class DayViewModel(
 
     }
 
-    // Clear realBedtime after end icon click.
+    // Clear realBedtime field after end icon click.
     fun clearBedtime() {
         mDay.realBedtime = 0
         _mLiveSleepDay.value = mDay
         saveData()
     }
 
+    /**
+     * Called when return from TimePickerDialogFragment.
+     * Set a appropriate field in mDay object, pass it to the LiveData and write to database.
+     */
     fun onTimeSet(viewId: String, hour: Int, minutes: Int, timestamp: Long) {
 
         when (viewId) {
@@ -169,20 +182,24 @@ class DayViewModel(
 
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        Log.i("DayViewModel", "DayViewModel is destroyed.")
-    }
-
+    /**
+     * Starts coroutine in which the saveDay() is called for writing to database.
+     */
     fun saveData() {
         viewModelScope.launch {
             saveDay()
         }
     }
 
+    // Background thread suspend method to write SleepDay object in the database.
     private suspend fun saveDay() {
         withContext(Dispatchers.IO) {
             database.insertSleepDay(mDay)
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.i("DayViewModel", "DayViewModel is destroyed.")
     }
 }
