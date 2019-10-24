@@ -17,7 +17,7 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/wakeTime_textView"
         style="@style/AwakeTimeTextViewStyle"
-        android:text="@{viewModel.getDurationString(awakeTime)}"
+        android:text="@{viewModel.awakeTimeString(awakeTime)}"
         tools:showIn="@layout/fragment_day"
         tools:text="@string/sample_awake_time" />
 

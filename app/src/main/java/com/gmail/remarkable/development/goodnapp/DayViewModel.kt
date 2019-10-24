@@ -46,6 +46,56 @@ class DayViewModel(
     fun hasNapEndError(index: Int) =
         Transformations.map(mLiveSleepDay) { day -> validNapEnd(day, index, resources) }
 
+    // LiveData for outOfBed text field.
+    val outOfBedString =
+        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.outOfBed) }
+
+    // LiveData for targetTWT field.
+    val targetTWTString =
+        Transformations.map(mLiveSleepDay) { day -> getDurationString(day.targetTWT) }
+
+    // LiveData for outOfBed field.
+    val wakeUpString =
+        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.wakeUp) }
+
+    // LiveData for nap duration field.
+    fun napDurationString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
+        getDurationNapString(
+            day.naps.getOrNull(index)?.duration ?: 0
+        )
+    }
+
+    // LiveData for nap start field.
+    fun napStartString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
+        getTimeStringFromTimestamp(
+            day.naps.getOrNull(index)?.start ?: 0
+        )
+    }
+
+    // LiveData for nap end field.
+    fun napEndString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
+        getTimeStringFromTimestamp(
+            day.naps.getOrNull(index)?.end ?: 0
+        )
+    }
+
+    // LiveData for awake time fields.
+    fun awakeTimeString(duration: Long) = Transformations.map(mLiveSleepDay) {
+        getDurationString(duration)
+    }
+
+    // LiveData for target bedtime.
+    val targetBedtimeString =
+        Transformations.map(mLiveSleepDay) { day -> getStringForTargetBedtime(day.targetBedtime) }
+
+    // LiveData for real bedtime field.
+    val realBedtimeString =
+        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.realBedtime) }
+
+    // LiveData for real TWT
+    val realTWTString =
+        Transformations.map(mLiveSleepDay) { day -> getStringForRealTWT(day.realTWT) }
+
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
 

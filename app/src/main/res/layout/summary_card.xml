@@ -75,7 +75,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@{viewModel.getStringForTargetBedtime(viewModel.mLiveSleepDay.targetBedtime)}"
+                    android:text="@{viewModel.targetBedtimeString}"
                     android:textAlignment="center"
                     tools:text="@string/no_time" />
 
@@ -104,7 +104,7 @@
                     android:focusableInTouchMode="false"
                     android:inputType="time"
                     android:onClick="@{(v) -> day.pickTime(v)}"
-                    android:text="@{viewModel.getTimeStringFromTimestamp(viewModel.mLiveSleepDay.realBedtime)}"
+                    android:text="@{viewModel.realBedtimeString}"
 
                     android:textAlignment="center" />
 
@@ -131,7 +131,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@{viewModel.getStringForRealTWT(viewModel.mLiveSleepDay.realTWT)}"
+                    android:text="@{viewModel.realTWTString}"
                     android:textAlignment="center"
                     tools:text="@string/no_time" />
 
