@@ -36,7 +36,6 @@ class DayViewModel(
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
 
-        _mLiveSleepDay.value = mDay
         initializeDay()
     }
 
@@ -95,7 +94,8 @@ class DayViewModel(
     }
 
     // For validation the start of the nap.
-    fun validNapStart(naps: List<Nap>, index: Int): String? {
+    fun validNapStart(naps: List<Nap>?, index: Int): String? {
+        if (naps == null) return null
         if (index >= naps.size || naps[index].start == 0L) return null
         else {
             val start = naps[index].start
@@ -114,7 +114,8 @@ class DayViewModel(
     }
 
     // For validation the end of the nap.
-    fun validNapEnd(naps: List<Nap>, index: Int): String? {
+    fun validNapEnd(naps: List<Nap>?, index: Int): String? {
+        if (naps == null) return null
         if (index >= naps.size || naps[index].end == 0L) return null
         else {
             val end = naps[index].end
