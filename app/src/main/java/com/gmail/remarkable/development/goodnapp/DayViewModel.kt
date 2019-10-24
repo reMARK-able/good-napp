@@ -33,6 +33,14 @@ class DayViewModel(
     // LiveData for realBedtime validation.
     val isRealBedtimeValid = Transformations.map(mLiveSleepDay) { validRealBedtime() }
 
+    // LiveData for napStart validation.
+    fun hasNapStartError(index: Int) =
+        Transformations.map(mLiveSleepDay) { day -> validNapStart(day.naps, index) }
+
+    // LiveData for napEnd validation.
+    fun hasNapEndError(index: Int) =
+        Transformations.map(mLiveSleepDay) { day -> validNapEnd(day.naps, index) }
+
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
 
