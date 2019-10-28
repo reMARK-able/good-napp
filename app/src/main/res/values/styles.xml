@@ -27,12 +27,11 @@
         <item name="android:windowExitAnimation">@anim/slide_out_down</item>
     </style>
 
-    <style name="AwakeTimeTextViewStyle">
+    <style name="AwakeTimeTextViewStyle" parent="Widget.AppCompat.TextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">2dp</item>
         <item name="android:paddingBottom">2dp</item>
-        <item name="android:drawableStart">@drawable/ic_timer_black_24dp</item>
         <item name="android:drawablePadding">4dp</item>
         <item name="android:fontFamily">@font/orbitron</item>
         <item name="android:gravity">center_vertical</item>
