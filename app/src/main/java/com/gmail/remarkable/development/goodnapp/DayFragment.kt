@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.navGraphViewModels
-import com.gmail.remarkable.development.goodnapp.database.SleepDatabaseDao
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
 import org.koin.android.ext.android.inject
 
@@ -44,12 +43,7 @@ class DayFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_day, container, false)
 
-        // Reference to the application that this fragment is attached to.
-        val application = requireNotNull(this.activity).application
-        //DatabaseDao for viewModel factory.
-        val dataSource: SleepDatabaseDao by inject()
-
-        val vmFactory = DayViewModelFactory(dataSource, application)
+        val vmFactory: DayViewModelFactory by inject()
 
         val viewModel: DayViewModel by navGraphViewModels(R.id.navigation) { vmFactory }
 
