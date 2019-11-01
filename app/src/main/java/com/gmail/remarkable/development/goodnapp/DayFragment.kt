@@ -9,8 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.navGraphViewModels
-import com.gmail.remarkable.development.goodnapp.database.SleepDatabase
+import com.gmail.remarkable.development.goodnapp.database.SleepDatabaseDao
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
+import org.koin.android.ext.android.inject
 
 // DayStart card const identifiers.
 const val TARGET_TWT = "targetTwt"
@@ -46,7 +47,7 @@ class DayFragment : Fragment() {
         // Reference to the application that this fragment is attached to.
         val application = requireNotNull(this.activity).application
         //DatabaseDao for viewModel factory.
-        val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
+        val dataSource: SleepDatabaseDao by inject()
 
         val vmFactory = DayViewModelFactory(dataSource, application)
 
