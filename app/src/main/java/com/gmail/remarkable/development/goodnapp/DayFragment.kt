@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.navGraphViewModels
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
 import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 // DayStart card const identifiers.
 const val TARGET_TWT = "targetTwt"
@@ -43,9 +43,7 @@ class DayFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_day, container, false)
 
-        val vmFactory: DayViewModelFactory by inject()
-
-        val viewModel: DayViewModel by navGraphViewModels(R.id.navigation) { vmFactory }
+        val viewModel: DayViewModel by inject { parametersOf(this) }
 
         binding.viewModel = viewModel
         binding.day = this
