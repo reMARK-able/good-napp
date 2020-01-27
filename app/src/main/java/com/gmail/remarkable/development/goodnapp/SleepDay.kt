@@ -30,7 +30,7 @@ data class SleepDay(
                     if (naps[0].start - outOfBed > 0 && outOfBed != 0L) {
                         result.add(naps[0].start - outOfBed)
                     } else result.add(0L)
-                    if (realBedtime - naps[0].end > 0 && naps[0].end != 0L) {
+                    if (realBedtime - naps[0].end > 0 && naps[0].end != 0L && naps[0].end > naps[0].start) {
                         result.add(realBedtime - naps[0].end)
                     } else result.add(0L)
 //                    if (naps[0].start - outOfBed > 0 && realBedtime - naps[0].end > 0 && naps[0].end != 0L) {
@@ -44,12 +44,12 @@ data class SleepDay(
                         result.add(naps[0].start - outOfBed)
                     } else result.add(0L)
                     for (i in 1 until naps.size) {
-                        if (naps[i].start - naps[i - 1].end > 0 && naps[i - 1].end != 0L) {
+                        if (naps[i].start - naps[i - 1].end > 0 && naps[i - 1].end != 0L && naps[i - 1].end > naps[i - 1].start) {
                             val awakeTime = naps[i].start - naps[i - 1].end
                             result.add(awakeTime)
                         } else result.add(0L)
                     }
-                    if (realBedtime - naps.last().end > 0 && naps.last().end != 0L) {
+                    if (realBedtime - naps.last().end > 0 && naps.last().end != 0L && naps.last().end > naps.last().start) {
                         result.add(realBedtime - naps.last().end)
                     } else result.add(0L)
 
