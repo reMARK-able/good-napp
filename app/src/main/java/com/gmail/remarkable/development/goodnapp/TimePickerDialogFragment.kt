@@ -9,7 +9,8 @@ import android.util.Log
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.navGraphViewModels
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 import java.util.*
 
 /**
@@ -17,7 +18,7 @@ import java.util.*
  */
 class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
 
-    private val viewModel: DayViewModel by navGraphViewModels(R.id.navigation)
+    private val viewModel: DayViewModel by inject { parametersOf(this) }
 
     val args: TimePickerDialogFragmentArgs by navArgs()
 
