@@ -5,11 +5,10 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
 import com.gmail.remarkable.development.goodnapp.database.SleepDatabaseDao
+import com.gmail.remarkable.development.goodnapp.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.text.SimpleDateFormat
-import java.util.*
 
 private const val MAX_NAPS_NUMBER = 5
 
@@ -24,22 +23,88 @@ class DayViewModel(
 
     var mDay = SleepDay()
 
+    private val resources = application.resources
+
     // LiveData to set Add nap button enabled or disabled.
-    val isAllDataValid = Transformations.map(mLiveSleepDay) { validateData() }
+    val isAllDataValid = Transformations.map(mLiveSleepDay) { day -> validateData(day, resources) }
 
     // LiveData for outOfBed validation.
-    val isOutOfBedValid = Transformations.map(mLiveSleepDay) { validOutOfBed() }
+    val isOutOfBedValid =
+        Transformations.map(mLiveSleepDay) { day -> validOutOfBed(day, resources) }
 
     // LiveData for realBedtime validation.
-    val isRealBedtimeValid = Transformations.map(mLiveSleepDay) { validRealBedtime() }
+    val isRealBedtimeValid =
+        Transformations.map(mLiveSleepDay) { day -> validRealBedtime(day, resources) }
+
+    // LiveData for napStart validation.
+    fun hasNapStartError(index: Int) =
+        Transformations.map(mLiveSleepDay) { day -> validNapStart(day, index, resources) }
+
+    // LiveData for napEnd validation.
+    fun hasNapEndError(index: Int) =
+        Transformations.map(mLiveSleepDay) { day -> validNapEnd(day, index, resources) }
+
+    // LiveData for outOfBed text field.
+    val outOfBedString =
+        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.outOfBed) }
+
+    // LiveData for targetTWT field.
+    val targetTWTString =
+        Transformations.map(mLiveSleepDay) { day -> getDurationString(day.targetTWT) }
+
+    // LiveData for outOfBed field.
+    val wakeUpString =
+        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.wakeUp) }
+
+    // LiveData for nap duration field.
+    fun napDurationString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
+        getDurationNapString(
+            day.naps.getOrNull(index)?.duration ?: 0
+        )
+    }
+
+    // LiveData for nap start field.
+    fun napStartString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
+        getTimeStringFromTimestamp(
+            day.naps.getOrNull(index)?.start ?: 0
+        )
+    }
+
+    // LiveData for nap end field.
+    fun napEndString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
+        getTimeStringFromTimestamp(
+            day.naps.getOrNull(index)?.end ?: 0
+        )
+    }
+
+    // LiveData for awake time fields.
+    fun awakeTimeString(duration: Long) = Transformations.map(mLiveSleepDay) {
+        getDurationString(duration)
+    }
+
+    // LiveData for target bedtime.
+    val targetBedtimeString =
+        Transformations.map(mLiveSleepDay) { day -> getStringForTargetBedtime(day.targetBedtime) }
+
+    // LiveData for real bedtime field.
+    val realBedtimeString =
+        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.realBedtime) }
+
+    // LiveData for real TWT
+    val realTWTString =
+        Transformations.map(mLiveSleepDay) { day -> getStringForRealTWT(day.realTWT) }
 
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
 
-        _mLiveSleepDay.value = mDay
         initializeDay()
     }
 
+    /**
+     * Initialize data for DayFragment.
+     * Gets data from database or if there is no data yet,
+     * sets new empty SleepDay object for LiveData holder.
+     */
     private fun initializeDay() {
         viewModelScope.launch {
             val result = getDayFromDatabase()
@@ -50,6 +115,10 @@ class DayViewModel(
         }
     }
 
+    /**
+     * The suspend method to get data in background thread from database,
+     * for coroutine started in initializeDay().
+     */
     private suspend fun getDayFromDatabase(): SleepDay? {
         return withContext(Dispatchers.IO) {
             database.getLastDay()
@@ -65,20 +134,6 @@ class DayViewModel(
         }
     }
 
-    // Returns true if all fields in naps are correct.
-    fun validateData(): Boolean {
-        fun validateNaps(): Boolean {
-            for ((index, nap) in mDay.naps.withIndex()) {
-                if (!(nap.start != 0L && nap.end != 0L
-                            && validNapStart(mDay.naps, index) == null
-                            && validNapEnd(mDay.naps, index) == null)
-                ) return false
-            }
-            return true
-        }
-        return validOutOfBed() == null && validRealBedtime() == null && validateNaps()
-    }
-
     // Deletes the nap with index from a view.
     fun deleteNap(index: Int) {
         mDay.naps.removeAt(index)
@@ -87,88 +142,17 @@ class DayViewModel(
 
     }
 
-    // Clear realBedtime after end icon click.
+    // Clear realBedtime field after end icon click.
     fun clearBedtime() {
         mDay.realBedtime = 0
         _mLiveSleepDay.value = mDay
         saveData()
     }
 
-    // For validation the start of the nap.
-    fun validNapStart(naps: List<Nap>, index: Int): String? {
-        if (index >= naps.size || naps[index].start == 0L) return null
-        else {
-            val start = naps[index].start
-            var i = index
-            do {
-                val prevNap: Nap? = naps.getOrNull(i - 1)
-                when {
-                    start - mDay.outOfBed <= 0L -> return "Must be later than outOfBed."
-                    prevNap != null && start <= prevNap.start -> return "Must be later than previous nap."
-                    prevNap != null && start <= prevNap.end -> return "Must be later than previous nap."
-                }
-                i -= 1
-            } while (prevNap != null)
-            return null
-        }
-    }
-
-    // For validation the end of the nap.
-    fun validNapEnd(naps: List<Nap>, index: Int): String? {
-        if (index >= naps.size || naps[index].end == 0L) return null
-        else {
-            val end = naps[index].end
-            val start = naps[index].start
-            var i = index
-            do {
-                val prevNap: Nap? = naps.getOrNull(i - 1)
-                when {
-                    end - mDay.outOfBed <= 0L -> return "Must be later than out of bed."
-                    start != 0L && end <= start -> return "Must be later than start."
-                    prevNap != null && end <= prevNap.start -> return "Must be later than previous nap."
-                    prevNap != null && end <= prevNap.end -> return "Must be later than previous nap."
-                    mDay.realBedtime != 0L && end >= mDay.realBedtime -> return "Can't be later than realBedtime."
-                }
-                i -= 1
-            } while (prevNap != null)
-            return null
-        }
-    }
-
-    // Validation of outOfBed field.
-    fun validOutOfBed(): String? {
-        val oob = mDay.outOfBed
-        val firstNap = mDay.naps.getOrNull(0)
-        if (oob != 0L && mDay.realBedtime != 0L && mDay.realBedtime <= oob) {
-            return "Can't be later than real bedtime."
-        }
-        if (firstNap != null && oob != 0L) {
-            return when {
-                firstNap.start != 0L && firstNap.start <= oob -> "Can't be later than first nap."
-                firstNap.end != 0L && firstNap.end <= oob -> "Conflict with first nap end."
-                else -> null
-            }
-        }
-        return null
-    }
-
-    // Validation of targetBedtime field.
-    fun validRealBedtime(): String? {
-        val rbt = mDay.realBedtime
-        val lastNap = mDay.naps.lastOrNull()
-        if (rbt != 0L && mDay.outOfBed != 0L && mDay.outOfBed >= rbt) {
-            return "Must be later than out of bed."
-        }
-        if (lastNap != null && rbt != 0L) {
-            return when {
-                lastNap.start != 0L && lastNap.start >= rbt -> "Must be later than last nap start."
-                lastNap.end != 0L && lastNap.end >= rbt -> "Must be later than last nap end."
-                else -> null
-            }
-        }
-        return null
-    }
-
+    /**
+     * Called when return from TimePickerDialogFragment.
+     * Set a appropriate field in mDay object, pass it to the LiveData and write to database.
+     */
     fun onTimeSet(viewId: String, hour: Int, minutes: Int, timestamp: Long) {
 
         when (viewId) {
@@ -198,77 +182,24 @@ class DayViewModel(
 
     }
 
-    // Method to set current date to the SleepDay
-    private fun getCurrentDate(): String {
-        val c = Calendar.getInstance()
-        val day = c.get(Calendar.DAY_OF_MONTH)
-        val month = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())
-        val year = c.get(Calendar.YEAR)
-        return "$day $month $year"
-    }
-
-    // Convert duration in millis to string format.
-    fun getDurationString(millis: Long): String {
-        if (millis == 0L) return ""
-        val hours = millis / (60 * 60 * 1000) % 24
-        val min = millis / (60 * 1000) % 60
-
-        return "$hours hr $min min"
-    }
-
-    // Convert duration in millis to string format.
-    fun getStringForRealTWT(millis: Long): String {
-        if (millis == 0L) return "--:--"
-        val hours = millis / (60 * 60 * 1000) % 24
-        val min = millis / (60 * 1000) % 60
-
-        return "$hours hr $min min"
-    }
-
-    // Calculates duration in millis from picker time.
-    fun getDurationoFromPicker(hour: Int, min: Int): Long {
-        return ((hour * 60) + min) * 60000L
-    }
-
-    // Convert timestamp to time in String format.
-    fun getTimeStringFromTimestamp(timestamp: Long): String {
-        if (timestamp == 0L) return ""
-        val date = Date(timestamp)
-        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-        return sdf.format(date)
-    }
-
-    // Convert timestamp to time in String format for non-editable field.
-    fun getStringForTargetBedtime(timestamp: Long): String {
-        if (timestamp == 0L) return "--:--"
-        val date = Date(timestamp)
-        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-        return sdf.format(date)
-    }
-
-    // Set the duration string for nap layout.
-    fun getDurationNapString(millis: Long): String =
-        when {
-            millis <= 0L -> "--:--" //this should get resource string!!!! (only for testing purpose)
-            // here can be another scenario for validation eg. hint for the user
-            else -> getDurationString(millis)
-        }
-
-
-    override fun onCleared() {
-        super.onCleared()
-        Log.i("DayViewModel", "DayViewModel is destroyed.")
-    }
-
+    /**
+     * Starts coroutine in which the saveDay() is called for writing to database.
+     */
     fun saveData() {
         viewModelScope.launch {
             saveDay()
         }
     }
 
+    // Background thread suspend method to write SleepDay object in the database.
     private suspend fun saveDay() {
         withContext(Dispatchers.IO) {
             database.insertSleepDay(mDay)
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.i("DayViewModel", "DayViewModel is destroyed.")
     }
 }

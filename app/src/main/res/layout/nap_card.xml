@@ -52,7 +52,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@{viewModel.getDurationNapString(viewModel.mLiveSleepDay.naps[index].duration)}"
+                    android:text="@{viewModel.napDurationString(index)}"
                     android:textAlignment="center"
                     tools:text="@string/no_time" />
 
@@ -86,7 +86,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="@string/end"
                 android:visibility="visible"
-                app:error="@{viewModel.validNapEnd(viewModel.mLiveSleepDay.naps, index)}"
+                app:error="@{viewModel.hasNapEndError(index)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button_delete"
                 app:layout_constraintStart_toEndOf="@+id/nap_start_container"
@@ -100,7 +100,7 @@
                     android:focusableInTouchMode="false"
                     android:inputType="time"
                     android:onClick="@{(v) -> day.pickTime(v)}"
-                    android:text="@{viewModel.getTimeStringFromTimestamp(viewModel.mLiveSleepDay.naps[index].end)}"
+                    android:text="@{viewModel.napEndString(index)}"
                     android:textAlignment="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -114,7 +114,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="@string/start"
                 android:visibility="visible"
-                app:error="@{viewModel.validNapStart(viewModel.mLiveSleepDay.naps, index)}"
+                app:error="@{viewModel.hasNapStartError(index)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/nap_end_container"
                 app:layout_constraintStart_toStartOf="@id/nap_duration_container"
@@ -128,7 +128,7 @@
                     android:focusableInTouchMode="false"
                     android:inputType="time"
                     android:onClick="@{(v) -> day.pickTime(v)}"
-                    android:text="@{viewModel.getTimeStringFromTimestamp(viewModel.mLiveSleepDay.naps[index].start)}"
+                    android:text="@{viewModel.napStartString(index)}"
                     android:textAlignment="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
