@@ -45,9 +45,14 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
             hour = c.get(Calendar.HOUR_OF_DAY)
             minute = c.get(Calendar.MINUTE)
         }
+
+        // If the input field is TARGET_TWT then Picker is set to 24H else it checks user phone settings.
+        // Setting time duration in format AM/PM would be illogical.
+        val is24Format =
+            if (args.viewNameTag == TARGET_TWT) true else DateFormat.is24HourFormat(activity)
         // Create a new instance of TimePickerDialog and return it
         val mDialog =
-            TimePickerDialog(activity, this, hour, minute, DateFormat.is24HourFormat(activity))
+            TimePickerDialog(activity, this, hour, minute, is24Format)
 
         // This adds an optional slide up animation (remove this line for default fade_in animation).
         mDialog.window?.attributes?.windowAnimations = R.style.DialogAnimationSlideUp
