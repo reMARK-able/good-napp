@@ -1,14 +1,15 @@
 package com.gmail.remarkable.development.goodnapp.util
 
-import java.text.SimpleDateFormat
+import android.content.Context
+import android.text.format.DateFormat
 import java.util.*
 
 // Convert timestamp to time in String format.
-fun getTimeStringFromTimestamp(timestamp: Long): String {
+fun getTimeStringFromTimestamp(timestamp: Long, context: Context): String {
     if (timestamp == 0L) return ""
     val date = Date(timestamp)
-    val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-    return sdf.format(date)
+    val df = DateFormat.getTimeFormat(context)
+    return df.format(date)
 }
 
 // Convert duration in millis to string format.
@@ -29,11 +30,11 @@ fun getDurationNapString(millis: Long): String =
     }
 
 // Convert timestamp to time in String format for non-editable field.
-fun getStringForTargetBedtime(timestamp: Long): String {
+fun getStringForTargetBedtime(timestamp: Long, context: Context): String {
     if (timestamp == 0L) return "--:--"
     val date = Date(timestamp)
-    val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-    return sdf.format(date)
+    val df = DateFormat.getTimeFormat(context)
+    return df.format(date)
 }
 
 // Convert duration in millis to string format.

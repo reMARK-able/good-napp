@@ -46,7 +46,12 @@ class DayViewModel(
 
     // LiveData for outOfBed text field.
     val outOfBedString =
-        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.outOfBed) }
+        Transformations.map(mLiveSleepDay) { day ->
+            getTimeStringFromTimestamp(
+                day.outOfBed,
+                application
+            )
+        }
 
     // LiveData for targetTWT field.
     val targetTWTString =
@@ -54,7 +59,12 @@ class DayViewModel(
 
     // LiveData for outOfBed field.
     val wakeUpString =
-        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.wakeUp) }
+        Transformations.map(mLiveSleepDay) { day ->
+            getTimeStringFromTimestamp(
+                day.wakeUp,
+                application
+            )
+        }
 
     // LiveData for nap duration field.
     fun napDurationString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
@@ -66,14 +76,14 @@ class DayViewModel(
     // LiveData for nap start field.
     fun napStartString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
         getTimeStringFromTimestamp(
-            day.naps.getOrNull(index)?.start ?: 0
+            day.naps.getOrNull(index)?.start ?: 0, getApplication()
         )
     }
 
     // LiveData for nap end field.
     fun napEndString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
         getTimeStringFromTimestamp(
-            day.naps.getOrNull(index)?.end ?: 0
+            day.naps.getOrNull(index)?.end ?: 0, getApplication()
         )
     }
 
@@ -84,11 +94,21 @@ class DayViewModel(
 
     // LiveData for target bedtime.
     val targetBedtimeString =
-        Transformations.map(mLiveSleepDay) { day -> getStringForTargetBedtime(day.targetBedtime) }
+        Transformations.map(mLiveSleepDay) { day ->
+            getStringForTargetBedtime(
+                day.targetBedtime,
+                application
+            )
+        }
 
     // LiveData for real bedtime field.
     val realBedtimeString =
-        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.realBedtime) }
+        Transformations.map(mLiveSleepDay) { day ->
+            getTimeStringFromTimestamp(
+                day.realBedtime,
+                application
+            )
+        }
 
     // LiveData for real TWT
     val realTWTString =
