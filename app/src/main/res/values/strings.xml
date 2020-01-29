@@ -13,8 +13,8 @@
     <string name="nap_label_format">Nap %d</string>
     <string name="start">Start</string>
     <string name="end">End</string>
+    <string name="time_duration_format">%1$d hr %2$d min</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="summary">Summary</string>
     <string name="target_bedtime">Target Bedtime</string>
     <string name="real_bedTime">Real Bedtime</string>
@@ -23,7 +23,7 @@
     <string name="add_nap">Add Nap</string>
     <string name="delete_description">Delete</string>
     <string name="sample_awake_time">1 hr 45 min</string>
-    `
+
     <string name="sample_date">16 september 2019</string>
     <string name="error_must_be_later_than_out_of_bed">Must be later than out of bed.</string>
     <string name="error_must_be_later_than_prev_nap_start">Must be later than previous nap start.</string>

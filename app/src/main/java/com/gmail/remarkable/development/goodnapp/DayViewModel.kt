@@ -55,7 +55,7 @@ class DayViewModel(
 
     // LiveData for targetTWT field.
     val targetTWTString =
-        Transformations.map(mLiveSleepDay) { day -> getDurationString(day.targetTWT) }
+        Transformations.map(mLiveSleepDay) { day -> getDurationString(day.targetTWT, resources) }
 
     // LiveData for outOfBed field.
     val wakeUpString =
@@ -69,7 +69,8 @@ class DayViewModel(
     // LiveData for nap duration field.
     fun napDurationString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
         getDurationNapString(
-            day.naps.getOrNull(index)?.duration ?: 0
+            day.naps.getOrNull(index)?.duration ?: 0,
+            resources
         )
     }
 
@@ -89,7 +90,7 @@ class DayViewModel(
 
     // LiveData for awake time fields.
     fun awakeTimeString(duration: Long) = Transformations.map(mLiveSleepDay) {
-        getDurationString(duration)
+        getDurationString(duration, resources)
     }
 
     // LiveData for target bedtime.
@@ -112,7 +113,7 @@ class DayViewModel(
 
     // LiveData for real TWT
     val realTWTString =
-        Transformations.map(mLiveSleepDay) { day -> getStringForRealTWT(day.realTWT) }
+        Transformations.map(mLiveSleepDay) { day -> getStringForRealTWT(day.realTWT, resources) }
 
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
@@ -177,7 +178,7 @@ class DayViewModel(
 
         when (viewId) {
 
-            TARGET_TWT -> mDay.targetTWT = getDurationoFromPicker(hour, minutes)
+            TARGET_TWT -> mDay.targetTWT = getDurationFromPicker(hour, minutes)
             WAKE_UP -> mDay.wakeUp = timestamp
             OUT_OF_BED -> mDay.outOfBed = timestamp
             REAL_BEDTIME -> mDay.realBedtime = timestamp
@@ -195,10 +196,13 @@ class DayViewModel(
         // Refresh data in LiveData
         _mLiveSleepDay.value = mDay
         saveData()
-        val currentDuration = getDurationoFromPicker(hour, minutes)
+        val currentDuration = getDurationFromPicker(hour, minutes)
         Log.i("DayViewModel", "timestamp== $timestamp")
         Log.i("DayViewModel", "getDurationFromPicker== $currentDuration")
-        Log.i("DayViewModel", "getDurationString== ${getDurationString(currentDuration)}")
+        Log.i(
+            "DayViewModel",
+            "getDurationString== ${getDurationString(currentDuration, resources)}"
+        )
 
     }
 
