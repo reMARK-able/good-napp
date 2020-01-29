@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 /**
  * A TimePicker DialogFragment for data input.
@@ -24,27 +25,8 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        var currentValue = args.currentValue
-        var hour = 0
-        var minute = 0
-        // Get time that was set previously.
-        if (currentValue.isNotEmpty()) {
-            if (currentValue.contains(':')) {
-                hour = currentValue.substringBefore(':').toIntOrNull() ?: 12
-                minute = currentValue.substringAfter(':').toIntOrNull() ?: 0
-            } else {
-                currentValue = currentValue.toUpperCase()
-                hour = currentValue.substringBefore(" HR ").toIntOrNull() ?: 12
-                minute = currentValue
-                    .substringAfter(" HR ")
-                    .substringBefore(" MIN").toIntOrNull() ?: 0
-            }
-        } else {
-            // Use the current time as the default values for the picker
-            val c = Calendar.getInstance()
-            hour = c.get(Calendar.HOUR_OF_DAY)
-            minute = c.get(Calendar.MINUTE)
-        }
+        val hour = getCurrentHour()
+        val minute = getCurrentMin()
 
         // If the input field is TARGET_TWT then Picker is set to 24H else it checks user phone settings.
         // Setting time duration in format AM/PM would be illogical.
@@ -77,5 +59,71 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
         calendar.set(Calendar.MILLISECOND, 0) // Must be set for the same timestamp on every click.
 
         return calendar.timeInMillis
+    }
+
+    /**
+     * Gets the hour previously set on the field or if it's empty sets the actual time.
+     * (for TARGET_TWT field it set time duration to 12 hr 0 min - if it's empty.
+     */
+    private fun getCurrentHour(): Int {
+        val calendar = Calendar.getInstance()
+        val viewName = args.viewNameTag
+        return when (viewName) {
+            TARGET_TWT -> {
+                val dataFromDay = getDataFromDay(viewName)
+                if (dataFromDay != 0L) TimeUnit.MILLISECONDS.toHours(dataFromDay).toInt() else 12
+            }
+            else -> {
+                val dataFromDay = getDataFromDay(viewName)
+                if (dataFromDay != 0L) calendar.timeInMillis = getDataFromDay(viewName)
+                calendar.get(Calendar.HOUR_OF_DAY)
+            }
+        }
+    }
+
+    /**
+     * Gets minutes previously set on the field or if it's empty sets the actual time.
+     * (for TARGET_TWT field it set time duration to 12 hr 0 min - if it's empty.
+     */
+    private fun getCurrentMin(): Int {
+        val calendar = Calendar.getInstance()
+        val viewName = args.viewNameTag
+        return when (viewName) {
+            TARGET_TWT -> {
+                val dataFromDay = getDataFromDay(viewName)
+                if (dataFromDay != 0L) {
+                    (dataFromDay / (1000 * 60) % 60).toInt()
+                } else 0
+            }
+            else -> {
+                val dataFromDay = getDataFromDay(viewName)
+                if (dataFromDay != 0L) calendar.timeInMillis = dataFromDay
+                calendar.get(Calendar.MINUTE)
+            }
+        }
+    }
+
+    /**
+     * Gets actual data from Day() object to set the picker's initial value.
+     */
+    private fun getDataFromDay(viewName: String): Long {
+        val mDay = viewModel.mDay
+        return when (viewName) {
+            TARGET_TWT -> mDay.targetTWT
+            WAKE_UP -> mDay.wakeUp
+            OUT_OF_BED -> mDay.outOfBed
+            REAL_BEDTIME -> mDay.realBedtime
+            NAP_1_START -> mDay.naps[0].start
+            NAP_1_END -> mDay.naps[0].end
+            NAP_2_START -> mDay.naps[1].start
+            NAP_2_END -> mDay.naps[1].end
+            NAP_3_START -> mDay.naps[2].start
+            NAP_3_END -> mDay.naps[2].end
+            NAP_4_START -> mDay.naps[3].start
+            NAP_4_END -> mDay.naps[3].end
+            NAP_5_START -> mDay.naps[4].start
+            NAP_5_END -> mDay.naps[4].end
+            else -> throw IllegalArgumentException("Unknown view name")
+        }
     }
 }
