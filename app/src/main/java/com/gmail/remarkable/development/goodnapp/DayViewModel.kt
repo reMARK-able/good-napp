@@ -130,8 +130,8 @@ class DayViewModel(
             val result = getDayFromDatabase()
             if (result != null) {
                 mDay = result
-                _mLiveSleepDay.value = mDay
             }
+            _mLiveSleepDay.value = mDay
         }
     }
 
