@@ -75,6 +75,15 @@ fun getTodayInMillis(): Long {
     return calendarUTC.timeInMillis
 }
 
+// Convert date from timestamp format to local String format according to UTC.
+fun getDateString(timestampDate: Long, context: Context): String {
+    if (timestampDate == 0L) return "unknown date!!!"
+    val date = Date(timestampDate)
+    val df = DateFormat.getLongDateFormat(context)
+    df.timeZone = TimeZone.getTimeZone("UTC")
+    return df.format(date)
+}
+
 // Method to set current date to the SleepDay
 private fun getCurrentDate(): String {
     val c = Calendar.getInstance()

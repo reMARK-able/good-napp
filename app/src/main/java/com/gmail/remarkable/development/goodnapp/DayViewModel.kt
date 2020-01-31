@@ -44,6 +44,10 @@ class DayViewModel(
     fun hasNapEndError(index: Int) =
         Transformations.map(mLiveSleepDay) { day -> validNapEnd(day, index, resources) }
 
+    // LiveData for date text field.
+    val dateString =
+        Transformations.map(mLiveSleepDay) { day -> getDateString(day.date, application) }
+
     // LiveData for outOfBed text field.
     val outOfBedString =
         Transformations.map(mLiveSleepDay) { day ->
