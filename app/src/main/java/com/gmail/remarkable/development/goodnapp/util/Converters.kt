@@ -11,6 +11,7 @@ fun getTimeStringFromTimestamp(timestamp: Long, context: Context): String {
     if (timestamp == 0L) return ""
     val date = Date(timestamp)
     val df = DateFormat.getTimeFormat(context)
+    df.timeZone = TimeZone.getTimeZone("UTC")
     return df.format(date)
 }
 
@@ -36,6 +37,7 @@ fun getStringForTargetBedtime(timestamp: Long, context: Context): String {
     if (timestamp == 0L) return context.resources.getString(R.string.no_time)
     val date = Date(timestamp)
     val df = DateFormat.getTimeFormat(context)
+    df.timeZone = TimeZone.getTimeZone("UTC")
     return df.format(date)
 }
 
