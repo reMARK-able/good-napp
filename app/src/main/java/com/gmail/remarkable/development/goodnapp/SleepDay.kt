@@ -82,7 +82,7 @@ data class SleepDay(
         @PrimaryKey(autoGenerate = true)
         val napId: Int = 0,
         @ColumnInfo(name = "nap_date")
-        val napDate: String,
+        val napDate: Long,
         var start: Long = 0, var end: Long = 0
     ) {
         val duration: Long
