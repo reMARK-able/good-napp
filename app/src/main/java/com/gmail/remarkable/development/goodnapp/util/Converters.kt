@@ -53,6 +53,17 @@ fun getDurationFromPicker(hour: Int, min: Int): Long {
     return ((hour * 60) + min) * 60000L
 }
 
+// Method to set date field in SleepDay object with "now" UTC 00:00 time.
+fun getTodayInMillis(): Long {
+    val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    calendar.set(Calendar.HOUR_OF_DAY, 0)
+    calendar.set(Calendar.MINUTE, 0)
+    calendar.set(Calendar.SECOND, 0)
+    calendar.set(Calendar.MILLISECOND, 0)
+
+    return calendar.timeInMillis
+}
+
 // Method to set current date to the SleepDay
 private fun getCurrentDate(): String {
     val c = Calendar.getInstance()

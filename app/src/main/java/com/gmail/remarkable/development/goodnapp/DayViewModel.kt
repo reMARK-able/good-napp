@@ -131,6 +131,8 @@ class DayViewModel(
             val result = getDayFromDatabase()
             if (result != null) {
                 mDay = result
+            } else {
+                mDay.date = getTodayInMillis()
             }
             _mLiveSleepDay.value = mDay
         }
