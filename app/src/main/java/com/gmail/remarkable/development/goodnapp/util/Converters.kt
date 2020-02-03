@@ -77,7 +77,7 @@ fun getTodayInMillis(): Long {
 
 // Convert date from timestamp format to local String format according to UTC.
 fun getDateString(timestampDate: Long, context: Context): String {
-    if (timestampDate == 0L) return "unknown date!!!"
+    if (timestampDate == 0L) return context.resources.getString(R.string.unknown_date)
     val date = Date(timestampDate)
     val df = DateFormat.getLongDateFormat(context)
     df.timeZone = TimeZone.getTimeZone("UTC")
