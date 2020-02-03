@@ -9,6 +9,7 @@ import android.util.Log
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
+import com.gmail.remarkable.development.goodnapp.util.getTodayInMillis
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.util.*
@@ -44,15 +45,16 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
 
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
 
-
+        val day = getCurrentDay()
         val viewId = args.viewNameTag
-        val timestamp = getTimeStamp(hourOfDay, minute)
+        val timestamp = getTimeStamp(day, hourOfDay, minute)
         Log.i("TimePickerDialog", "Picked time in millis: $timestamp")
         viewModel.onTimeSet(viewId, hourOfDay, minute, timestamp)
     }
 
-    private fun getTimeStamp(hour: Int, min: Int): Long {
-        val calendar = Calendar.getInstance()
+    private fun getTimeStamp(date: Long, hour: Int, min: Int): Long {
+        val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+        calendar.timeInMillis = date
         calendar.set(Calendar.HOUR_OF_DAY, hour)
         calendar.set(Calendar.MINUTE, min)
         calendar.set(Calendar.SECOND, 0) // Must be set for the same timestamp on every click.
@@ -62,11 +64,20 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
     }
 
     /**
+     * Get actual date from SleepDay to properly set the picker's initial values.
+     */
+    private fun getCurrentDay(): Long {
+        val currentDate = viewModel.mDay.date
+        return if (viewModel.mDay.date != 0L) currentDate else getTodayInMillis()
+    }
+
+    /**
      * Gets the hour previously set on the field or if it's empty sets the actual time.
      * (for TARGET_TWT field it set time duration to 12 hr 0 min - if it's empty.
      */
     private fun getCurrentHour(): Int {
         val calendar = Calendar.getInstance()
+        val calendarUTC = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         val viewName = args.viewNameTag
         return when (viewName) {
             TARGET_TWT -> {
@@ -75,8 +86,10 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
             }
             else -> {
                 val dataFromDay = getDataFromDay(viewName)
-                if (dataFromDay != 0L) calendar.timeInMillis = getDataFromDay(viewName)
-                calendar.get(Calendar.HOUR_OF_DAY)
+                if (dataFromDay != 0L) {
+                    calendarUTC.timeInMillis = getDataFromDay(viewName)
+                    calendarUTC.get(Calendar.HOUR_OF_DAY)
+                } else calendar.get(Calendar.HOUR_OF_DAY)
             }
         }
     }
@@ -87,6 +100,7 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
      */
     private fun getCurrentMin(): Int {
         val calendar = Calendar.getInstance()
+        val calendarUTC = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         val viewName = args.viewNameTag
         return when (viewName) {
             TARGET_TWT -> {
@@ -97,8 +111,10 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
             }
             else -> {
                 val dataFromDay = getDataFromDay(viewName)
-                if (dataFromDay != 0L) calendar.timeInMillis = dataFromDay
-                calendar.get(Calendar.MINUTE)
+                if (dataFromDay != 0L) {
+                    calendarUTC.timeInMillis = dataFromDay
+                    calendarUTC.get(Calendar.MINUTE)
+                } else calendar.get(Calendar.MINUTE)
             }
         }
     }

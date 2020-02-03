@@ -1,53 +1,87 @@
 package com.gmail.remarkable.development.goodnapp.util
 
-import java.text.SimpleDateFormat
+import android.content.Context
+import android.content.res.Resources
+import android.text.format.DateFormat
+import com.gmail.remarkable.development.goodnapp.R
 import java.util.*
 
 // Convert timestamp to time in String format.
-fun getTimeStringFromTimestamp(timestamp: Long): String {
+fun getTimeStringFromTimestamp(timestamp: Long, context: Context): String {
     if (timestamp == 0L) return ""
     val date = Date(timestamp)
-    val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-    return sdf.format(date)
+    val df = DateFormat.getTimeFormat(context)
+    df.timeZone = TimeZone.getTimeZone("UTC")
+    return df.format(date)
 }
 
 // Convert duration in millis to string format.
-fun getDurationString(millis: Long): String {
+fun getDurationString(millis: Long, resources: Resources): String {
     if (millis == 0L) return ""
     val hours = millis / (60 * 60 * 1000) % 24
     val min = millis / (60 * 1000) % 60
 
-    return "$hours hr $min min"
+    return resources.getString(R.string.time_duration_format, hours, min)
 }
 
 // Set the duration string for nap layout.
-fun getDurationNapString(millis: Long): String =
+fun getDurationNapString(millis: Long, resources: Resources): String =
     when {
-        millis <= 0L -> "--:--" //this should get resource string!!!! (only for testing purpose)
+        millis <= 0L -> resources.getString(R.string.no_time)
         // here can be another scenario for validation eg. hint for the user
-        else -> getDurationString(millis)
+        else -> getDurationString(millis, resources)
     }
 
 // Convert timestamp to time in String format for non-editable field.
-fun getStringForTargetBedtime(timestamp: Long): String {
-    if (timestamp == 0L) return "--:--"
+fun getStringForTargetBedtime(timestamp: Long, context: Context): String {
+    if (timestamp == 0L) return context.resources.getString(R.string.no_time)
     val date = Date(timestamp)
-    val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-    return sdf.format(date)
+    val df = DateFormat.getTimeFormat(context)
+    df.timeZone = TimeZone.getTimeZone("UTC")
+    return df.format(date)
 }
 
 // Convert duration in millis to string format.
-fun getStringForRealTWT(millis: Long): String {
-    if (millis == 0L) return "--:--"
+fun getStringForRealTWT(millis: Long, resources: Resources): String {
+    if (millis == 0L) return resources.getString(R.string.no_time)
     val hours = millis / (60 * 60 * 1000) % 24
     val min = millis / (60 * 1000) % 60
 
-    return "$hours hr $min min"
+    return resources.getString(R.string.time_duration_format, hours, min)
 }
 
 // Calculates duration in millis from picker time.
-fun getDurationoFromPicker(hour: Int, min: Int): Long {
+fun getDurationFromPicker(hour: Int, min: Int): Long {
     return ((hour * 60) + min) * 60000L
+}
+
+// Method to set date field in SleepDay object with local "now date" but written to UTC 00:00 time.
+fun getTodayInMillis(): Long {
+    val calendarUTC = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    val calendarLocal = Calendar.getInstance()
+
+    val localYear = calendarLocal.get(Calendar.YEAR)
+    val localMonth = calendarLocal.get(Calendar.MONTH)
+    val localDay = calendarLocal.get(Calendar.DAY_OF_MONTH)
+
+    calendarUTC.set(Calendar.YEAR, localYear)
+    calendarUTC.set(Calendar.MONTH, localMonth)
+    calendarUTC.set(Calendar.DAY_OF_MONTH, localDay)
+    calendarUTC.set(Calendar.HOUR_OF_DAY, 0)
+    calendarUTC.set(Calendar.MINUTE, 0)
+    calendarUTC.set(Calendar.SECOND, 0)
+    calendarUTC.set(Calendar.MILLISECOND, 0)
+
+    return calendarUTC.timeInMillis
+}
+
+// Convert date from timestamp format to local String format according to UTC.
+fun getDateString(timestampDate: Long, context: Context): String {
+    if (timestampDate == 0L) return context.resources.getString(R.string.unknown_date)
+    val date = Date(timestampDate)
+    val df = DateFormat.getLongDateFormat(context)
+    df.timeZone = TimeZone.getTimeZone("UTC")
+    return df.format(date)
 }
 
 // Method to set current date to the SleepDay

@@ -44,55 +44,80 @@ class DayViewModel(
     fun hasNapEndError(index: Int) =
         Transformations.map(mLiveSleepDay) { day -> validNapEnd(day, index, resources) }
 
+    // LiveData for date text field.
+    val dateString =
+        Transformations.map(mLiveSleepDay) { day -> getDateString(day.date, application) }
+
     // LiveData for outOfBed text field.
     val outOfBedString =
-        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.outOfBed) }
+        Transformations.map(mLiveSleepDay) { day ->
+            getTimeStringFromTimestamp(
+                day.outOfBed,
+                application
+            )
+        }
 
     // LiveData for targetTWT field.
     val targetTWTString =
-        Transformations.map(mLiveSleepDay) { day -> getDurationString(day.targetTWT) }
+        Transformations.map(mLiveSleepDay) { day -> getDurationString(day.targetTWT, resources) }
 
     // LiveData for outOfBed field.
     val wakeUpString =
-        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.wakeUp) }
+        Transformations.map(mLiveSleepDay) { day ->
+            getTimeStringFromTimestamp(
+                day.wakeUp,
+                application
+            )
+        }
 
     // LiveData for nap duration field.
     fun napDurationString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
         getDurationNapString(
-            day.naps.getOrNull(index)?.duration ?: 0
+            day.naps.getOrNull(index)?.duration ?: 0,
+            resources
         )
     }
 
     // LiveData for nap start field.
     fun napStartString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
         getTimeStringFromTimestamp(
-            day.naps.getOrNull(index)?.start ?: 0
+            day.naps.getOrNull(index)?.start ?: 0, getApplication()
         )
     }
 
     // LiveData for nap end field.
     fun napEndString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
         getTimeStringFromTimestamp(
-            day.naps.getOrNull(index)?.end ?: 0
+            day.naps.getOrNull(index)?.end ?: 0, getApplication()
         )
     }
 
     // LiveData for awake time fields.
     fun awakeTimeString(duration: Long) = Transformations.map(mLiveSleepDay) {
-        getDurationString(duration)
+        getDurationString(duration, resources)
     }
 
     // LiveData for target bedtime.
     val targetBedtimeString =
-        Transformations.map(mLiveSleepDay) { day -> getStringForTargetBedtime(day.targetBedtime) }
+        Transformations.map(mLiveSleepDay) { day ->
+            getStringForTargetBedtime(
+                day.targetBedtime,
+                application
+            )
+        }
 
     // LiveData for real bedtime field.
     val realBedtimeString =
-        Transformations.map(mLiveSleepDay) { day -> getTimeStringFromTimestamp(day.realBedtime) }
+        Transformations.map(mLiveSleepDay) { day ->
+            getTimeStringFromTimestamp(
+                day.realBedtime,
+                application
+            )
+        }
 
     // LiveData for real TWT
     val realTWTString =
-        Transformations.map(mLiveSleepDay) { day -> getStringForRealTWT(day.realTWT) }
+        Transformations.map(mLiveSleepDay) { day -> getStringForRealTWT(day.realTWT, resources) }
 
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
@@ -110,8 +135,10 @@ class DayViewModel(
             val result = getDayFromDatabase()
             if (result != null) {
                 mDay = result
-                _mLiveSleepDay.value = mDay
+            } else {
+                mDay.date = getTodayInMillis()
             }
+            _mLiveSleepDay.value = mDay
         }
     }
 
@@ -157,7 +184,7 @@ class DayViewModel(
 
         when (viewId) {
 
-            TARGET_TWT -> mDay.targetTWT = getDurationoFromPicker(hour, minutes)
+            TARGET_TWT -> mDay.targetTWT = getDurationFromPicker(hour, minutes)
             WAKE_UP -> mDay.wakeUp = timestamp
             OUT_OF_BED -> mDay.outOfBed = timestamp
             REAL_BEDTIME -> mDay.realBedtime = timestamp
@@ -175,10 +202,13 @@ class DayViewModel(
         // Refresh data in LiveData
         _mLiveSleepDay.value = mDay
         saveData()
-        val currentDuration = getDurationoFromPicker(hour, minutes)
+        val currentDuration = getDurationFromPicker(hour, minutes)
         Log.i("DayViewModel", "timestamp== $timestamp")
         Log.i("DayViewModel", "getDurationFromPicker== $currentDuration")
-        Log.i("DayViewModel", "getDurationString== ${getDurationString(currentDuration)}")
+        Log.i(
+            "DayViewModel",
+            "getDurationString== ${getDurationString(currentDuration, resources)}"
+        )
 
     }
 
