@@ -3,8 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/dayFragment">
+    app:startDestination="@id/listDaysFragment">
 
+    <fragment
+        android:id="@+id/listDaysFragment"
+        android:name="com.gmail.remarkable.development.goodnapp.ListDaysFragment"
+        android:label="ListDaysFragment"
+        tools:layout="@layout/fragment_list_days" />
     <fragment
         android:id="@+id/dayFragment"
         android:name="com.gmail.remarkable.development.goodnapp.DayFragment"
