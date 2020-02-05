@@ -36,4 +36,6 @@
     <string name="error_must_be_later_than_last_nap_start">Must be later than last nap start.</string>
     <string name="error_must_be_later_than_last_nap_end">Must be later than last nap end.</string>
     <string name="unknown_date">unknown date!!!</string>
+    <string name="date_label">Date:</string>
+    <string name="total_awake_time">Total (a)wake time:</string>
 </resources>
