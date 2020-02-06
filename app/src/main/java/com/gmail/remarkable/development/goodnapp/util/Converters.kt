@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.text.format.DateFormat
 import com.gmail.remarkable.development.goodnapp.R
+import com.gmail.remarkable.development.goodnapp.SleepDay
 import java.util.*
 
 // Convert timestamp to time in String format.
@@ -91,4 +92,21 @@ private fun getCurrentDate(): String {
     val month = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())
     val year = c.get(Calendar.YEAR)
     return "$day $month $year"
+}
+
+// Method to set fake List<SleepDay> with dates since 2 January 2020.
+fun setFakeData(): List<SleepDay> {
+    val calendarUTC = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    calendarUTC.timeInMillis = 1577836800000
+    val dateList = MutableList(31) {
+        calendarUTC.add(Calendar.DATE, 1)
+        calendarUTC.timeInMillis
+    }
+    val fakeDaysList = mutableListOf<SleepDay>()
+    for (date in dateList) {
+        val newDay = SleepDay(mutableListOf())
+        newDay.date = date
+        fakeDaysList.add(newDay)
+    }
+    return fakeDaysList.reversed()
 }
