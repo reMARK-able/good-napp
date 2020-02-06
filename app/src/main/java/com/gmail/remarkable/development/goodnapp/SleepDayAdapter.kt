@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.gmail.remarkable.development.goodnapp.util.getDateString
 import com.gmail.remarkable.development.goodnapp.util.getStringForRealTWT
@@ -50,4 +51,15 @@ class SleepDayAdapter : RecyclerView.Adapter<SleepDayAdapter.ViewHolder>() {
             }
         }
     }
+}
+
+class SleepDayDiffCallback : DiffUtil.ItemCallback<SleepDay>() {
+    override fun areItemsTheSame(oldItem: SleepDay, newItem: SleepDay): Boolean {
+        return oldItem.date == newItem.date
+    }
+
+    override fun areContentsTheSame(oldItem: SleepDay, newItem: SleepDay): Boolean {
+        return oldItem == newItem
+    }
+
 }
