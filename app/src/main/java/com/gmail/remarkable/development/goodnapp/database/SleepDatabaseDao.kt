@@ -31,7 +31,7 @@ interface SleepDatabaseDao {
 
     @Transaction
     @Query("SELECT * FROM sleep_table WHERE date = :date")
-    fun get(date: String): SleepDay?
+    fun get(date: Long): SleepDay?
 
     @Transaction
     fun insertSleepDay(sleepDay: SleepDay) {
