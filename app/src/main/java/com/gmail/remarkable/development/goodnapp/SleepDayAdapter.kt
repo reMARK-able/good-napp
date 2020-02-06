@@ -5,28 +5,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gmail.remarkable.development.goodnapp.util.getDateString
 import com.gmail.remarkable.development.goodnapp.util.getStringForRealTWT
 
-class SleepDayAdapter : RecyclerView.Adapter<SleepDayAdapter.ViewHolder>() {
-
-    var data = listOf<SleepDay>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+class SleepDayAdapter : ListAdapter<SleepDay, SleepDayAdapter.ViewHolder>(SleepDayDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
-    override fun getItemCount(): Int {
-        return data.size
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
         holder.bind(item)
     }
 

@@ -33,7 +33,7 @@ class ListDaysFragment : Fragment() {
 
         viewModel.days.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
 
