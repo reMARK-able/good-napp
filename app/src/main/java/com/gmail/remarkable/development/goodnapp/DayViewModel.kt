@@ -17,6 +17,8 @@ class DayViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
+    val days = database.getAllDays()
+
     private val _mLiveSleepDay = MutableLiveData<SleepDay>()
     val mLiveSleepDay: LiveData<SleepDay>
         get() = _mLiveSleepDay
@@ -121,8 +123,8 @@ class DayViewModel(
 
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
-
-        initializeDay()
+        //fillDatabase()
+        //initializeDay()
     }
 
     /**
