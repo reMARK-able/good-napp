@@ -13,6 +13,9 @@ interface SleepDatabaseDao {
     @Insert
     fun insertNaps(naps: List<SleepDay.Nap>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertDaysWithoutNaps(days: List<SleepTable>)
+
     @Update
     fun update(sleepDay: SleepTable)
 
