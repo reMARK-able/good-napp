@@ -28,14 +28,19 @@ class SleepDayAdapter : RecyclerView.Adapter<SleepDayAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        val holderContext = holder.itemView.context
-        val res = holderContext.resources
-        holder.date.text = getDateString(item.date, holderContext)
-        holder.twt.text = getStringForRealTWT(item.realTWT, res)
+        holder.bind(item)
     }
+
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val date: TextView = itemView.findViewById(R.id.item_list_date)
         val twt: TextView = itemView.findViewById(R.id.item_list_TWT)
+
+        fun bind(item: SleepDay) {
+            val holderContext = itemView.context
+            val res = holderContext.resources
+            date.text = getDateString(item.date, holderContext)
+            twt.text = getStringForRealTWT(item.realTWT, res)
+        }
     }
 }
