@@ -17,9 +17,7 @@ class SleepDayAdapter : RecyclerView.Adapter<SleepDayAdapter.ViewHolder>() {
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.list_item_day, parent, false)
-        return ViewHolder(view)
+        return ViewHolder.from(parent)
     }
 
     override fun getItemCount(): Int {
@@ -32,7 +30,7 @@ class SleepDayAdapter : RecyclerView.Adapter<SleepDayAdapter.ViewHolder>() {
     }
 
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val date: TextView = itemView.findViewById(R.id.item_list_date)
         val twt: TextView = itemView.findViewById(R.id.item_list_TWT)
 
@@ -41,6 +39,15 @@ class SleepDayAdapter : RecyclerView.Adapter<SleepDayAdapter.ViewHolder>() {
             val res = holderContext.resources
             date.text = getDateString(item.date, holderContext)
             twt.text = getStringForRealTWT(item.realTWT, res)
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view =
+                    layoutInflater.inflate(R.layout.list_item_day, parent, false)
+                return ViewHolder(view)
+            }
         }
     }
 }
