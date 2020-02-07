@@ -1,12 +1,11 @@
 package com.gmail.remarkable.development.goodnapp
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.gmail.remarkable.development.goodnapp.databinding.ListItemDayBinding
 import com.gmail.remarkable.development.goodnapp.util.getDateString
 import com.gmail.remarkable.development.goodnapp.util.getStringForRealTWT
 
@@ -22,23 +21,21 @@ class SleepDayAdapter : ListAdapter<SleepDay, SleepDayAdapter.ViewHolder>(SleepD
     }
 
 
-    class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val date: TextView = itemView.findViewById(R.id.item_list_date)
-        val twt: TextView = itemView.findViewById(R.id.item_list_TWT)
+    class ViewHolder private constructor(val binding: ListItemDayBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: SleepDay) {
             val holderContext = itemView.context
             val res = holderContext.resources
-            date.text = getDateString(item.date, holderContext)
-            twt.text = getStringForRealTWT(item.realTWT, res)
+            binding.itemListDate.text = getDateString(item.date, holderContext)
+            binding.itemListTWT.text = getStringForRealTWT(item.realTWT, res)
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view =
-                    layoutInflater.inflate(R.layout.list_item_day, parent, false)
-                return ViewHolder(view)
+                val binding = ListItemDayBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
             }
         }
     }
