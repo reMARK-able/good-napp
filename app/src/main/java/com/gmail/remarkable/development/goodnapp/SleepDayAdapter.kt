@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gmail.remarkable.development.goodnapp.databinding.ListItemDayBinding
-import com.gmail.remarkable.development.goodnapp.util.getDateString
-import com.gmail.remarkable.development.goodnapp.util.getStringForRealTWT
 
 class SleepDayAdapter : ListAdapter<SleepDay, SleepDayAdapter.ViewHolder>(SleepDayDiffCallback()) {
 
@@ -25,10 +23,8 @@ class SleepDayAdapter : ListAdapter<SleepDay, SleepDayAdapter.ViewHolder>(SleepD
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: SleepDay) {
-            val holderContext = itemView.context
-            val res = holderContext.resources
-            binding.itemListDate.text = getDateString(item.date, holderContext)
-            binding.itemListTWT.text = getStringForRealTWT(item.realTWT, res)
+            binding.sleepDay = item
+            binding.executePendingBindings()
         }
 
         companion object {
