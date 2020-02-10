@@ -8,12 +8,17 @@
         <variable
             name="sleepDay"
             type="com.gmail.remarkable.development.goodnapp.SleepDay" />
+
+        <variable
+            name="clickListener"
+            type="com.gmail.remarkable.development.goodnapp.SleepDayListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(sleepDay)}"
         android:orientation="vertical">
 
         <TextView

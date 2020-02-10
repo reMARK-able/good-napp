@@ -9,7 +9,11 @@
         android:id="@+id/listDaysFragment"
         android:name="com.gmail.remarkable.development.goodnapp.ListDaysFragment"
         android:label="ListDaysFragment"
-        tools:layout="@layout/fragment_list_days" />
+        tools:layout="@layout/fragment_list_days">
+        <action
+            android:id="@+id/action_listDaysFragment_to_dayFragment"
+            app:destination="@id/dayFragment" />
+    </fragment>
     <fragment
         android:id="@+id/dayFragment"
         android:name="com.gmail.remarkable.development.goodnapp.DayFragment"

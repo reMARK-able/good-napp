@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gmail.remarkable.development.goodnapp.databinding.ListItemDayBinding
 
-class SleepDayAdapter : ListAdapter<SleepDay, SleepDayAdapter.ViewHolder>(SleepDayDiffCallback()) {
+class SleepDayAdapter(val clickListener: SleepDayListener) :
+    ListAdapter<SleepDay, SleepDayAdapter.ViewHolder>(SleepDayDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -15,15 +16,16 @@ class SleepDayAdapter : ListAdapter<SleepDay, SleepDayAdapter.ViewHolder>(SleepD
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, clickListener)
     }
 
 
     class ViewHolder private constructor(val binding: ListItemDayBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: SleepDay) {
+        fun bind(item: SleepDay, clickListener: SleepDayListener) {
             binding.sleepDay = item
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -46,4 +48,8 @@ class SleepDayDiffCallback : DiffUtil.ItemCallback<SleepDay>() {
         return oldItem == newItem
     }
 
+}
+
+class SleepDayListener(val clickListener: (sleepDay: SleepDay) -> Unit) {
+    fun onClick(sleepDay: SleepDay) = clickListener(sleepDay)
 }

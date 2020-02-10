@@ -154,6 +154,12 @@ class DayViewModel(
         }
     }
 
+    // Invoke when item in ListDayFragment is clicked.
+    fun onNavigateToDay(sleepDay: SleepDay) {
+        mDay = sleepDay
+        _mLiveSleepDay.value = mDay
+    }
+
     // Adds another nap to the SleepDay object.
     fun addNap() {
         if (mDay.naps.size < MAX_NAPS_NUMBER) {
