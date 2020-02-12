@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.gmail.remarkable.development.goodnapp.DayViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
