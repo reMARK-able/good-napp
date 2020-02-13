@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_margin="@dimen/extended_fab_margin_normal"
+            android:onClick="@{()-> viewModel.onFabClicked()}"
             android:text="@string/extended_fab_label"
             android:visibility="@{viewModel.isTodayFabVisible}" />
 

@@ -30,8 +30,8 @@ class ListDaysFragment : Fragment() {
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 
-        val adapter = SleepDayAdapter(SleepDayListener { sleepDay ->
-            navigateToDay(sleepDay)
+        val adapter = SleepDayAdapter(SleepDayListener { date ->
+            navigateToDay(date)
         })
         binding.dayList.adapter = adapter
 
@@ -41,11 +41,24 @@ class ListDaysFragment : Fragment() {
             }
         })
 
+        viewModel.navigateToToday.observe(viewLifecycleOwner, Observer { navigate ->
+            navigate?.let {
+                if (navigate) {
+                    navigateToToday()
+                }
+            }
+        })
+
         return binding.root
     }
 
-    private fun navigateToDay(sleepDay: SleepDay) {
-        viewModel.onNavigateToDay(sleepDay)
+    private fun navigateToToday() {
+        viewModel.onNavigateToToday()
+        findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
+    }
+
+    private fun navigateToDay(date: Long) {
+        viewModel.onNavigateToDay(date)
         findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
     }
 

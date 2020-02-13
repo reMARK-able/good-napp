@@ -50,6 +50,6 @@ class SleepDayDiffCallback : DiffUtil.ItemCallback<SleepDay>() {
 
 }
 
-class SleepDayListener(val clickListener: (sleepDay: SleepDay) -> Unit) {
-    fun onClick(sleepDay: SleepDay) = clickListener(sleepDay)
+class SleepDayListener(val clickListener: (date: Long) -> Unit) {
+    fun onClick(date: Long) = clickListener(date)
 }
