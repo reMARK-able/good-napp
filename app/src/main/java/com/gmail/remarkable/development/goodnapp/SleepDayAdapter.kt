@@ -45,7 +45,12 @@ class SleepDayDiffCallback : DiffUtil.ItemCallback<SleepDay>() {
     }
 
     override fun areContentsTheSame(oldItem: SleepDay, newItem: SleepDay): Boolean {
-        return oldItem == newItem
+        return oldItem.date == newItem.date &&
+                oldItem.targetTWT == newItem.targetTWT &&
+                oldItem.wakeUp == newItem.wakeUp &&
+                oldItem.outOfBed == newItem.outOfBed &&
+                oldItem.realBedtime == newItem.realBedtime &&
+                oldItem.naps == newItem.naps
     }
 
 }
