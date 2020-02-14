@@ -158,6 +158,13 @@
                 app:day="@{day}"
                 app:viewModel="@{viewModel}" />
 
+            <include
+                android:id="@+id/card_sleep_times"
+                layout="@layout/sleep_times_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
