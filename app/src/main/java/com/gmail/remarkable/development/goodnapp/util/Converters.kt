@@ -58,7 +58,7 @@ fun getDurationFromPicker(hour: Int, min: Int): Long {
 
 // Method to set date field in SleepDay object with local "now date" but written to UTC 00:00 time.
 fun getTodayInMillis(): Long {
-    val calendarUTC = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    val calendarUTC = getUTCCalendar()
     val calendarLocal = Calendar.getInstance()
 
     val localYear = calendarLocal.get(Calendar.YEAR)
@@ -96,7 +96,7 @@ private fun getCurrentDate(): String {
 
 // Method to set fake List<SleepDay> with dates since 2 January 2020.
 fun setFakeData(): List<SleepDay> {
-    val calendarUTC = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    val calendarUTC = getUTCCalendar()
     calendarUTC.timeInMillis = 1577836800000
     val dateList = MutableList(31) {
         calendarUTC.add(Calendar.DATE, 1)
@@ -109,4 +109,14 @@ fun setFakeData(): List<SleepDay> {
         fakeDaysList.add(newDay)
     }
     return fakeDaysList.reversed()
+}
+
+private fun getUTCCalendar() = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+
+// Get the previous date in millis UTC format.
+fun prevDayDate(date: Long): Long {
+    val calendarUTC = getUTCCalendar()
+    calendarUTC.timeInMillis = date
+    calendarUTC.add(Calendar.DATE, -1)
+    return calendarUTC.timeInMillis
 }
