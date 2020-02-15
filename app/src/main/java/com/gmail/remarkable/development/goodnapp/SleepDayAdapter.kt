@@ -6,9 +6,28 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gmail.remarkable.development.goodnapp.databinding.ListItemDayBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SleepDayAdapter(val clickListener: SleepDayListener) :
-    ListAdapter<SleepDay, SleepDayAdapter.ViewHolder>(SleepDayDiffCallback()) {
+    ListAdapter<Pair<SleepDay, SleepDay?>, SleepDayAdapter.ViewHolder>(SleepDayDiffCallback()) {
+
+    private val adapterScope = CoroutineScope(Dispatchers.Default)
+
+    fun makePairsAndSubmitList(list: List<SleepDay>?) {
+        adapterScope.launch {
+            val items = when {
+                list.isNullOrEmpty() -> listOf()
+                list.size == 1 -> listOf(list[0] to null)
+                else -> list.zipWithNext() + listOf(list.last() to null)
+            }
+            withContext(Dispatchers.Main) {
+                submitList(items)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -23,8 +42,9 @@ class SleepDayAdapter(val clickListener: SleepDayListener) :
     class ViewHolder private constructor(val binding: ListItemDayBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: SleepDay, clickListener: SleepDayListener) {
-            binding.sleepDay = item
+        fun bind(item: Pair<SleepDay, SleepDay?>, clickListener: SleepDayListener) {
+            binding.sleepDay = item.first
+            binding.prevSleepDay = item.second
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
@@ -39,18 +59,24 @@ class SleepDayAdapter(val clickListener: SleepDayListener) :
     }
 }
 
-class SleepDayDiffCallback : DiffUtil.ItemCallback<SleepDay>() {
-    override fun areItemsTheSame(oldItem: SleepDay, newItem: SleepDay): Boolean {
-        return oldItem.date == newItem.date
+class SleepDayDiffCallback : DiffUtil.ItemCallback<Pair<SleepDay, SleepDay?>>() {
+    override fun areItemsTheSame(
+        oldItem: Pair<SleepDay, SleepDay?>,
+        newItem: Pair<SleepDay, SleepDay?>
+    ): Boolean {
+        return oldItem.first.date == newItem.first.date
     }
 
-    override fun areContentsTheSame(oldItem: SleepDay, newItem: SleepDay): Boolean {
-        return oldItem.date == newItem.date &&
-                oldItem.targetTWT == newItem.targetTWT &&
-                oldItem.wakeUp == newItem.wakeUp &&
-                oldItem.outOfBed == newItem.outOfBed &&
-                oldItem.realBedtime == newItem.realBedtime &&
-                oldItem.naps == newItem.naps
+    override fun areContentsTheSame(
+        oldItem: Pair<SleepDay, SleepDay?>,
+        newItem: Pair<SleepDay, SleepDay?>
+    ): Boolean {
+        return oldItem.first.date == newItem.first.date &&
+                oldItem.first.targetTWT == newItem.first.targetTWT &&
+                oldItem.first.wakeUp == newItem.first.wakeUp &&
+                oldItem.first.outOfBed == newItem.first.outOfBed &&
+                oldItem.first.realBedtime == newItem.first.realBedtime &&
+                oldItem.first.naps == newItem.first.naps
     }
 
 }

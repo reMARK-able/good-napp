@@ -37,7 +37,7 @@ class ListDaysFragment : Fragment() {
 
         viewModel.days.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.submitList(it)
+                adapter.makePairsAndSubmitList(it)
             }
         })
 
