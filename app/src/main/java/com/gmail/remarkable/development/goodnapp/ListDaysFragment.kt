@@ -54,12 +54,18 @@ class ListDaysFragment : Fragment() {
 
     private fun navigateToToday() {
         viewModel.onNavigateToToday()
-        findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
+        val navController = findNavController()
+        if (navController.currentDestination?.id == R.id.listDaysFragment) {
+            findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
+        }
     }
 
     private fun navigateToDay(date: Long) {
         viewModel.onNavigateToDay(date)
-        findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
+        val navController = findNavController()
+        if (navController.currentDestination?.id == R.id.listDaysFragment) {
+            findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
+        }
     }
 
 
