@@ -47,7 +47,7 @@ class DayFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.day = this
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
         return binding.root
     }
@@ -57,17 +57,8 @@ class DayFragment : Fragment() {
         val navController = view.findNavController()
         if (navController.currentDestination?.id == R.id.dayFragment) {
             val nameTag = getViewName(view)
-            val v = view as CustomTextInputEditText
-            val currentValue = when (val hasValue = v.text) {
-                null -> ""
-                else -> hasValue.toString()
-            }
-
             navController.navigate(
-                DayFragmentDirections.actionDayFragmentToTimePickerDialogFragment(
-                    nameTag,
-                    currentValue
-                )
+                DayFragmentDirections.actionDayFragmentToTimePickerDialogFragment(nameTag)
             )
         }
     }

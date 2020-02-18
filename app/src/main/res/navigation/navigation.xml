@@ -32,8 +32,5 @@
         <argument
             android:name="viewNameTag"
             app:argType="string" />
-        <argument
-            android:name="currentValue"
-            app:argType="string" />
     </dialog>
 </navigation>
