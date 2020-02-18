@@ -47,4 +47,6 @@
     <string name="no_time_forAllAwakeTimeString">-:-</string>
     <string name="separator_for_allAwakeTimesString">/</string>
     <string name="notAvailable_short">n/a</string>
+    <string name="awake_times_label">Awake Times:</string>
+    <string name="sleep_item_list_label">Sleep</string>
 </resources>
