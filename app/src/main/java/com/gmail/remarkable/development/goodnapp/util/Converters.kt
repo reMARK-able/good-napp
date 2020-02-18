@@ -16,13 +16,32 @@ fun getTimeStringFromTimestamp(timestamp: Long, context: Context): String {
     return df.format(date)
 }
 
-// Convert duration in millis to string format.
-fun getDurationString(millis: Long, resources: Resources): String {
+/**
+ * Convert duration in millis to string format.
+ * @param millis duration in milliseconds.
+ *
+ * @param longVersion default true for long format.
+ * @return String in long format eg. "12 hr 15 min" or short format eg. "12:15".
+ */
+fun getDurationString(millis: Long, resources: Resources, longVersion: Boolean = true): String {
     if (millis == 0L) return ""
     val hours = millis / (60 * 60 * 1000) % 24
     val min = millis / (60 * 1000) % 60
+    return if (longVersion) resources.getString(R.string.time_duration_format, hours, min)
+    else "$hours:$min"
+}
 
-    return resources.getString(R.string.time_duration_format, hours, min)
+fun getAllAwakeTimesString(awakeList: List<Long>, res: Resources): String {
+    return when {
+        awakeList.isNullOrEmpty() -> "n/a"
+        else -> buildString {
+            for ((index, awakeTime) in awakeList.withIndex()) {
+                append(getDurationString(awakeTime, res, false))
+                if (index < awakeList.lastIndex) append("/")
+            }
+
+        }
+    }
 }
 
 // Set the duration string for nap layout.
