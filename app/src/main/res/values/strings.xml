@@ -14,6 +14,7 @@
     <string name="start">Start</string>
     <string name="end">End</string>
     <string name="time_duration_format">%1$d hr %2$d min</string>
+    <string name="time_duration_format_short">%1$d:%2$02d</string>
 
     <string name="summary">Summary</string>
     <string name="target_bedtime">Target Bedtime</string>
@@ -43,4 +44,7 @@
     <string name="day_sleep_label">Day</string>
     <string name="night_sleep_label">Night</string>
     <string name="total_sleep_label">Total</string>
+    <string name="no_time_forAllAwakeTimeString">-:-</string>
+    <string name="separator_for_allAwakeTimesString">/</string>
+    <string name="notAvailable_short">n/a</string>
 </resources>

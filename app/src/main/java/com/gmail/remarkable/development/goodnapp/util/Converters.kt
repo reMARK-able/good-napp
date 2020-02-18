@@ -30,16 +30,21 @@ fun getDurationString(millis: Long, resources: Resources, longVersion: Boolean =
     val hours = millis / (60 * 60 * 1000) % 24
     val min = millis / (60 * 1000) % 60
     return if (longVersion) resources.getString(R.string.time_duration_format, hours, min)
-    else "$hours:$min"
+    else resources.getString(R.string.time_duration_format_short, hours, min)
 }
 
 fun getAllAwakeTimesString(awakeList: List<Long>, res: Resources): String {
+    val emptyTime = res.getString(R.string.no_time_forAllAwakeTimeString)
+    val separator = res.getString(R.string.separator_for_allAwakeTimesString)
     return when {
-        awakeList.isNullOrEmpty() -> "n/a"
+        awakeList.isNullOrEmpty() -> res.getString(R.string.notAvailable_short)
         else -> buildString {
             for ((index, awakeTime) in awakeList.withIndex()) {
-                append(getDurationString(awakeTime, res, false))
-                if (index < awakeList.lastIndex) append("/")
+                if (awakeTime == 0L) append(emptyTime)
+                else append(getDurationString(awakeTime, res, false))
+                if (index < awakeList.lastIndex) {
+                    append(separator)
+                }
             }
 
         }
