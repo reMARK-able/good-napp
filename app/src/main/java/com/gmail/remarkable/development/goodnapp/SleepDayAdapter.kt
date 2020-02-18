@@ -6,28 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gmail.remarkable.development.goodnapp.databinding.ListItemDayBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class SleepDayAdapter(val clickListener: SleepDayListener) :
     ListAdapter<Pair<SleepDay, SleepDay?>, SleepDayAdapter.ViewHolder>(SleepDayDiffCallback()) {
-
-    private val adapterScope = CoroutineScope(Dispatchers.Default)
-
-    fun makePairsAndSubmitList(list: List<SleepDay>?) {
-        adapterScope.launch {
-            val items = when {
-                list.isNullOrEmpty() -> listOf()
-                list.size == 1 -> listOf(list[0] to null)
-                else -> list.zipWithNext() + listOf(list.last() to null)
-            }
-            withContext(Dispatchers.Main) {
-                submitList(items)
-            }
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)

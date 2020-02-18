@@ -35,9 +35,9 @@ class ListDaysFragment : Fragment() {
         })
         binding.dayList.adapter = adapter
 
-        viewModel.days.observe(viewLifecycleOwner, Observer {
+        viewModel.daysInPairs.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.makePairsAndSubmitList(it)
+                adapter.submitList(it)
             }
         })
 

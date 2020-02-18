@@ -17,7 +17,10 @@ class DayViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
-    val days = database.getAllDays()
+    private val days = database.getAllDays()
+    val daysInPairs = days.switchMap {
+        liveData { emit(makePairs(it)) }
+    }
 
     private val _mLiveSleepDay = MutableLiveData<SleepDay>()
     val mLiveSleepDay: LiveData<SleepDay>

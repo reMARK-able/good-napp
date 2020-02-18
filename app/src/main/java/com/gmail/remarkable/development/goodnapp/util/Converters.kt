@@ -5,6 +5,8 @@ import android.content.res.Resources
 import android.text.format.DateFormat
 import com.gmail.remarkable.development.goodnapp.R
 import com.gmail.remarkable.development.goodnapp.SleepDay
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.*
 
 // Convert timestamp to time in String format.
@@ -138,4 +140,20 @@ fun prevDayDate(date: Long): Long {
     calendarUTC.timeInMillis = date
     calendarUTC.add(Calendar.DATE, -1)
     return calendarUTC.timeInMillis
+}
+
+/**
+ * Makes list of pairs (SleepDay with previous SleepDay on the list) for recyclerView adapter.
+ * @param list List to convert.
+ * @return List<Pair<sleepday, previousSleepDay>
+ */
+suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, SleepDay?>> {
+    return withContext(Dispatchers.Default) {
+        when {
+            list.isNullOrEmpty() -> listOf()
+            list.size == 1 -> listOf(list[0] to null)
+            else -> list.zipWithNext() + listOf(list.last() to null)
+        }
+
+    }
 }
