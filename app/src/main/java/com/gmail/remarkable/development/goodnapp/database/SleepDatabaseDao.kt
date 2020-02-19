@@ -13,6 +13,9 @@ interface SleepDatabaseDao {
     @Insert
     fun insertNaps(naps: List<SleepDay.Nap>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertDaysWithoutNaps(days: List<SleepTable>)
+
     @Update
     fun update(sleepDay: SleepTable)
 
@@ -28,7 +31,7 @@ interface SleepDatabaseDao {
 
     @Transaction
     @Query("SELECT * FROM sleep_table WHERE date = :date")
-    fun get(date: String): SleepDay?
+    fun get(date: Long): SleepDay?
 
     @Transaction
     fun insertSleepDay(sleepDay: SleepDay) {

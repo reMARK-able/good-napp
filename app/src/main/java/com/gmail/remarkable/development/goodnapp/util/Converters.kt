@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.res.Resources
 import android.text.format.DateFormat
 import com.gmail.remarkable.development.goodnapp.R
+import com.gmail.remarkable.development.goodnapp.SleepDay
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.*
 
 // Convert timestamp to time in String format.
@@ -15,13 +18,37 @@ fun getTimeStringFromTimestamp(timestamp: Long, context: Context): String {
     return df.format(date)
 }
 
-// Convert duration in millis to string format.
-fun getDurationString(millis: Long, resources: Resources): String {
+/**
+ * Convert duration in millis to string format.
+ * @param millis duration in milliseconds.
+ *
+ * @param longVersion default true for long format.
+ * @return String in long format eg. "12 hr 15 min" or short format eg. "12:15".
+ */
+fun getDurationString(millis: Long, resources: Resources, longVersion: Boolean = true): String {
     if (millis == 0L) return ""
     val hours = millis / (60 * 60 * 1000) % 24
     val min = millis / (60 * 1000) % 60
+    return if (longVersion) resources.getString(R.string.time_duration_format, hours, min)
+    else resources.getString(R.string.time_duration_format_short, hours, min)
+}
 
-    return resources.getString(R.string.time_duration_format, hours, min)
+fun getAllAwakeTimesString(awakeList: List<Long>, res: Resources): String {
+    val emptyTime = res.getString(R.string.no_time_forAllAwakeTimeString)
+    val separator = res.getString(R.string.separator_for_allAwakeTimesString)
+    return when {
+        awakeList.isNullOrEmpty() -> res.getString(R.string.notAvailable_short)
+        else -> buildString {
+            for ((index, awakeTime) in awakeList.withIndex()) {
+                if (awakeTime == 0L) append(emptyTime)
+                else append(getDurationString(awakeTime, res, false))
+                if (index < awakeList.lastIndex) {
+                    append(separator)
+                }
+            }
+
+        }
+    }
 }
 
 // Set the duration string for nap layout.
@@ -57,7 +84,7 @@ fun getDurationFromPicker(hour: Int, min: Int): Long {
 
 // Method to set date field in SleepDay object with local "now date" but written to UTC 00:00 time.
 fun getTodayInMillis(): Long {
-    val calendarUTC = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    val calendarUTC = getUTCCalendar()
     val calendarLocal = Calendar.getInstance()
 
     val localYear = calendarLocal.get(Calendar.YEAR)
@@ -91,4 +118,47 @@ private fun getCurrentDate(): String {
     val month = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())
     val year = c.get(Calendar.YEAR)
     return "$day $month $year"
+}
+
+// Method to set fake List<SleepDay> with dates since 2 January 2020.
+fun setFakeData(): List<SleepDay> {
+    val calendarUTC = getUTCCalendar()
+    calendarUTC.timeInMillis = 1577836800000
+    val dateList = MutableList(31) {
+        calendarUTC.add(Calendar.DATE, 1)
+        calendarUTC.timeInMillis
+    }
+    val fakeDaysList = mutableListOf<SleepDay>()
+    for (date in dateList) {
+        val newDay = SleepDay(mutableListOf())
+        newDay.date = date
+        fakeDaysList.add(newDay)
+    }
+    return fakeDaysList.reversed()
+}
+
+private fun getUTCCalendar() = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+
+// Get the previous date in millis UTC format.
+fun prevDayDate(date: Long): Long {
+    val calendarUTC = getUTCCalendar()
+    calendarUTC.timeInMillis = date
+    calendarUTC.add(Calendar.DATE, -1)
+    return calendarUTC.timeInMillis
+}
+
+/**
+ * Makes list of pairs (SleepDay with previous SleepDay on the list) for recyclerView adapter.
+ * @param list List to convert.
+ * @return List<Pair<sleepday, previousSleepDay>
+ */
+suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, SleepDay?>> {
+    return withContext(Dispatchers.Default) {
+        when {
+            list.isNullOrEmpty() -> listOf()
+            list.size == 1 -> listOf(list[0] to null)
+            else -> list.zipWithNext() + listOf(list.last() to null)
+        }
+
+    }
 }

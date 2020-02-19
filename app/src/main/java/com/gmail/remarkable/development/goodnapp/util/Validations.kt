@@ -1,6 +1,7 @@
 package com.gmail.remarkable.development.goodnapp.util
 
 import android.content.res.Resources
+import android.view.View
 import com.gmail.remarkable.development.goodnapp.R
 import com.gmail.remarkable.development.goodnapp.SleepDay
 
@@ -112,4 +113,14 @@ fun validateData(mDay: SleepDay?, resources: Resources): Boolean {
         mDay,
         resources
     ) == null && validateNaps()
+}
+
+// Check if latest day in recycler's list is equal with today.
+fun isTodayAdded(days: List<SleepDay>?): Int {
+    return when {
+        days == null -> View.GONE
+        days.isEmpty() -> View.VISIBLE
+        days[0].date == getTodayInMillis() -> View.GONE
+        else -> View.VISIBLE
+    }
 }

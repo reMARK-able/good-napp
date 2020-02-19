@@ -3,8 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/dayFragment">
+    app:startDestination="@id/listDaysFragment">
 
+    <fragment
+        android:id="@+id/listDaysFragment"
+        android:name="com.gmail.remarkable.development.goodnapp.ListDaysFragment"
+        android:label="ListDaysFragment"
+        tools:layout="@layout/fragment_list_days">
+        <action
+            android:id="@+id/action_listDaysFragment_to_dayFragment"
+            app:destination="@id/dayFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:popExitAnim="@anim/slide_out_down" />
+    </fragment>
     <fragment
         android:id="@+id/dayFragment"
         android:name="com.gmail.remarkable.development.goodnapp.DayFragment"
@@ -20,9 +31,6 @@
         android:label="TimePickerDialogFragment">
         <argument
             android:name="viewNameTag"
-            app:argType="string" />
-        <argument
-            android:name="currentValue"
             app:argType="string" />
     </dialog>
 </navigation>

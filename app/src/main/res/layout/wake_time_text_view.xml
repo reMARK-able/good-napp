@@ -18,8 +18,9 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/wakeTime_textView"
         style="@style/AwakeTimeTextViewStyle"
-        app:drawableStartCompat="@drawable/ic_timer_black_24dp"
         android:text="@{viewModel.awakeTimeString(awakeTime)}"
+        app:drawableStartCompat="@drawable/ic_timer_black_24dp"
+        app:drawableTint="?android:textColorSecondary"
         tools:showIn="@layout/fragment_day"
         tools:text="@string/sample_awake_time" />
 

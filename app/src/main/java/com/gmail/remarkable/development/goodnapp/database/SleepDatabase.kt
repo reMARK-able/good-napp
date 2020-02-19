@@ -18,6 +18,7 @@ abstract class SleepDatabase : RoomDatabase() {
             SleepDatabase::class.java,
             "sleep_history_database"
         )
+            //.createFromAsset("sleep_history_database")
             .fallbackToDestructiveMigration()
             .build()
     }

@@ -17,13 +17,26 @@ class DayViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
+    private val days = database.getAllDays()
+    val daysInPairs = days.switchMap {
+        liveData { emit(makePairs(it)) }
+    }
+
     private val _mLiveSleepDay = MutableLiveData<SleepDay>()
     val mLiveSleepDay: LiveData<SleepDay>
         get() = _mLiveSleepDay
 
+    // LiveData for navigation after fab clicked event.
+    private val _navigateToToday = MutableLiveData<Boolean>()
+    val navigateToToday: LiveData<Boolean>
+        get() = _navigateToToday
+
     var mDay = SleepDay()
 
     private val resources = application.resources
+
+    //  LiveData to set the visibility of the Today FAB
+    val isTodayFabVisible = Transformations.map(days) { days -> isTodayAdded(days) }
 
     // LiveData to set Add nap button enabled or disabled.
     val isAllDataValid = Transformations.map(mLiveSleepDay) { day -> validateData(day, resources) }
@@ -121,35 +134,57 @@ class DayViewModel(
 
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
-
-        initializeDay()
+        //fillDatabase()
+        //initializeDay()
     }
 
-    /**
-     * Initialize data for DayFragment.
-     * Gets data from database or if there is no data yet,
-     * sets new empty SleepDay object for LiveData holder.
-     */
-    private fun initializeDay() {
-        viewModelScope.launch {
-            val result = getDayFromDatabase()
-            if (result != null) {
-                mDay = result
-            } else {
-                mDay.date = getTodayInMillis()
-            }
-            _mLiveSleepDay.value = mDay
-        }
-    }
+//    /**
+//     * Initialize data for DayFragment.
+//     * Gets data from database or if there is no data yet,
+//     * sets new empty SleepDay object for LiveData holder.
+//     */
+//    private fun initializeDay() {
+//        viewModelScope.launch {
+//            val result = getDayFromDatabase()
+//            if (result != null) {
+//                mDay = result
+//            } else {
+//                mDay.date = getTodayInMillis()
+//            }
+//            _mLiveSleepDay.value = mDay
+//        }
+//    }
 
     /**
      * The suspend method to get data in background thread from database,
      * for coroutine started in initializeDay().
      */
-    private suspend fun getDayFromDatabase(): SleepDay? {
+    private suspend fun getDayFromDatabase(date: Long): SleepDay? {
         return withContext(Dispatchers.IO) {
-            database.getLastDay()
+            database.get(date)
         }
+    }
+
+    fun onFabClicked() {
+        _navigateToToday.value = true
+    }
+
+    // Invoke when item in ListDayFragment is clicked.
+    fun onNavigateToDay(date: Long) {
+        viewModelScope.launch {
+            val day = getDayFromDatabase(date) ?: SleepDay()
+            mDay = day
+            _mLiveSleepDay.value = mDay
+            _navigateToToday.value = false
+        }
+    }
+
+    fun onNavigateToToday() {
+        val today = SleepDay()
+        today.date = getTodayInMillis()
+        mDay = today
+        _mLiveSleepDay.value = mDay
+        _navigateToToday.value = false
     }
 
     // Adds another nap to the SleepDay object.

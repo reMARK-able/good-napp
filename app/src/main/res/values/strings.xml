@@ -14,6 +14,7 @@
     <string name="start">Start</string>
     <string name="end">End</string>
     <string name="time_duration_format">%1$d hr %2$d min</string>
+    <string name="time_duration_format_short">%1$d:%2$02d</string>
 
     <string name="summary">Summary</string>
     <string name="target_bedtime">Target Bedtime</string>
@@ -22,7 +23,7 @@
     <string name="wake_up">Wake Up</string>
     <string name="add_nap">Add Nap</string>
     <string name="delete_description">Delete</string>
-    <string name="sample_awake_time">1 hr 45 min</string>
+    <string name="sample_awake_time">12 hr 45 min</string>
 
     <string name="sample_date">16 september 2019</string>
     <string name="error_must_be_later_than_out_of_bed">Must be later than out of bed.</string>
@@ -36,4 +37,16 @@
     <string name="error_must_be_later_than_last_nap_start">Must be later than last nap start.</string>
     <string name="error_must_be_later_than_last_nap_end">Must be later than last nap end.</string>
     <string name="unknown_date">unknown date!!!</string>
+    <string name="date_label">Date:</string>
+    <string name="total_awake_time">Total (a)wake time:</string>
+    <string name="extended_fab_label">Today</string>
+    <string name="sleep_times_label">Sleep Times</string>
+    <string name="day_sleep_label">Day</string>
+    <string name="night_sleep_label">Night</string>
+    <string name="total_sleep_label">Total</string>
+    <string name="no_time_forAllAwakeTimeString">-:-</string>
+    <string name="separator_for_allAwakeTimesString">/</string>
+    <string name="notAvailable_short">n/a</string>
+    <string name="awake_times_label">Awake Times:</string>
+    <string name="sleep_item_list_label">Sleep</string>
 </resources>
