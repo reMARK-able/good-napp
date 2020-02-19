@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gmail.remarkable.development.goodnapp.DayViewModel" />
+
+        <variable
+            name="day"
+            type="com.gmail.remarkable.development.goodnapp.DayFragment" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/wakeTime_textView"
+            style="@style/AwakeTimeTextViewStyle"
+            android:layout_width="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/sample_awake_time"
+            app:drawableStartCompat="@drawable/ic_timer_black_24dp"
+            app:drawableTint="?android:textColorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:showIn="@layout/fragment_day"
+            tools:text="@string/sample_awake_time" />
+
+        <TextView
+            android:id="@+id/night_awake_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Night Awake 1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintBaseline_toBaselineOf="@+id/wakeTime_textView"
+            app:layout_constraintEnd_toEndOf="@+id/awake_end_container"
+            app:layout_constraintStart_toStartOf="@+id/awake_end_container" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/awake_start_container"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:hint="@string/start"
+            android:visibility="visible"
+            app:error="@{null}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/awake_end_container"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wakeTime_textView"
+            tools:hint="Start">
+
+            <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
+                android:id="@+id/awake_start_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="false"
+                android:inputType="time"
+                android:onClick="@{(v) -> day.pickTime(v)}"
+                android:text="02:45"
+                android:textAlignment="center" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/awake_end_container"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:hint="@string/start"
+            android:visibility="visible"
+            app:error="@{null}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/awake_start_container"
+            app:layout_constraintEnd_toStartOf="@+id/button_delete"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/awake_start_container"
+            tools:hint="Start">
+
+            <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
+                android:id="@+id/awake_end_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="false"
+                android:inputType="time"
+                android:onClick="@{(v) -> day.pickTime(v)}"
+                android:text="02:45"
+                android:textAlignment="center" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/button_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/delete_description"
+            android:cropToPadding="false"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_delete_black_24dp"
+            app:tint="@color/material_on_background_emphasis_medium" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
