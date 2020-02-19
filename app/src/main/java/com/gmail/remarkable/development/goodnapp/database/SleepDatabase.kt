@@ -4,9 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.gmail.remarkable.development.goodnapp.SleepDay
+import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
+import com.gmail.remarkable.development.goodnapp.SleepDay.NightAwake
 
-@Database(entities = [SleepTable::class, SleepDay.Nap::class], version = 2, exportSchema = true)
+@Database(
+    entities = [SleepTable::class, Nap::class, NightAwake::class],
+    version = 3,
+    exportSchema = true
+)
 abstract class SleepDatabase : RoomDatabase() {
 
     abstract val sleepDatabaseDao: SleepDatabaseDao
