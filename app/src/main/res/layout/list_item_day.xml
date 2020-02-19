@@ -95,6 +95,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textSize="12sp"
             app:drawableStartCompat="@drawable/ic_timer_black_24dp"
+            app:drawableTint="?android:textColorSecondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_list_awake_times_label" />
 
@@ -115,6 +116,7 @@
             android:layout_marginStart="16dp"
             android:gravity="center_vertical"
             app:drawableStartCompat="@drawable/ic_sun_black_16dp"
+            app:drawableTint="?android:textColorSecondary"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_reelTwt"
             app:layout_constraintStart_toEndOf="@+id/barrier_times"
             tools:text="10:15" />
@@ -126,6 +128,7 @@
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
             app:drawableStartCompat="@drawable/ic_moon_black_16dp"
+            app:drawableTint="?android:textColorSecondary"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_twt_day"
             app:layout_constraintStart_toEndOf="@+id/barrier_day"
             tools:text="10:15" />
@@ -141,6 +144,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textSize="12sp"
             app:drawableStartCompat="@drawable/ic_snooze_black_24dp"
+            app:drawableTint="?android:textColorSecondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_list_reelTwt_label" />
 
@@ -161,6 +165,7 @@
             android:layout_marginStart="16dp"
             android:gravity="center_vertical"
             app:drawableStartCompat="@drawable/ic_sun_black_16dp"
+            app:drawableTint="?android:textColorSecondary"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_sleep_total"
             app:layout_constraintStart_toEndOf="@+id/barrier_times"
             tools:text="10:15" />
@@ -172,6 +177,7 @@
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
             app:drawableStartCompat="@drawable/ic_moon_black_16dp"
+            app:drawableTint="?android:textColorSecondary"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_sleep_day"
             app:layout_constraintStart_toEndOf="@+id/barrier_day"
             tools:text="10:15" />
