@@ -4,6 +4,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.gmail.remarkable.development.goodnapp.DayViewModel" />
@@ -23,6 +25,7 @@
             layout="@layout/night_awake"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[0] == null ? View.GONE : View.VISIBLE}"
             app:dayFragment="@{dayFragment}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +37,7 @@
             layout="@layout/night_awake"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[1] == null ? View.GONE : View.VISIBLE}"
             app:dayFragment="@{dayFragment}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +49,7 @@
             layout="@layout/night_awake"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[2] == null ? View.GONE : View.VISIBLE}"
             app:dayFragment="@{dayFragment}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +61,7 @@
             layout="@layout/night_awake"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[3] == null ? View.GONE : View.VISIBLE}"
             app:dayFragment="@{dayFragment}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +73,7 @@
             layout="@layout/night_awake"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[4] == null ? View.GONE : View.VISIBLE}"
             app:dayFragment="@{dayFragment}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
