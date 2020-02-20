@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 private const val MAX_NAPS_NUMBER = 5
+private const val MAX_AWAKES_NUMBER = 5
 
 class DayViewModel(
     val database: SleepDatabaseDao,
@@ -202,6 +203,15 @@ class DayViewModel(
         _mLiveSleepDay.value = mDay
         saveData()
 
+    }
+
+    // Adds another nightAwake to the SleepDay.
+    fun addAwake() {
+        if (mDay.nightAwakes.size < MAX_AWAKES_NUMBER) {
+            mDay.nightAwakes.add(SleepDay.NightAwake(nightAwakeDate = mDay.date))
+            _mLiveSleepDay.value = mDay
+            saveData()
+        }
     }
 
     // Clear realBedtime field after end icon click.
