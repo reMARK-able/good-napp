@@ -214,6 +214,12 @@ class DayViewModel(
         }
     }
 
+    fun deleteAwake(index: Int) {
+        mDay.nightAwakes.removeAt(index)
+        _mLiveSleepDay.value = mDay
+        saveData()
+    }
+
     // Clear realBedtime field after end icon click.
     fun clearBedtime() {
         mDay.realBedtime = 0
