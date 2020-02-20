@@ -49,4 +49,5 @@
     <string name="notAvailable_short">n/a</string>
     <string name="awake_times_label">Awake Times:</string>
     <string name="sleep_item_list_label">Sleep</string>
+    <string name="awake">Awake</string>
 </resources>

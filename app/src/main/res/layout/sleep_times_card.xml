@@ -35,18 +35,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_nap_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:onClick="@{() -> viewModel.addAwake()}"
+                android:text="@string/awake"
+                app:layout_constraintEnd_toEndOf="@+id/night_sleep_container"
+                app:layout_constraintStart_toStartOf="@+id/night_sleep_container"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/day_sleep_container"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginBottom="16dp"
                 android:hint="@string/day_sleep_label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/night_sleep_container"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintStart_toStartOf="@+id/total_sleep_container"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/total_sleep_container">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -69,8 +81,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="32dp"
                 android:hint="@string/night_sleep_label"
-                app:layout_constraintEnd_toEndOf="@+id/total_sleep_container"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/day_sleep_container"
                 app:layout_constraintTop_toTopOf="@+id/day_sleep_container">
@@ -94,12 +107,10 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
                 android:hint="@string/total_sleep_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/day_sleep_container"
+                app:layout_constraintStart_toStartOf="@+id/day_sleep_container"
                 app:layout_constraintTop_toBottomOf="@+id/sleepTimes_label_textView">
 
                 <com.google.android.material.textfield.TextInputEditText
