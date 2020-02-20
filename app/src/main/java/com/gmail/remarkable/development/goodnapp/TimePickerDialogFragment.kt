@@ -139,6 +139,16 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
             NAP_4_END -> mDay.naps[3].end
             NAP_5_START -> mDay.naps[4].start
             NAP_5_END -> mDay.naps[4].end
+            AWAKE_1_START -> mDay.nightAwakes.getOrNull(0)?.start ?: 0
+            AWAKE_1_END -> mDay.nightAwakes.getOrNull(0)?.end ?: 0
+            AWAKE_2_START -> mDay.nightAwakes.getOrNull(1)?.start ?: 0
+            AWAKE_2_END -> mDay.nightAwakes.getOrNull(1)?.end ?: 0
+            AWAKE_3_START -> mDay.nightAwakes.getOrNull(2)?.start ?: 0
+            AWAKE_3_END -> mDay.nightAwakes.getOrNull(2)?.end ?: 0
+            AWAKE_4_START -> mDay.nightAwakes.getOrNull(3)?.start ?: 0
+            AWAKE_4_END -> mDay.nightAwakes.getOrNull(3)?.end ?: 0
+            AWAKE_5_START -> mDay.nightAwakes.getOrNull(4)?.start ?: 0
+            AWAKE_5_END -> mDay.nightAwakes.getOrNull(4)?.end ?: 0
             else -> throw IllegalArgumentException("Unknown view name")
         }
     }
