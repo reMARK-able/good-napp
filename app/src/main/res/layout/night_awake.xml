@@ -11,7 +11,7 @@
             type="com.gmail.remarkable.development.goodnapp.DayViewModel" />
 
         <variable
-            name="day"
+            name="dayFragment"
             type="com.gmail.remarkable.development.goodnapp.DayFragment" />
 
     </data>
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:focusableInTouchMode="false"
                 android:inputType="time"
-                android:onClick="@{(v) -> day.pickTime(v)}"
+                android:onClick="@{(v) -> dayFragment.pickTime(v)}"
                 android:text="02:45"
                 android:textAlignment="center" />
 
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:focusableInTouchMode="false"
                 android:inputType="time"
-                android:onClick="@{(v) -> day.pickTime(v)}"
+                android:onClick="@{(v) -> dayFragment.pickTime(v)}"
                 android:text="02:45"
                 android:textAlignment="center" />
 
