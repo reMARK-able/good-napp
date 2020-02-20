@@ -10,6 +10,7 @@ import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
 import com.gmail.remarkable.development.goodnapp.util.getTodayInMillis
+import com.gmail.remarkable.development.goodnapp.util.nextDay
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.util.*
@@ -45,11 +46,23 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
 
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
 
-        val day = getCurrentDay()
         val viewId = args.viewNameTag
+        // Check whether view is of type nightAwake ("AWAKE")
+        val day = when (viewId.substringBefore("_")) {
+            "AWAKE" -> checkHour(hourOfDay)
+            else -> getCurrentDay()
+        }
         val timestamp = getTimeStamp(day, hourOfDay, minute)
         Log.i("TimePickerDialog", "Picked time in millis: $timestamp")
         viewModel.onTimeSet(viewId, hourOfDay, minute, timestamp)
+    }
+
+    // If hour is 00:00 to 11:59 picker assumes this is the next day
+    private fun checkHour(hourOfDay: Int): Long {
+        return when (hourOfDay) {
+            in 0..11 -> getCurrentDay().nextDay()
+            else -> getCurrentDay()
+        }
     }
 
     private fun getTimeStamp(date: Long, hour: Int, min: Int): Long {
