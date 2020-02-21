@@ -48,12 +48,11 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
 
         val viewId = args.viewNameTag
         // Check whether view is of type nightAwake ("AWAKE")
-        val day = when (viewId.substringBefore("_")) {
-            "AWAKE" -> checkHour(hourOfDay)
-            else -> getCurrentDay()
-        }
+        val day = if (viewId.startsWith("awake", true)) checkHour(hourOfDay)
+        else getCurrentDay()
+
         val timestamp = getTimeStamp(day, hourOfDay, minute)
-        Log.i("TimePickerDialog", "Picked time in millis: $timestamp")
+        Log.i("TimePickerDialog", "Picked time in millis: $timestamp / viewID = $viewId")
         viewModel.onTimeSet(viewId, hourOfDay, minute, timestamp)
     }
 
