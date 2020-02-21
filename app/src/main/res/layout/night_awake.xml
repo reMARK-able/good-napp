@@ -73,8 +73,9 @@
                 android:focusableInTouchMode="false"
                 android:inputType="time"
                 android:onClick="@{(v) -> dayFragment.pickTime(v)}"
-                android:text="02:45"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                app:index="@{index}"
+                app:nightAwakeStartString="@{viewModel.mLiveSleepDay}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,8 +102,9 @@
                 android:focusableInTouchMode="false"
                 android:inputType="time"
                 android:onClick="@{(v) -> dayFragment.pickTime(v)}"
-                android:text="02:45"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                app:index="@{index}"
+                app:nightAwakeEndString="@{viewModel.mLiveSleepDay}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

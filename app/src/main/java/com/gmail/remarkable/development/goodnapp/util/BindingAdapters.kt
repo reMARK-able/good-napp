@@ -17,3 +17,17 @@ fun TextView.setRealTWTFormatted(sleepDay: SleepDay?) {
         text = getStringForRealTWT(sleepDay.realTWT, context.resources)
     }
 }
+
+@BindingAdapter("nightAwakeStartString", "index")
+fun TextView.setNightAwakeStartStringFormatted(sleepDay: SleepDay?, index: Int) {
+    sleepDay?.nightAwakes?.getOrNull(index)?.let {
+        text = getTimeStringFromTimestamp(it.start, context)
+    }
+}
+
+@BindingAdapter("nightAwakeEndString", "index")
+fun TextView.setNightAwakeEndStringFormatted(sleepDay: SleepDay?, index: Int) {
+    sleepDay?.nightAwakes?.getOrNull(index)?.let {
+        text = getTimeStringFromTimestamp(it.end, context)
+    }
+}
