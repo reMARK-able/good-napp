@@ -13,6 +13,9 @@ interface SleepDatabaseDao {
     @Insert
     fun insertNaps(naps: List<SleepDay.Nap>)
 
+    @Insert
+    fun insertAwakes(awakes: List<SleepDay.NightAwake>)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDaysWithoutNaps(days: List<SleepTable>)
 
@@ -45,5 +48,7 @@ interface SleepDatabaseDao {
         insert(dayToInsert)
         val napsToInsert = sleepDay.naps
         insertNaps(napsToInsert)
+        val awakesToInsert = sleepDay.nightAwakes
+        insertAwakes(awakesToInsert)
     }
 }
