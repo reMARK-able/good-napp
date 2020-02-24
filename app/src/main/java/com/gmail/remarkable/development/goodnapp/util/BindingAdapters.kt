@@ -31,3 +31,10 @@ fun TextView.setNightAwakeEndStringFormatted(sleepDay: SleepDay?, index: Int) {
         text = getTimeStringFromTimestamp(it.end, context)
     }
 }
+
+@BindingAdapter("nightAwakeDurationString", "index")
+fun TextView.setNightAwakeDurationString(sleepDay: SleepDay?, index: Int) {
+    sleepDay?.nightAwakes?.getOrNull(index)?.let {
+        text = getDurationNapString(it.duration, context.resources)
+    }
+}

@@ -32,8 +32,10 @@
             android:text="@string/sample_awake_time"
             app:drawableStartCompat="@drawable/ic_timer_black_24dp"
             app:drawableTint="?android:textColorSecondary"
+            app:index="@{index}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/divider_upper"
+            app:nightAwakeDurationString="@{viewModel.mLiveSleepDay}"
             tools:showIn="@layout/fragment_day"
             tools:text="@string/sample_awake_time" />
 
