@@ -43,11 +43,12 @@
             android:id="@+id/night_awake_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Night Awake 1"
+            android:text="@{@string/awake_label_format(index + 1)}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBaseline_toBaselineOf="@+id/wakeTime_textView"
             app:layout_constraintEnd_toEndOf="@+id/awake_end_container"
-            app:layout_constraintStart_toStartOf="@+id/awake_end_container" />
+            app:layout_constraintStart_toStartOf="@+id/awake_end_container"
+            tools:text="Night Awake 1" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/awake_start_container"
