@@ -69,10 +69,10 @@ fun validAwakeStart(mDay: SleepDay?, index: Int, resources: Resources): String? 
             val prevAwake = nightAwakes.getOrNull(i - 1)
             when {
                 start - mDay.outOfBed <= 0L -> return resources.getString(R.string.error_must_be_later_than_out_of_bed)
-                start - mDay.realBedtime <= 0L -> return "Must be later than real bedtime."
-                start - lastNapEnd <= 0L -> return "Must be later than last nap end."
-                prevAwake != null && start <= prevAwake.start -> return "Must be later than previous awake start."
-                prevAwake != null && start <= prevAwake.end -> return "Must be later than previous awake end."
+                start - mDay.realBedtime <= 0L -> return resources.getString(R.string.error_must_be_later_than_realBedTime)
+                start - lastNapEnd <= 0L -> return resources.getString(R.string.error_must_be_later_than_last_nap_end)
+                prevAwake != null && start <= prevAwake.start -> return resources.getString(R.string.error_must_be_later_than_prev_awake_start)
+                prevAwake != null && start <= prevAwake.end -> return resources.getString(R.string.error_must_be_later_than_prev_awake_end)
             }
             i -= 1
         } while (prevAwake != null)
@@ -96,17 +96,18 @@ fun validAwakeEnd(mDay: SleepDay?, index: Int, resources: Resources): String? {
             val prevAwake = awakes.getOrNull(i - 1)
             when {
                 end - mDay.outOfBed <= 0L -> return resources.getString(R.string.error_must_be_later_than_out_of_bed)
-                end - mDay.realBedtime <= 0L -> return "Must be later than real bedtime."
-                end - lastNapEnd <= 0L -> return "Must be later than last nap end."
+                end - mDay.realBedtime <= 0L -> return resources.getString(R.string.error_must_be_later_than_realBedTime)
+                end - lastNapEnd <= 0L -> return resources.getString(R.string.error_must_be_later_than_last_nap_end)
                 start != 0L && end <= start -> return resources.getString(R.string.error_must_be_later_than_start)
-                prevAwake != null && end <= prevAwake.start -> return "Must be later than previous awake start."
-                prevAwake != null && end <= prevAwake.end -> return "Must be later than previous awake end."
+                prevAwake != null && end <= prevAwake.start -> return resources.getString(R.string.error_must_be_later_than_prev_awake_start)
+                prevAwake != null && end <= prevAwake.end -> return resources.getString(R.string.error_must_be_later_than_prev_awake_end)
             }
             i -= 1
         } while (prevAwake != null)
         return null
     }
 }
+
 /**
  * Method for validation of outOfBed field.
  */
