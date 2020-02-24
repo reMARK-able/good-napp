@@ -66,8 +66,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wakeTime_textView"
-            tools:hint="Start">
+            app:layout_constraintTop_toBottomOf="@+id/wakeTime_textView">
 
             <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
                 android:id="@+id/awake_start_editText"
@@ -89,14 +88,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:hint="@string/start"
+            android:hint="@string/end"
             android:visibility="visible"
             app:error="@{null}"
             app:layout_constraintBaseline_toBaselineOf="@+id/awake_start_container"
             app:layout_constraintEnd_toStartOf="@+id/button_delete"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/awake_start_container"
-            tools:hint="Start">
+            app:layout_constraintStart_toEndOf="@+id/awake_start_container">
 
             <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
                 android:id="@+id/awake_end_editText"
