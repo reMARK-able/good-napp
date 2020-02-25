@@ -159,11 +159,20 @@
                 app:viewModel="@{viewModel}" />
 
             <include
+                android:id="@+id/container_awakes"
+                layout="@layout/night_awake_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dayFragment="@{day}"
+                app:viewModel="@{viewModel}" />
+
+            <include
                 android:id="@+id/card_sleep_times"
                 layout="@layout/sleep_times_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                app:viewModel="@{viewModel}" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

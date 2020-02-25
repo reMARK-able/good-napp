@@ -10,6 +10,7 @@ import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
 import com.gmail.remarkable.development.goodnapp.util.getTodayInMillis
+import com.gmail.remarkable.development.goodnapp.util.nextDay
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.util.*
@@ -45,11 +46,22 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
 
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
 
-        val day = getCurrentDay()
         val viewId = args.viewNameTag
+        // Check whether view is of type nightAwake ("AWAKE")
+        val day = if (viewId.startsWith("awake", true)) checkHour(hourOfDay)
+        else getCurrentDay()
+
         val timestamp = getTimeStamp(day, hourOfDay, minute)
-        Log.i("TimePickerDialog", "Picked time in millis: $timestamp")
+        Log.i("TimePickerDialog", "Picked time in millis: $timestamp / viewID = $viewId")
         viewModel.onTimeSet(viewId, hourOfDay, minute, timestamp)
+    }
+
+    // If hour is 00:00 to 11:59 picker assumes this is the next day
+    private fun checkHour(hourOfDay: Int): Long {
+        return when (hourOfDay) {
+            in 0..11 -> getCurrentDay().nextDay()
+            else -> getCurrentDay()
+        }
     }
 
     private fun getTimeStamp(date: Long, hour: Int, min: Int): Long {
@@ -139,6 +151,16 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
             NAP_4_END -> mDay.naps[3].end
             NAP_5_START -> mDay.naps[4].start
             NAP_5_END -> mDay.naps[4].end
+            AWAKE_1_START -> mDay.nightAwakes.getOrNull(0)?.start ?: 0
+            AWAKE_1_END -> mDay.nightAwakes.getOrNull(0)?.end ?: 0
+            AWAKE_2_START -> mDay.nightAwakes.getOrNull(1)?.start ?: 0
+            AWAKE_2_END -> mDay.nightAwakes.getOrNull(1)?.end ?: 0
+            AWAKE_3_START -> mDay.nightAwakes.getOrNull(2)?.start ?: 0
+            AWAKE_3_END -> mDay.nightAwakes.getOrNull(2)?.end ?: 0
+            AWAKE_4_START -> mDay.nightAwakes.getOrNull(3)?.start ?: 0
+            AWAKE_4_END -> mDay.nightAwakes.getOrNull(3)?.end ?: 0
+            AWAKE_5_START -> mDay.nightAwakes.getOrNull(4)?.start ?: 0
+            AWAKE_5_END -> mDay.nightAwakes.getOrNull(4)?.end ?: 0
             else -> throw IllegalArgumentException("Unknown view name")
         }
     }

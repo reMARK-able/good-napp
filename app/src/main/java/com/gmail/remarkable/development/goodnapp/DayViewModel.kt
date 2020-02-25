@@ -10,7 +10,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-private const val MAX_NAPS_NUMBER = 5
+const val MAX_NAPS_NUMBER = 5
+const val MAX_AWAKES_NUMBER = 5
 
 class DayViewModel(
     val database: SleepDatabaseDao,
@@ -204,6 +205,21 @@ class DayViewModel(
 
     }
 
+    // Adds another nightAwake to the SleepDay.
+    fun addAwake() {
+        if (mDay.nightAwakes.size < MAX_AWAKES_NUMBER) {
+            mDay.nightAwakes.add(SleepDay.NightAwake(nightAwakeDate = mDay.date))
+            _mLiveSleepDay.value = mDay
+            saveData()
+        }
+    }
+
+    fun deleteAwake(index: Int) {
+        mDay.nightAwakes.removeAt(index)
+        _mLiveSleepDay.value = mDay
+        saveData()
+    }
+
     // Clear realBedtime field after end icon click.
     fun clearBedtime() {
         mDay.realBedtime = 0
@@ -233,6 +249,17 @@ class DayViewModel(
             NAP_4_END -> mDay.naps[3].end = timestamp
             NAP_5_START -> mDay.naps[4].start = timestamp
             NAP_5_END -> mDay.naps[4].end = timestamp
+
+            AWAKE_1_START -> mDay.nightAwakes.getOrNull(0)?.start = timestamp
+            AWAKE_1_END -> mDay.nightAwakes.getOrNull(0)?.end = timestamp
+            AWAKE_2_START -> mDay.nightAwakes.getOrNull(1)?.start = timestamp
+            AWAKE_2_END -> mDay.nightAwakes.getOrNull(1)?.end = timestamp
+            AWAKE_3_START -> mDay.nightAwakes.getOrNull(2)?.start = timestamp
+            AWAKE_3_END -> mDay.nightAwakes.getOrNull(2)?.end = timestamp
+            AWAKE_4_START -> mDay.nightAwakes.getOrNull(3)?.start = timestamp
+            AWAKE_4_END -> mDay.nightAwakes.getOrNull(3)?.end = timestamp
+            AWAKE_5_START -> mDay.nightAwakes.getOrNull(4)?.start = timestamp
+            AWAKE_5_END -> mDay.nightAwakes.getOrNull(4)?.end = timestamp
         }
         // Refresh data in LiveData
         _mLiveSleepDay.value = mDay

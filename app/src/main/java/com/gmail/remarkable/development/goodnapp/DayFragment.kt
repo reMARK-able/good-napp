@@ -27,6 +27,17 @@ const val NAP_4_START = "nap4start"
 const val NAP_4_END = "nap4end"
 const val NAP_5_START = "nap5start"
 const val NAP_5_END = "nap5end"
+// Night awakes const identifiers.
+const val AWAKE_1_START = "awake1start"
+const val AWAKE_1_END = "awake1end"
+const val AWAKE_2_START = "awake2start"
+const val AWAKE_2_END = "awake2end"
+const val AWAKE_3_START = "awake3start"
+const val AWAKE_3_END = "awake3end"
+const val AWAKE_4_START = "awake4start"
+const val AWAKE_4_END = "awake4end"
+const val AWAKE_5_START = "awake5start"
+const val AWAKE_5_END = "awake5end"
 // Summary card const identifiers.
 const val REAL_BEDTIME = "realBedtime"
 
@@ -84,6 +95,17 @@ class DayFragment : Fragment() {
         binding.nap4.napEndEditText -> NAP_4_END
         binding.nap5.napStartEditText -> NAP_5_START
         binding.nap5.napEndEditText -> NAP_5_END
+
+        binding.containerAwakes.nightAwake1.awakeStartEditText -> AWAKE_1_START
+        binding.containerAwakes.nightAwake1.awakeEndEditText -> AWAKE_1_END
+        binding.containerAwakes.nightAwake2.awakeStartEditText -> AWAKE_2_START
+        binding.containerAwakes.nightAwake2.awakeEndEditText -> AWAKE_2_END
+        binding.containerAwakes.nightAwake3.awakeStartEditText -> AWAKE_3_START
+        binding.containerAwakes.nightAwake3.awakeEndEditText -> AWAKE_3_END
+        binding.containerAwakes.nightAwake4.awakeStartEditText -> AWAKE_4_START
+        binding.containerAwakes.nightAwake4.awakeEndEditText -> AWAKE_4_END
+        binding.containerAwakes.nightAwake5.awakeStartEditText -> AWAKE_5_START
+        binding.containerAwakes.nightAwake5.awakeEndEditText -> AWAKE_5_END
         else -> "unknownView"
     }
 }

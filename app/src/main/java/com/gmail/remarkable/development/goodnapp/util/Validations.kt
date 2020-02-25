@@ -55,6 +55,60 @@ fun validNapEnd(mDay: SleepDay?, index: Int, resources: Resources): String? {
 }
 
 /**
+ * Method for validation the start of the nightAwake.
+ */
+fun validAwakeStart(mDay: SleepDay?, index: Int, resources: Resources): String? {
+    if (mDay == null) return null
+    val nightAwakes = mDay.nightAwakes
+    if (index >= nightAwakes.size || nightAwakes[index].start == 0L) return null
+    else {
+        val start = nightAwakes[index].start
+        var i = index
+        val lastNapEnd = mDay.naps.getOrNull(mDay.naps.lastIndex)?.end ?: 0
+        do {
+            val prevAwake = nightAwakes.getOrNull(i - 1)
+            when {
+                start - mDay.outOfBed <= 0L -> return resources.getString(R.string.error_must_be_later_than_out_of_bed)
+                start - mDay.realBedtime <= 0L -> return resources.getString(R.string.error_must_be_later_than_realBedTime)
+                start - lastNapEnd <= 0L -> return resources.getString(R.string.error_must_be_later_than_last_nap_end)
+                prevAwake != null && start <= prevAwake.start -> return resources.getString(R.string.error_must_be_later_than_prev_awake_start)
+                prevAwake != null && start <= prevAwake.end -> return resources.getString(R.string.error_must_be_later_than_prev_awake_end)
+            }
+            i -= 1
+        } while (prevAwake != null)
+        return null
+    }
+}
+
+/**
+ * Method for validation the end of the nightAwake.
+ */
+fun validAwakeEnd(mDay: SleepDay?, index: Int, resources: Resources): String? {
+    if (mDay == null) return null
+    val awakes = mDay.nightAwakes
+    if (index >= awakes.size || awakes[index].end == 0L) return null
+    else {
+        val end = awakes[index].end
+        val start = awakes[index].start
+        val lastNapEnd = mDay.naps.getOrNull(mDay.naps.lastIndex)?.end ?: 0
+        var i = index
+        do {
+            val prevAwake = awakes.getOrNull(i - 1)
+            when {
+                end - mDay.outOfBed <= 0L -> return resources.getString(R.string.error_must_be_later_than_out_of_bed)
+                end - mDay.realBedtime <= 0L -> return resources.getString(R.string.error_must_be_later_than_realBedTime)
+                end - lastNapEnd <= 0L -> return resources.getString(R.string.error_must_be_later_than_last_nap_end)
+                start != 0L && end <= start -> return resources.getString(R.string.error_must_be_later_than_start)
+                prevAwake != null && end <= prevAwake.start -> return resources.getString(R.string.error_must_be_later_than_prev_awake_start)
+                prevAwake != null && end <= prevAwake.end -> return resources.getString(R.string.error_must_be_later_than_prev_awake_end)
+            }
+            i -= 1
+        } while (prevAwake != null)
+        return null
+    }
+}
+
+/**
  * Method for validation of outOfBed field.
  */
 fun validOutOfBed(mDay: SleepDay?, resources: Resources): String? {
@@ -123,4 +177,17 @@ fun isTodayAdded(days: List<SleepDay>?): Int {
         days[0].date == getTodayInMillis() -> View.GONE
         else -> View.VISIBLE
     }
+}
+
+/**
+ * Returns true if all nightAwakes are valid to set "Night awake" button enable.
+ */
+fun validateAllNightAwakes(sleepDay: SleepDay, resources: Resources): Boolean {
+    for ((index, awake) in sleepDay.nightAwakes.withIndex()) {
+        if (awake.start == 0L || awake.end == 0L ||
+            validAwakeStart(sleepDay, index, resources) != null ||
+            validAwakeEnd(sleepDay, index, resources) != null
+        ) return false
+    }
+    return true
 }

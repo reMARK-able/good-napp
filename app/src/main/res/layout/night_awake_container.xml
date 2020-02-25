@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.gmail.remarkable.development.goodnapp.DayViewModel" />
+
+        <variable
+            name="dayFragment"
+            type="com.gmail.remarkable.development.goodnapp.DayFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true">
+
+        <include
+            android:id="@+id/night_awake1"
+            layout="@layout/night_awake"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[0] == null ? View.GONE : View.VISIBLE}"
+            app:dayFragment="@{dayFragment}"
+            app:index="@{0}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/night_awake2"
+            layout="@layout/night_awake"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[1] == null ? View.GONE : View.VISIBLE}"
+            app:dayFragment="@{dayFragment}"
+            app:index="@{1}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/night_awake1"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/night_awake3"
+            layout="@layout/night_awake"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[2] == null ? View.GONE : View.VISIBLE}"
+            app:dayFragment="@{dayFragment}"
+            app:index="@{2}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/night_awake2"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/night_awake4"
+            layout="@layout/night_awake"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[3] == null ? View.GONE : View.VISIBLE}"
+            app:dayFragment="@{dayFragment}"
+            app:index="@{3}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/night_awake3"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/night_awake5"
+            layout="@layout/night_awake"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[4] == null ? View.GONE : View.VISIBLE}"
+            app:dayFragment="@{dayFragment}"
+            app:index="@{4}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/night_awake4"
+            app:viewModel="@{viewModel}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

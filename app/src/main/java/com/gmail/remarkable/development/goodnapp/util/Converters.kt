@@ -162,3 +162,13 @@ suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, SleepDay?>> {
 
     }
 }
+
+/**
+ * Gets next UTC day from timestamp.
+ */
+fun Long.nextDay(): Long {
+    val calendarUTC = getUTCCalendar()
+    calendarUTC.timeInMillis = this
+    calendarUTC.add(Calendar.DATE, 1)
+    return calendarUTC.timeInMillis
+}
