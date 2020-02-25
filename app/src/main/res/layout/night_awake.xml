@@ -29,7 +29,6 @@
             android:layout_width="0dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
-            android:text="@string/sample_awake_time"
             app:drawableStartCompat="@drawable/ic_timer_black_24dp"
             app:drawableTint="?android:textColorSecondary"
             app:index="@{index}"
