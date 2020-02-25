@@ -1,5 +1,6 @@
 package com.gmail.remarkable.development.goodnapp.util
 
+import android.widget.Button
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.gmail.remarkable.development.goodnapp.SleepDay
@@ -50,4 +51,12 @@ fun TextInputLayout.setAwakeStartError(sleepDay: SleepDay?, index: Int) {
 fun TextInputLayout.setAwakeEndError(sleepDay: SleepDay?, index: Int) {
     error = if (sleepDay == null) null
     else validAwakeEnd(sleepDay, index, context.resources)
+}
+
+// Sets awake button enable if all nightAwake are valid.
+@BindingAdapter("awakeButtonEnable")
+fun Button.setAwakeButtonEnable(sleepDay: SleepDay?) {
+    isEnabled =
+        if (sleepDay == null) false
+        else validateAllNightAwakes(sleepDay, context.resources)
 }

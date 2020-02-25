@@ -39,9 +39,9 @@
                 android:id="@+id/add_nap_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:enabled="true"
                 android:onClick="@{() -> viewModel.addAwake()}"
                 android:text="@string/awake"
+                app:awakeButtonEnable="@{viewModel.mLiveSleepDay}"
                 app:layout_constraintEnd_toEndOf="@+id/night_sleep_container"
                 app:layout_constraintStart_toStartOf="@+id/night_sleep_container"
                 app:layout_constraintTop_toTopOf="parent" />

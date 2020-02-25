@@ -178,3 +178,16 @@ fun isTodayAdded(days: List<SleepDay>?): Int {
         else -> View.VISIBLE
     }
 }
+
+/**
+ * Returns true if all nightAwakes are valid to set "Night awake" button enable.
+ */
+fun validateAllNightAwakes(sleepDay: SleepDay, resources: Resources): Boolean {
+    for ((index, awake) in sleepDay.nightAwakes.withIndex()) {
+        if (awake.start == 0L || awake.end == 0L ||
+            validAwakeStart(sleepDay, index, resources) != null ||
+            validAwakeEnd(sleepDay, index, resources) != null
+        ) return false
+    }
+    return true
+}
