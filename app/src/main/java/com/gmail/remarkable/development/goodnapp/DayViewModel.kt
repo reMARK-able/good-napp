@@ -10,8 +10,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-private const val MAX_NAPS_NUMBER = 5
-private const val MAX_AWAKES_NUMBER = 5
+const val MAX_NAPS_NUMBER = 5
+const val MAX_AWAKES_NUMBER = 5
 
 class DayViewModel(
     val database: SleepDatabaseDao,
