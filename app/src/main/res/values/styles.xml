@@ -23,8 +23,8 @@
     </style>
 
     <style name="DialogAnimationSlideUp">
-        <item name="android:windowEnterAnimation">@anim/slide_in_up</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_down</item>
+        <item name="android:windowEnterAnimation">@anim/picker_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/picker_slide_down</item>
     </style>
 
     <style name="AwakeTimeTextViewStyle" parent="Widget.AppCompat.TextView">
