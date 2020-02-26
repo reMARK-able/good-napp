@@ -37,13 +37,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline_in_half"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
-
             <View
                 android:id="@+id/divider2"
                 android:layout_width="1dp"
@@ -67,22 +60,23 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:drawableStartCompat="@drawable/ic_snooze_black_24dp"
                 app:drawableTint="?android:textColorSecondary"
-                app:layout_constraintEnd_toEndOf="@+id/total_sleep_container"
-                app:layout_constraintStart_toStartOf="@+id/total_sleep_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/divider2"
                 app:layout_constraintTop_toBottomOf="@+id/add_nap_button" />
 
             <TextView
                 android:id="@+id/awake_label_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="@string/awake"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:drawableStartCompat="@drawable/ic_timer_black_24dp"
                 app:drawableTint="?android:textColorSecondary"
-                app:layout_constraintBaseline_toBaselineOf="@+id/sleepTimes_label_textView"
-                app:layout_constraintEnd_toEndOf="@+id/total_awake_container"
-                app:layout_constraintStart_toStartOf="@+id/total_awake_container" />
+                app:layout_constraintEnd_toStartOf="@+id/divider2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_nap_button" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/total_sleep_container"
@@ -93,8 +87,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:hint="@string/total_sleep_label"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_in_half"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/divider2"
                 app:layout_constraintTop_toBottomOf="@+id/sleepTimes_label_textView">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -120,10 +114,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:hint="@string/day_sleep_label"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_in_half"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/divider2"
                 app:layout_constraintTop_toBottomOf="@+id/total_sleep_container">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -151,8 +143,8 @@
                 android:layout_marginBottom="16dp"
                 android:hint="@string/night_sleep_label"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_in_half"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/divider2"
                 app:layout_constraintTop_toBottomOf="@+id/day_sleep_container">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -178,8 +170,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:hint="@string/total_sleep_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline_in_half"
+                app:layout_constraintEnd_toStartOf="@+id/divider2"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/awake_label_textView">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -205,8 +197,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:hint="@string/day_sleep_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline_in_half"
+                app:layout_constraintEnd_toStartOf="@+id/divider2"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/total_awake_container">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -232,8 +224,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:hint="@string/night_sleep_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline_in_half"
+                app:layout_constraintEnd_toStartOf="@+id/divider2"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/day_awake_container">
 
                 <com.google.android.material.textfield.TextInputEditText
