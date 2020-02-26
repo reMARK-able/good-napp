@@ -18,8 +18,8 @@
     <string name="time_duration_format_short">%1$d:%2$02d</string>
 
     <string name="summary">Summary</string>
-    <string name="target_bedtime">Target Bedtime</string>
-    <string name="real_bedTime">Real Bedtime</string>
+    <string name="target_hint">Target</string>
+    <string name="real_hint_label">Real</string>
     <string name="real_twt">Real TWT</string>
     <string name="wake_up">Wake Up</string>
     <string name="add_nap">Add Nap</string>
@@ -55,4 +55,5 @@
     <string name="error_must_be_later_than_prev_awake_start">Must be later than previous awake start.</string>
     <string name="error_must_be_later_than_prev_awake_end">Must be later than previous awake end.</string>
     <string name="awake">Awake</string>
+    <string name="bedtime_label">Bedtime:</string>
 </resources>
