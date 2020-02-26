@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.text.format.DateFormat
 import com.gmail.remarkable.development.goodnapp.R
 import com.gmail.remarkable.development.goodnapp.SleepDay
+import com.gmail.remarkable.development.goodnapp.SleepDay.NightAwake
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
@@ -75,6 +76,22 @@ fun getStringForRealTWT(millis: Long, resources: Resources): String {
     val min = millis / (60 * 1000) % 60
 
     return resources.getString(R.string.time_duration_format, hours, min)
+}
+
+// Gets total night awakes time.
+fun getTotalNightAwakesTime(nightAwakes: List<NightAwake>): Long {
+    var sum = 0L
+    for (awake in nightAwakes) sum += awake.duration
+    return sum
+}
+
+// Gets total (day + night) awake time.
+fun getTotalAwakesTime(sleepDay: SleepDay?): Long {
+    return when {
+        sleepDay == null -> 0
+        sleepDay.realDayAwakeTime == 0L -> 0
+        else -> sleepDay.realDayAwakeTime + getTotalNightAwakesTime(sleepDay.nightAwakes)
+    }
 }
 
 // Calculates duration in millis from picker time.

@@ -73,3 +73,21 @@ fun TextView.setAwakesDayString(sleepDay: SleepDay?) {
         else -> getStringForRealTWT(sleepDay.realDayAwakeTime, res)
     }
 }
+
+@BindingAdapter("awakesNightString")
+fun TextView.setAwakesNightString(sleepDay: SleepDay?) {
+    val res = context.resources
+    text = when {
+        sleepDay == null -> res.getString(R.string.no_time)
+        else -> getStringForRealTWT(getTotalNightAwakesTime(sleepDay.nightAwakes), res)
+    }
+}
+
+@BindingAdapter("totalAwakesString")
+fun TextView.setTotalAwakesString(sleepDay: SleepDay?) {
+    val res = context.resources
+    text = when {
+        sleepDay == null -> res.getString(R.string.no_time)
+        else -> getStringForRealTWT(getTotalAwakesTime(sleepDay), res)
+    }
+}
