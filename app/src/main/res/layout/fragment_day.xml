@@ -161,7 +161,7 @@
 
             <include
                 android:id="@+id/container_awakes"
-                layout="@layout/night_awake_container"
+                layout="@layout/night_awakes_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:dayFragment="@{day}"
