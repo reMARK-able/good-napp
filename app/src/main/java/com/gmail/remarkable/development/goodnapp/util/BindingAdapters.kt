@@ -4,6 +4,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.gmail.remarkable.development.goodnapp.MAX_AWAKES_NUMBER
+import com.gmail.remarkable.development.goodnapp.R
 import com.gmail.remarkable.development.goodnapp.SleepDay
 import com.google.android.material.textfield.TextInputLayout
 
@@ -61,5 +62,14 @@ fun Button.setAwakeButtonEnable(sleepDay: SleepDay?) {
         sleepDay == null -> false
         sleepDay.nightAwakes.size >= MAX_AWAKES_NUMBER -> false
         else -> validateAllNightAwakes(sleepDay, context.resources)
+    }
+}
+
+@BindingAdapter("awakesDayString")
+fun TextView.setAwakesDayString(sleepDay: SleepDay?) {
+    val res = context.resources
+    text = when {
+        sleepDay == null -> res.getString(R.string.no_time)
+        else -> getStringForRealTWT(sleepDay.realDayAwakeTime, res)
     }
 }

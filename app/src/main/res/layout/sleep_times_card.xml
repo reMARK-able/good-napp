@@ -99,7 +99,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@{viewModel.realTWTString}"
+                    android:text="@string/no_time"
                     android:textAlignment="center"
                     tools:text="@string/sample_awake_time" />
 
@@ -155,7 +155,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@{viewModel.realTWTString}"
+                    android:text="@string/no_time"
                     android:textAlignment="center"
                     tools:text="@string/sample_awake_time" />
 
@@ -182,7 +182,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@{viewModel.realTWTString}"
+                    android:text="@string/no_time"
                     android:textAlignment="center"
                     tools:text="@string/sample_awake_time" />
 
@@ -209,8 +209,8 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@{viewModel.targetBedtimeString}"
                     android:textAlignment="center"
+                    app:awakesDayString="@{viewModel.mLiveSleepDay}"
                     tools:text="@string/sample_awake_time" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -236,7 +236,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@{viewModel.realTWTString}"
+                    android:text="@string/no_time"
                     android:textAlignment="center"
                     tools:text="@string/sample_awake_time" />
 

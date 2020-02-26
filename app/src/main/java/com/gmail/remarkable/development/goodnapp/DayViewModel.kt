@@ -138,10 +138,6 @@ class DayViewModel(
             )
         }
 
-    // LiveData for real TWT
-    val realTWTString =
-        Transformations.map(mLiveSleepDay) { day -> getStringForRealTWT(day.realTWT, resources) }
-
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
         //fillDatabase()
