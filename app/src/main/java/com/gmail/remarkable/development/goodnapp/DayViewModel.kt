@@ -7,6 +7,7 @@ import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
 import com.gmail.remarkable.development.goodnapp.database.SleepDatabaseDao
 import com.gmail.remarkable.development.goodnapp.util.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -20,7 +21,12 @@ class DayViewModel(
 
     private val days = database.getAllDays()
     val daysInPairs = days.switchMap {
-        liveData { emit(makePairs(it)) }
+        liveData {
+            val pairs = makePairs(it)
+            val exitAnimTime = resources.getInteger(R.integer.day_fragment_exit_duration).toLong()
+            delay(exitAnimTime)
+            emit(pairs)
+        }
     }
 
     private val _mLiveSleepDay = MutableLiveData<SleepDay>()
