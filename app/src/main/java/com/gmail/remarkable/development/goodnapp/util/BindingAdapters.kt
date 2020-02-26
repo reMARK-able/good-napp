@@ -17,7 +17,7 @@ fun TextView.setDateFormatted(sleepDay: SleepDay?) {
 @BindingAdapter("realTWTFormatted")
 fun TextView.setRealTWTFormatted(sleepDay: SleepDay?) {
     sleepDay?.let {
-        text = getStringForRealTWT(sleepDay.realTWT, context.resources)
+        text = getStringForRealTWT(sleepDay.realDayAwakeTime, context.resources)
     }
 }
 

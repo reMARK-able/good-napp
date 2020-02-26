@@ -65,7 +65,7 @@ data class SleepDay(
             }
         }
 
-    val realTWT: Long
+    val realDayAwakeTime: Long
         get() {
             var sumOfAwakeTimes = 0L
             for (awakeTime in awakeTimes) {
