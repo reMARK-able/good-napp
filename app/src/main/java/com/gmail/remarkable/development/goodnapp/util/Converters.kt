@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.text.format.DateFormat
 import com.gmail.remarkable.development.goodnapp.R
 import com.gmail.remarkable.development.goodnapp.SleepDay
+import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
 import com.gmail.remarkable.development.goodnapp.SleepDay.NightAwake
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -73,6 +74,13 @@ fun getStringForTargetBedtime(timestamp: Long, context: Context): String {
 fun getTotalNightAwakesTime(nightAwakes: List<NightAwake>): Long {
     var sum = 0L
     for (awake in nightAwakes) sum += awake.duration
+    return sum
+}
+
+// Gets total nap sleep time.
+fun getTotalNapTime(naps: List<Nap>): Long {
+    var sum = 0L
+    for (nap in naps) sum += nap.duration
     return sum
 }
 

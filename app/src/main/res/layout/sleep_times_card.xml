@@ -126,8 +126,8 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:inputType="time"
-                    android:text="@string/no_time"
                     android:textAlignment="center"
+                    app:sleepDayString="@{viewModel.mLiveSleepDay}"
                     tools:text="@string/sample_awake_time" />
 
             </com.google.android.material.textfield.TextInputLayout>

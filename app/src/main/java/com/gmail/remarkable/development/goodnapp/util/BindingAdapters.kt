@@ -84,3 +84,12 @@ fun TextView.setTotalAwakesString(sleepDay: SleepDay?) {
         else -> getDurationNonEmptyString(getTotalAwakesTime(sleepDay), res)
     }
 }
+
+@BindingAdapter("sleepDayString")
+fun TextView.setSleepDayString(sleepDay: SleepDay?) {
+    val res = context.resources
+    text = when (sleepDay) {
+        null -> res.getString(R.string.no_time)
+        else -> getDurationNonEmptyString(getTotalNapTime(sleepDay.naps), res)
+    }
+}
