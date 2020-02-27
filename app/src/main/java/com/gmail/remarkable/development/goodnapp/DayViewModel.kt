@@ -95,7 +95,7 @@ class DayViewModel(
 
     // LiveData for nap duration field.
     fun napDurationString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
-        getDurationNapString(
+        getDurationNonEmptyString(
             day.naps.getOrNull(index)?.duration ?: 0,
             resources
         )

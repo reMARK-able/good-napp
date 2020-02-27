@@ -53,7 +53,7 @@ fun getAllAwakeTimesString(awakeList: List<Long>, res: Resources): String {
 }
 
 // Set the duration string for nap layout.
-fun getDurationNapString(millis: Long, resources: Resources): String =
+fun getDurationNonEmptyString(millis: Long, resources: Resources): String =
     when {
         millis <= 0L -> resources.getString(R.string.no_time)
         // here can be another scenario for validation eg. hint for the user
