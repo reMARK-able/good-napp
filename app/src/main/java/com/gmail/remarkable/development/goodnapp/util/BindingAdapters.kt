@@ -110,3 +110,17 @@ fun TextView.setSleepNightString(sleepDay: SleepDay?, wakeUp: Long?) {
         else -> getDurationNonEmptyString(getNightSleep(sleepDay, wakeUp), context.resources)
     }
 }
+
+@BindingAdapter("sleepTotalString", "nextDayWakeUp")
+fun TextView.setSleepTotalString(sleepDay: SleepDay?, wakeUp: Long?) {
+    val res = context.resources
+    val nightSleep = getNightSleep(sleepDay, wakeUp)
+    val realBedTimeValid = validRealBedtime(sleepDay, res)
+    val noTime = res.getString(R.string.no_time)
+    text = when {
+        sleepDay == null || wakeUp == null -> noTime
+        nightSleep != 0L && realBedTimeValid == null ->
+            getDurationNonEmptyString(nightSleep + getTotalNapTime(sleepDay.naps), res)
+        else -> noTime
+    }
+}
