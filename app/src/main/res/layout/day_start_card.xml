@@ -101,7 +101,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/out_of_bed_container"
-                app:layout_constraintTop_toTopOf="@+id/out_of_bed_container">
+                app:layout_constraintTop_toTopOf="@+id/out_of_bed_container"
+                app:wakeUpError="@{viewModel.mLiveSleepDay}">
 
                 <com.gmail.remarkable.development.goodnapp.CustomTextInputEditText
                     android:id="@+id/wakeUp_editText"

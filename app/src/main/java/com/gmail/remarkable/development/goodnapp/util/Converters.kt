@@ -5,6 +5,8 @@ import android.content.res.Resources
 import android.text.format.DateFormat
 import com.gmail.remarkable.development.goodnapp.R
 import com.gmail.remarkable.development.goodnapp.SleepDay
+import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
+import com.gmail.remarkable.development.goodnapp.SleepDay.NightAwake
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
@@ -52,7 +54,7 @@ fun getAllAwakeTimesString(awakeList: List<Long>, res: Resources): String {
 }
 
 // Set the duration string for nap layout.
-fun getDurationNapString(millis: Long, resources: Resources): String =
+fun getDurationNonEmptyString(millis: Long, resources: Resources): String =
     when {
         millis <= 0L -> resources.getString(R.string.no_time)
         // here can be another scenario for validation eg. hint for the user
@@ -68,13 +70,39 @@ fun getStringForTargetBedtime(timestamp: Long, context: Context): String {
     return df.format(date)
 }
 
-// Convert duration in millis to string format.
-fun getStringForRealTWT(millis: Long, resources: Resources): String {
-    if (millis == 0L) return resources.getString(R.string.no_time)
-    val hours = millis / (60 * 60 * 1000) % 24
-    val min = millis / (60 * 1000) % 60
+// Gets total night awakes time.
+fun getTotalNightAwakesTime(nightAwakes: List<NightAwake>): Long {
+    var sum = 0L
+    for (awake in nightAwakes) sum += awake.duration
+    return sum
+}
 
-    return resources.getString(R.string.time_duration_format, hours, min)
+// Gets total nap sleep time.
+fun getTotalNapTime(naps: List<Nap>): Long {
+    var sum = 0L
+    for (nap in naps) sum += nap.duration
+    return sum
+}
+
+// Gets total (day + night) awake time.
+fun getTotalAwakesTime(sleepDay: SleepDay?): Long {
+    return when {
+        sleepDay == null -> 0
+        sleepDay.realDayAwakeTime == 0L -> 0
+        else -> sleepDay.realDayAwakeTime + getTotalNightAwakesTime(sleepDay.nightAwakes)
+    }
+}
+
+// Gets total night sleep in millis.
+fun getNightSleep(sleepDay: SleepDay?, wakeUp: Long?): Long {
+    return when {
+        sleepDay == null || wakeUp == null -> 0
+        wakeUp == 0L || sleepDay.realBedtime == 0L -> 0
+        wakeUp > sleepDay.realBedtime -> wakeUp - sleepDay.realBedtime - getTotalNightAwakesTime(
+            sleepDay.nightAwakes
+        )
+        else -> 0
+    }
 }
 
 // Calculates duration in millis from picker time.
@@ -160,6 +188,16 @@ suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, SleepDay?>> {
             else -> list.zipWithNext() + listOf(list.last() to null)
         }
 
+    }
+}
+
+suspend fun getValidNextDayWakeUp(sleepDay: SleepDay?, resources: Resources): Long? {
+    return withContext(Dispatchers.Default) {
+        when {
+            sleepDay == null -> null
+            validWakeUp(sleepDay, resources) != null -> null
+            else -> sleepDay.wakeUp
+        }
     }
 }
 

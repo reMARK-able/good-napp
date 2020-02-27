@@ -33,6 +33,14 @@ class DayViewModel(
     val mLiveSleepDay: LiveData<SleepDay>
         get() = _mLiveSleepDay
 
+    val nextDayWakeUp = mLiveSleepDay.switchMap {
+        liveData {
+            val nextDay = getDayFromDatabase(it.date.nextDay())
+            emit(getValidNextDayWakeUp(nextDay, resources))
+        }
+    }
+
+
     // LiveData for navigation after fab clicked event.
     private val _navigateToToday = MutableLiveData<Boolean>()
     val navigateToToday: LiveData<Boolean>
@@ -95,7 +103,7 @@ class DayViewModel(
 
     // LiveData for nap duration field.
     fun napDurationString(index: Int) = Transformations.map(mLiveSleepDay) { day ->
-        getDurationNapString(
+        getDurationNonEmptyString(
             day.naps.getOrNull(index)?.duration ?: 0,
             resources
         )
@@ -137,10 +145,6 @@ class DayViewModel(
                 application
             )
         }
-
-    // LiveData for real TWT
-    val realTWTString =
-        Transformations.map(mLiveSleepDay) { day -> getStringForRealTWT(day.realTWT, resources) }
 
     init {
         Log.i("DayViewModel", "DayViewModel is created.")
