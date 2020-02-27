@@ -93,6 +93,18 @@ fun getTotalAwakesTime(sleepDay: SleepDay?): Long {
     }
 }
 
+// Gets total night sleep in millis.
+fun getNightSleep(sleepDay: SleepDay?, wakeUp: Long?): Long {
+    return when {
+        sleepDay == null || wakeUp == null -> 0
+        wakeUp == 0L || sleepDay.realBedtime == 0L -> 0
+        wakeUp > sleepDay.realBedtime -> wakeUp - sleepDay.realBedtime - getTotalNightAwakesTime(
+            sleepDay.nightAwakes
+        )
+        else -> 0
+    }
+}
+
 // Calculates duration in millis from picker time.
 fun getDurationFromPicker(hour: Int, min: Int): Long {
     return ((hour * 60) + min) * 60000L
