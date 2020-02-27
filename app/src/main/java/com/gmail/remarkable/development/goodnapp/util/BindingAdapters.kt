@@ -15,13 +15,6 @@ fun TextView.setDateFormatted(sleepDay: SleepDay?) {
     }
 }
 
-@BindingAdapter("realTWTFormatted")
-fun TextView.setRealTWTFormatted(sleepDay: SleepDay?) {
-    sleepDay?.let {
-        text = getStringForRealTWT(sleepDay.realDayAwakeTime, context.resources)
-    }
-}
-
 @BindingAdapter("nightAwakeStartString", "index")
 fun TextView.setNightAwakeStartStringFormatted(sleepDay: SleepDay?, index: Int) {
     sleepDay?.nightAwakes?.getOrNull(index)?.let {
@@ -70,7 +63,7 @@ fun TextView.setAwakesDayString(sleepDay: SleepDay?) {
     val res = context.resources
     text = when {
         sleepDay == null -> res.getString(R.string.no_time)
-        else -> getStringForRealTWT(sleepDay.realDayAwakeTime, res)
+        else -> getDurationNonEmptyString(sleepDay.realDayAwakeTime, res)
     }
 }
 
@@ -79,7 +72,7 @@ fun TextView.setAwakesNightString(sleepDay: SleepDay?) {
     val res = context.resources
     text = when {
         sleepDay == null -> res.getString(R.string.no_time)
-        else -> getStringForRealTWT(getTotalNightAwakesTime(sleepDay.nightAwakes), res)
+        else -> getDurationNonEmptyString(getTotalNightAwakesTime(sleepDay.nightAwakes), res)
     }
 }
 
@@ -88,6 +81,6 @@ fun TextView.setTotalAwakesString(sleepDay: SleepDay?) {
     val res = context.resources
     text = when {
         sleepDay == null -> res.getString(R.string.no_time)
-        else -> getStringForRealTWT(getTotalAwakesTime(sleepDay), res)
+        else -> getDurationNonEmptyString(getTotalAwakesTime(sleepDay), res)
     }
 }

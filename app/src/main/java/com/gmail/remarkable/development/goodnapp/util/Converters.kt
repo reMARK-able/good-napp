@@ -69,15 +69,6 @@ fun getStringForTargetBedtime(timestamp: Long, context: Context): String {
     return df.format(date)
 }
 
-// Convert duration in millis to string format.
-fun getStringForRealTWT(millis: Long, resources: Resources): String {
-    if (millis == 0L) return resources.getString(R.string.no_time)
-    val hours = millis / (60 * 60 * 1000) % 24
-    val min = millis / (60 * 1000) % 60
-
-    return resources.getString(R.string.time_duration_format, hours, min)
-}
-
 // Gets total night awakes time.
 fun getTotalNightAwakesTime(nightAwakes: List<NightAwake>): Long {
     var sum = 0L
