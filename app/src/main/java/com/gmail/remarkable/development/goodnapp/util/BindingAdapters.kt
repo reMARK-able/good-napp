@@ -36,6 +36,14 @@ fun TextView.setNightAwakeDurationString(sleepDay: SleepDay?, index: Int) {
     }
 }
 
+@BindingAdapter("wakeUpError")
+fun TextInputLayout.setWakeUpError(sleepDay: SleepDay?) {
+    error = when (sleepDay) {
+        null -> null
+        else -> validWakeUp(sleepDay, context.resources)
+    }
+}
+
 @BindingAdapter("awakeStartError", "index")
 fun TextInputLayout.setAwakeStartError(sleepDay: SleepDay?, index: Int) {
     error = if (sleepDay == null) null
