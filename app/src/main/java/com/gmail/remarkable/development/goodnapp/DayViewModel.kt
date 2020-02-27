@@ -33,6 +33,14 @@ class DayViewModel(
     val mLiveSleepDay: LiveData<SleepDay>
         get() = _mLiveSleepDay
 
+    val nextDayWakeUp = mLiveSleepDay.switchMap {
+        liveData {
+            val nextDay = getDayFromDatabase(it.date.nextDay())
+            emit(getValidNextDayWakeUp(nextDay, resources))
+        }
+    }
+
+
     // LiveData for navigation after fab clicked event.
     private val _navigateToToday = MutableLiveData<Boolean>()
     val navigateToToday: LiveData<Boolean>

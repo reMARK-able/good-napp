@@ -179,6 +179,16 @@ suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, SleepDay?>> {
     }
 }
 
+suspend fun getValidNextDayWakeUp(sleepDay: SleepDay?, resources: Resources): Long? {
+    return withContext(Dispatchers.Default) {
+        when {
+            sleepDay == null -> null
+            validWakeUp(sleepDay, resources) != null -> null
+            else -> sleepDay.wakeUp
+        }
+    }
+}
+
 /**
  * Gets next UTC day from timestamp.
  */
