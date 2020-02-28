@@ -66,53 +66,63 @@ fun Button.setAwakeButtonEnable(sleepDay: SleepDay?) {
     }
 }
 
-@BindingAdapter("awakesDayString")
-fun TextView.setAwakesDayString(sleepDay: SleepDay?) {
+@BindingAdapter(value = ["awakesDayString", "longVersion"], requireAll = false)
+fun TextView.setAwakesDayString(sleepDay: SleepDay?, longVersion: Boolean?) {
+    val version = longVersion ?: true
     val res = context.resources
     text = when {
         sleepDay == null -> res.getString(R.string.no_time)
-        else -> getDurationNonEmptyString(sleepDay.realDayAwakeTime, res)
+        else -> getDurationNonEmptyString(sleepDay.realDayAwakeTime, res, version)
     }
 }
 
-@BindingAdapter("awakesNightString")
-fun TextView.setAwakesNightString(sleepDay: SleepDay?) {
+@BindingAdapter(value = ["awakesNightString", "longVersion"], requireAll = false)
+fun TextView.setAwakesNightString(sleepDay: SleepDay?, longVersion: Boolean?) {
+    val version = longVersion ?: true
     val res = context.resources
     text = when {
         sleepDay == null -> res.getString(R.string.no_time)
-        else -> getDurationNonEmptyString(getTotalNightAwakesTime(sleepDay.nightAwakes), res)
+        else -> getDurationNonEmptyString(
+            getTotalNightAwakesTime(sleepDay.nightAwakes),
+            res,
+            version
+        )
     }
 }
 
-@BindingAdapter("totalAwakesString")
-fun TextView.setTotalAwakesString(sleepDay: SleepDay?) {
+@BindingAdapter(value = ["totalAwakesString", "longVersion"], requireAll = false)
+fun TextView.setTotalAwakesString(sleepDay: SleepDay?, longVersion: Boolean?) {
+    val version = longVersion ?: true
     val res = context.resources
     text = when {
         sleepDay == null -> res.getString(R.string.no_time)
-        else -> getDurationNonEmptyString(getTotalAwakesTime(sleepDay), res)
+        else -> getDurationNonEmptyString(getTotalAwakesTime(sleepDay), res, version)
     }
 }
 
-@BindingAdapter("sleepDayString")
-fun TextView.setSleepDayString(sleepDay: SleepDay?) {
+@BindingAdapter(value = ["sleepDayString", "longVersion"], requireAll = false)
+fun TextView.setSleepDayString(sleepDay: SleepDay?, longVersion: Boolean?) {
+    val version = longVersion ?: true
     val res = context.resources
     text = when (sleepDay) {
         null -> res.getString(R.string.no_time)
-        else -> getDurationNonEmptyString(getTotalNapTime(sleepDay.naps), res)
+        else -> getDurationNonEmptyString(getTotalNapTime(sleepDay.naps), res, version)
     }
 }
 
-@BindingAdapter("sleepNightString", "nextDayWakeUp")
-fun TextView.setSleepNightString(sleepDay: SleepDay?, wakeUp: Long?) {
+@BindingAdapter(value = ["sleepNightString", "nextDayWakeUp", "longVersion"], requireAll = false)
+fun TextView.setSleepNightString(sleepDay: SleepDay?, wakeUp: Long?, longVersion: Boolean?) {
+    val version = longVersion ?: true
     val res = context.resources
     text = when {
         validRealBedtime(sleepDay, res) != null -> res.getString(R.string.no_time)
-        else -> getDurationNonEmptyString(getNightSleep(sleepDay, wakeUp), context.resources)
+        else -> getDurationNonEmptyString(getNightSleep(sleepDay, wakeUp), res, version)
     }
 }
 
-@BindingAdapter("sleepTotalString", "nextDayWakeUp")
-fun TextView.setSleepTotalString(sleepDay: SleepDay?, wakeUp: Long?) {
+@BindingAdapter(value = ["sleepTotalString", "nextDayWakeUp", "longVersion"], requireAll = false)
+fun TextView.setSleepTotalString(sleepDay: SleepDay?, wakeUp: Long?, longVersion: Boolean?) {
+    val version = longVersion ?: true
     val res = context.resources
     val nightSleep = getNightSleep(sleepDay, wakeUp)
     val realBedTimeValid = validRealBedtime(sleepDay, res)
@@ -120,7 +130,7 @@ fun TextView.setSleepTotalString(sleepDay: SleepDay?, wakeUp: Long?) {
     text = when {
         sleepDay == null || wakeUp == null -> noTime
         nightSleep != 0L && realBedTimeValid == null ->
-            getDurationNonEmptyString(nightSleep + getTotalNapTime(sleepDay.naps), res)
+            getDurationNonEmptyString(nightSleep + getTotalNapTime(sleepDay.naps), res, version)
         else -> noTime
     }
 }
