@@ -107,6 +107,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_reelTwt_label"
             app:layout_constraintStart_toEndOf="@id/barrier_label"
+            app:longVersion="@{false}"
+            app:totalAwakesString="@{sleepDay}"
             tools:text="11:40" />
 
         <TextView
