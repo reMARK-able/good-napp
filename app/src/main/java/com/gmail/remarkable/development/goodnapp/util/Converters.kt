@@ -54,11 +54,15 @@ fun getAllAwakeTimesString(awakeList: List<Long>, res: Resources): String {
 }
 
 // Set the duration string for nap layout.
-fun getDurationNonEmptyString(millis: Long, resources: Resources): String =
+fun getDurationNonEmptyString(
+    millis: Long,
+    resources: Resources,
+    longVersion: Boolean = true
+): String =
     when {
         millis <= 0L -> resources.getString(R.string.no_time)
         // here can be another scenario for validation eg. hint for the user
-        else -> getDurationString(millis, resources)
+        else -> getDurationString(millis, resources, longVersion)
     }
 
 // Convert timestamp to time in String format for non-editable field.
