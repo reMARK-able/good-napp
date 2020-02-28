@@ -175,12 +175,28 @@ fun prevDayDate(date: Long): Long {
     return calendarUTC.timeInMillis
 }
 
+suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, Long?>> {
+    return withContext(Dispatchers.Default) {
+        when {
+            list.isNullOrEmpty() -> listOf()
+            else -> {
+                list.withIndex().map { (index, sleepDay) ->
+                    val nextDay = list.getOrNull(index - 1)
+                    val validNextDayWakeUp =
+                        if (validWakeUp(nextDay) == null) nextDay?.wakeUp else null
+                    Pair(sleepDay, validNextDayWakeUp)
+                }
+            }
+        }
+    }
+}
+
 /**
  * Makes list of pairs (SleepDay with previous SleepDay on the list) for recyclerView adapter.
  * @param list List to convert.
  * @return List<Pair<sleepday, previousSleepDay>
  */
-suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, SleepDay?>> {
+suspend fun makePairs2(list: List<SleepDay>?): List<Pair<SleepDay, SleepDay?>> {
     return withContext(Dispatchers.Default) {
         when {
             list.isNullOrEmpty() -> listOf()

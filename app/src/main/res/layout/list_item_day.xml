@@ -10,8 +10,8 @@
             type="com.gmail.remarkable.development.goodnapp.SleepDay" />
 
         <variable
-            name="prevSleepDay"
-            type="com.gmail.remarkable.development.goodnapp.SleepDay" />
+            name="nextDayWakeUp"
+            type="Long" />
 
         <variable
             name="clickListener"
