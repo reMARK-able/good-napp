@@ -40,7 +40,7 @@ fun TextView.setNightAwakeDurationString(sleepDay: SleepDay?, index: Int) {
 fun TextInputLayout.setWakeUpError(sleepDay: SleepDay?) {
     error = when (sleepDay) {
         null -> null
-        else -> validWakeUp(sleepDay, context.resources)
+        else -> getWakeUpErrorString(sleepDay, context.resources)
     }
 }
 

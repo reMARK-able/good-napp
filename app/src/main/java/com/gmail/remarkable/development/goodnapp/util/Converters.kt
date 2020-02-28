@@ -195,7 +195,7 @@ suspend fun getValidNextDayWakeUp(sleepDay: SleepDay?, resources: Resources): Lo
     return withContext(Dispatchers.Default) {
         when {
             sleepDay == null -> null
-            validWakeUp(sleepDay, resources) != null -> null
+            getWakeUpErrorString(sleepDay, resources) != null -> null
             else -> sleepDay.wakeUp
         }
     }

@@ -131,7 +131,7 @@ fun validOutOfBed(mDay: SleepDay?, resources: Resources): String? {
 /**
  * Method for validation of realWakeUp field.
  */
-fun validWakeUp(mDay: SleepDay?, resources: Resources): String? {
+fun getWakeUpErrorString(mDay: SleepDay?, resources: Resources): String? {
     if (mDay == null) return null
     val wakeUp = mDay.wakeUp
     val firstNap = mDay.naps.getOrNull(0)
