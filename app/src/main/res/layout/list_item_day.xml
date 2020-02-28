@@ -91,7 +91,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:gravity="center_vertical"
-            android:text="@string/real_twt"
+            android:text="@string/awake"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textSize="12sp"
             app:drawableStartCompat="@drawable/ic_timer_black_24dp"
