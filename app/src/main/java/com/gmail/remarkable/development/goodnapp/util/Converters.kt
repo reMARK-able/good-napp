@@ -54,11 +54,15 @@ fun getAllAwakeTimesString(awakeList: List<Long>, res: Resources): String {
 }
 
 // Set the duration string for nap layout.
-fun getDurationNonEmptyString(millis: Long, resources: Resources): String =
+fun getDurationNonEmptyString(
+    millis: Long,
+    resources: Resources,
+    longVersion: Boolean = true
+): String =
     when {
         millis <= 0L -> resources.getString(R.string.no_time)
         // here can be another scenario for validation eg. hint for the user
-        else -> getDurationString(millis, resources)
+        else -> getDurationString(millis, resources, longVersion)
     }
 
 // Convert timestamp to time in String format for non-editable field.
@@ -175,12 +179,30 @@ fun prevDayDate(date: Long): Long {
     return calendarUTC.timeInMillis
 }
 
+suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, Long?>> {
+    return withContext(Dispatchers.Default) {
+        when {
+            list.isNullOrEmpty() -> listOf()
+            else -> {
+                list.withIndex().map { (index, sleepDay) ->
+                    val nextDayOnList = list.getOrNull(index - 1)
+                    val calendarNextDay =
+                        if (nextDayOnList?.date == sleepDay.date.nextDay()) nextDayOnList else null
+                    val validNextDayWakeUp =
+                        if (validWakeUp(calendarNextDay) == null) calendarNextDay?.wakeUp else null
+                    Pair(sleepDay, validNextDayWakeUp)
+                }
+            }
+        }
+    }
+}
+
 /**
  * Makes list of pairs (SleepDay with previous SleepDay on the list) for recyclerView adapter.
  * @param list List to convert.
  * @return List<Pair<sleepday, previousSleepDay>
  */
-suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, SleepDay?>> {
+suspend fun makePairs2(list: List<SleepDay>?): List<Pair<SleepDay, SleepDay?>> {
     return withContext(Dispatchers.Default) {
         when {
             list.isNullOrEmpty() -> listOf()
@@ -195,7 +217,7 @@ suspend fun getValidNextDayWakeUp(sleepDay: SleepDay?, resources: Resources): Lo
     return withContext(Dispatchers.Default) {
         when {
             sleepDay == null -> null
-            validWakeUp(sleepDay, resources) != null -> null
+            getWakeUpErrorString(sleepDay, resources) != null -> null
             else -> sleepDay.wakeUp
         }
     }

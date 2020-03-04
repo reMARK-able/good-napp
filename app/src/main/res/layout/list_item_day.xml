@@ -10,8 +10,8 @@
             type="com.gmail.remarkable.development.goodnapp.SleepDay" />
 
         <variable
-            name="prevSleepDay"
-            type="com.gmail.remarkable.development.goodnapp.SleepDay" />
+            name="nextDayWakeUp"
+            type="Long" />
 
         <variable
             name="clickListener"
@@ -22,7 +22,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:paddingBottom="16dp"
         android:background="?android:attr/selectableItemBackground"
         android:onClick="@{() -> clickListener.onClick(sleepDay.date)}"
         android:orientation="vertical">
@@ -42,7 +42,7 @@
             android:id="@+id/item_list_date_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/date_label"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -65,7 +65,7 @@
             android:id="@+id/item_list_awake_times_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/awake_times_label"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -75,12 +75,15 @@
 
         <TextView
             android:id="@+id/item_list_awakeTimes"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:awakeTimesFormatted="@{sleepDay}"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_awake_times_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/item_list_awake_times_label"
             tools:text="3:20/4:15/1:50/8:40/2:44/3:55" />
 
@@ -88,16 +91,16 @@
             android:id="@+id/item_list_reelTwt_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:gravity="center_vertical"
-            android:text="@string/real_twt"
+            android:text="@string/awake"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textSize="12sp"
             app:drawableStartCompat="@drawable/ic_timer_black_24dp"
             app:drawableTint="?android:textColorSecondary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_list_awake_times_label" />
+            app:layout_constraintTop_toBottomOf="@+id/item_list_awakeTimes" />
 
         <TextView
             android:id="@+id/item_list_reelTwt"
@@ -107,6 +110,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_reelTwt_label"
             app:layout_constraintStart_toEndOf="@id/barrier_label"
+            app:longVersion="@{false}"
+            app:totalAwakesString="@{sleepDay}"
             tools:text="11:40" />
 
         <TextView
@@ -115,10 +120,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:gravity="center_vertical"
+            app:awakesDayString="@{sleepDay}"
             app:drawableStartCompat="@drawable/ic_sun_black_16dp"
             app:drawableTint="?android:textColorSecondary"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_reelTwt"
             app:layout_constraintStart_toEndOf="@+id/barrier_times"
+            app:longVersion="@{false}"
             tools:text="10:15" />
 
         <TextView
@@ -127,18 +134,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
+            app:awakesNightString="@{sleepDay}"
             app:drawableStartCompat="@drawable/ic_moon_black_16dp"
             app:drawableTint="?android:textColorSecondary"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_twt_day"
             app:layout_constraintStart_toEndOf="@+id/barrier_day"
+            app:longVersion="@{false}"
             tools:text="10:15" />
 
         <TextView
             android:id="@+id/item_list_sleep_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
             android:gravity="center_vertical"
             android:text="@string/sleep_item_list_label"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -156,6 +165,9 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_sleep_label"
             app:layout_constraintStart_toEndOf="@id/barrier_label"
+            app:longVersion="@{false}"
+            app:nextDayWakeUp="@{nextDayWakeUp}"
+            app:sleepTotalString="@{sleepDay}"
             tools:text="11:40" />
 
         <TextView
@@ -168,6 +180,8 @@
             app:drawableTint="?android:textColorSecondary"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_sleep_total"
             app:layout_constraintStart_toEndOf="@+id/barrier_times"
+            app:longVersion="@{false}"
+            app:sleepDayString="@{sleepDay}"
             tools:text="10:15" />
 
         <TextView
@@ -180,6 +194,9 @@
             app:drawableTint="?android:textColorSecondary"
             app:layout_constraintBaseline_toBaselineOf="@+id/item_list_sleep_day"
             app:layout_constraintStart_toEndOf="@+id/barrier_day"
+            app:longVersion="@{false}"
+            app:nextDayWakeUp="@{nextDayWakeUp}"
+            app:sleepNightString="@{sleepDay}"
             tools:text="10:15" />
 
         <androidx.constraintlayout.widget.Barrier

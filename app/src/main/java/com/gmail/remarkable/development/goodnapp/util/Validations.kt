@@ -129,24 +129,37 @@ fun validOutOfBed(mDay: SleepDay?, resources: Resources): String? {
 }
 
 /**
- * Method for validation of realWakeUp field.
+ * Gets the error string from wakeUp walidation.
  */
-fun validWakeUp(mDay: SleepDay?, resources: Resources): String? {
+fun validWakeUp(mDay: SleepDay?): Int? {
     if (mDay == null) return null
     val wakeUp = mDay.wakeUp
     val firstNap = mDay.naps.getOrNull(0)
     val outOfBed = mDay.outOfBed
     val realBedtime = mDay.realBedtime
     when {
-        wakeUp != 0L && outOfBed != 0L && outOfBed < wakeUp -> return "Can't be later than out of bed!"
-        wakeUp != 0L && realBedtime != 0L && realBedtime <= wakeUp -> return "Can't be later than real bedtime."
+        wakeUp != 0L && outOfBed != 0L && outOfBed < wakeUp -> return 1
+        wakeUp != 0L && realBedtime != 0L && realBedtime <= wakeUp -> return 2
         firstNap != null && wakeUp != 0L -> return when {
-            firstNap.start != 0L && firstNap.start <= wakeUp -> resources.getString(R.string.error_cant_be_later_than_first_nap)
-            firstNap.end != 0L && firstNap.end <= wakeUp -> resources.getString(R.string.error_conflict_with_first_nap_end)
+            firstNap.start != 0L && firstNap.start <= wakeUp -> 3
+            firstNap.end != 0L && firstNap.end <= wakeUp -> 4
             else -> null
         }
     }
     return null
+}
+
+/**
+ * Method for validation of realWakeUp field.
+ */
+fun getWakeUpErrorString(mDay: SleepDay?, resources: Resources): String? {
+    return when (validWakeUp(mDay)) {
+        1 -> resources.getString(R.string.error_cant_be_later_than_outOfBed)
+        2 -> resources.getString(R.string.error_cant_be_later_than_realBedtime)
+        3 -> resources.getString(R.string.error_cant_be_later_than_first_nap)
+        4 -> resources.getString(R.string.error_conflict_with_first_nap_end)
+        else -> null
+    }
 }
 
 /**
