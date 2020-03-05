@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentCalendarBinding
 import com.gmail.remarkable.development.goodnapp.util.TodayDecorator
-import com.gmail.remarkable.development.goodnapp.util.getMillisFromCalendarDay
+import com.gmail.remarkable.development.goodnapp.util.toMillisUTCDate
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -35,7 +35,7 @@ class CalendarFragment : Fragment() {
 
         binding.calendarView.setOnDateChangedListener { widget, date, selected ->
             if (selected) {
-                val millisTime = getMillisFromCalendarDay(date)
+                val millisTime = date.toMillisUTCDate()
                 Log.i(
                     "CalendarFragment",
                     "day=${date.day}; month=${date.month}; year=${date.year}; millis= $millisTime"

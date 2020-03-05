@@ -237,11 +237,11 @@ fun Long.nextDay(): Long {
 /**
  * Gets UTC date in miillis from com.prolificinteractive.materialcalendarview.CalendarDay
  */
-fun getMillisFromCalendarDay(date: CalendarDay): Long {
+fun CalendarDay.toMillisUTCDate(): Long {
     val calendarUTC = getUTCCalendar()
-    val day = date.day
-    val month = date.month
-    val year = date.year
+    val day = day
+    val month = month
+    val year = year
     calendarUTC.set(Calendar.YEAR, year)
     calendarUTC.set(Calendar.MONTH, month - 1)
     calendarUTC.set(Calendar.DAY_OF_MONTH, day)
