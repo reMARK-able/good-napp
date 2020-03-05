@@ -251,3 +251,15 @@ fun getMillisFromCalendarDay(date: CalendarDay): Long {
     calendarUTC.set(Calendar.MILLISECOND, 0)
     return calendarUTC.timeInMillis
 }
+
+/**
+ * Converts date in millis to CalendarDay.
+ */
+fun Long.toCalendarDay(): CalendarDay {
+    val calendarUTC = getUTCCalendar()
+    calendarUTC.timeInMillis = this
+    val year = calendarUTC.get(Calendar.YEAR)
+    val month = calendarUTC.get(Calendar.MONTH)
+    val day = calendarUTC.get(Calendar.DAY_OF_MONTH)
+    return CalendarDay.from(year, month, day)
+}
