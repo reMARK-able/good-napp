@@ -7,6 +7,7 @@ import com.gmail.remarkable.development.goodnapp.R
 import com.gmail.remarkable.development.goodnapp.SleepDay
 import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
 import com.gmail.remarkable.development.goodnapp.SleepDay.NightAwake
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
@@ -230,5 +231,23 @@ fun Long.nextDay(): Long {
     val calendarUTC = getUTCCalendar()
     calendarUTC.timeInMillis = this
     calendarUTC.add(Calendar.DATE, 1)
+    return calendarUTC.timeInMillis
+}
+
+/**
+ * Gets UTC date in miillis from com.prolificinteractive.materialcalendarview.CalendarDay
+ */
+fun getMillisFromCalendarDay(date: CalendarDay): Long {
+    val calendarUTC = getUTCCalendar()
+    val day = date.day
+    val month = date.month
+    val year = date.year
+    calendarUTC.set(Calendar.YEAR, year)
+    calendarUTC.set(Calendar.MONTH, month - 1)
+    calendarUTC.set(Calendar.DAY_OF_MONTH, day)
+    calendarUTC.set(Calendar.HOUR_OF_DAY, 0)
+    calendarUTC.set(Calendar.MINUTE, 0)
+    calendarUTC.set(Calendar.SECOND, 0)
+    calendarUTC.set(Calendar.MILLISECOND, 0)
     return calendarUTC.timeInMillis
 }
