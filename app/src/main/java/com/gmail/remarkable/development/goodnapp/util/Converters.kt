@@ -169,7 +169,7 @@ fun setFakeData(): List<SleepDay> {
     return fakeDaysList.reversed()
 }
 
-private fun getUTCCalendar() = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+fun getUTCCalendar() = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
 
 // Get the previous date in millis UTC format.
 fun prevDayDate(date: Long): Long {
