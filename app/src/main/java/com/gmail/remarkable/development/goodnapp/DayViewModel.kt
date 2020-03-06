@@ -29,6 +29,14 @@ class DayViewModel(
         }
     }
 
+    val sleepCalendarDays = days.switchMap {
+        liveData {
+            val days = getCalendarDays(it)
+            emit(days)
+        }
+    }
+
+
     private val _mLiveSleepDay = MutableLiveData<SleepDay>()
     val mLiveSleepDay: LiveData<SleepDay>
         get() = _mLiveSleepDay

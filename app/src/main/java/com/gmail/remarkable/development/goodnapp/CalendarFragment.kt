@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentCalendarBinding
-import com.gmail.remarkable.development.goodnapp.util.TodayDecorator
-import com.gmail.remarkable.development.goodnapp.util.toMillisUTCDate
-import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.gmail.remarkable.development.goodnapp.util.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -23,16 +22,25 @@ class CalendarFragment : Fragment() {
     lateinit var binding: FragmentCalendarBinding
     val viewModel: DayViewModel by inject { parametersOf(this) }
 
+    val todayCalendarDay = getTodayInMillis().toCalendarDay()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_calendar, container, false)
 
-        val myDay = CalendarDay.from(2020, 3, 5)
-        val todayDecorator = TodayDecorator(myDay)
-        binding.calendarView.addDecorator(todayDecorator)
+        val todayDecorator = TodayDecorator(requireContext())
+        val sleepDaysDecorator = SleepDaysDecorator(emptySet(), requireContext())
+        binding.calendarView.state().edit()
+            .setMaximumDate(todayCalendarDay)
+            .commit()
+        binding.calendarView.addDecorators(todayDecorator, sleepDaysDecorator)
 
+        viewModel.sleepCalendarDays.observe(viewLifecycleOwner, Observer { days ->
+            sleepDaysDecorator.sleepDays = days
+            binding.calendarView.invalidateDecorators()
+        })
         binding.calendarView.setOnDateChangedListener { widget, date, selected ->
             if (selected) {
                 val millisTime = date.toMillisUTCDate()
