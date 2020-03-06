@@ -29,6 +29,8 @@ class CalendarFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_calendar, container, false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
         val todayDecorator = TodayDecorator(requireContext())
         val sleepDaysDecorator = SleepDaysDecorator(emptySet(), requireContext())
@@ -48,7 +50,7 @@ class CalendarFragment : Fragment() {
                     "CalendarFragment",
                     "day=${date.day}; month=${date.month}; year=${date.year}; millis= $millisTime"
                 )
-                navigateToDay(millisTime)
+                viewModel.onNavigateToDay(millisTime)
             }
         }
 
