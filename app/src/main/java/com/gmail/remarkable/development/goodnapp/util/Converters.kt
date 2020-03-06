@@ -198,22 +198,6 @@ suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, Long?>> {
     }
 }
 
-/**
- * Makes list of pairs (SleepDay with previous SleepDay on the list) for recyclerView adapter.
- * @param list List to convert.
- * @return List<Pair<sleepday, previousSleepDay>
- */
-suspend fun makePairs2(list: List<SleepDay>?): List<Pair<SleepDay, SleepDay?>> {
-    return withContext(Dispatchers.Default) {
-        when {
-            list.isNullOrEmpty() -> listOf()
-            list.size == 1 -> listOf(list[0] to null)
-            else -> list.zipWithNext() + listOf(list.last() to null)
-        }
-
-    }
-}
-
 suspend fun getValidNextDayWakeUp(sleepDay: SleepDay?, resources: Resources): Long? {
     return withContext(Dispatchers.Default) {
         when {
