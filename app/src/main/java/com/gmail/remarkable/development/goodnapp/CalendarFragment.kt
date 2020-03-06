@@ -43,6 +43,10 @@ class CalendarFragment : Fragment() {
             sleepDaysDecorator.sleepDays = days
             binding.calendarView.invalidateDecorators()
         })
+        binding.bottom.container.setOnClickListener {
+            navigateToDay()
+        }
+
         binding.calendarView.setOnDateChangedListener { widget, date, selected ->
             if (selected) {
                 val millisTime = date.toMillisUTCDate()
@@ -57,8 +61,7 @@ class CalendarFragment : Fragment() {
         return binding.root
     }
 
-    private fun navigateToDay(date: Long) {
-        viewModel.onNavigateToDay(date)
+    private fun navigateToDay() {
         val navController = findNavController()
         if (navController.currentDestination?.id == R.id.calendarFragment) {
             findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToDayFragment())
