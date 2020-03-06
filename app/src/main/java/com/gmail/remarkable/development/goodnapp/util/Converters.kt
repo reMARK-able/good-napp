@@ -198,6 +198,17 @@ suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, Long?>> {
     }
 }
 
+/**
+ * Convert List<SleepDay> to Set<Long> for CalendarView decorator.
+ * @param list List to convert.
+ * @return Set<Long> Set of dates in millis.
+ */
+suspend fun getCalendarDays(list: List<SleepDay>): Set<CalendarDay> {
+    return withContext(Dispatchers.Default) {
+        list.map { it.date.toCalendarDay() }.toSet()
+    }
+}
+
 suspend fun getValidNextDayWakeUp(sleepDay: SleepDay?, resources: Resources): Long? {
     return withContext(Dispatchers.Default) {
         when {
