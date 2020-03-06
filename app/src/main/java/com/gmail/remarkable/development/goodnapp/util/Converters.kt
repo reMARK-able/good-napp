@@ -261,5 +261,5 @@ fun Long.toCalendarDay(): CalendarDay {
     val year = calendarUTC.get(Calendar.YEAR)
     val month = calendarUTC.get(Calendar.MONTH)
     val day = calendarUTC.get(Calendar.DAY_OF_MONTH)
-    return CalendarDay.from(year, month, day)
+    return CalendarDay.from(year, month + 1, day)
 }
