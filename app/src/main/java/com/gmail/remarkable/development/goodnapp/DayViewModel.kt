@@ -186,7 +186,7 @@ class DayViewModel(
     // Invoke when item in ListDayFragment is clicked.
     fun onNavigateToDay(date: Long) {
         viewModelScope.launch {
-            val day = getDayFromDatabase(date) ?: SleepDay()
+            val day = getDayFromDatabase(date) ?: SleepDay().also { it.date = date }
             mDay = day
             _mLiveSleepDay.value = mDay
             _navigateToToday.value = false
