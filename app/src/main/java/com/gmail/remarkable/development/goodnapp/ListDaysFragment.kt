@@ -65,6 +65,7 @@ class ListDaysFragment : Fragment() {
     }
 
     private fun navToCalendar(): Boolean {
+        viewModel.onNavigateToToday()
         val navController = findNavController()
         if (navController.currentDestination?.id == R.id.listDaysFragment) {
             findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToCalendarFragment())
