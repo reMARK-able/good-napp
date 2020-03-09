@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentListDaysBinding
+import com.gmail.remarkable.development.goodnapp.util.getTodayInMillis
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -65,7 +66,7 @@ class ListDaysFragment : Fragment() {
     }
 
     private fun navToCalendar(): Boolean {
-        viewModel.onNavigateToToday()
+        viewModel.onNavigateToDay(getTodayInMillis())
         val navController = findNavController()
         if (navController.currentDestination?.id == R.id.listDaysFragment) {
             findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToCalendarFragment())
@@ -74,7 +75,7 @@ class ListDaysFragment : Fragment() {
     }
 
     private fun navigateToToday() {
-        viewModel.onNavigateToToday()
+        viewModel.onNavigateToDay(getTodayInMillis())
         val navController = findNavController()
         if (navController.currentDestination?.id == R.id.listDaysFragment) {
             findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())

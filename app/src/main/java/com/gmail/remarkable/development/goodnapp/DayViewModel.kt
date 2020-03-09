@@ -201,14 +201,6 @@ class DayViewModel(
         }
     }
 
-    fun onNavigateToToday() {
-        val today = SleepDay()
-        today.date = getTodayInMillis()
-        mDay = today
-        _mLiveSleepDay.value = mDay
-        _navigateToToday.value = false
-    }
-
     // Adds another nap to the SleepDay object.
     fun addNap() {
         if (mDay.naps.size < MAX_NAPS_NUMBER) {
