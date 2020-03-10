@@ -6,11 +6,9 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentListDaysBinding
 import com.gmail.remarkable.development.goodnapp.util.getTodayInMillis
-import kotlinx.coroutines.delay
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -32,10 +30,7 @@ class ListDaysFragment : Fragment() {
         binding.viewModel = viewModel
 
         val adapter = SleepDayAdapter(SleepDayListener { date ->
-            lifecycleScope.launchWhenResumed {
-                delay(70)
-                navigateToDay(date)
-            }
+            navigateToDay(date)
         })
         binding.dayList.adapter = adapter
 
