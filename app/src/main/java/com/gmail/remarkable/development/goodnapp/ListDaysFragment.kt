@@ -30,10 +30,7 @@ class ListDaysFragment : Fragment() {
         binding.viewModel = viewModel
 
         val adapter = SleepDayAdapter(SleepDayListener { date ->
-            lifecycleScope.launchWhenResumed {
-                delay(70)
-                navigateToDay(date)
-            }
+            navigateToDay(date)
         })
         binding.dayList.adapter = adapter
 
@@ -71,7 +68,7 @@ class ListDaysFragment : Fragment() {
     private fun navToCalendar(): Boolean {
         viewModel.onNavigateToDay(getTodayInMillis())
         val navController = findNavController()
-        if (navController.currentDestination?.id == R.id.listDaysFragment) {
+        if (navController.currentDestination.id == R.id.listDaysFragment) {
             findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToCalendarFragment())
         }
         return true
@@ -80,7 +77,7 @@ class ListDaysFragment : Fragment() {
     private fun navigateToToday() {
         viewModel.onNavigateToDay(getTodayInMillis())
         val navController = findNavController()
-        if (navController.currentDestination?.id == R.id.listDaysFragment) {
+        if (navController.currentDestination.id == R.id.listDaysFragment) {
             findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
         }
     }
