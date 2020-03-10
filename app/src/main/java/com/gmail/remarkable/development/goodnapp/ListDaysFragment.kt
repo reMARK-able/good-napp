@@ -6,11 +6,9 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentListDaysBinding
 import com.gmail.remarkable.development.goodnapp.util.getTodayInMillis
-import kotlinx.coroutines.delay
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -90,9 +88,10 @@ class ListDaysFragment : Fragment() {
     private fun navigateToDay(date: Long) {
         viewModel.onNavigateToDay(date)
         val navController = findNavController()
-        if (navController.currentDestination?.id == R.id.listDaysFragment) {
-            findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
-        }
+        navController.navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayActivity(date))
+//        if (navController.currentDestination?.id == R.id.listDaysFragment) {
+//            findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
+//        }
     }
 
 

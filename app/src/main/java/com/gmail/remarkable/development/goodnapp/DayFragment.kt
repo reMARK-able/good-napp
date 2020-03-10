@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navArgs
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
 import org.koin.android.ext.android.inject
-import org.koin.core.parameter.parametersOf
 
 // DayStart card const identifiers.
 const val TARGET_TWT = "targetTwt"
@@ -48,14 +50,22 @@ class DayFragment : Fragment() {
 
     lateinit var binding: FragmentDayBinding
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_day, container, false)
 
-        val viewModel: DayViewModel by inject { parametersOf(this) }
+        val args: DayActivityArgs by requireActivity().navArgs()
 
+        val viewModelFactory: DayViewModelFactory by inject()
+        val navController = NavHostFragment.findNavController(this)
+        val owner = navController.getViewModelStoreOwner(R.id.day_nav)
+        val viewModel = ViewModelProvider(owner, viewModelFactory).get(DayViewModel::class.java)
+        //val viewModel: DayViewModel by inject { parametersOf(this) }
+        val date = args.date
+        viewModel.onNavigateToDay(date)
         binding.viewModel = viewModel
         binding.day = this
         binding.lifecycleOwner = this

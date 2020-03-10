@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation"
-    app:startDestination="@id/listDaysFragment">
+    android:id="@+id/day_nav"
+    app:startDestination="@id/dayFragment">
 
     <fragment
         android:id="@+id/calendarFragment"
@@ -38,9 +38,7 @@
             android:id="@+id/action_listDaysFragment_to_dayActivity"
             app:destination="@id/dayActivity"
             app:enterAnim="@anim/day_fragment_enter_slide_up"
-            app:exitAnim="@anim/no_animation"
-            app:popEnterAnim="@anim/no_animation"
-            app:popExitAnim="@anim/day_fragment_exit_slide_down" />
+            app:exitAnim="@anim/no_animation" />
     </fragment>
     <fragment
         android:id="@+id/dayFragment"
@@ -62,9 +60,5 @@
     <activity
         android:id="@+id/dayActivity"
         android:name="com.gmail.remarkable.development.goodnapp.DayActivity"
-        android:label="DayActivity">
-        <argument
-            android:name="date"
-            app:argType="long" />
-    </activity>
+        android:label="DayActivity" />
 </navigation>

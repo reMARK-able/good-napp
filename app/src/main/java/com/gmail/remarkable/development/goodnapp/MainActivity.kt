@@ -3,6 +3,7 @@ package com.gmail.remarkable.development.goodnapp
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.ActivityNavigator
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -29,4 +30,8 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp()
     }
 
+    override fun finish() {
+        super.finish()
+        ActivityNavigator.applyPopAnimationsToPendingTransition(this)
+    }
 }
