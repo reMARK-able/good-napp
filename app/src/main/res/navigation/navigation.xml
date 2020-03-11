@@ -28,7 +28,7 @@
             android:id="@+id/action_listDaysFragment_to_dayFragment"
             app:destination="@id/dayFragment"
             app:enterAnim="@anim/day_fragment_enter_slide_up"
-            app:exitAnim="@anim/no_animation"
+            app:exitAnim="@android:anim/fade_out"
             app:popExitAnim="@anim/day_fragment_exit_slide_down" />
         <action
             android:id="@+id/action_listDaysFragment_to_calendarFragment"
