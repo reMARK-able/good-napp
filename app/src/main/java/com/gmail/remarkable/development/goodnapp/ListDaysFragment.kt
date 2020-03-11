@@ -26,7 +26,7 @@ class ListDaysFragment : Fragment() {
         val binding: FragmentListDaysBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_list_days, container, false)
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
         val adapter = SleepDayAdapter(SleepDayListener { date ->
@@ -84,10 +84,23 @@ class ListDaysFragment : Fragment() {
 
     private fun navigateToDay(date: Long) {
         viewModel.onNavigateToDay(date)
-        val navController = findNavController()
-        if (navController.currentDestination?.id == R.id.listDaysFragment) {
-            findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
-        }
+//        val navController = findNavController()
+//        if (navController.currentDestination?.id == R.id.listDaysFragment) {
+//            findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
+//        }
+        val dayFrag = DayFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.day_fragment_enter_slide_up,
+            R.anim.empty_animation,
+            R.anim.empty_animation,
+            R.anim.day_fragment_exit_slide_down
+        )
+        transaction.replace(R.id.navHostFragment, dayFrag)
+        transaction.addToBackStack(null)
+        transaction.setReorderingAllowed(true)
+
+        transaction.commit()
     }
 
 

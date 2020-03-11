@@ -58,7 +58,7 @@ class DayFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.day = this
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
     }
