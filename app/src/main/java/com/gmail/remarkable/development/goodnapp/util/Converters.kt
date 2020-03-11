@@ -7,6 +7,7 @@ import com.gmail.remarkable.development.goodnapp.R
 import com.gmail.remarkable.development.goodnapp.SleepDay
 import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
 import com.gmail.remarkable.development.goodnapp.SleepDay.NightAwake
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
@@ -169,7 +170,7 @@ fun setFakeData(): List<SleepDay> {
     return fakeDaysList.reversed()
 }
 
-private fun getUTCCalendar() = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+fun getUTCCalendar() = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
 
 // Get the previous date in millis UTC format.
 fun prevDayDate(date: Long): Long {
@@ -198,18 +199,13 @@ suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, Long?>> {
 }
 
 /**
- * Makes list of pairs (SleepDay with previous SleepDay on the list) for recyclerView adapter.
+ * Convert List<SleepDay> to Set<Long> for CalendarView decorator.
  * @param list List to convert.
- * @return List<Pair<sleepday, previousSleepDay>
+ * @return Set<Long> Set of dates in millis.
  */
-suspend fun makePairs2(list: List<SleepDay>?): List<Pair<SleepDay, SleepDay?>> {
+suspend fun getCalendarDays(list: List<SleepDay>): Set<CalendarDay> {
     return withContext(Dispatchers.Default) {
-        when {
-            list.isNullOrEmpty() -> listOf()
-            list.size == 1 -> listOf(list[0] to null)
-            else -> list.zipWithNext() + listOf(list.last() to null)
-        }
-
+        list.map { it.date.toCalendarDay() }.toSet()
     }
 }
 
@@ -231,4 +227,34 @@ fun Long.nextDay(): Long {
     calendarUTC.timeInMillis = this
     calendarUTC.add(Calendar.DATE, 1)
     return calendarUTC.timeInMillis
+}
+
+/**
+ * Gets UTC date in miillis from com.prolificinteractive.materialcalendarview.CalendarDay
+ */
+fun CalendarDay.toMillisUTCDate(): Long {
+    val calendarUTC = getUTCCalendar()
+    val day = day
+    val month = month
+    val year = year
+    calendarUTC.set(Calendar.YEAR, year)
+    calendarUTC.set(Calendar.MONTH, month - 1)
+    calendarUTC.set(Calendar.DAY_OF_MONTH, day)
+    calendarUTC.set(Calendar.HOUR_OF_DAY, 0)
+    calendarUTC.set(Calendar.MINUTE, 0)
+    calendarUTC.set(Calendar.SECOND, 0)
+    calendarUTC.set(Calendar.MILLISECOND, 0)
+    return calendarUTC.timeInMillis
+}
+
+/**
+ * Converts date in millis to CalendarDay.
+ */
+fun Long.toCalendarDay(): CalendarDay {
+    val calendarUTC = getUTCCalendar()
+    calendarUTC.timeInMillis = this
+    val year = calendarUTC.get(Calendar.YEAR)
+    val month = calendarUTC.get(Calendar.MONTH)
+    val day = calendarUTC.get(Calendar.DAY_OF_MONTH)
+    return CalendarDay.from(year, month + 1, day)
 }

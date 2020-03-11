@@ -29,6 +29,14 @@ class DayViewModel(
         }
     }
 
+    val sleepCalendarDays = days.switchMap {
+        liveData {
+            val days = getCalendarDays(it)
+            emit(days)
+        }
+    }
+
+
     private val _mLiveSleepDay = MutableLiveData<SleepDay>()
     val mLiveSleepDay: LiveData<SleepDay>
         get() = _mLiveSleepDay
@@ -186,19 +194,11 @@ class DayViewModel(
     // Invoke when item in ListDayFragment is clicked.
     fun onNavigateToDay(date: Long) {
         viewModelScope.launch {
-            val day = getDayFromDatabase(date) ?: SleepDay()
+            val day = getDayFromDatabase(date) ?: SleepDay().also { it.date = date }
             mDay = day
             _mLiveSleepDay.value = mDay
             _navigateToToday.value = false
         }
-    }
-
-    fun onNavigateToToday() {
-        val today = SleepDay()
-        today.date = getTodayInMillis()
-        mDay = today
-        _mLiveSleepDay.value = mDay
-        _navigateToToday.value = false
     }
 
     // Adds another nap to the SleepDay object.

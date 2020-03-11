@@ -2,14 +2,13 @@ package com.gmail.remarkable.development.goodnapp
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentListDaysBinding
+import com.gmail.remarkable.development.goodnapp.util.getTodayInMillis
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -27,7 +26,7 @@ class ListDaysFragment : Fragment() {
         val binding: FragmentListDaysBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_list_days, container, false)
 
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
         val adapter = SleepDayAdapter(SleepDayListener { date ->
@@ -49,11 +48,34 @@ class ListDaysFragment : Fragment() {
             }
         })
 
+        setHasOptionsMenu(true)
+
         return binding.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.list_fragment_overflow_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.goToCalendarFragment -> return navToCalendar()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun navToCalendar(): Boolean {
+        viewModel.onNavigateToDay(getTodayInMillis())
+        val navController = findNavController()
+        if (navController.currentDestination?.id == R.id.listDaysFragment) {
+            findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToCalendarFragment())
+        }
+        return true
+    }
+
     private fun navigateToToday() {
-        viewModel.onNavigateToToday()
+        viewModel.onNavigateToDay(getTodayInMillis())
         val navController = findNavController()
         if (navController.currentDestination?.id == R.id.listDaysFragment) {
             findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
