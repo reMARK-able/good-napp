@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
-            android:background="#75868686"
+            android:background="#c1c1c1"
             android:orientation="vertical">
 
             <include
