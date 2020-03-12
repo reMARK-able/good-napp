@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 /**
  * Dialog Fragment for delete/clear action confirmation.
  */
-class ConfirmationFragment : DialogFragment() {
+class ConfirmDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
