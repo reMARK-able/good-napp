@@ -44,7 +44,8 @@ class CalendarFragment : Fragment() {
             binding.calendarView.invalidateDecorators()
         })
         binding.bottom.container.setOnClickListener {
-            navigateToDay()
+            val date = viewModel.mLiveSleepDay.value?.date ?: 0
+            navigateToDay(date)
         }
 
         binding.calendarView.setOnDateChangedListener { widget, date, selected ->
@@ -61,10 +62,15 @@ class CalendarFragment : Fragment() {
         return binding.root
     }
 
-    private fun navigateToDay() {
+    private fun navigateToDay(date: Long) {
+        val dateString = getDateString(date, requireContext())
         val navController = findNavController()
         if (navController.currentDestination?.id == R.id.calendarFragment) {
-            findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToDayFragment())
+            findNavController().navigate(
+                CalendarFragmentDirections.actionCalendarFragmentToDayFragment(
+                    dateString
+                )
+            )
         }
     }
 
