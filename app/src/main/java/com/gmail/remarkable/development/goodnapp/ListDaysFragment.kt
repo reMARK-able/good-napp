@@ -27,7 +27,7 @@ class ListDaysFragment : Fragment() {
         val binding: FragmentListDaysBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_list_days, container, false)
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
         val adapter = SleepDayAdapter(SleepDayListener { date ->
