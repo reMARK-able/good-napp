@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentListDaysBinding
+import com.gmail.remarkable.development.goodnapp.util.getDateString
 import com.gmail.remarkable.development.goodnapp.util.getTodayInMillis
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -43,7 +44,8 @@ class ListDaysFragment : Fragment() {
         viewModel.navigateToToday.observe(viewLifecycleOwner, Observer { navigate ->
             navigate?.let {
                 if (navigate) {
-                    navigateToToday()
+                    val today = getTodayInMillis()
+                    navigateToDay(today)
                 }
             }
         })
@@ -74,19 +76,17 @@ class ListDaysFragment : Fragment() {
         return true
     }
 
-    private fun navigateToToday() {
-        viewModel.onNavigateToDay(getTodayInMillis())
-        val navController = findNavController()
-        if (navController.currentDestination?.id == R.id.listDaysFragment) {
-            findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
-        }
-    }
 
     private fun navigateToDay(date: Long) {
         viewModel.onNavigateToDay(date)
+        val dateString = getDateString(date, requireContext())
         val navController = findNavController()
         if (navController.currentDestination?.id == R.id.listDaysFragment) {
-            findNavController().navigate(ListDaysFragmentDirections.actionListDaysFragmentToDayFragment())
+            findNavController().navigate(
+                ListDaysFragmentDirections.actionListDaysFragmentToDayFragment(
+                    dateString
+                )
+            )
         }
     }
 
