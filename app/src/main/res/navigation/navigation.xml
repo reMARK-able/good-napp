@@ -59,5 +59,9 @@
     <dialog
         android:id="@+id/confirmDialogFragment"
         android:name="com.gmail.remarkable.development.goodnapp.ConfirmDialogFragment"
-        android:label="ConfirmDialogFragment" />
+        android:label="ConfirmDialogFragment">
+        <argument
+            android:name="confirmAction"
+            app:argType="com.gmail.remarkable.development.goodnapp.ConfirmActions" />
+    </dialog>
 </navigation>
