@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
@@ -64,6 +65,10 @@ class DayFragment : Fragment() {
         binding.viewModel = viewModel
         binding.day = this
         binding.lifecycleOwner = viewLifecycleOwner
+
+        viewModel.navigateToConfirmation.observe(viewLifecycleOwner, Observer { action ->
+            action?.let { navigateToConfirmation(action) }
+        })
 
         return binding.root
     }
