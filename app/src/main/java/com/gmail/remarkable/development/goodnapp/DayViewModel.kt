@@ -214,6 +214,9 @@ class DayViewModel(
         }
     }
 
+    fun confirmDeleteNap(index: Int) {
+        navigateToConfirmationDialog(ConfirmActions.DeleteNap(index))
+    }
     fun navigateToConfirmationDialog(action: ConfirmActions) {
         _navigateToConfirmation.value = action
     }
