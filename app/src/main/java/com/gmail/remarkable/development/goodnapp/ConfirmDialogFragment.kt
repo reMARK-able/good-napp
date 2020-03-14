@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Parcelable
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.parcel.Parcelize
 import org.koin.android.ext.android.inject
@@ -16,6 +17,8 @@ import org.koin.core.parameter.parametersOf
 class ConfirmDialogFragment : DialogFragment() {
 
     private val viewModel: DayViewModel by inject { parametersOf(this) }
+
+    private val args: ConfirmDialogFragmentArgs by navArgs()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
