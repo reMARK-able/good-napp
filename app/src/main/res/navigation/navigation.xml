@@ -56,4 +56,8 @@
             android:name="viewNameTag"
             app:argType="string" />
     </dialog>
+    <dialog
+        android:id="@+id/confirmDialogFragment"
+        android:name="com.gmail.remarkable.development.goodnapp.ConfirmDialogFragment"
+        android:label="ConfirmDialogFragment" />
 </navigation>
