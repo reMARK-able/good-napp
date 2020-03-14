@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -75,6 +76,16 @@ class DayFragment : Fragment() {
             navController.navigate(
                 DayFragmentDirections.actionDayFragmentToTimePickerDialogFragment(nameTag)
             )
+        }
+    }
+
+    private fun navigateToConfirmation(action: ConfirmActions) {
+        val navController = findNavController()
+        if (navController.currentDestination?.id == R.id.dayFragment) {
+            findNavController().navigate(
+                DayFragmentDirections.actionDayFragmentToConfirmDialogFragment(action)
+            )
+            viewModel.onCompleteNavigationToConfirmDialog()
         }
     }
 
