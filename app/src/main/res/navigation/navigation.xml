@@ -47,6 +47,9 @@
         <argument
             android:name="dateString"
             app:argType="string" />
+        <action
+            android:id="@+id/action_dayFragment_to_confirmDialogFragment"
+            app:destination="@id/confirmDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/timePickerDialogFragment"
