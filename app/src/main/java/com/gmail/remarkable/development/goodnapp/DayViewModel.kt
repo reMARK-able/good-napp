@@ -223,6 +223,10 @@ class DayViewModel(
 
     }
 
+    fun onCompleteNavigationToConfirmDialog() {
+        _navigateToConfirmation.value = null
+    }
+
     // Adds another nightAwake to the SleepDay.
     fun addAwake() {
         if (mDay.nightAwakes.size < MAX_AWAKES_NUMBER) {
