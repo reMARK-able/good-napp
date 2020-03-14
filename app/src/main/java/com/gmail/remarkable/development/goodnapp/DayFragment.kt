@@ -16,6 +16,7 @@ import org.koin.core.parameter.parametersOf
 const val TARGET_TWT = "targetTwt"
 const val WAKE_UP = "wakeUp"
 const val OUT_OF_BED = "outOfBed"
+
 // Naps const identifiers.
 const val NAP_1_START = "nap1start"
 const val NAP_1_END = "nap1end"
@@ -27,6 +28,7 @@ const val NAP_4_START = "nap4start"
 const val NAP_4_END = "nap4end"
 const val NAP_5_START = "nap5start"
 const val NAP_5_END = "nap5end"
+
 // Night awakes const identifiers.
 const val AWAKE_1_START = "awake1start"
 const val AWAKE_1_END = "awake1end"
@@ -38,6 +40,7 @@ const val AWAKE_4_START = "awake4start"
 const val AWAKE_4_END = "awake4end"
 const val AWAKE_5_START = "awake5start"
 const val AWAKE_5_END = "awake5end"
+
 // Summary card const identifiers.
 const val REAL_BEDTIME = "realBedtime"
 
@@ -46,6 +49,7 @@ const val REAL_BEDTIME = "realBedtime"
  */
 class DayFragment : Fragment() {
 
+    val viewModel: DayViewModel by inject { parametersOf(this) }
     lateinit var binding: FragmentDayBinding
 
     override fun onCreateView(
