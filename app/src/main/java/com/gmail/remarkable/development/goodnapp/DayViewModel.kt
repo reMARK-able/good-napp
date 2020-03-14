@@ -216,9 +216,10 @@ class DayViewModel(
 
     // Deletes the nap with index from a view.
     fun deleteNap(index: Int) {
-        mDay.naps.removeAt(index)
-        _mLiveSleepDay.value = mDay
-        saveData()
+        _navigateToConfirmation.value = ConfirmActions.DeleteNap(index)
+//        mDay.naps.removeAt(index)
+//        _mLiveSleepDay.value = mDay
+//        saveData()
 
     }
 
