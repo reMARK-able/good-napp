@@ -23,11 +23,15 @@ class ConfirmDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
 
+            val action = args.confirmAction
+
             val builder = MaterialAlertDialogBuilder(it)
             builder.setMessage("Do you really?")
                 .setPositiveButton("ok",
                     DialogInterface.OnClickListener { dialog, id ->
-                        // Proceed...
+                        when (action) {
+                            is ConfirmActions.DeleteNap -> deleteNap(action.index)
+                        }
                     })
                 .setNegativeButton("cancel",
                     DialogInterface.OnClickListener { dialog, id ->
@@ -36,6 +40,10 @@ class ConfirmDialogFragment : DialogFragment() {
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    private fun deleteNap(index: Int) {
+        viewModel.deleteNap(index)
     }
 }
 
