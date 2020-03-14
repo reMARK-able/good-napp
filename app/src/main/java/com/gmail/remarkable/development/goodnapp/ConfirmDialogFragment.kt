@@ -3,8 +3,8 @@ package com.gmail.remarkable.development.goodnapp
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
  * Dialog Fragment for delete/clear action confirmation.
@@ -14,7 +14,7 @@ class ConfirmDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
 
-            val builder = AlertDialog.Builder(it)
+            val builder = MaterialAlertDialogBuilder(it)
             builder.setMessage("Do you really?")
                 .setPositiveButton("ok",
                     DialogInterface.OnClickListener { dialog, id ->
