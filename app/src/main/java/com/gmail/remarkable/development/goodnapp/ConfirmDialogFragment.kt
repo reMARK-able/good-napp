@@ -7,11 +7,15 @@ import android.os.Parcelable
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.parcel.Parcelize
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 /**
  * Dialog Fragment for delete/clear action confirmation.
  */
 class ConfirmDialogFragment : DialogFragment() {
+
+    private val viewModel: DayViewModel by inject { parametersOf(this) }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
