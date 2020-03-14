@@ -214,13 +214,15 @@ class DayViewModel(
         }
     }
 
+    fun navigateToConfirmationDialog(action: ConfirmActions) {
+        _navigateToConfirmation.value = action
+    }
+
     // Deletes the nap with index from a view.
     fun deleteNap(index: Int) {
-        _navigateToConfirmation.value = ConfirmActions.DeleteNap(index)
-//        mDay.naps.removeAt(index)
-//        _mLiveSleepDay.value = mDay
-//        saveData()
-
+        mDay.naps.removeAt(index)
+        _mLiveSleepDay.value = mDay
+        saveData()
     }
 
     fun onCompleteNavigationToConfirmDialog() {
