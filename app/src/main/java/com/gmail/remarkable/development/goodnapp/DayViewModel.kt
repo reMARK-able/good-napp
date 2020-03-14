@@ -48,6 +48,10 @@ class DayViewModel(
         }
     }
 
+    // LiveData for navigation to ConfirmationFragment.
+    private val _navigateToConfirmation = MutableLiveData<ConfirmActions>()
+    val navigateToConfirmation: LiveData<ConfirmActions>
+        get() = _navigateToConfirmation
 
     // LiveData for navigation after fab clicked event.
     private val _navigateToToday = MutableLiveData<Boolean>()
