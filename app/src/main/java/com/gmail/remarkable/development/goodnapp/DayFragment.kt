@@ -70,6 +70,8 @@ class DayFragment : Fragment() {
             action?.let { navigateToConfirmation(action) }
         })
 
+        setHasOptionsMenu(true)
+
         return binding.root
     }
 
