@@ -120,7 +120,7 @@
             android:background="?attr/selectableItemBackground"
             android:contentDescription="@string/delete_description"
             android:cropToPadding="false"
-            android:onClick="@{() -> viewModel.deleteAwake(index)}"
+            android:onClick="@{() -> viewModel.confirmDeleteAwake(index)}"
             android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

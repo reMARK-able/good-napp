@@ -31,6 +31,7 @@ class ConfirmDialogFragment : DialogFragment() {
                     DialogInterface.OnClickListener { dialog, id ->
                         when (action) {
                             is ConfirmActions.DeleteNap -> deleteNap(action.index)
+                            is ConfirmActions.DeleteAwake -> deleteAwake(action.index)
                         }
                     })
                 .setNegativeButton("cancel",
@@ -44,6 +45,10 @@ class ConfirmDialogFragment : DialogFragment() {
 
     private fun deleteNap(index: Int) {
         viewModel.deleteNap(index)
+    }
+
+    private fun deleteAwake(index: Int) {
+        viewModel.deleteAwake(index)
     }
 }
 
