@@ -24,7 +24,7 @@ class TodayDecorator(val context: Context) : DayViewDecorator {
 
 class SleepDaysDecorator(var sleepDays: Set<CalendarDay>, context: Context) : DayViewDecorator {
 
-    val color = ContextCompat.getColor(context, R.color.colorPrimary)
+    val color = ContextCompat.getColor(context, R.color.primaryDarkColor)
 
     override fun shouldDecorate(day: CalendarDay?): Boolean {
         return day in sleepDays
