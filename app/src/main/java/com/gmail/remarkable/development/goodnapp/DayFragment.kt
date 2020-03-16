@@ -2,9 +2,7 @@ package com.gmail.remarkable.development.goodnapp
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -70,7 +68,14 @@ class DayFragment : Fragment() {
             action?.let { navigateToConfirmation(action) }
         })
 
+        setHasOptionsMenu(true)
+
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.day_fragment_overflow_menu, menu)
     }
 
     fun pickTime(view: View) {
