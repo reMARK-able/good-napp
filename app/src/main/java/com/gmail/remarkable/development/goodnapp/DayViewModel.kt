@@ -333,6 +333,12 @@ class DayViewModel(
         }
     }
 
+    private suspend fun deleteDayFromDatabase(day: SleepDay) {
+        withContext(Dispatchers.IO) {
+            database.deleteDay(day)
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
         Log.i("DayViewModel", "DayViewModel is destroyed.")
