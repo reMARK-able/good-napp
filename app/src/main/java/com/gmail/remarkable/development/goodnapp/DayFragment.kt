@@ -76,6 +76,16 @@ class DayFragment : Fragment() {
         inflater.inflate(R.menu.day_fragment_overflow_menu, menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_clear -> {
+                viewModel.confirmClear()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     fun pickTime(view: View) {
 
         val navController = view.findNavController()

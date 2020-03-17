@@ -32,6 +32,7 @@ class ConfirmDialogFragment : DialogFragment() {
                         when (action) {
                             is ConfirmActions.DeleteNap -> deleteNap(action.index)
                             is ConfirmActions.DeleteAwake -> deleteAwake(action.index)
+                            is ConfirmActions.ClearAll -> clearDay()
                         }
                     })
                 .setNegativeButton("cancel",
@@ -49,6 +50,10 @@ class ConfirmDialogFragment : DialogFragment() {
 
     private fun deleteAwake(index: Int) {
         viewModel.deleteAwake(index)
+    }
+
+    private fun clearDay() {
+        viewModel.clearDay()
     }
 }
 
