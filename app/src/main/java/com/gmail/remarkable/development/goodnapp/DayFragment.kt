@@ -82,6 +82,10 @@ class DayFragment : Fragment() {
                 viewModel.confirmClear()
                 return true
             }
+            R.id.action_delete_day -> {
+                viewModel.confirmDeleteDay()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }

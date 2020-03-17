@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Parcelable
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.parcel.Parcelize
@@ -32,7 +33,8 @@ class ConfirmDialogFragment : DialogFragment() {
                         when (action) {
                             is ConfirmActions.DeleteNap -> deleteNap(action.index)
                             is ConfirmActions.DeleteAwake -> deleteAwake(action.index)
-                            is ConfirmActions.ClearAll -> clearDay()
+                            ConfirmActions.ClearAll -> clearDay()
+                            ConfirmActions.DeleteDay -> deleteDay()
                         }
                     })
                 .setNegativeButton("cancel",
@@ -55,6 +57,22 @@ class ConfirmDialogFragment : DialogFragment() {
     private fun clearDay() {
         viewModel.clearDay()
     }
+
+
+    private fun deleteDay() {
+        viewModel.deleteDay()
+        navigateBackToListDaysFragment()
+    }
+
+    private fun navigateBackToListDaysFragment() {
+        val navController = findNavController()
+        if (navController.currentDestination?.id == R.id.confirmDialogFragment) {
+            navController.navigate(
+                ConfirmDialogFragmentDirections.actionConfirmDialogFragmentToListDaysFragment()
+            )
+        }
+    }
+
 }
 
 sealed class ConfirmActions : Parcelable {

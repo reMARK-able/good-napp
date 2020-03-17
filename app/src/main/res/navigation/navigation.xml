@@ -66,5 +66,10 @@
         <argument
             android:name="confirmAction"
             app:argType="com.gmail.remarkable.development.goodnapp.ConfirmActions" />
+        <action
+            android:id="@+id/action_confirmDialogFragment_to_listDaysFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/listDaysFragment"
+            app:popUpToInclusive="false" />
     </dialog>
 </navigation>

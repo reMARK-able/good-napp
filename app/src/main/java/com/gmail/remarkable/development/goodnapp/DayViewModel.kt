@@ -226,6 +226,10 @@ class DayViewModel(
         navigateToConfirmationDialog(ConfirmActions.ClearAll)
     }
 
+    fun confirmDeleteDay() {
+        navigateToConfirmationDialog(ConfirmActions.DeleteDay)
+    }
+
     fun navigateToConfirmationDialog(action: ConfirmActions) {
         _navigateToConfirmation.value = action
     }
@@ -235,6 +239,12 @@ class DayViewModel(
         mDay = SleepDay().also { it.date = date }
         _mLiveSleepDay.value = mDay
         saveData()
+    }
+
+    fun deleteDay() {
+        viewModelScope.launch {
+            deleteDayFromDatabase(mDay)
+        }
     }
 
     // Deletes the nap with index from a view.
