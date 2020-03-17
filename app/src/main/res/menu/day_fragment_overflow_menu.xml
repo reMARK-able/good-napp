@@ -9,12 +9,12 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/clear_all"
+        android:id="@+id/action_clear"
         android:title="@string/clear"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/delete_day"
+        android:id="@+id/action_delete_day"
         android:title="@string/delete"
         app:showAsAction="never" />
 
