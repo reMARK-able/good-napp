@@ -63,7 +63,7 @@
     <string name="delete_the_nap">Delete the nap?</string>
     <string name="delete_the_night_awake">Delete the night awake?</string>
     <string name="clear_all_confirm_message">It will clear all values in this day.</string>
-    <string name="delete_day_confirm_message">It will delete this day from your data.</string>
+    <string name="delete_day_confirm_message">It will delete this day from your data.\nLater you can add it again from calendar.</string>
     <string name="clear_all_confirm_title">Clear all?</string>
     <string name="delete_the_day_confirm_title">Delete the day?</string>
 </resources>
