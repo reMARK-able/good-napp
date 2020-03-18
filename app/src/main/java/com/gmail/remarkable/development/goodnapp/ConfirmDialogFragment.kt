@@ -28,8 +28,10 @@ class ConfirmDialogFragment : DialogFragment() {
 
             val message = setupMessage(action)
             val stringButtonPositive = setupPositiveButtonString(action)
+            val title = setupTitle(action)
 
             val builder = MaterialAlertDialogBuilder(it)
+            title?.let { builder.setTitle(it) }
             builder.setMessage(message)
                 .setPositiveButton(
                     stringButtonPositive,
@@ -48,6 +50,12 @@ class ConfirmDialogFragment : DialogFragment() {
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    private fun setupTitle(action: ConfirmActions): Int? = when (action) {
+        ConfirmActions.ClearAll -> R.string.clear_all_confirm_title
+        ConfirmActions.DeleteDay -> R.string.delete_the_day_confirm_title
+        else -> null
     }
 
     private fun setupMessage(action: ConfirmActions): Int = when (action) {
