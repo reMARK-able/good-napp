@@ -27,10 +27,12 @@ class ConfirmDialogFragment : DialogFragment() {
             val action = args.confirmAction
 
             val message = setupMessage(action)
+            val stringButtonPositive = setupPositiveButtonString(action)
 
             val builder = MaterialAlertDialogBuilder(it)
             builder.setMessage(message)
-                .setPositiveButton("ok",
+                .setPositiveButton(
+                    stringButtonPositive,
                     DialogInterface.OnClickListener { dialog, id ->
                         when (action) {
                             is ConfirmActions.DeleteNap -> deleteNap(action.index)
@@ -53,6 +55,12 @@ class ConfirmDialogFragment : DialogFragment() {
         is ConfirmActions.DeleteAwake -> R.string.delete_the_night_awake
         ConfirmActions.ClearAll -> R.string.clear_all_confirm_message
         ConfirmActions.DeleteDay -> R.string.delete_day_confirm_message
+    }
+
+
+    private fun setupPositiveButtonString(action: ConfirmActions): Int = when (action) {
+        ConfirmActions.ClearAll -> R.string.clear
+        else -> R.string.delete
     }
 
     private fun deleteNap(index: Int) {
