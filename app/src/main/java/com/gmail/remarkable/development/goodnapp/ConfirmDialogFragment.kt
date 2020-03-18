@@ -26,8 +26,10 @@ class ConfirmDialogFragment : DialogFragment() {
 
             val action = args.confirmAction
 
+            val message = setupMessage(action)
+
             val builder = MaterialAlertDialogBuilder(it)
-            builder.setMessage("Do you really?")
+            builder.setMessage(message)
                 .setPositiveButton("ok",
                     DialogInterface.OnClickListener { dialog, id ->
                         when (action) {
@@ -44,6 +46,13 @@ class ConfirmDialogFragment : DialogFragment() {
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    private fun setupMessage(action: ConfirmActions): Int = when (action) {
+        is ConfirmActions.DeleteNap -> R.string.delete_the_nap
+        is ConfirmActions.DeleteAwake -> R.string.delete_the_night_awake
+        ConfirmActions.ClearAll -> R.string.clear_all_confirm_message
+        ConfirmActions.DeleteDay -> R.string.delete_day_confirm_message
     }
 
     private fun deleteNap(index: Int) {
