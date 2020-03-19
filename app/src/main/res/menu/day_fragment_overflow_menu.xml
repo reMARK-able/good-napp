@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/goToCalendarFragment"
-        android:icon="@drawable/ic_date_range_black_24dp"
-        android:title="@string/calendar"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/action_clear"
         android:title="@string/clear"
         app:showAsAction="never" />
