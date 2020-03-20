@@ -96,16 +96,16 @@ class DayFragment : Fragment() {
         binding.nap5.napStartEditText -> NAP_5_START
         binding.nap5.napEndEditText -> NAP_5_END
 
-        binding.containerAwakes.nightAwake1.awakeStartEditText -> AWAKE_1_START
-        binding.containerAwakes.nightAwake1.awakeEndEditText -> AWAKE_1_END
-        binding.containerAwakes.nightAwake2.awakeStartEditText -> AWAKE_2_START
-        binding.containerAwakes.nightAwake2.awakeEndEditText -> AWAKE_2_END
-        binding.containerAwakes.nightAwake3.awakeStartEditText -> AWAKE_3_START
-        binding.containerAwakes.nightAwake3.awakeEndEditText -> AWAKE_3_END
-        binding.containerAwakes.nightAwake4.awakeStartEditText -> AWAKE_4_START
-        binding.containerAwakes.nightAwake4.awakeEndEditText -> AWAKE_4_END
-        binding.containerAwakes.nightAwake5.awakeStartEditText -> AWAKE_5_START
-        binding.containerAwakes.nightAwake5.awakeEndEditText -> AWAKE_5_END
+        binding.nightAwake1.awakeStartEditText -> AWAKE_1_START
+        binding.nightAwake1.awakeEndEditText -> AWAKE_1_END
+        binding.nightAwake2.awakeStartEditText -> AWAKE_2_START
+        binding.nightAwake2.awakeEndEditText -> AWAKE_2_END
+        binding.nightAwake3.awakeStartEditText -> AWAKE_3_START
+        binding.nightAwake3.awakeEndEditText -> AWAKE_3_END
+        binding.nightAwake4.awakeStartEditText -> AWAKE_4_START
+        binding.nightAwake4.awakeEndEditText -> AWAKE_4_END
+        binding.nightAwake5.awakeStartEditText -> AWAKE_5_START
+        binding.nightAwake5.awakeEndEditText -> AWAKE_5_END
         else -> "unknownView"
     }
 }
