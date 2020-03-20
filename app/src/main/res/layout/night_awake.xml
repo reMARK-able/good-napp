@@ -126,7 +126,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_delete_black_24dp"
-            app:tint="@color/material_on_background_emphasis_medium" />
+            app:tint="?attr/colorControlNormal" />
 
         <View
             android:id="@+id/divider_upper"
