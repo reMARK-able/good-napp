@@ -2,12 +2,12 @@ package com.gmail.remarkable.development.goodnapp
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentDayBinding
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -16,6 +16,7 @@ import org.koin.core.parameter.parametersOf
 const val TARGET_TWT = "targetTwt"
 const val WAKE_UP = "wakeUp"
 const val OUT_OF_BED = "outOfBed"
+
 // Naps const identifiers.
 const val NAP_1_START = "nap1start"
 const val NAP_1_END = "nap1end"
@@ -27,6 +28,7 @@ const val NAP_4_START = "nap4start"
 const val NAP_4_END = "nap4end"
 const val NAP_5_START = "nap5start"
 const val NAP_5_END = "nap5end"
+
 // Night awakes const identifiers.
 const val AWAKE_1_START = "awake1start"
 const val AWAKE_1_END = "awake1end"
@@ -38,6 +40,7 @@ const val AWAKE_4_START = "awake4start"
 const val AWAKE_4_END = "awake4end"
 const val AWAKE_5_START = "awake5start"
 const val AWAKE_5_END = "awake5end"
+
 // Summary card const identifiers.
 const val REAL_BEDTIME = "realBedtime"
 
@@ -46,6 +49,7 @@ const val REAL_BEDTIME = "realBedtime"
  */
 class DayFragment : Fragment() {
 
+    val viewModel: DayViewModel by inject { parametersOf(this) }
     lateinit var binding: FragmentDayBinding
 
     override fun onCreateView(
@@ -54,13 +58,36 @@ class DayFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_day, container, false)
 
-        val viewModel: DayViewModel by inject { parametersOf(this) }
-
         binding.viewModel = viewModel
         binding.day = this
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        viewModel.navigateToConfirmation.observe(viewLifecycleOwner, Observer { action ->
+            action?.let { navigateToConfirmation(action) }
+        })
+
+        setHasOptionsMenu(true)
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.day_fragment_overflow_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_clear -> {
+                viewModel.confirmClear()
+                return true
+            }
+            R.id.action_delete_day -> {
+                viewModel.confirmDeleteDay()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun pickTime(view: View) {
@@ -71,6 +98,16 @@ class DayFragment : Fragment() {
             navController.navigate(
                 DayFragmentDirections.actionDayFragmentToTimePickerDialogFragment(nameTag)
             )
+        }
+    }
+
+    private fun navigateToConfirmation(action: ConfirmActions) {
+        val navController = findNavController()
+        if (navController.currentDestination?.id == R.id.dayFragment) {
+            findNavController().navigate(
+                DayFragmentDirections.actionDayFragmentToConfirmDialogFragment(action)
+            )
+            viewModel.onCompleteNavigationToConfirmDialog()
         }
     }
 

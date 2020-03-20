@@ -47,6 +47,9 @@
         <argument
             android:name="dateString"
             app:argType="string" />
+        <action
+            android:id="@+id/action_dayFragment_to_confirmDialogFragment"
+            app:destination="@id/confirmDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/timePickerDialogFragment"
@@ -55,5 +58,18 @@
         <argument
             android:name="viewNameTag"
             app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/confirmDialogFragment"
+        android:name="com.gmail.remarkable.development.goodnapp.ConfirmDialogFragment"
+        android:label="ConfirmDialogFragment">
+        <argument
+            android:name="confirmAction"
+            app:argType="com.gmail.remarkable.development.goodnapp.ConfirmActions" />
+        <action
+            android:id="@+id/action_confirmDialogFragment_to_listDaysFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/listDaysFragment"
+            app:popUpToInclusive="false" />
     </dialog>
 </navigation>

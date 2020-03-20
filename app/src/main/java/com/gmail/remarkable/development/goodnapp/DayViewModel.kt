@@ -48,6 +48,10 @@ class DayViewModel(
         }
     }
 
+    // LiveData for navigation to ConfirmationFragment.
+    private val _navigateToConfirmation = MutableLiveData<ConfirmActions>()
+    val navigateToConfirmation: LiveData<ConfirmActions>
+        get() = _navigateToConfirmation
 
     // LiveData for navigation after fab clicked event.
     private val _navigateToToday = MutableLiveData<Boolean>()
@@ -210,12 +214,48 @@ class DayViewModel(
         }
     }
 
+    fun confirmDeleteNap(index: Int) {
+        navigateToConfirmationDialog(ConfirmActions.DeleteNap(index))
+    }
+
+    fun confirmDeleteAwake(index: Int) {
+        navigateToConfirmationDialog(ConfirmActions.DeleteAwake(index))
+    }
+
+    fun confirmClear() {
+        navigateToConfirmationDialog(ConfirmActions.ClearAll)
+    }
+
+    fun confirmDeleteDay() {
+        navigateToConfirmationDialog(ConfirmActions.DeleteDay)
+    }
+
+    fun navigateToConfirmationDialog(action: ConfirmActions) {
+        _navigateToConfirmation.value = action
+    }
+
+    fun clearDay() {
+        val date = mDay.date
+        mDay = SleepDay().also { it.date = date }
+        _mLiveSleepDay.value = mDay
+        saveData()
+    }
+
+    fun deleteDay() {
+        viewModelScope.launch {
+            deleteDayFromDatabase(mDay)
+        }
+    }
+
     // Deletes the nap with index from a view.
     fun deleteNap(index: Int) {
         mDay.naps.removeAt(index)
         _mLiveSleepDay.value = mDay
         saveData()
+    }
 
+    fun onCompleteNavigationToConfirmDialog() {
+        _navigateToConfirmation.value = null
     }
 
     // Adds another nightAwake to the SleepDay.
@@ -300,6 +340,12 @@ class DayViewModel(
     private suspend fun saveDay() {
         withContext(Dispatchers.IO) {
             database.insertSleepDay(mDay)
+        }
+    }
+
+    private suspend fun deleteDayFromDatabase(day: SleepDay) {
+        withContext(Dispatchers.IO) {
+            database.deleteDay(day)
         }
     }
 

@@ -68,13 +68,13 @@
                 android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/delete_description"
                 android:cropToPadding="false"
-                android:onClick="@{() -> viewModel.deleteNap(index)}"
+                android:onClick="@{() -> viewModel.confirmDeleteNap(index)}"
                 android:padding="4dp"
-                app:tint="@android:color/secondary_text_dark_nodisable"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_delete_black_24dp" />
+                app:srcCompat="@drawable/ic_delete_black_24dp"
+                app:tint="@android:color/secondary_text_dark_nodisable" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nap_end_container"

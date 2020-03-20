@@ -51,4 +51,25 @@ interface SleepDatabaseDao {
         val awakesToInsert = sleepDay.nightAwakes
         insertAwakes(awakesToInsert)
     }
+
+    @Delete
+    fun deleteSleepDay(
+        day: SleepTable,
+        naps: List<SleepDay.Nap>,
+        nightAwakes: List<SleepDay.NightAwake>
+    )
+
+    @Transaction
+    fun deleteDay(sleepDay: SleepDay) {
+        val sleepTable = SleepTable(
+            sleepDay.date,
+            sleepDay.targetTWT,
+            sleepDay.wakeUp,
+            sleepDay.outOfBed,
+            sleepDay.realBedtime
+        )
+        val naps = sleepDay.naps
+        val nightAwakes = sleepDay.nightAwakes
+        deleteSleepDay(sleepTable, naps, nightAwakes)
+    }
 }
