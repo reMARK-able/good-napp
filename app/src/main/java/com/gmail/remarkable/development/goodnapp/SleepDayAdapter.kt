@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.gmail.remarkable.development.goodnapp.databinding.ListItemDayBinding
+import com.gmail.remarkable.development.goodnapp.databinding.ListItemDayTimelineBinding
 
 class SleepDayAdapter(val clickListener: SleepDayListener) :
     ListAdapter<Pair<SleepDay, Long?>, SleepDayAdapter.ViewHolder>(SleepDayDiffCallback()) {
@@ -20,7 +20,7 @@ class SleepDayAdapter(val clickListener: SleepDayListener) :
     }
 
 
-    class ViewHolder private constructor(val binding: ListItemDayBinding) :
+    class ViewHolder private constructor(val binding: ListItemDayTimelineBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Pair<SleepDay, Long?>, clickListener: SleepDayListener) {
@@ -33,7 +33,7 @@ class SleepDayAdapter(val clickListener: SleepDayListener) :
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemDayBinding.inflate(layoutInflater, parent, false)
+                val binding = ListItemDayTimelineBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }
