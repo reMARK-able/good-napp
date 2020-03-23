@@ -216,6 +216,7 @@
             app:layout_constraintBottom_toTopOf="@+id/timeline_drawable_middle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:timelineTop="@{sleepDay}"
             tools:srcCompat="@drawable/timeline_drawable_top_gradient" />
 
         <ImageView

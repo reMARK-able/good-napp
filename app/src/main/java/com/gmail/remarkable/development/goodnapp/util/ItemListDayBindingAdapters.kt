@@ -25,3 +25,14 @@ fun ImageView.setTimelineBottom(sleepDay: SleepDay?) {
 
     setImageDrawable(bottomDrawable)
 }
+
+@BindingAdapter("timelineTop")
+fun ImageView.setTimelineTop(sleepDay: SleepDay?) {
+    val isRealBedTimeValid =
+        sleepDay?.realBedtime != 0L && validRealBedtime(sleepDay, context.resources) == null
+    val topDrawableId = if (isRealBedTimeValid) R.drawable.timeline_drawable_filled
+    else R.drawable.timeline_drawable_top_gradient
+    val topDrawable = ContextCompat.getDrawable(context, topDrawableId)
+
+    setImageDrawable(topDrawable)
+}
