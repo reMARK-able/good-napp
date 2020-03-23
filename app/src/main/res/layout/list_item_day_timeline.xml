@@ -226,7 +226,7 @@
             app:layout_constraintEnd_toEndOf="@+id/timeline_drawable_upper"
             app:layout_constraintStart_toStartOf="@+id/timeline_drawable_upper"
             app:layout_constraintTop_toBottomOf="@+id/timeline_drawable_upper"
-            tools:srcCompat="@drawable/timeline_drawable_filled" />
+            app:srcCompat="@drawable/timeline_drawable_filled" />
 
         <ImageView
             android:id="@+id/timeline_drawable_lower"
