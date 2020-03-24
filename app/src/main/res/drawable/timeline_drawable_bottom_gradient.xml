@@ -5,7 +5,7 @@
     <size android:width="@dimen/timeline_width" />
     <gradient
         android:angle="90"
-        android:endColor="@color/primaryColor"
-        android:startColor="@android:color/white" />
+        android:endColor="@color/timeline_base_color"
+        android:startColor="@color/timeline_gradient_end_color" />
 
 </shape>
