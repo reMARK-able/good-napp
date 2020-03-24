@@ -1,9 +1,13 @@
 package com.gmail.remarkable.development.goodnapp.util
 
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.gmail.remarkable.development.goodnapp.R
 import com.gmail.remarkable.development.goodnapp.SleepDay
 
@@ -35,4 +39,13 @@ fun ImageView.setTimelineTop(sleepDay: SleepDay?) {
     val topDrawable = ContextCompat.getDrawable(context, topDrawableId)
 
     setImageDrawable(topDrawable)
+}
+
+@BindingAdapter("nextDayMargin")
+fun ViewGroup.setNextDayMargin(nextDayWakeUp: Long?) {
+    val newMarginTop = when (nextDayWakeUp) {
+        null -> 100
+        else -> 0
+    }
+    updateLayoutParams<RecyclerView.LayoutParams> { updateMargins(top = newMarginTop) }
 }
