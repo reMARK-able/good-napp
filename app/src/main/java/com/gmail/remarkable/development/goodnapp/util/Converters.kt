@@ -189,8 +189,10 @@ suspend fun makePairs(list: List<SleepDay>?): List<Pair<SleepDay, Long?>> {
                     val nextDayOnList = list.getOrNull(index - 1)
                     val calendarNextDay =
                         if (nextDayOnList?.date == sleepDay.date.nextDay()) nextDayOnList else null
-                    val validNextDayWakeUp =
-                        if (validWakeUp(calendarNextDay) == null) calendarNextDay?.wakeUp else null
+                    val validNextDayWakeUp = when (calendarNextDay) {
+                        null -> null
+                        else -> if (validWakeUp(calendarNextDay) == null) calendarNextDay.wakeUp else -1
+                    }
                     Pair(sleepDay, validNextDayWakeUp)
                 }
             }
