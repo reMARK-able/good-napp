@@ -25,6 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
+            app:mcv_dateTextAppearance="@style/ThemeOverlay.AppCompat.DayNight"
             app:mcv_showOtherDates="all" />
 
         <include
