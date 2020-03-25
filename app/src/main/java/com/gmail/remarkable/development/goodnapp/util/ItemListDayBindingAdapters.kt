@@ -1,5 +1,6 @@
 package com.gmail.remarkable.development.goodnapp.util
 
+import android.content.res.Resources
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -44,7 +45,7 @@ fun ImageView.setTimelineTop(sleepDay: SleepDay?) {
 @BindingAdapter("nextDayMargin")
 fun ViewGroup.setNextDayMargin(nextDayWakeUp: Long?) {
     val newMarginTop = when (nextDayWakeUp) {
-        null -> 100
+        null -> (16 * Resources.getSystem().displayMetrics.density).toInt()
         else -> 0
     }
     updateLayoutParams<RecyclerView.LayoutParams> { updateMargins(top = newMarginTop) }
