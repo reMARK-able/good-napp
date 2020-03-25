@@ -11,4 +11,9 @@
 
     <!-- Color for stroke of editable TextInputLayouts. -->
     <color name="textInputLayoutStroke">@color/primaryDarkColor</color>
+
+    <!-- list_item_day_timeline colors -->
+    <color name="timeline_base_color">@color/primaryColor</color>
+    <color name="timeline_gradient_center_color">@color/primaryDarkColor</color>
+    <color name="timeline_gradient_end_color">@android:color/transparent</color>
 </resources>

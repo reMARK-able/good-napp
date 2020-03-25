@@ -30,7 +30,8 @@ class ListDaysFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
-        val adapter = SleepDayAdapter(SleepDayListener { date ->
+        val itemViewMarginTopDP = resources.getInteger(R.integer.list_item_day_margin_top)
+        val adapter = SleepDayAdapter(itemViewMarginTopDP, SleepDayListener { date ->
             navigateToDay(date)
         })
         binding.dayList.adapter = adapter

@@ -1,14 +1,18 @@
 package com.gmail.remarkable.development.goodnapp
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.gmail.remarkable.development.goodnapp.databinding.ListItemDayBinding
+import com.gmail.remarkable.development.goodnapp.databinding.ListItemDayTimelineBinding
 
-class SleepDayAdapter(val clickListener: SleepDayListener) :
+class SleepDayAdapter(itemViewMarginTopDp: Int, val clickListener: SleepDayListener) :
     ListAdapter<Pair<SleepDay, Long?>, SleepDayAdapter.ViewHolder>(SleepDayDiffCallback()) {
+
+    private val itemPixelMargin =
+        (itemViewMarginTopDp * Resources.getSystem().displayMetrics.density).toInt()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -16,24 +20,29 @@ class SleepDayAdapter(val clickListener: SleepDayListener) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item, clickListener)
+        holder.bind(item, clickListener, itemPixelMargin)
     }
 
 
-    class ViewHolder private constructor(val binding: ListItemDayBinding) :
+    class ViewHolder private constructor(val binding: ListItemDayTimelineBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Pair<SleepDay, Long?>, clickListener: SleepDayListener) {
+        fun bind(
+            item: Pair<SleepDay, Long?>,
+            clickListener: SleepDayListener,
+            itemPixelMargin: Int
+        ) {
             binding.sleepDay = item.first
             binding.nextDayWakeUp = item.second
             binding.clickListener = clickListener
+            binding.margin = itemPixelMargin
             binding.executePendingBindings()
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemDayBinding.inflate(layoutInflater, parent, false)
+                val binding = ListItemDayTimelineBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }
