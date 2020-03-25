@@ -1,5 +1,6 @@
 package com.gmail.remarkable.development.goodnapp
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,23 +11,30 @@ import com.gmail.remarkable.development.goodnapp.databinding.ListItemDayTimeline
 class SleepDayAdapter(val clickListener: SleepDayListener) :
     ListAdapter<Pair<SleepDay, Long?>, SleepDayAdapter.ViewHolder>(SleepDayDiffCallback()) {
 
+    private val itemPixelMargin = (16 * Resources.getSystem().displayMetrics.density).toInt()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item, clickListener)
+        holder.bind(item, clickListener, itemPixelMargin)
     }
 
 
     class ViewHolder private constructor(val binding: ListItemDayTimelineBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Pair<SleepDay, Long?>, clickListener: SleepDayListener) {
+        fun bind(
+            item: Pair<SleepDay, Long?>,
+            clickListener: SleepDayListener,
+            itemPixelMargin: Int
+        ) {
             binding.sleepDay = item.first
             binding.nextDayWakeUp = item.second
             binding.clickListener = clickListener
+            binding.margin = itemPixelMargin
             binding.executePendingBindings()
         }
 

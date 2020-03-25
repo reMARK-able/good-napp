@@ -16,6 +16,10 @@
         <variable
             name="clickListener"
             type="com.gmail.remarkable.development.goodnapp.SleepDayListener" />
+
+        <variable
+            name="margin"
+            type="Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +28,9 @@
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
         android:onClick="@{() -> clickListener.onClick(sleepDay.date)}"
-        app:nextDayMargin="@{nextDayWakeUp}">
+        app:marginPx="@{margin}"
+        app:nextDayWakeUp="@{nextDayWakeUp}"
+        tools:layout_marginTop="16dp">
 
         <TextView
             android:id="@+id/item_list_date_label"
