@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gmail.remarkable.development.goodnapp.databinding.ListItemDayTimelineBinding
 
-class SleepDayAdapter(val clickListener: SleepDayListener) :
+class SleepDayAdapter(itemViewMarginTopDp: Int, val clickListener: SleepDayListener) :
     ListAdapter<Pair<SleepDay, Long?>, SleepDayAdapter.ViewHolder>(SleepDayDiffCallback()) {
 
-    private val itemPixelMargin = (16 * Resources.getSystem().displayMetrics.density).toInt()
+    private val itemPixelMargin =
+        (itemViewMarginTopDp * Resources.getSystem().displayMetrics.density).toInt()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
