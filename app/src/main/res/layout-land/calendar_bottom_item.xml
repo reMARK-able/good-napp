@@ -38,11 +38,12 @@
             android:id="@+id/item_list_date_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/date_label"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/item_list_awakeTimes"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,39 +62,40 @@
             android:id="@+id/item_list_awake_times_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:text="@string/awake_times_label"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@+id/item_list_date_label"
-            app:layout_constraintTop_toBottomOf="@+id/item_list_date_label" />
+            app:layout_constraintBottom_toTopOf="@+id/item_list_awakeTimes"
+            app:layout_constraintStart_toStartOf="@+id/item_list_awakeTimes" />
 
         <TextView
             android:id="@+id/item_list_awakeTimes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:awakeTimesFormatted="@{sleepDay}"
+            app:layout_constraintBottom_toTopOf="@id/item_list_reelTwt_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/item_list_awake_times_label"
-            app:layout_constraintTop_toBottomOf="@+id/item_list_awake_times_label"
+            app:layout_constraintStart_toStartOf="@+id/item_list_date_label"
+            app:layout_constraintTop_toBottomOf="@+id/item_list_date_label"
             tools:text="3:20/4:15/1:50/8:40/2:44/3:55" />
 
         <TextView
             android:id="@+id/item_list_reelTwt_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             android:gravity="center_vertical"
             android:text="@string/awake"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textSize="12sp"
             app:drawableStartCompat="@drawable/ic_timer_black_24dp"
             app:drawableTint="?android:textColorSecondary"
-            app:layout_constraintStart_toStartOf="@+id/item_list_awake_times_label"
+            app:layout_constraintBottom_toTopOf="@id/item_list_sleep_label"
+            app:layout_constraintStart_toStartOf="@+id/item_list_date_label"
             app:layout_constraintTop_toBottomOf="@+id/item_list_awakeTimes" />
 
         <TextView
@@ -127,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:gravity="center_vertical"
             app:awakesNightString="@{sleepDay}"
             app:drawableStartCompat="@drawable/ic_moon_black_16dp"
@@ -143,14 +145,16 @@
             android:id="@+id/item_list_sleep_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
             android:text="@string/sleep_item_list_label"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textSize="12sp"
             app:drawableStartCompat="@drawable/ic_snooze_black_24dp"
             app:drawableTint="?android:textColorSecondary"
-            app:layout_constraintStart_toStartOf="@+id/item_list_reelTwt_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/item_list_date_label"
             app:layout_constraintTop_toBottomOf="@+id/item_list_reelTwt_label" />
 
         <TextView
@@ -185,7 +189,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:gravity="center_vertical"
             app:drawableStartCompat="@drawable/ic_moon_black_16dp"
             app:drawableTint="?android:textColorSecondary"
