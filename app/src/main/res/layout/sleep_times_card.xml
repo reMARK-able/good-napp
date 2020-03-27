@@ -83,9 +83,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:hint="@string/total_sleep_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/divider2"
@@ -111,9 +111,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:hint="@string/day_sleep_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/divider2"
@@ -129,7 +129,7 @@
                     android:inputType="time"
                     android:textAlignment="center"
                     app:sleepDayString="@{viewModel.mLiveSleepDay}"
-                    tools:text="@string/sample_awake_time" />
+                    tools:text="@string/no_time" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -138,9 +138,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:hint="@string/night_sleep_label"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -168,9 +168,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:hint="@string/total_sleep_label"
                 app:layout_constraintEnd_toStartOf="@+id/divider2"
                 app:layout_constraintStart_toStartOf="parent"
@@ -186,7 +186,7 @@
                     android:inputType="time"
                     android:textAlignment="center"
                     app:totalAwakesString="@{viewModel.mLiveSleepDay}"
-                    tools:text="@string/sample_awake_time" />
+                    tools:text="@string/no_time" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -195,9 +195,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:hint="@string/day_sleep_label"
                 app:layout_constraintEnd_toStartOf="@+id/divider2"
                 app:layout_constraintStart_toStartOf="parent"
@@ -222,9 +222,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:hint="@string/night_sleep_label"
                 app:layout_constraintEnd_toStartOf="@+id/divider2"
                 app:layout_constraintStart_toStartOf="parent"
