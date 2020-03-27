@@ -22,7 +22,8 @@ android {
             annotationProcessorOptions {
                 arguments = [
                         "room.schemaLocation": "$projectDir/schemas".toString(),
-                        "room.incremental"   : "true"]
+                        "room.incremental"   : "true",
+                        "room.expandProjection":"true"]
             }
         }
     }
@@ -47,7 +48,7 @@ android {
 dependencies {
     def material_version = '1.2.0-alpha02'
     def lifecycle_version = '2.2.0'
-    def room_version = '2.2.3'
+    def room_version = '2.2.5'
     def koin_version = '2.0.1'
 
     // Koin for android.

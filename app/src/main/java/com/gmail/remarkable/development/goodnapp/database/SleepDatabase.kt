@@ -9,7 +9,7 @@ import com.gmail.remarkable.development.goodnapp.SleepDay.NightAwake
 
 @Database(
     entities = [SleepTable::class, Nap::class, NightAwake::class],
-    version = 3,
+    version = 4,
     exportSchema = true
 )
 abstract class SleepDatabase : RoomDatabase() {

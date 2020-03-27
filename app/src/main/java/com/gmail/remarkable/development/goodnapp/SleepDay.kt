@@ -88,7 +88,7 @@ data class SleepDay(
     class Nap(
         @PrimaryKey(autoGenerate = true)
         val napId: Int = 0,
-        @ColumnInfo(name = "nap_date")
+        @ColumnInfo(name = "nap_date", index = true)
         val napDate: Long,
         var start: Long = 0, var end: Long = 0
     ) {
@@ -109,7 +109,7 @@ data class SleepDay(
     class NightAwake(
         @PrimaryKey(autoGenerate = true)
         val nightAwakeId: Int = 0,
-        @ColumnInfo(name = "night_awake_date")
+        @ColumnInfo(name = "night_awake_date", index = true)
         val nightAwakeDate: Long,
         var start: Long = 0, var end: Long = 0
     ) {
