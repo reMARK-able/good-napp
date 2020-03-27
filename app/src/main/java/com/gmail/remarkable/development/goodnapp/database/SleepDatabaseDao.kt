@@ -26,9 +26,11 @@ interface SleepDatabaseDao {
     @Query("DELETE FROM sleep_table")
     fun clear()
 
+    @Transaction
     @Query("SELECT * FROM sleep_table ORDER BY date DESC")
     fun getAllDays(): LiveData<List<SleepDay>>
 
+    @Transaction
     @Query("SELECT * FROM sleep_table ORDER BY date DESC LIMIT 1")
     fun getLastDay(): SleepDay?
 
