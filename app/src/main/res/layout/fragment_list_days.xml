@@ -22,6 +22,14 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/list_item_day_timeline" />
 
+        <ImageView
+            android:id="@+id/image_empty_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="32dp"
+            app:srcCompat="@drawable/goodnap_logo_shadow_640" />
+
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
             android:layout_width="wrap_content"
