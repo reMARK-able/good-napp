@@ -20,15 +20,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/list_item_day_timeline" />
+            tools:listitem="@layout/list_item_day_timeline"
+            tools:visibility="gone" />
 
-        <ImageView
+        <TextView
             android:id="@+id/image_empty_recycler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="32dp"
-            app:srcCompat="@drawable/goodnap_logo_shadow_640" />
+            android:layout_marginBottom="32dp"
+            android:text="@string/empty_recycler_welcome"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:drawableTint="?android:textColorSecondary"
+            app:drawableTopCompat="@drawable/goodnap_logo_vector_150" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
