@@ -1,5 +1,6 @@
 package com.gmail.remarkable.development.goodnapp.util
 
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -132,5 +133,13 @@ fun TextView.setSleepTotalString(sleepDay: SleepDay?, wakeUp: Long?, longVersion
         nightSleep != 0L && realBedTimeValid == null ->
             getDurationNonEmptyString(nightSleep + getTotalNapTime(sleepDay.naps), res, version)
         else -> noTime
+    }
+}
+
+@BindingAdapter("showWhenEmpty")
+fun View.showWhenEmpty(data: List<Pair<SleepDay, Long?>>?) {
+    visibility = when {
+        data == null || data.isEmpty() -> View.VISIBLE
+        else -> View.GONE
     }
 }
