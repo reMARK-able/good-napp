@@ -31,11 +31,11 @@
             android:layout_marginBottom="32dp"
             android:text="@string/empty_recycler_welcome"
             android:textAlignment="center"
-            android:textColor="?colorPrimaryDark"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="?colorPrimaryDark"
             app:drawableTint="?colorPrimaryDark"
-            app:showWhenEmpty="@{viewModel.daysInPairs}"
-            app:drawableTopCompat="@drawable/goodnap_logo_vector_150" />
+            app:drawableTopCompat="@drawable/goodnap_logo_vector_120"
+            app:showWhenEmpty="@{viewModel.daysInPairs}" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"

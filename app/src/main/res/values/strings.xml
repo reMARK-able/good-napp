@@ -67,4 +67,5 @@
     <string name="clear_all_confirm_title">Clear all?</string>
     <string name="delete_the_day_confirm_title">Delete the day?</string>
     <string name="today">Today</string>
+    <string name="empty_recycler_welcome">Let\'s start...</string>
 </resources>
