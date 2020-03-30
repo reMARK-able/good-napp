@@ -143,3 +143,11 @@ fun View.showWhenEmpty(data: List<Pair<SleepDay, Long?>>?) {
         else -> View.GONE
     }
 }
+
+@BindingAdapter("showIfNoToday")
+fun View.showIfNoToday(data: List<Pair<SleepDay, Long?>>?) {
+    visibility = when (data) {
+        null -> View.GONE
+        else -> isTodayAdded(data)
+    }
+}

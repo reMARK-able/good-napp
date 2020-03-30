@@ -62,9 +62,6 @@ class DayViewModel(
 
     private val resources = application.resources
 
-    //  LiveData to set the visibility of the Today FAB
-    val isTodayFabVisible = Transformations.map(days) { days -> isTodayAdded(days) }
-
     // LiveData to set Add nap button enabled or disabled.
     val isAllDataValid = Transformations.map(mLiveSleepDay) { day ->
         if (day.naps.size >= MAX_AWAKES_NUMBER) false

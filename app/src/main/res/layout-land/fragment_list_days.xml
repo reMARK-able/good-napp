@@ -45,7 +45,7 @@
             android:layout_margin="@dimen/extended_fab_margin_normal"
             android:onClick="@{()-> viewModel.onFabClicked()}"
             android:text="@string/extended_fab_label"
-            android:visibility="@{viewModel.isTodayFabVisible}" />
+            app:showIfNoToday="@{viewModel.daysInPairs}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

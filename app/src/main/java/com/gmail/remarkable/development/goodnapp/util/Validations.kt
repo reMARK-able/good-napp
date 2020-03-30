@@ -204,11 +204,11 @@ fun validateData(mDay: SleepDay?, resources: Resources): Boolean {
 }
 
 // Check if latest day in recycler's list is equal with today.
-fun isTodayAdded(days: List<SleepDay>?): Int {
+fun isTodayAdded(days: List<Pair<SleepDay, Long?>>?): Int {
     return when {
         days == null -> View.GONE
         days.isEmpty() -> View.VISIBLE
-        days[0].date == getTodayInMillis() -> View.GONE
+        days[0].first.date == getTodayInMillis() -> View.GONE
         else -> View.VISIBLE
     }
 }
