@@ -28,13 +28,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="34dp"
             android:text="@string/empty_recycler_welcome"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="?colorPrimaryDark"
-            app:drawableTint="?colorPrimaryDark"
-            app:drawableTopCompat="@drawable/goodnap_logo_vector_120"
+            app:drawableTopCompat="@drawable/goodnap_logo_shadow_primary_dark_land"
             app:showWhenEmpty="@{viewModel.daysInPairs}" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
