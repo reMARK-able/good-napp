@@ -5,7 +5,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/goodnap_logo_shadow_primary_dark"
-            android:tint="@color/primaryTextColor" />
+            android:src="@drawable/goodnap_logo_splash" />
     </item>
 </layer-list>
