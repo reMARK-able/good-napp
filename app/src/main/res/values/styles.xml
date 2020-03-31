@@ -17,7 +17,8 @@
     </style>
 
     <style name="SplashScreenTheme" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/splash_screen_background</item>
+        <item name="android:background">@drawable/splash_screen_background</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="MyCardStyle" parent="Widget.MaterialComponents.CardView">
