@@ -12,7 +12,11 @@ import com.google.android.material.textfield.TextInputLayout
 @BindingAdapter("dateFormatted")
 fun TextView.setDateFormatted(sleepDay: SleepDay?) {
     sleepDay?.let {
-        text = getDateString(sleepDay.date, context)
+        text = when (val date = sleepDay.date) {
+            getTodayInMillis() -> context.getString(R.string.today)
+            prevDayDate(getTodayInMillis()) -> context.getString(R.string.yesterday)
+            else -> getDateString(date, context)
+        }
     }
 }
 
