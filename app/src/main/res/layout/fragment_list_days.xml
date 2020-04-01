@@ -34,7 +34,7 @@
             android:textColor="?colorPrimaryDark"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:showWhenEmpty="@{viewModel.daysInPairs}"
-            app:drawableTopCompat="@drawable/goodnap_logo_shadow_primary_dark" />
+            app:drawableTopCompat="@drawable/goodnap_logo_primary" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
