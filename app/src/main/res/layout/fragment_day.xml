@@ -218,6 +218,15 @@
                 android:layout_marginTop="8dp"
                 app:viewModel="@{viewModel}" />
 
+            <include
+                android:id="@+id/card_comment"
+                layout="@layout/comment_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:day="@{day}"
+                app:viewModel="@{viewModel}" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
