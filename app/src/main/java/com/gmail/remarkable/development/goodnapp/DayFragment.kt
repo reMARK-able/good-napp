@@ -101,6 +101,10 @@ class DayFragment : Fragment() {
         }
     }
 
+    fun showAddCommentDialog() {
+        CommentDialogFragment().show(parentFragmentManager, "comment_dialog")
+    }
+
     private fun navigateToConfirmation(action: ConfirmActions) {
         val navController = findNavController()
         if (navController.currentDestination?.id == R.id.dayFragment) {
