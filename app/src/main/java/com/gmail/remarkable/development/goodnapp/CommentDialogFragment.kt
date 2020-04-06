@@ -26,7 +26,8 @@ class CommentDialogFragment : DialogFragment() {
                 .setPositiveButton(
                     "Save",
                     DialogInterface.OnClickListener { dialog, id ->
-                        val comment = binding.dialogCommentTextInputEditText.text.toString()
+                        val comment =
+                            binding.dialogCommentTextInputEditText.text.toString().trimEnd()
                         saveComment(comment)
                     })
                 .setNegativeButton("Cancel",
