@@ -24,13 +24,14 @@ class CommentDialogFragment : DialogFragment() {
             val builder = MaterialAlertDialogBuilder(it)
                 .setView(binding.root)
                 .setPositiveButton(
-                    "Save",
+                    R.string.save_button,
                     DialogInterface.OnClickListener { dialog, id ->
                         val comment =
                             binding.dialogCommentTextInputEditText.text.toString().trimEnd()
                         saveComment(comment)
                     })
-                .setNegativeButton("Cancel",
+                .setNegativeButton(
+                    R.string.cancel_button,
                     DialogInterface.OnClickListener { dialog, id ->
                         // Cancel...
                     })
