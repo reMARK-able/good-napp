@@ -12,7 +12,6 @@
         <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
         <item name="colorOnSecondary">@color/secondaryTextColor</item>
 
-        <item name="android:fontFamily">sans-serif-smallcaps</item>
         <item name="materialCardViewStyle">@style/MyCardStyle</item>
     </style>
 

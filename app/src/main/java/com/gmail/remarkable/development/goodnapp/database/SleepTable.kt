@@ -14,5 +14,7 @@ open class SleepTable(
 
     var outOfBed: Long = 0,
 
-    var realBedtime: Long = 0
+    var realBedtime: Long = 0,
+
+    var comment: String = ""
 )

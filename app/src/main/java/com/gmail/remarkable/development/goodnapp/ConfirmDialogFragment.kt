@@ -43,7 +43,8 @@ class ConfirmDialogFragment : DialogFragment() {
                             ConfirmActions.DeleteDay -> deleteDay()
                         }
                     })
-                .setNegativeButton("cancel",
+                .setNegativeButton(
+                    R.string.cancel_button,
                     DialogInterface.OnClickListener { dialog, id ->
                         // Cancel...
                     })

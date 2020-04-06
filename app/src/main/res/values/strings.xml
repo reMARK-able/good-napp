@@ -69,4 +69,8 @@
     <string name="today">Today</string>
     <string name="empty_recycler_welcome">Let\'s start...</string>
     <string name="yesterday">Yesterday</string>
+    <string name="add_comment">Add comment</string>
+    <string name="comment_label">Comment</string>
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
 </resources>

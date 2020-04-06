@@ -67,6 +67,8 @@ class SleepDayDiffCallback : DiffUtil.ItemCallback<Pair<SleepDay, Long?>>() {
                 oldItem.first.outOfBed == newItem.first.outOfBed &&
                 oldItem.first.realBedtime == newItem.first.realBedtime &&
                 oldItem.first.naps == newItem.first.naps &&
+                oldItem.first.nightAwakes == newItem.first.nightAwakes &&
+                oldItem.first.comment == newItem.first.comment &&
                 oldItem.second == newItem.second
     }
 
