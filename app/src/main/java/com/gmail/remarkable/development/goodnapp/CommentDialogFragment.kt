@@ -4,8 +4,8 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
+import com.gmail.remarkable.development.goodnapp.databinding.FragmentCommentDialogBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.textfield.TextInputEditText
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -18,17 +18,15 @@ class CommentDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
-
-            val customView = it.layoutInflater.inflate(R.layout.fragment_comment_dialog, null)
-            val commentEditText =
-                customView.findViewById<TextInputEditText>(R.id.dialog_comment_textInputEditText)
-            commentEditText.setText(viewModel.mDay.comment)
+            val binding = FragmentCommentDialogBinding.inflate(it.layoutInflater)
+            val editText = binding.dialogCommentTextInputEditText
+            editText.append(viewModel.mDay.comment)
             val builder = MaterialAlertDialogBuilder(it)
-                .setView(customView)
+                .setView(binding.root)
                 .setPositiveButton(
                     "Save",
                     DialogInterface.OnClickListener { dialog, id ->
-                        val comment = commentEditText.text.toString()
+                        val comment = binding.dialogCommentTextInputEditText.text.toString()
                         saveComment(comment)
                     })
                 .setNegativeButton("Cancel",
