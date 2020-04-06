@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -18,12 +19,17 @@ class CommentDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
 
+            val customView = it.layoutInflater.inflate(R.layout.fragment_comment_dialog, null)
+            val commentEditText =
+                customView.findViewById<TextInputEditText>(R.id.dialog_comment_textInputEditText)
+            commentEditText.setText(viewModel.mDay.comment)
             val builder = MaterialAlertDialogBuilder(it)
-                .setView(layoutInflater.inflate(R.layout.fragment_comment_dialog, null))
+                .setView(customView)
                 .setPositiveButton(
                     "Save",
                     DialogInterface.OnClickListener { dialog, id ->
-
+                        val comment = commentEditText.text.toString()
+                        saveComment(comment)
                     })
                 .setNegativeButton("Cancel",
                     DialogInterface.OnClickListener { dialog, id ->
@@ -32,6 +38,10 @@ class CommentDialogFragment : DialogFragment() {
             // Create the AlertDialog object and return it
             builder.create().also { isCancelable = false }
         } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    private fun saveComment(comment: String) {
+        viewModel.saveComment(comment)
     }
 
 }

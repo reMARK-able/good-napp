@@ -277,6 +277,11 @@ class DayViewModel(
         saveData()
     }
 
+    fun saveComment(comment: String) {
+        mDay.comment = comment
+        _mLiveSleepDay.value = mDay
+        saveData()
+    }
     /**
      * Called when return from TimePickerDialogFragment.
      * Set a appropriate field in mDay object, pass it to the LiveData and write to database.
