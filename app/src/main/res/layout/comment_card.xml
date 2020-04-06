@@ -43,6 +43,7 @@
                     android:focusableInTouchMode="false"
                     android:onClick="@{() -> day.showAddCommentDialog()}"
                     android:textAlignment="textStart"
+                    app:comment="@{viewModel.mLiveSleepDay}"
                     tools:text="Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum." />
 
             </com.google.android.material.textfield.TextInputLayout>

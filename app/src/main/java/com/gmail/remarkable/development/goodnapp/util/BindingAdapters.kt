@@ -7,6 +7,7 @@ import androidx.databinding.BindingAdapter
 import com.gmail.remarkable.development.goodnapp.MAX_AWAKES_NUMBER
 import com.gmail.remarkable.development.goodnapp.R
 import com.gmail.remarkable.development.goodnapp.SleepDay
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 @BindingAdapter("dateFormatted")
@@ -154,4 +155,13 @@ fun View.showIfNoToday(data: List<Pair<SleepDay, Long?>>?) {
         null -> View.GONE
         else -> isTodayAdded(data)
     }
+}
+
+@BindingAdapter("comment")
+fun TextInputEditText.setComment(sleepDay: SleepDay?) {
+    val newText = when (sleepDay) {
+        null -> ""
+        else -> sleepDay.comment
+    }
+    setText(newText)
 }
