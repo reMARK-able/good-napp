@@ -165,3 +165,12 @@ fun TextInputEditText.setComment(sleepDay: SleepDay?) {
     }
     setText(newText)
 }
+
+@BindingAdapter("commentHint")
+fun TextInputLayout.setCommentHint(sleepDay: SleepDay?) {
+    hint = when {
+        sleepDay == null -> null
+        sleepDay.comment.isBlank() -> context.getString(R.string.add_comment)
+        else -> context.getString(R.string.comment_label)
+    }
+}
