@@ -73,7 +73,7 @@
     <string name="comment_label">Comment</string>
     <string name="save_button">Save</string>
     <string name="cancel_button">Cancel</string>
-    <string name="about_motto">Write down, schedule and analyze awake and sleep times of Your child.</string>
+    <string name="about_motto">Write down, schedule and analyze sleep times and awake times of Your child.</string>
     <string name="about_feature_set_real_wakeUp">Set real wake up and out of bed times</string>
     <string name="about_feature_define_target_twt">Define target total awake time (TWT)</string>
     <string name="about_feature_add_naps">Add naps</string>
