@@ -45,7 +45,8 @@ interface SleepDatabaseDao {
             sleepDay.targetTWT,
             sleepDay.wakeUp,
             sleepDay.outOfBed,
-            sleepDay.realBedtime
+            sleepDay.realBedtime,
+            sleepDay.comment
         )
         insert(dayToInsert)
         val napsToInsert = sleepDay.naps
@@ -68,7 +69,8 @@ interface SleepDatabaseDao {
             sleepDay.targetTWT,
             sleepDay.wakeUp,
             sleepDay.outOfBed,
-            sleepDay.realBedtime
+            sleepDay.realBedtime,
+            sleepDay.comment
         )
         val naps = sleepDay.naps
         val nightAwakes = sleepDay.nightAwakes
