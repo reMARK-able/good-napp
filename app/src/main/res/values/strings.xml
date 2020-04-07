@@ -78,7 +78,7 @@
     <string name="about_feature_define_target_twt">Define target total awake time (TWT)</string>
     <string name="about_feature_add_naps">Add naps</string>
     <string name="about_feature_set_real_bedtime">Set real bedtime</string>
-    <string name="about_feature_note_night_awake">Note night awake if any</string>
+    <string name="about_feature_note_night_awake">Note night awake, if any</string>
     <string name="about_feature_make_some_comments">Make some comments</string>
     <string name="about_feature_compareDays">Compare days and decide which awake times suits best Your child\'s needs.</string>
     <string name="open_source_licenses">Open Source Licenses</string>
