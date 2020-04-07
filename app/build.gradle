@@ -8,6 +8,8 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: "androidx.navigation.safeargs"
 
+apply plugin: 'com.mikepenz.aboutlibraries.plugin'
+
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -91,4 +93,7 @@ dependencies {
 
     // CalendarView
     implementation "com.github.prolificinteractive:material-calendarview:2.0.0"
+
+    // AboutLibraries
+    implementation "com.mikepenz:aboutlibraries:$aboutLibsRelease"
 }
