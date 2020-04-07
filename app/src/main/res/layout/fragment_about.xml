@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:drawablePadding="4dp"
             android:gravity="center_vertical"
             android:text="@string/about_feature_set_real_wakeUp"
@@ -141,23 +141,35 @@
             android:id="@+id/divider4"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/list_divider_horizontal_gradient"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/about_feature_textView6" />
 
-        <View
-            android:id="@+id/divider5"
+        <TextView
+            android:id="@+id/about_version_textView"
             android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/list_divider_horizontal_gradient"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Version:"
             app:layout_constraintBottom_toTopOf="@+id/about_licenses_textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider4"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@drawable/list_divider_horizontal_gradient"
+            app:layout_constraintBottom_toTopOf="@+id/about_licenses_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/about_version_textView"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
