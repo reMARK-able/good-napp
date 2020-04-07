@@ -80,4 +80,5 @@
     <string name="about_feature_set_real_bedtime">Set real bedtime</string>
     <string name="about_feature_note_night_awake">Note night awake if any</string>
     <string name="about_feature_make_some_comments">Make some comments</string>
+    <string name="about_feature_compareDays">Compare days and decide which awake times suits best Your child\'s needs.</string>
 </resources>
