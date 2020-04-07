@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.gmail.remarkable.development.goodnapp.databinding.FragmentAboutBinding
 
 /**
  * Fragment to display something about the app.
@@ -15,8 +16,8 @@ class AboutFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_about, container, false)
+        val binding = FragmentAboutBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 }
