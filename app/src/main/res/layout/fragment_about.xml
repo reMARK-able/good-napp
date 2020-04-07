@@ -137,6 +137,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/about_feature_textView5" />
 
+        <TextView
+            android:id="@+id/about_feature_textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:text="Compare days and decide which awake times suits best Your child's needs."
+            app:drawableStartCompat="@drawable/ic_timer_black_24dp"
+            app:drawableTint="?attr/colorControlNormal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/about_feature_textView6" />
+
         <View
             android:id="@+id/divider4"
             android:layout_width="0dp"
@@ -144,8 +160,9 @@
             android:layout_marginTop="32dp"
             android:background="@drawable/list_divider_horizontal_gradient"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/about_feature_textView6" />
+            app:layout_constraintTop_toBottomOf="@+id/about_feature_textView7" />
 
         <TextView
             android:id="@+id/about_version_textView"
