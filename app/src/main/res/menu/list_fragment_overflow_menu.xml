@@ -8,4 +8,11 @@
         android:menuCategory="secondary"
         android:title="@string/calendar"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/aboutFragment"
+        android:icon="@drawable/ic_info_outline_24dp"
+        android:menuCategory="secondary"
+        android:title="@string/about_label"
+        app:showAsAction="never" />
 </menu>
