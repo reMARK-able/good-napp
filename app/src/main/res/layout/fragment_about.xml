@@ -185,7 +185,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="Version:"
+                android:text="@string/version"
                 app:layout_constraintBottom_toTopOf="@+id/about_licenses_textView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
