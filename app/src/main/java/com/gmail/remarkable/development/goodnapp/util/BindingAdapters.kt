@@ -149,6 +149,14 @@ fun View.showWhenEmpty(data: List<Pair<SleepDay, Long?>>?) {
     }
 }
 
+@BindingAdapter("showSpinner")
+fun View.showSpinner(data: List<Pair<SleepDay, Long?>>?) {
+    visibility = when (data) {
+        null -> View.VISIBLE
+        else -> View.GONE
+    }
+}
+
 @BindingAdapter("showIfNoToday")
 fun View.showIfNoToday(data: List<Pair<SleepDay, Long?>>?) {
     visibility = when (data) {
