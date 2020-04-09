@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.gmail.remarkable.development.goodnapp.databinding.FragmentListDaysBinding
 import com.gmail.remarkable.development.goodnapp.util.getDateString
 import com.gmail.remarkable.development.goodnapp.util.getTodayInMillis
@@ -64,6 +65,7 @@ class ListDaysFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.goToCalendarFragment -> return navToCalendar()
+            R.id.aboutFragment -> NavigationUI.onNavDestinationSelected(item, findNavController())
         }
         return super.onOptionsItemSelected(item)
     }
