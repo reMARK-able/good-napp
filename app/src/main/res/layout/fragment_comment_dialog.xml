@@ -23,7 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="top"
-                android:inputType="textMultiLine"
+                android:inputType="textMultiLine|textCapSentences"
+                android:lineSpacingMultiplier="1.2"
                 android:minHeight="200dp"
                 tools:text="Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorpsumLorem ipsumLorem ipsumLorem ipsumLorpsumLorem ipsumLorem ipsumLorem ipsumLorpsumLorem ipsumLorem ipsumLorem ipsumLorpsumLorem ipsumLorem ipsumLorem ipsumLorpsumLorem ipsumLorem ipsumLorem ipsumLorpsumLorem ipsumLorem ipsumLorem ipsumLorpsumLorem ipsumLorem ipsumLorem ipsumLorpsumLorem ipsumLorem ipsumLorem ipsumLorpsumLorem ipsumLorem ipsumLorem ipsumLorpsumLorem ipsumLorem ipsumLorem ipsumLorpsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum." />
         </com.google.android.material.textfield.TextInputLayout>
