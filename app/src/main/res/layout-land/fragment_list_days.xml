@@ -36,6 +36,14 @@
             app:drawableTopCompat="@drawable/goodnap_logo_primary_land"
             app:showWhenEmpty="@{viewModel.daysInPairs}" />
 
+        <ProgressBar
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="16dp"
+            app:showSpinner="@{viewModel.daysInPairs}" />
+
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
             android:layout_width="wrap_content"
