@@ -21,6 +21,7 @@ class CommentDialogFragment : DialogFragment() {
             val binding = FragmentCommentDialogBinding.inflate(it.layoutInflater)
             val editText = binding.dialogCommentTextInputEditText
             editText.append(viewModel.mDay.comment)
+            editText.requestFocus()
             val builder = MaterialAlertDialogBuilder(it)
                 .setView(binding.root)
                 .setPositiveButton(
