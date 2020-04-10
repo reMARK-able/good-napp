@@ -41,6 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusableInTouchMode="false"
+                    android:lineSpacingMultiplier="1.2"
                     android:onClick="@{() -> day.showAddCommentDialog()}"
                     android:textAlignment="textStart"
                     app:comment="@{viewModel.mLiveSleepDay}"
