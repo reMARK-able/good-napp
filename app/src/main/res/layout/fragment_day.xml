@@ -15,143 +15,219 @@
             type="com.gmail.remarkable.development.goodnapp.DayFragment" />
     </data>
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#dedede"
-        android:orientation="vertical">
+        android:background="?attr/colorSurface"
+        android:fillViewport="true">
 
-        <include
-            android:id="@+id/card_start"
-            layout="@layout/day_start_card"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:day="@{day}"
-            app:viewModel="@{viewModel}" />
+            android:animateLayoutChanges="true"
+            android:background="#40000000"
+            android:orientation="vertical">
 
-        <include
-            android:id="@+id/wakeTime1"
-            layout="@layout/wake_time_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[0] == null ? View.GONE : View.VISIBLE}"
-            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[0]}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/card_start"
+                layout="@layout/day_start_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:day="@{day}"
+                app:viewModel="@{viewModel}" />
 
-        <include
-            android:id="@+id/nap1"
-            layout="@layout/nap_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:visibility="@{viewModel.mLiveSleepDay.naps[0] == null ? View.GONE : View.VISIBLE}"
-            app:day="@{day}"
-            app:index="@{0}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/wakeTime1"
+                layout="@layout/wake_time_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[0] == null ? View.GONE : View.VISIBLE}"
+                app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[0]}"
+                app:viewModel="@{viewModel}" />
 
-        <include
-            android:id="@+id/wakeTime2"
-            layout="@layout/wake_time_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[1] == null ? View.GONE : View.VISIBLE}"
-            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[1]}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/nap1"
+                layout="@layout/nap_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:visibility="@{viewModel.mLiveSleepDay.naps[0] == null ? View.GONE : View.VISIBLE}"
+                app:day="@{day}"
+                app:index="@{0}"
+                app:viewModel="@{viewModel}" />
 
-        <include
-            android:id="@+id/nap2"
-            layout="@layout/nap_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:visibility="@{viewModel.mLiveSleepDay.naps[1] == null ? View.GONE : View.VISIBLE}"
-            app:day="@{day}"
-            app:index="@{1}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/wakeTime2"
+                layout="@layout/wake_time_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[1] == null ? View.GONE : View.VISIBLE}"
+                app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[1]}"
+                app:viewModel="@{viewModel}" />
 
-        <include
-            android:id="@+id/wakeTime3"
-            layout="@layout/wake_time_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[2] == null ? View.GONE : View.VISIBLE}"
-            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[2]}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/nap2"
+                layout="@layout/nap_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:visibility="@{viewModel.mLiveSleepDay.naps[1] == null ? View.GONE : View.VISIBLE}"
+                app:day="@{day}"
+                app:index="@{1}"
+                app:viewModel="@{viewModel}" />
 
-        <include
-            android:id="@+id/nap3"
-            layout="@layout/nap_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:visibility="@{viewModel.mLiveSleepDay.naps[2] == null ? View.GONE : View.VISIBLE}"
-            app:day="@{day}"
-            app:index="@{2}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/wakeTime3"
+                layout="@layout/wake_time_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[2] == null ? View.GONE : View.VISIBLE}"
+                app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[2]}"
+                app:viewModel="@{viewModel}" />
 
-        <include
-            android:id="@+id/wakeTime4"
-            layout="@layout/wake_time_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[3] == null ? View.GONE : View.VISIBLE}"
-            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[3]}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/nap3"
+                layout="@layout/nap_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:visibility="@{viewModel.mLiveSleepDay.naps[2] == null ? View.GONE : View.VISIBLE}"
+                app:day="@{day}"
+                app:index="@{2}"
+                app:viewModel="@{viewModel}" />
 
-        <include
-            android:id="@+id/nap4"
-            layout="@layout/nap_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:visibility="@{viewModel.mLiveSleepDay.naps[3] == null ? View.GONE : View.VISIBLE}"
-            app:day="@{day}"
-            app:index="@{3}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/wakeTime4"
+                layout="@layout/wake_time_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[3] == null ? View.GONE : View.VISIBLE}"
+                app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[3]}"
+                app:viewModel="@{viewModel}" />
 
-        <include
-            android:id="@+id/wakeTime5"
-            layout="@layout/wake_time_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[4] == null ? View.GONE : View.VISIBLE}"
-            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[4]}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/nap4"
+                layout="@layout/nap_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:visibility="@{viewModel.mLiveSleepDay.naps[3] == null ? View.GONE : View.VISIBLE}"
+                app:day="@{day}"
+                app:index="@{3}"
+                app:viewModel="@{viewModel}" />
 
-        <include
-            android:id="@+id/nap5"
-            layout="@layout/nap_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:visibility="@{viewModel.mLiveSleepDay.naps[4] == null ? View.GONE : View.VISIBLE}"
-            app:day="@{day}"
-            app:index="@{4}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/wakeTime5"
+                layout="@layout/wake_time_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[4] == null ? View.GONE : View.VISIBLE}"
+                app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[4]}"
+                app:viewModel="@{viewModel}" />
 
-        <include
-            android:id="@+id/wakeTime6"
-            layout="@layout/wake_time_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[5] == null ? View.GONE : View.VISIBLE}"
-            app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[5]}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/nap5"
+                layout="@layout/nap_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:visibility="@{viewModel.mLiveSleepDay.naps[4] == null ? View.GONE : View.VISIBLE}"
+                app:day="@{day}"
+                app:index="@{4}"
+                app:viewModel="@{viewModel}" />
 
-        <include
-            android:id="@+id/card_summary"
-            layout="@layout/summary_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:day="@{day}"
-            app:viewModel="@{viewModel}" />
+            <include
+                android:id="@+id/wakeTime6"
+                layout="@layout/wake_time_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:visibility="@{viewModel.mLiveSleepDay.awakeTimes[5] == null ? View.GONE : View.VISIBLE}"
+                app:awakeTime="@{viewModel.mLiveSleepDay.awakeTimes[5]}"
+                app:viewModel="@{viewModel}" />
 
-    </LinearLayout>
+            <include
+                android:id="@+id/card_summary"
+                layout="@layout/bedtime_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:day="@{day}"
+                app:viewModel="@{viewModel}" />
+
+            <include
+                android:id="@+id/night_awake1"
+                layout="@layout/night_awake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[0] == null ? View.GONE : View.VISIBLE}"
+                app:dayFragment="@{day}"
+                app:index="@{0}"
+                app:viewModel="@{viewModel}" />
+
+            <include
+                android:id="@+id/night_awake2"
+                layout="@layout/night_awake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[1] == null ? View.GONE : View.VISIBLE}"
+                app:dayFragment="@{day}"
+                app:index="@{1}"
+                app:viewModel="@{viewModel}" />
+
+            <include
+                android:id="@+id/night_awake3"
+                layout="@layout/night_awake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[2] == null ? View.GONE : View.VISIBLE}"
+                app:dayFragment="@{day}"
+                app:index="@{2}"
+                app:viewModel="@{viewModel}" />
+
+            <include
+                android:id="@+id/night_awake4"
+                layout="@layout/night_awake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[3] == null ? View.GONE : View.VISIBLE}"
+                app:dayFragment="@{day}"
+                app:index="@{3}"
+                app:viewModel="@{viewModel}" />
+
+            <include
+                android:id="@+id/night_awake5"
+                layout="@layout/night_awake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.mLiveSleepDay.nightAwakes[4] == null ? View.GONE : View.VISIBLE}"
+                app:dayFragment="@{day}"
+                app:index="@{4}"
+                app:viewModel="@{viewModel}" />
+
+            <include
+                android:id="@+id/card_sleep_times"
+                layout="@layout/sleep_times_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:viewModel="@{viewModel}" />
+
+            <include
+                android:id="@+id/card_comment"
+                layout="@layout/comment_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:day="@{day}"
+                app:viewModel="@{viewModel}" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gmail.remarkable.development.goodnapp.DayViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ListDaysFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/day_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/list_item_day_timeline" />
+
+        <TextView
+            android:id="@+id/image_empty_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="34dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/empty_recycler_welcome"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="?colorPrimaryDark"
+            app:drawableTopCompat="@drawable/goodnap_logo_primary"
+            app:showWhenEmpty="@{viewModel.daysInPairs}" />
+
+        <ProgressBar
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="16dp"
+            app:showSpinner="@{viewModel.daysInPairs}" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_margin="@dimen/extended_fab_margin_normal"
+            android:onClick="@{()-> viewModel.onFabClicked()}"
+            android:text="@string/extended_fab_label"
+            app:showIfNoToday="@{viewModel.daysInPairs}" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "sleep_table")
 open class SleepTable(
     @PrimaryKey
-    var date: String = "unknown_date",
+    var date: Long = 0,
 
     var targetTWT: Long = 0,
 
@@ -14,5 +14,7 @@ open class SleepTable(
 
     var outOfBed: Long = 0,
 
-    var realBedtime: Long = 0
+    var realBedtime: Long = 0,
+
+    var comment: String = ""
 )

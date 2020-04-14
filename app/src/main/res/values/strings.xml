@@ -1,29 +1,35 @@
 <resources>
     <string name="app_name">Good nApp</string>
 
+    <!-- TextInputLayout's labels -->
     <!-- For full planned sleep time; Planowany ccc (całkowity czas czuwania) -->
-    <string name="target_TWT">Target TWT</string>
+    <string name="target_TWT">TARGET TWT</string>
+    <string name="out_of_bed">OUT OF BED</string>
+    <string name="wake_up">WAKE UP</string>
+    <string name="nap_label_format">NAP %d</string>
+    <string name="start">START</string>
+    <string name="end">END</string>
+    <string name="target_hint">TARGET</string>
+    <string name="real_hint_label">REAL</string>
+    <string name="total_sleep_label">TOTAL</string>
+    <string name="day_sleep_label">DAY</string>
+    <string name="night_sleep_label">NIGHT</string>
+    <string name="add_comment">ADD COMMENT</string>
+    <string name="comment_label">COMMENT</string>
+    <string name="awake_label_format">NIGHT AWAKE %d</string>
 
-    <!-- Description for set time buttons -->
-    <!--Wake up label -->
-    <string name="out_of_bed">Out of bed</string>
 
     <!-- Template string for field when time has'n been already set -->
     <string name="no_time">--:--</string>
-    <string name="nap_label_format">Nap %d</string>
-    <string name="start">Start</string>
-    <string name="end">End</string>
+    <string name="time_duration_format">%1$d hr %2$d min</string>
+    <string name="time_duration_format_short">%1$d:%2$02d</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="summary">Summary</string>
-    <string name="target_bedtime">Target Bedtime</string>
-    <string name="real_bedTime">Real Bedtime</string>
     <string name="real_twt">Real TWT</string>
-    <string name="wake_up">Wake Up</string>
     <string name="add_nap">Add Nap</string>
     <string name="delete_description">Delete</string>
-    <string name="sample_awake_time">1 hr 45 min</string>
-    `
+    <string name="sample_awake_time">12 hr 45 min</string>
+
     <string name="sample_date">16 september 2019</string>
     <string name="error_must_be_later_than_out_of_bed">Must be later than out of bed.</string>
     <string name="error_must_be_later_than_prev_nap_start">Must be later than previous nap start.</string>
@@ -35,4 +41,46 @@
     <string name="error_conflict_with_first_nap_end">Conflict with first nap end.</string>
     <string name="error_must_be_later_than_last_nap_start">Must be later than last nap start.</string>
     <string name="error_must_be_later_than_last_nap_end">Must be later than last nap end.</string>
+    <string name="unknown_date">unknown date!!!</string>
+    <string name="date_label">Date:</string>
+    <string name="total_awake_time">Total (a)wake time:</string>
+    <string name="extended_fab_label">Today</string>
+    <string name="sleep_times_label">Sleep</string>
+    <string name="no_time_forAllAwakeTimeString">-:-</string>
+    <string name="separator_for_allAwakeTimesString">/</string>
+    <string name="notAvailable_short">n/a</string>
+    <string name="awake_times_label">Awake Times:</string>
+    <string name="sleep_item_list_label">Sleep</string>
+    <string name="night_awake">Night Awake</string>
+    <string name="error_must_be_later_than_realBedTime">Must be later than real bedtime.</string>
+    <string name="error_must_be_later_than_prev_awake_start">Must be later than previous awake start.</string>
+    <string name="error_must_be_later_than_prev_awake_end">Must be later than previous awake end.</string>
+    <string name="awake">Awake</string>
+    <string name="bedtime_label">Bedtime:</string>
+    <string name="error_cant_be_later_than_outOfBed">Can\'t be later than out of bed!</string>
+    <string name="error_cant_be_later_than_realBedtime">Can\'t be later than real bedtime.</string>
+    <string name="clear">Clear</string>
+    <string name="delete">Delete</string>
+    <string name="delete_the_nap">Delete the nap?</string>
+    <string name="delete_the_night_awake">Delete the night awake?</string>
+    <string name="clear_all_confirm_message">It will clear all values in this day.</string>
+    <string name="delete_day_confirm_message">It will delete this day from your data.\nLater you can add it again from calendar.</string>
+    <string name="clear_all_confirm_title">Clear all?</string>
+    <string name="delete_the_day_confirm_title">Delete the day?</string>
+    <string name="today">Today</string>
+    <string name="empty_recycler_welcome">Let\'s start...</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="about_motto">Write down, schedule and analyze sleep times and awake times of Your child.</string>
+    <string name="about_feature_set_real_wakeUp">Set real wake up and out of bed times</string>
+    <string name="about_feature_define_target_twt">Define target total awake time (TWT)</string>
+    <string name="about_feature_add_naps">Add naps</string>
+    <string name="about_feature_set_real_bedtime">Set real bedtime</string>
+    <string name="about_feature_note_night_awake">Note night awake, if any</string>
+    <string name="about_feature_make_some_comments">Make some comments</string>
+    <string name="about_feature_compareDays">Compare days and decide which awake times suits best Your child\'s needs.</string>
+    <string name="open_source_licenses">Open Source Licenses</string>
+    <string name="version">"Version: "</string>
+    <string name="about_label">About</string>
 </resources>

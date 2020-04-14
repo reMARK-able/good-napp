@@ -9,7 +9,14 @@ data class SleepDay(
         entityColumn = "nap_date",
         entity = Nap::class
     )
-    val naps: MutableList<Nap> = mutableListOf()
+    val naps: MutableList<Nap> = mutableListOf(),
+
+    @Relation(
+        parentColumn = "date",
+        entityColumn = "night_awake_date",
+        entity = NightAwake::class
+    )
+    val nightAwakes: MutableList<NightAwake> = mutableListOf()
 
 ) : SleepTable() {
     val targetBedtime: Long
@@ -58,7 +65,7 @@ data class SleepDay(
             }
         }
 
-    val realTWT: Long
+    val realDayAwakeTime: Long
         get() {
             var sumOfAwakeTimes = 0L
             for (awakeTime in awakeTimes) {
@@ -81,8 +88,29 @@ data class SleepDay(
     class Nap(
         @PrimaryKey(autoGenerate = true)
         val napId: Int = 0,
-        @ColumnInfo(name = "nap_date")
-        val napDate: String,
+        @ColumnInfo(name = "nap_date", index = true)
+        val napDate: Long,
+        var start: Long = 0, var end: Long = 0
+    ) {
+        val duration: Long
+            get() = if (end - start > 0 && start != 0L) (end - start) else 0L //in millis.
+    }
+
+    @Entity(
+        tableName = "night_awakes_table",
+        foreignKeys = [ForeignKey(
+            entity = SleepTable::class,
+            parentColumns = ["date"],
+            childColumns = ["night_awake_date"],
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        )]
+    )
+    class NightAwake(
+        @PrimaryKey(autoGenerate = true)
+        val nightAwakeId: Int = 0,
+        @ColumnInfo(name = "night_awake_date", index = true)
+        val nightAwakeDate: Long,
         var start: Long = 0, var end: Long = 0
     ) {
         val duration: Long

@@ -3,16 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/dayFragment">
+    app:startDestination="@id/listDaysFragment">
 
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.gmail.remarkable.development.goodnapp.CalendarFragment"
+        android:label="@string/calendar"
+        tools:layout="@layout/fragment_calendar">
+        <action
+            android:id="@+id/action_calendarFragment_to_dayFragment"
+            app:destination="@id/dayFragment"
+            app:enterAnim="@anim/day_fragment_enter_slide_up"
+            app:exitAnim="@android:anim/fade_out"
+            app:popExitAnim="@anim/day_fragment_exit_slide_down"
+            app:popUpTo="@id/listDaysFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/listDaysFragment"
+        android:name="com.gmail.remarkable.development.goodnapp.ListDaysFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_list_days">
+        <action
+            android:id="@+id/action_listDaysFragment_to_dayFragment"
+            app:destination="@id/dayFragment"
+            app:enterAnim="@anim/day_fragment_enter_slide_up"
+            app:exitAnim="@android:anim/fade_out"
+            app:popExitAnim="@anim/day_fragment_exit_slide_down" />
+        <action
+            android:id="@+id/action_listDaysFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment"
+            app:enterAnim="@anim/calendar_fragment_enter_slide_down"
+            app:popExitAnim="@anim/calendar_fragment_exit_slide_up" />
+    </fragment>
     <fragment
         android:id="@+id/dayFragment"
         android:name="com.gmail.remarkable.development.goodnapp.DayFragment"
-        android:label="DayFragment"
+        android:label="{dateString}"
         tools:layout="@layout/fragment_day">
         <action
             android:id="@+id/action_dayFragment_to_timePickerDialogFragment"
             app:destination="@id/timePickerDialogFragment" />
+        <argument
+            android:name="dateString"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_dayFragment_to_confirmDialogFragment"
+            app:destination="@id/confirmDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/timePickerDialogFragment"
@@ -21,8 +58,23 @@
         <argument
             android:name="viewNameTag"
             app:argType="string" />
-        <argument
-            android:name="currentValue"
-            app:argType="string" />
     </dialog>
+    <dialog
+        android:id="@+id/confirmDialogFragment"
+        android:name="com.gmail.remarkable.development.goodnapp.ConfirmDialogFragment"
+        android:label="ConfirmDialogFragment">
+        <argument
+            android:name="confirmAction"
+            app:argType="com.gmail.remarkable.development.goodnapp.ConfirmActions" />
+        <action
+            android:id="@+id/action_confirmDialogFragment_to_listDaysFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/listDaysFragment"
+            app:popUpToInclusive="false" />
+    </dialog>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.gmail.remarkable.development.goodnapp.AboutFragment"
+        android:label="@string/about_label"
+        tools:layout="@layout/fragment_about" />
 </navigation>

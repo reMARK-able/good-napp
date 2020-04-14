@@ -1,0 +1,176 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 4,
+    "identityHash": "150f332863216e7d216bc96e72acf6fb",
+    "entities": [
+      {
+        "tableName": "sleep_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`date` INTEGER NOT NULL, `targetTWT` INTEGER NOT NULL, `wakeUp` INTEGER NOT NULL, `outOfBed` INTEGER NOT NULL, `realBedtime` INTEGER NOT NULL, PRIMARY KEY(`date`))",
+        "fields": [
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "targetTWT",
+            "columnName": "targetTWT",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wakeUp",
+            "columnName": "wakeUp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "outOfBed",
+            "columnName": "outOfBed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "realBedtime",
+            "columnName": "realBedtime",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "date"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "nap_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`napId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nap_date` INTEGER NOT NULL, `start` INTEGER NOT NULL, `end` INTEGER NOT NULL, FOREIGN KEY(`nap_date`) REFERENCES `sleep_table`(`date`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "napId",
+            "columnName": "napId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "napDate",
+            "columnName": "nap_date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "start",
+            "columnName": "start",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "end",
+            "columnName": "end",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "napId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_nap_table_nap_date",
+            "unique": false,
+            "columnNames": [
+              "nap_date"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_nap_table_nap_date` ON `${TABLE_NAME}` (`nap_date`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "sleep_table",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "nap_date"
+            ],
+            "referencedColumns": [
+              "date"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "night_awakes_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`nightAwakeId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `night_awake_date` INTEGER NOT NULL, `start` INTEGER NOT NULL, `end` INTEGER NOT NULL, FOREIGN KEY(`night_awake_date`) REFERENCES `sleep_table`(`date`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "nightAwakeId",
+            "columnName": "nightAwakeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nightAwakeDate",
+            "columnName": "night_awake_date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "start",
+            "columnName": "start",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "end",
+            "columnName": "end",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "nightAwakeId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_night_awakes_table_night_awake_date",
+            "unique": false,
+            "columnNames": [
+              "night_awake_date"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_night_awakes_table_night_awake_date` ON `${TABLE_NAME}` (`night_awake_date`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "sleep_table",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "night_awake_date"
+            ],
+            "referencedColumns": [
+              "date"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '150f332863216e7d216bc96e72acf6fb')"
+    ]
+  }
+}

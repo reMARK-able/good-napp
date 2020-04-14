@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#64a7c1</color>
-    <color name="colorPrimaryDark">#307891</color>
-    <color name="colorAccent">#9adffc</color>
+    <color name="primaryColor">#009fb5</color>
+    <color name="primaryLightColor">#59d0e7</color>
+    <color name="primaryDarkColor">#007085</color>
+    <color name="secondaryColor">#ef9a9a</color>
+    <color name="secondaryLightColor">#ffcccb</color>
+    <color name="secondaryDarkColor">#ba6b6c</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
 
     <!-- Color for stroke of editable TextInputLayouts. -->
-    <color name="textInputLayoutStroke">@color/colorPrimaryDark</color>
+    <color name="textInputLayoutStroke">@color/primaryDarkColor</color>
+
+    <!-- list_item_day_timeline colors -->
+    <color name="timeline_base_color">@color/primaryColor</color>
+    <color name="timeline_gradient_center_color">@color/primaryDarkColor</color>
+    <color name="timeline_gradient_end_color">@android:color/transparent</color>
 </resources>

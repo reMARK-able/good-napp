@@ -3,4 +3,9 @@
     <dimen name="padding_card_content">0dp</dimen>
     <dimen name="padding_card_content_small">8dp</dimen>
     <dimen name="middleBox_margin">8dp</dimen>
+    <dimen name="extended_fab_margin_normal">16dp</dimen>
+    <dimen name="timeline_width">4dp</dimen>
+
+    <!--Integer (DP value) for list_item_day_timeline MARGIN_TOP which is later calculated to pixels.-->
+    <integer name="list_item_day_margin_top">32</integer>
 </resources>

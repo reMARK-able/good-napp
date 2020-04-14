@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="sleepDay"
+            type="com.gmail.remarkable.development.goodnapp.SleepDay" />
+
+        <variable
+            name="nextDayWakeUp"
+            type="Long" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/list_divider_horizontal_gradient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_list_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/date_label"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/item_list_awakeTimes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_list_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:dateFormatted="@{sleepDay}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/item_list_date_label"
+            app:layout_constraintStart_toEndOf="@+id/item_list_date_label"
+            tools:text="@string/sample_date" />
+
+        <TextView
+            android:id="@+id/item_list_awake_times_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/awake_times_label"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/item_list_awakeTimes"
+            app:layout_constraintStart_toStartOf="@+id/item_list_awakeTimes" />
+
+        <TextView
+            android:id="@+id/item_list_awakeTimes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:awakeTimesFormatted="@{sleepDay}"
+            app:layout_constraintBottom_toTopOf="@id/item_list_reelTwt_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/item_list_date_label"
+            app:layout_constraintTop_toBottomOf="@+id/item_list_date_label"
+            tools:text="3:20/4:15/1:50/8:40/2:44/3:55" />
+
+        <TextView
+            android:id="@+id/item_list_reelTwt_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:text="@string/awake"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/ic_timer_black_24dp"
+            app:drawableTint="?android:textColorSecondary"
+            app:layout_constraintBottom_toTopOf="@id/item_list_sleep_label"
+            app:layout_constraintStart_toStartOf="@+id/item_list_date_label"
+            app:layout_constraintTop_toBottomOf="@+id/item_list_awakeTimes" />
+
+        <TextView
+            android:id="@+id/item_list_reelTwt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintBaseline_toBaselineOf="@+id/item_list_reelTwt_label"
+            app:layout_constraintStart_toEndOf="@id/barrier_label"
+            app:longVersion="@{false}"
+            app:totalAwakesString="@{sleepDay}"
+            tools:text="11:40" />
+
+        <TextView
+            android:id="@+id/item_list_twt_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            app:awakesDayString="@{sleepDay}"
+            app:drawableStartCompat="@drawable/ic_sun_black_16dp"
+            app:drawableTint="?android:textColorSecondary"
+            app:layout_constraintBaseline_toBaselineOf="@+id/item_list_reelTwt"
+            app:layout_constraintStart_toEndOf="@+id/barrier_times"
+            app:longVersion="@{false}"
+            tools:text="10:15" />
+
+        <TextView
+            android:id="@+id/item_list_twt_night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center_vertical"
+            app:awakesNightString="@{sleepDay}"
+            app:drawableStartCompat="@drawable/ic_moon_black_16dp"
+            app:drawableTint="?android:textColorSecondary"
+            app:layout_constraintBaseline_toBaselineOf="@+id/item_list_twt_day"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/barrier_day"
+            app:longVersion="@{false}"
+            tools:text="10:15" />
+
+        <TextView
+            android:id="@+id/item_list_sleep_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical"
+            android:text="@string/sleep_item_list_label"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/ic_snooze_black_24dp"
+            app:drawableTint="?android:textColorSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/item_list_date_label"
+            app:layout_constraintTop_toBottomOf="@+id/item_list_reelTwt_label" />
+
+        <TextView
+            android:id="@+id/item_list_sleep_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintBaseline_toBaselineOf="@+id/item_list_sleep_label"
+            app:layout_constraintStart_toEndOf="@id/barrier_label"
+            app:longVersion="@{false}"
+            app:nextDayWakeUp="@{nextDayWakeUp}"
+            app:sleepTotalString="@{sleepDay}"
+            tools:text="11:40" />
+
+        <TextView
+            android:id="@+id/item_list_sleep_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            app:drawableStartCompat="@drawable/ic_sun_black_16dp"
+            app:drawableTint="?android:textColorSecondary"
+            app:layout_constraintBaseline_toBaselineOf="@+id/item_list_sleep_total"
+            app:layout_constraintStart_toEndOf="@+id/barrier_times"
+            app:longVersion="@{false}"
+            app:sleepDayString="@{sleepDay}"
+            tools:text="10:15" />
+
+        <TextView
+            android:id="@+id/item_list_sleep_night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center_vertical"
+            app:drawableStartCompat="@drawable/ic_moon_black_16dp"
+            app:drawableTint="?android:textColorSecondary"
+            app:layout_constraintBaseline_toBaselineOf="@+id/item_list_sleep_day"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/barrier_day"
+            app:longVersion="@{false}"
+            app:nextDayWakeUp="@{nextDayWakeUp}"
+            app:sleepNightString="@{sleepDay}"
+            tools:text="10:15" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="item_list_reelTwt_label,item_list_sleep_label"
+            tools:layout_editor_absoluteX="411dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_times"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="item_list_reelTwt,item_list_sleep_total"
+            tools:layout_editor_absoluteX="411dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="item_list_twt_day,item_list_sleep_day"
+            tools:layout_editor_absoluteX="411dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
