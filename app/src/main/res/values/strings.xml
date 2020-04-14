@@ -1,27 +1,31 @@
 <resources>
     <string name="app_name">Good nApp</string>
 
+    <!-- TextInputLayout's labels -->
     <!-- For full planned sleep time; Planowany ccc (całkowity czas czuwania) -->
-    <string name="target_TWT">Target TWT</string>
+    <string name="target_TWT">TARGET TWT</string>
+    <string name="out_of_bed">OUT OF BED</string>
+    <string name="wake_up">WAKE UP</string>
+    <string name="nap_label_format">NAP %d</string>
+    <string name="start">START</string>
+    <string name="end">END</string>
+    <string name="target_hint">TARGET</string>
+    <string name="real_hint_label">REAL</string>
+    <string name="total_sleep_label">TOTAL</string>
+    <string name="day_sleep_label">DAY</string>
+    <string name="night_sleep_label">NIGHT</string>
+    <string name="add_comment">ADD COMMENT</string>
+    <string name="comment_label">COMMENT</string>
+    <string name="awake_label_format">NIGHT AWAKE %d</string>
 
-    <!-- Description for set time buttons -->
-    <!--Wake up label -->
-    <string name="out_of_bed">Out of bed</string>
 
     <!-- Template string for field when time has'n been already set -->
     <string name="no_time">--:--</string>
-    <string name="nap_label_format">Nap %d</string>
-    <string name="awake_label_format">Night Awake %d</string>
-    <string name="start">Start</string>
-    <string name="end">End</string>
     <string name="time_duration_format">%1$d hr %2$d min</string>
     <string name="time_duration_format_short">%1$d:%2$02d</string>
 
     <string name="summary">Summary</string>
-    <string name="target_hint">Target</string>
-    <string name="real_hint_label">Real</string>
     <string name="real_twt">Real TWT</string>
-    <string name="wake_up">Wake Up</string>
     <string name="add_nap">Add Nap</string>
     <string name="delete_description">Delete</string>
     <string name="sample_awake_time">12 hr 45 min</string>
@@ -42,9 +46,6 @@
     <string name="total_awake_time">Total (a)wake time:</string>
     <string name="extended_fab_label">Today</string>
     <string name="sleep_times_label">Sleep</string>
-    <string name="day_sleep_label">Day</string>
-    <string name="night_sleep_label">Night</string>
-    <string name="total_sleep_label">Total</string>
     <string name="no_time_forAllAwakeTimeString">-:-</string>
     <string name="separator_for_allAwakeTimesString">/</string>
     <string name="notAvailable_short">n/a</string>
@@ -69,8 +70,6 @@
     <string name="today">Today</string>
     <string name="empty_recycler_welcome">Let\'s start...</string>
     <string name="yesterday">Yesterday</string>
-    <string name="add_comment">Add comment</string>
-    <string name="comment_label">Comment</string>
     <string name="save_button">Save</string>
     <string name="cancel_button">Cancel</string>
     <string name="about_motto">Write down, schedule and analyze sleep times and awake times of Your child.</string>
