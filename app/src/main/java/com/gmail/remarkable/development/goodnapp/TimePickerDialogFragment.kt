@@ -141,16 +141,16 @@ class TimePickerDialogFragment : DialogFragment(), TimePickerDialog.OnTimeSetLis
             WAKE_UP -> mDay.wakeUp
             OUT_OF_BED -> mDay.outOfBed
             REAL_BEDTIME -> mDay.realBedtime
-            NAP_1_START -> mDay.naps[0].start
-            NAP_1_END -> mDay.naps[0].end
-            NAP_2_START -> mDay.naps[1].start
-            NAP_2_END -> mDay.naps[1].end
-            NAP_3_START -> mDay.naps[2].start
-            NAP_3_END -> mDay.naps[2].end
-            NAP_4_START -> mDay.naps[3].start
-            NAP_4_END -> mDay.naps[3].end
-            NAP_5_START -> mDay.naps[4].start
-            NAP_5_END -> mDay.naps[4].end
+            NAP_1_START -> mDay.naps.getOrNull(0)?.start ?: 0
+            NAP_1_END -> mDay.naps.getOrNull(0)?.end ?: 0
+            NAP_2_START -> mDay.naps.getOrNull(1)?.start ?: 0
+            NAP_2_END -> mDay.naps.getOrNull(1)?.end ?: 0
+            NAP_3_START -> mDay.naps.getOrNull(2)?.start ?: 0
+            NAP_3_END -> mDay.naps.getOrNull(2)?.end ?: 0
+            NAP_4_START -> mDay.naps.getOrNull(3)?.start ?: 0
+            NAP_4_END -> mDay.naps.getOrNull(3)?.end ?: 0
+            NAP_5_START -> mDay.naps.getOrNull(4)?.start ?: 0
+            NAP_5_END -> mDay.naps.getOrNull(4)?.end ?: 0
             AWAKE_1_START -> mDay.nightAwakes.getOrNull(0)?.start ?: 0
             AWAKE_1_END -> mDay.nightAwakes.getOrNull(0)?.end ?: 0
             AWAKE_2_START -> mDay.nightAwakes.getOrNull(1)?.start ?: 0
