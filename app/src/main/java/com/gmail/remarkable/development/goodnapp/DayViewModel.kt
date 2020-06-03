@@ -6,10 +6,7 @@ import androidx.lifecycle.*
 import com.gmail.remarkable.development.goodnapp.SleepDay.Nap
 import com.gmail.remarkable.development.goodnapp.database.SleepDatabaseDao
 import com.gmail.remarkable.development.goodnapp.util.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 const val MAX_NAPS_NUMBER = 5
 const val MAX_AWAKES_NUMBER = 5
@@ -22,9 +19,13 @@ class DayViewModel(
     private val days = database.getAllDays()
     val daysInPairs = days.switchMap {
         liveData {
-            val pairs = makePairs(it)
-            val exitAnimTime = resources.getInteger(R.integer.day_fragment_exit_duration).toLong()
-            delay(exitAnimTime)
+            var pairs = listOf<Pair<SleepDay, Long?>>()
+            coroutineScope {
+                launch { pairs = makePairs(it) }
+                val exitAnimTime =
+                    resources.getInteger(R.integer.day_fragment_exit_duration).toLong()
+                delay(exitAnimTime)
+            }
             emit(pairs)
         }
     }
@@ -282,6 +283,7 @@ class DayViewModel(
         _mLiveSleepDay.value = mDay
         saveData()
     }
+
     /**
      * Called when return from TimePickerDialogFragment.
      * Set a appropriate field in mDay object, pass it to the LiveData and write to database.
