@@ -10,4 +10,4 @@
 
 ![Screenshot_20200414-204233_Good nApp_framed](https://user-images.githubusercontent.com/53933888/84012003-2e3a5a80-a977-11ea-996d-a57e6d8b7b57.png)
 
-<a href='https://play.google.com/store/apps/details?id=com.gmail.remarkable.development.goodnapp&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' target='_blank'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+<a href='https://play.google.com/store/apps/details?id=com.gmail.remarkable.development.goodnapp&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' target="_blank"><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
